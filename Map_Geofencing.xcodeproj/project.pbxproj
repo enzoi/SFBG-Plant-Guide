@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1601FA9216000893C65 /* AppDelegate.swift */; };
+		CF76A1631FA9216000893C65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1621FA9216000893C65 /* ViewController.swift */; };
+		CF76A1661FA9216000893C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1641FA9216000893C65 /* Main.storyboard */; };
+		CF76A1681FA9216000893C65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1671FA9216000893C65 /* Assets.xcassets */; };
+		CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */; };
+		CF76A1761FA9216000893C65 /* Map_GeofencingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1751FA9216000893C65 /* Map_GeofencingTests.swift */; };
+		CF76A1811FA9216000893C65 /* Map_GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */; };
+		CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CF76A1721FA9216000893C65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF76A1551FA9215F00893C65 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF76A15C1FA9216000893C65;
+			remoteInfo = Map_Geofencing;
+		};
+		CF76A17D1FA9216000893C65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF76A1551FA9215F00893C65 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF76A15C1FA9216000893C65;
+			remoteInfo = Map_Geofencing;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CF76A1621FA9216000893C65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF76A1651FA9216000893C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CF76A1671FA9216000893C65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF76A16A1FA9216000893C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF76A16C1FA9216000893C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF76A1711FA9216000893C65 /* Map_GeofencingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Map_GeofencingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF76A1751FA9216000893C65 /* Map_GeofencingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_GeofencingTests.swift; sourceTree = "<group>"; };
+		CF76A1771FA9216000893C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF76A17C1FA9216000893C65 /* Map_GeofencingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Map_GeofencingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_GeofencingUITests.swift; sourceTree = "<group>"; };
+		CF76A1821FA9216000893C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF76A15A1FA9216000893C65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF76A16E1FA9216000893C65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF76A1791FA9216000893C65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF76A1541FA9215F00893C65 = {
+			isa = PBXGroup;
+			children = (
+				CF76A15F1FA9216000893C65 /* Map_Geofencing */,
+				CF76A1741FA9216000893C65 /* Map_GeofencingTests */,
+				CF76A17F1FA9216000893C65 /* Map_GeofencingUITests */,
+				CF76A15E1FA9216000893C65 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF76A15E1FA9216000893C65 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF76A15D1FA9216000893C65 /* Map_Geofencing.app */,
+				CF76A1711FA9216000893C65 /* Map_GeofencingTests.xctest */,
+				CF76A17C1FA9216000893C65 /* Map_GeofencingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF76A15F1FA9216000893C65 /* Map_Geofencing */ = {
+			isa = PBXGroup;
+			children = (
+				CF76A1601FA9216000893C65 /* AppDelegate.swift */,
+				CF76A18F1FA92B4400893C65 /* ViewControllers */,
+				CF76A1901FA92B6300893C65 /* Assets */,
+				CF76A18E1FA92B3A00893C65 /* Supporting Files */,
+			);
+			path = Map_Geofencing;
+			sourceTree = "<group>";
+		};
+		CF76A1741FA9216000893C65 /* Map_GeofencingTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF76A1751FA9216000893C65 /* Map_GeofencingTests.swift */,
+				CF76A1771FA9216000893C65 /* Info.plist */,
+			);
+			path = Map_GeofencingTests;
+			sourceTree = "<group>";
+		};
+		CF76A17F1FA9216000893C65 /* Map_GeofencingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */,
+				CF76A1821FA9216000893C65 /* Info.plist */,
+			);
+			path = Map_GeofencingUITests;
+			sourceTree = "<group>";
+		};
+		CF76A18E1FA92B3A00893C65 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CF76A16C1FA9216000893C65 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF76A18F1FA92B4400893C65 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF76A1621FA9216000893C65 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CF76A1901FA92B6300893C65 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */,
+				CF76A1641FA9216000893C65 /* Main.storyboard */,
+				CF76A1671FA9216000893C65 /* Assets.xcassets */,
+				CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF76A15C1FA9216000893C65 /* Map_Geofencing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF76A1851FA9216000893C65 /* Build configuration list for PBXNativeTarget "Map_Geofencing" */;
+			buildPhases = (
+				CF76A1591FA9216000893C65 /* Sources */,
+				CF76A15A1FA9216000893C65 /* Frameworks */,
+				CF76A15B1FA9216000893C65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Map_Geofencing;
+			productName = Map_Geofencing;
+			productReference = CF76A15D1FA9216000893C65 /* Map_Geofencing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CF76A1701FA9216000893C65 /* Map_GeofencingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF76A1881FA9216000893C65 /* Build configuration list for PBXNativeTarget "Map_GeofencingTests" */;
+			buildPhases = (
+				CF76A16D1FA9216000893C65 /* Sources */,
+				CF76A16E1FA9216000893C65 /* Frameworks */,
+				CF76A16F1FA9216000893C65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF76A1731FA9216000893C65 /* PBXTargetDependency */,
+			);
+			name = Map_GeofencingTests;
+			productName = Map_GeofencingTests;
+			productReference = CF76A1711FA9216000893C65 /* Map_GeofencingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CF76A17B1FA9216000893C65 /* Map_GeofencingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF76A18B1FA9216000893C65 /* Build configuration list for PBXNativeTarget "Map_GeofencingUITests" */;
+			buildPhases = (
+				CF76A1781FA9216000893C65 /* Sources */,
+				CF76A1791FA9216000893C65 /* Frameworks */,
+				CF76A17A1FA9216000893C65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF76A17E1FA9216000893C65 /* PBXTargetDependency */,
+			);
+			name = Map_GeofencingUITests;
+			productName = Map_GeofencingUITests;
+			productReference = CF76A17C1FA9216000893C65 /* Map_GeofencingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF76A1551FA9215F00893C65 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = YTK;
+				TargetAttributes = {
+					CF76A15C1FA9216000893C65 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+					CF76A1701FA9216000893C65 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CF76A15C1FA9216000893C65;
+					};
+					CF76A17B1FA9216000893C65 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CF76A15C1FA9216000893C65;
+					};
+				};
+			};
+			buildConfigurationList = CF76A1581FA9215F00893C65 /* Build configuration list for PBXProject "Map_Geofencing" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF76A1541FA9215F00893C65;
+			productRefGroup = CF76A15E1FA9216000893C65 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF76A15C1FA9216000893C65 /* Map_Geofencing */,
+				CF76A1701FA9216000893C65 /* Map_GeofencingTests */,
+				CF76A17B1FA9216000893C65 /* Map_GeofencingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF76A15B1FA9216000893C65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */,
+				CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */,
+				CF76A1681FA9216000893C65 /* Assets.xcassets in Resources */,
+				CF76A1661FA9216000893C65 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF76A16F1FA9216000893C65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF76A17A1FA9216000893C65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF76A1591FA9216000893C65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF76A1631FA9216000893C65 /* ViewController.swift in Sources */,
+				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF76A16D1FA9216000893C65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF76A1761FA9216000893C65 /* Map_GeofencingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF76A1781FA9216000893C65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF76A1811FA9216000893C65 /* Map_GeofencingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF76A1731FA9216000893C65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF76A15C1FA9216000893C65 /* Map_Geofencing */;
+			targetProxy = CF76A1721FA9216000893C65 /* PBXContainerItemProxy */;
+		};
+		CF76A17E1FA9216000893C65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF76A15C1FA9216000893C65 /* Map_Geofencing */;
+			targetProxy = CF76A17D1FA9216000893C65 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CF76A1641FA9216000893C65 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF76A1651FA9216000893C65 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF76A16A1FA9216000893C65 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CF76A1831FA9216000893C65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CF76A1841FA9216000893C65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF76A1861FA9216000893C65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TVHJ8VSCRK;
+				INFOPLIST_FILE = Map_Geofencing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-Geofencing";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF76A1871FA9216000893C65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TVHJ8VSCRK;
+				INFOPLIST_FILE = Map_Geofencing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-Geofencing";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CF76A1891FA9216000893C65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TVHJ8VSCRK;
+				INFOPLIST_FILE = Map_GeofencingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-GeofencingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map_Geofencing.app/Map_Geofencing";
+			};
+			name = Debug;
+		};
+		CF76A18A1FA9216000893C65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TVHJ8VSCRK;
+				INFOPLIST_FILE = Map_GeofencingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-GeofencingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map_Geofencing.app/Map_Geofencing";
+			};
+			name = Release;
+		};
+		CF76A18C1FA9216000893C65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TVHJ8VSCRK;
+				INFOPLIST_FILE = Map_GeofencingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-GeofencingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Map_Geofencing;
+			};
+			name = Debug;
+		};
+		CF76A18D1FA9216000893C65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TVHJ8VSCRK;
+				INFOPLIST_FILE = Map_GeofencingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-GeofencingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Map_Geofencing;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF76A1581FA9215F00893C65 /* Build configuration list for PBXProject "Map_Geofencing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF76A1831FA9216000893C65 /* Debug */,
+				CF76A1841FA9216000893C65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF76A1851FA9216000893C65 /* Build configuration list for PBXNativeTarget "Map_Geofencing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF76A1861FA9216000893C65 /* Debug */,
+				CF76A1871FA9216000893C65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF76A1881FA9216000893C65 /* Build configuration list for PBXNativeTarget "Map_GeofencingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF76A1891FA9216000893C65 /* Debug */,
+				CF76A18A1FA9216000893C65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF76A18B1FA9216000893C65 /* Build configuration list for PBXNativeTarget "Map_GeofencingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF76A18C1FA9216000893C65 /* Debug */,
+				CF76A18D1FA9216000893C65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF76A1551FA9215F00893C65 /* Project object */;
+}
