@@ -7,28 +7,22 @@
 //
 
 import UIKit
-import MapKit
+import GoogleMaps
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
-    
-    let regionRadius: CLLocationDistance = 1000
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Set initial location in SF Botanical Garden
-        let initialLocation = CLLocation(latitude: 37.7669, longitude: -122.4716)
+        let camera = GMSCameraPosition.camera(withLatitude: 37.7669, longitude: -122.4716, zoom: 6.0)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        view = mapView
         
-        centerMapOnLocation(location: initialLocation)
     }
 
     func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius, regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
+
     }
 
 }

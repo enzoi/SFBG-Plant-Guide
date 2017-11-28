@@ -1,0 +1,6 @@
+framework module Pods_Map_Geofencing {
+  umbrella header "Pods-Map_Geofencing-umbrella.h"
+
+  export *
+  module * { export * }
+}
