@@ -15,10 +15,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let camera = GMSCameraPosition.camera(withLatitude: 37.7669, longitude: -122.4716, zoom: 6.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 37.7669, longitude: -122.4716, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
         
+        let currentLocation = CLLocationCoordinate2DMake(37.7669, -122.4716)
+        let marker = GMSMarker(position: currentLocation)
+        marker.title = "SFBG"
+        marker.map = mapView
     }
 
     func centerMapOnLocation(location: CLLocation) {
