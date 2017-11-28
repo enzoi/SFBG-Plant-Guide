@@ -17,6 +17,7 @@
 		CF76A1761FA9216000893C65 /* Map_GeofencingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1751FA9216000893C65 /* Map_GeofencingTests.swift */; };
 		CF76A1811FA9216000893C65 /* Map_GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */; };
 		CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */; };
+		CF97BEDE1FCDD67500E9931C /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEDD1FCDD67500E9931C /* style.json */; };
 		D5F649EF935D3035F6920A22 /* Pods_Map_GeofencingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247BD9A1F272140DB7822364 /* Pods_Map_GeofencingTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_GeofencingUITests.swift; sourceTree = "<group>"; };
 		CF76A1821FA9216000893C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CF97BEDD1FCDD67500E9931C /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = style.json; path = ../style.json; sourceTree = "<group>"; };
 		F4729FEB26920090F10DFB1A /* Pods-Map_GeofencingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingUITests/Pods-Map_GeofencingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				CF76A16C1FA9216000893C65 /* Info.plist */,
+				CF97BEDD1FCDD67500E9931C /* style.json */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */,
 				CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */,
 				CF76A1681FA9216000893C65 /* Assets.xcassets in Resources */,
+				CF97BEDE1FCDD67500E9931C /* style.json in Resources */,
 				CF76A1661FA9216000893C65 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -680,10 +684,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TVHJ8VSCRK;
 				INFOPLIST_FILE = Map_GeofencingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-GeofencingTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map_Geofencing.app/Map_Geofencing";
 			};
@@ -698,10 +703,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TVHJ8VSCRK;
 				INFOPLIST_FILE = Map_GeofencingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-GeofencingTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map_Geofencing.app/Map_Geofencing";
 			};
@@ -715,10 +721,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TVHJ8VSCRK;
 				INFOPLIST_FILE = Map_GeofencingUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-GeofencingUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Map_Geofencing;
 			};
@@ -732,10 +739,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TVHJ8VSCRK;
 				INFOPLIST_FILE = Map_GeofencingUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ytk.Map-GeofencingUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Map_Geofencing;
 			};
