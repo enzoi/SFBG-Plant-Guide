@@ -32,9 +32,13 @@ class ViewController: UIViewController {
         
         view = mapView
         
+        let icon = UIImage(named: "marker_small")!.withRenderingMode(.alwaysTemplate)
+        let markerView = UIImageView(image: icon)
+        
         let currentLocation = CLLocationCoordinate2DMake(37.7669, -122.4716)
         let marker = GMSMarker(position: currentLocation)
         marker.title = "SFBG"
+        marker.iconView = markerView
         marker.map = mapView
     }
 

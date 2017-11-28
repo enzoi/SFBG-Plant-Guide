@@ -12,12 +12,14 @@
 		CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1601FA9216000893C65 /* AppDelegate.swift */; };
 		CF76A1631FA9216000893C65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1621FA9216000893C65 /* ViewController.swift */; };
 		CF76A1661FA9216000893C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1641FA9216000893C65 /* Main.storyboard */; };
-		CF76A1681FA9216000893C65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1671FA9216000893C65 /* Assets.xcassets */; };
 		CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */; };
 		CF76A1761FA9216000893C65 /* Map_GeofencingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1751FA9216000893C65 /* Map_GeofencingTests.swift */; };
 		CF76A1811FA9216000893C65 /* Map_GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */; };
 		CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */; };
 		CF97BEDE1FCDD67500E9931C /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEDD1FCDD67500E9931C /* style.json */; };
+		CF97BEE21FCDEA7300E9931C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE11FCDEA7300E9931C /* TableViewController.swift */; };
+		CF97BEE41FCDEEA000E9931C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */; };
+		CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEE71FCDF75B00E9931C /* Assets.xcassets */; };
 		D5F649EF935D3035F6920A22 /* Pods_Map_GeofencingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247BD9A1F272140DB7822364 /* Pods_Map_GeofencingTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +53,6 @@
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF76A1621FA9216000893C65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CF76A1651FA9216000893C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CF76A1671FA9216000893C65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF76A16A1FA9216000893C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF76A16C1FA9216000893C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF76A1711FA9216000893C65 /* Map_GeofencingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Map_GeofencingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +63,9 @@
 		CF76A1821FA9216000893C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CF97BEDD1FCDD67500E9931C /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = style.json; path = ../style.json; sourceTree = "<group>"; };
+		CF97BEE11FCDEA7300E9931C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CF97BEE71FCDF75B00E9931C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4729FEB26920090F10DFB1A /* Pods-Map_GeofencingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingUITests/Pods-Map_GeofencingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				CF76A1621FA9216000893C65 /* ViewController.swift */,
+				CF97BEE11FCDEA7300E9931C /* TableViewController.swift */,
+				CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -179,8 +185,8 @@
 			children = (
 				CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */,
 				CF76A1641FA9216000893C65 /* Main.storyboard */,
-				CF76A1671FA9216000893C65 /* Assets.xcassets */,
 				CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */,
+				CF97BEE71FCDF75B00E9931C /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -313,9 +319,9 @@
 			files = (
 				CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */,
 				CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */,
-				CF76A1681FA9216000893C65 /* Assets.xcassets in Resources */,
 				CF97BEDE1FCDD67500E9931C /* style.json in Resources */,
 				CF76A1661FA9216000893C65 /* Main.storyboard in Resources */,
+				CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +485,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF76A1631FA9216000893C65 /* ViewController.swift in Sources */,
+				CF97BEE41FCDEEA000E9931C /* TableViewCell.swift in Sources */,
+				CF97BEE21FCDEA7300E9931C /* TableViewController.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

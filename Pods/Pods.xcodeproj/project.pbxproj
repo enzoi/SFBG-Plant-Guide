@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,12 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05E564F6D66D754A9A592A0D67D2B067 /* Pods_Map_GeofencingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Map_GeofencingUITests.framework; path = "Pods-Map_GeofencingUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05E564F6D66D754A9A592A0D67D2B067 /* Pods_Map_GeofencingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_GeofencingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		063CEF5A69092B9579A0759506468FB7 /* Pods-Map_GeofencingUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Map_GeofencingUITests-dummy.m"; sourceTree = "<group>"; };
 		08C2609BB8F15A71779C4BB4421EB8A6 /* Pods-Map_GeofencingTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Map_GeofencingTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1A64FD805F842A39A20CCF98BED61789 /* Pods_Map_GeofencingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Map_GeofencingTests.framework; path = "Pods-Map_GeofencingTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		26A80FDAA25EEAF4B7335B8AB6A20A18 /* Pods-Map_GeofencingTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Map_GeofencingTests.modulemap"; sourceTree = "<group>"; };
-		309E002DE89E7FEE1A053C704F54BB1D /* Pods_Map_Geofencing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Map_Geofencing.framework; path = "Pods-Map_Geofencing.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A64FD805F842A39A20CCF98BED61789 /* Pods_Map_GeofencingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_GeofencingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		26A80FDAA25EEAF4B7335B8AB6A20A18 /* Pods-Map_GeofencingTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Map_GeofencingTests.modulemap"; sourceTree = "<group>"; };
+		309E002DE89E7FEE1A053C704F54BB1D /* Pods_Map_Geofencing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_Geofencing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36DB83CB4279B90D59054691B89501D1 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
 		3BFE6B406D5F6C2FBDE86AE15699CF49 /* Pods-Map_GeofencingUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Map_GeofencingUITests-frameworks.sh"; sourceTree = "<group>"; };
 		3F471243C5A553BA7E0F7A8D06932158 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,15 +43,15 @@
 		8C45EC09349F355D8FDFEB82B896FBEA /* Pods-Map_GeofencingUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Map_GeofencingUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8E8FECD39DC00E7E837A529E20AE9D55 /* Pods-Map_GeofencingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Map_GeofencingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		92F16DE18BA3558C29C0BEA504CBBB6A /* Pods-Map_GeofencingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Map_GeofencingTests.release.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D5F904BA504DB50DBFDC355055FBDD1 /* Pods-Map_GeofencingUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Map_GeofencingUITests-umbrella.h"; sourceTree = "<group>"; };
 		9D8211ED903EC1F9694364E673CC69B2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B79F3DCD634B966A08E1222B412496C3 /* Pods-Map_Geofencing.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Map_Geofencing.modulemap"; sourceTree = "<group>"; };
+		B79F3DCD634B966A08E1222B412496C3 /* Pods-Map_Geofencing.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Map_Geofencing.modulemap"; sourceTree = "<group>"; };
 		B833345EEFB169C839E3E5DFC8F897E4 /* Pods-Map_Geofencing-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Map_Geofencing-resources.sh"; sourceTree = "<group>"; };
 		BA07075ABBD8FA2C715B5A9146D600B0 /* Pods-Map_GeofencingUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Map_GeofencingUITests-resources.sh"; sourceTree = "<group>"; };
 		BACAD6B7E9BCB6D65B9B82E6BE5B9F14 /* Pods-Map_GeofencingTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Map_GeofencingTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		BB2673F521645C23C47712907F3CA004 /* Pods-Map_Geofencing-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Map_Geofencing-acknowledgements.markdown"; sourceTree = "<group>"; };
-		BC89D3DC64C72EA8AEE7EE16A90FA5DF /* Pods-Map_GeofencingUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Map_GeofencingUITests.modulemap"; sourceTree = "<group>"; };
+		BC89D3DC64C72EA8AEE7EE16A90FA5DF /* Pods-Map_GeofencingUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Map_GeofencingUITests.modulemap"; sourceTree = "<group>"; };
 		C6233C0B4B844A154F72EBA36D9D1374 /* Pods-Map_GeofencingUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Map_GeofencingUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		C930187C3E99752B2F7614790E348029 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E004374149D836C1256FFFCB38FECB72 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
@@ -120,7 +120,6 @@
 				1418B056D31B27EE2CEBA552B5ADFE56 /* Base */,
 				6BC99F081C91F80679CFA5DDC6213D57 /* Maps */,
 			);
-			name = GoogleMaps;
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
@@ -404,7 +403,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-Map_GeofencingTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Map_GeofencingTests/Pods-Map_GeofencingTests.modulemap";
@@ -484,7 +483,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-Map_GeofencingUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Map_GeofencingUITests/Pods-Map_GeofencingUITests.modulemap";
@@ -520,7 +519,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-Map_GeofencingUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Map_GeofencingUITests/Pods-Map_GeofencingUITests.modulemap";
@@ -556,7 +555,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-Map_Geofencing/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Map_Geofencing/Pods-Map_Geofencing.modulemap";
@@ -640,7 +639,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-Map_Geofencing/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Map_Geofencing/Pods-Map_Geofencing.modulemap";
@@ -676,7 +675,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-Map_GeofencingTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Map_GeofencingTests/Pods-Map_GeofencingTests.modulemap";
