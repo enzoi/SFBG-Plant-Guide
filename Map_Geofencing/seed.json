@@ -48,10 +48,12 @@
              "user": { "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com", "favorites": [] },
              "photos": [
                         {
+                        "id": "alasdfdfkjaf",
                         "description" : "flower",
                         "remoteURL" : "https://en.wikipedia.org/wiki/Aesculus_californica#/media/File:Californicaspike.JPG/"
                         },
                         {
+                        "id": "aldf123gfg",
                         "desciption" : "seed",
                         "remoteURL" : "https://en.wikipedia.org/wiki/Aesculus_californica#/media/File:Aesculus_californica-29.jpg"
                         }
