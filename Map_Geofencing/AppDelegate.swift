@@ -14,6 +14,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    lazy var  coreDataStack = CoreDataStack(modelName: "SFBG")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -25,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let viewController = navController.topViewController as? ViewController else {
                 return true
         }
+        
+        viewController.coreDataStack = coreDataStack
         
         return true
     }

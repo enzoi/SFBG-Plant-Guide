@@ -12,6 +12,7 @@
 		CF4FB23A1FCE545E00CC885E /* SFBG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */; };
 		CF4FB23C1FCE9E9A00CC885E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */; };
 		CF4FB23E1FCE9EF000CC885E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */; };
+		CF4FB2401FCFB43B00CC885E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23F1FCFB43B00CC885E /* CoreDataStack.swift */; };
 		CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1601FA9216000893C65 /* AppDelegate.swift */; };
 		CF76A1631FA9216000893C65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1621FA9216000893C65 /* ViewController.swift */; };
 		CF76A1661FA9216000893C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1641FA9216000893C65 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		CF4FB2391FCE545E00CC885E /* SFBG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SFBG.xcdatamodel; sourceTree = "<group>"; };
 		CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CF4FB23F1FCFB43B00CC885E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF76A1621FA9216000893C65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */,
+				CF4FB23F1FCFB43B00CC885E /* CoreDataStack.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				CF76A1631FA9216000893C65 /* ViewController.swift in Sources */,
 				CF97BEE41FCDEEA000E9931C /* TableViewCell.swift in Sources */,
 				CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */,
+				CF4FB2401FCFB43B00CC885E /* CoreDataStack.swift in Sources */,
 				CF97BEE21FCDEA7300E9931C /* TableViewController.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,
 				CF4FB23E1FCE9EF000CC885E /* ProfileViewController.swift in Sources */,
