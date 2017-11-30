@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		04DC8505E2302726EE13D7F3 /* Pods_Map_Geofencing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6067150AAF7D6545134DE17A /* Pods_Map_Geofencing.framework */; };
 		C369BFD400900A5AEFA7A8FE /* Pods_Map_GeofencingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89734ED9005D0350BFC9A3FC /* Pods_Map_GeofencingUITests.framework */; };
+		CF4FB23A1FCE545E00CC885E /* SFBG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */; };
+		CF4FB23C1FCE9E9A00CC885E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */; };
+		CF4FB23E1FCE9EF000CC885E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */; };
 		CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1601FA9216000893C65 /* AppDelegate.swift */; };
 		CF76A1631FA9216000893C65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1621FA9216000893C65 /* ViewController.swift */; };
 		CF76A1661FA9216000893C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1641FA9216000893C65 /* Main.storyboard */; };
@@ -20,6 +23,7 @@
 		CF97BEE21FCDEA7300E9931C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE11FCDEA7300E9931C /* TableViewController.swift */; };
 		CF97BEE41FCDEEA000E9931C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */; };
 		CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEE71FCDF75B00E9931C /* Assets.xcassets */; };
+		CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */; };
 		D5F649EF935D3035F6920A22 /* Pods_Map_GeofencingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247BD9A1F272140DB7822364 /* Pods_Map_GeofencingTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +53,9 @@
 		64749C65EF8459BEF4CA9131 /* Pods-Map_Geofencing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_Geofencing.release.xcconfig"; path = "Pods/Target Support Files/Pods-Map_Geofencing/Pods-Map_Geofencing.release.xcconfig"; sourceTree = "<group>"; };
 		89734ED9005D0350BFC9A3FC /* Pods_Map_GeofencingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_GeofencingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EF0CF4BBDB2906C3471125 /* Pods-Map_GeofencingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingTests/Pods-Map_GeofencingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CF4FB2391FCE545E00CC885E /* SFBG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SFBG.xcdatamodel; sourceTree = "<group>"; };
+		CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF76A1621FA9216000893C65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +73,7 @@
 		CF97BEE11FCDEA7300E9931C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		CF97BEE71FCDF75B00E9931C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F4729FEB26920090F10DFB1A /* Pods-Map_GeofencingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingUITests/Pods-Map_GeofencingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +118,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CF4FB2351FCE3E9600CC885E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		CF76A1541FA9215F00893C65 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +153,7 @@
 			children = (
 				CF76A1601FA9216000893C65 /* AppDelegate.swift */,
 				CF76A18F1FA92B4400893C65 /* ViewControllers */,
+				CF4FB2351FCE3E9600CC885E /* Model */,
 				CF76A1901FA92B6300893C65 /* Assets */,
 				CF76A18E1FA92B3A00893C65 /* Supporting Files */,
 			);
@@ -176,6 +193,9 @@
 				CF76A1621FA9216000893C65 /* ViewController.swift */,
 				CF97BEE11FCDEA7300E9931C /* TableViewController.swift */,
 				CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */,
+				CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */,
+				CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */,
+				CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -486,8 +506,12 @@
 			files = (
 				CF76A1631FA9216000893C65 /* ViewController.swift in Sources */,
 				CF97BEE41FCDEEA000E9931C /* TableViewCell.swift in Sources */,
+				CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */,
 				CF97BEE21FCDEA7300E9931C /* TableViewController.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,
+				CF4FB23E1FCE9EF000CC885E /* ProfileViewController.swift in Sources */,
+				CF4FB23C1FCE9E9A00CC885E /* FavoriteViewController.swift in Sources */,
+				CF4FB23A1FCE545E00CC885E /* SFBG.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,6 +821,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CF4FB2391FCE545E00CC885E /* SFBG.xcdatamodel */,
+			);
+			currentVersion = CF4FB2391FCE545E00CC885E /* SFBG.xcdatamodel */;
+			path = SFBG.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CF76A1551FA9215F00893C65 /* Project object */;
 }

@@ -11,6 +11,8 @@ import GoogleMaps
 
 class ViewController: UIViewController {
 
+    var coreDataStack: CoreDataStack!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
