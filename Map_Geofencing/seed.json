@@ -1,0 +1,113 @@
+{ "plants": [
+             {
+             "id": "a2f213g2s3lfg",
+             "scientificName": "Aesculus Californica",
+             "commonName": [ "California Buckeye" ],
+             "other_names": [""],
+             "family": "Sapindaceae",
+             "genus": "Aesculus",
+             "species": "A. californica",
+             "cultivar": "",
+             "createdAt": "2017-04-23T18:25:43.511Z",
+             "updatedAt": "2017-06-12T12:52:33.511Z",
+             "climateZone": 15,
+             "growthRate": "fast",
+             "lifeSpan": "250-280",
+             "plantType": ["tree", "shrub"],
+             "height": { "unit": "ft",
+             "min": 7,
+             "max": 50 },
+             "spacing": { "unit": "ft",
+             "min": 0,
+             "max": 0 },
+             "foliageType": [ "evergreen" ],
+             "foliageColor": { "front": "dark green",
+             "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "soilPreference": [ "" ],
+             "waterNeeds": [ "low", "veryLow" ],
+             "location": {
+             "id": 1234567,
+             "coordinate": {
+             "latitude": -37.21362,
+             "longitude": 122.51242 },
+             "gardenName": ["Native California"],
+             "bedNumber": ["23A"] },
+             "bloomTime": [ "february", "march", "april" ],
+             "bloomColor": [ "pink" ],
+             "bloomShape": "cupped",
+             "flowerFragrance": ["sweet scented"],
+             "sunExposure": [ "full sun", "partial to full sun" ],
+             "pruning": "prune early to promote new growth",
+             "soilPH_min": 5.6,
+             "soilPH_max": 10.0,
+             "uses": "",
+             "description": "",
+             "user": { "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com", "favorites": [] },
+             "photos": [
+                        {
+                        "description" : "flower",
+                        "remoteURL" : "https://en.wikipedia.org/wiki/Aesculus_californica#/media/File:Californicaspike.JPG/"
+                        },
+                        {
+                        "desciption" : "seed",
+                        "remoteURL" : "https://en.wikipedia.org/wiki/Aesculus_californica#/media/File:Aesculus_californica-29.jpg"
+                        }
+                        ]
+             },
+             {
+             "id": "a2f213g2s3adf",
+             "scientificName": "Leptospermum Scoparium",
+             "commonName": [ "Manuka Myrtle", "New Zealand teatree" ],
+             "other_names": [""],
+             "family": "Myrtaceae",
+             "genus": "Leptospermum",
+             "species": "L. Scoparium",
+             "cultivar": "",
+             "createdAt": "2017-04-23T18:25:43.511Z",
+             "updatedAt": "",
+             "climateZone": 15,
+             "growthRate": "fast",
+             "plantType": ["tree", "shrub"],
+             "plantSize": ["large"],
+             "height": { "unit": "ft",
+             "min": 12,
+             "max": 24 },
+             "spacing": { "unit": "ft",
+             "min": 12,
+             "max": 24 },
+             "foliageType": [ "evergreen" ],
+             "foliageColor": { "front": "green",
+             "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "waterNeeds": [ "low", "veryLow" ],
+             "location": { "id": 1234567,
+             "coordinate": {
+             "latitude": -37.2135,
+             "longitude": 122.5123 },
+             "gardenName": ["Native California"],
+             "bedNumber": ["23A"] },
+             "bloomTime": [ "february", "march", "april" ],
+             "bloomColor": [ "orange", "yellow" ],
+             "bloomShape": "",
+             "flowerFragrance": [""],
+             "sunExposure": [ "full sun", "partial to full sun" ],
+             "pruning": "prune early to promote new growth",
+             "soilPH_min": 5.6,
+             "soilPH_max": 10.0,
+             "uses": "",
+             "description": "",
+             "user": { "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com", "favorites": [] },
+             "photos": [
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://en.wikipedia.org/wiki/Leptospermum_scoparium#/media/File:Manukaflowers.jpg"
+                        }
+                        ]
+             }
+             
+             ]}

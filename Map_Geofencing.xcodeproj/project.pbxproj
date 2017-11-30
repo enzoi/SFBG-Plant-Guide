@@ -13,6 +13,7 @@
 		CF4FB23C1FCE9E9A00CC885E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */; };
 		CF4FB23E1FCE9EF000CC885E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */; };
 		CF4FB2401FCFB43B00CC885E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23F1FCFB43B00CC885E /* CoreDataStack.swift */; };
+		CF4FB2421FCFB48D00CC885E /* seed.json in Resources */ = {isa = PBXBuildFile; fileRef = CF4FB2411FCFB48D00CC885E /* seed.json */; };
 		CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1601FA9216000893C65 /* AppDelegate.swift */; };
 		CF76A1631FA9216000893C65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1621FA9216000893C65 /* ViewController.swift */; };
 		CF76A1661FA9216000893C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1641FA9216000893C65 /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CF4FB23F1FCFB43B00CC885E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		CF4FB2411FCFB48D00CC885E /* seed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed.json; sourceTree = "<group>"; };
 		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF76A1621FA9216000893C65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				CF76A1601FA9216000893C65 /* AppDelegate.swift */,
+				CF4FB2411FCFB48D00CC885E /* seed.json */,
 				CF76A18F1FA92B4400893C65 /* ViewControllers */,
 				CF4FB2351FCE3E9600CC885E /* Model */,
 				CF76A1901FA92B6300893C65 /* Assets */,
@@ -344,6 +347,7 @@
 				CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */,
 				CF97BEDE1FCDD67500E9931C /* style.json in Resources */,
 				CF76A1661FA9216000893C65 /* Main.storyboard in Resources */,
+				CF4FB2421FCFB48D00CC885E /* seed.json in Resources */,
 				CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
