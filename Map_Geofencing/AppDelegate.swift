@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // importJSONSeedDataIfNeeded()
         
         guard let navController = window?.rootViewController as? UINavigationController,
-            let viewController = navController.topViewController as? ViewController else {
+            let viewController = navController.topViewController as? MapViewController else {
                 return true
         }
         

@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SFBG Map-->
+        <!--Delegate-->
         <scene sceneID="gTt-qV-i0D">
             <objects>
-                <viewController id="IFS-6D-BnZ" customClass="ViewController" customModule="Map_Geofencing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IFS-6D-BnZ" customClass="MapViewController" customModule="Map_Geofencing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dZa-jV-qeg"/>
                         <viewControllerLayoutGuide type="bottom" id="kzO-EC-dUM"/>
@@ -21,13 +21,32 @@
                     <view key="view" contentMode="scaleToFill" id="GIC-Bc-nVj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2SF-s5-UIo" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="IFS-6D-BnZ" id="JQu-tx-MVH"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="2SF-s5-UIo" firstAttribute="trailing" secondItem="GIC-Bc-nVj" secondAttribute="trailingMargin" constant="16" id="7yS-I3-JfR"/>
+                            <constraint firstItem="kzO-EC-dUM" firstAttribute="top" secondItem="2SF-s5-UIo" secondAttribute="bottom" id="OFX-Wz-2pf"/>
+                            <constraint firstItem="2SF-s5-UIo" firstAttribute="leading" secondItem="GIC-Bc-nVj" secondAttribute="leadingMargin" constant="-16" id="Qss-Wc-2LC"/>
+                            <constraint firstItem="2SF-s5-UIo" firstAttribute="top" secondItem="dZa-jV-qeg" secondAttribute="bottom" id="zQm-g4-MNB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SFBG Map" id="rKe-2N-5ey"/>
+                    <connections>
+                        <outlet property="mapView" destination="2SF-s5-UIo" id="6fa-8i-2Po"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4VL-9s-AP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="140"/>
+            <point key="canvasLocation" x="832.79999999999995" y="139.880059970015"/>
         </scene>
         <!--Plant List-->
         <scene sceneID="uRc-TH-lpD">
@@ -599,7 +618,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jxh-Uh-k3H" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="989-SV-7tx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="989-SV-7tx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -617,7 +636,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dzU-va-zGz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5sy-73-Jlw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5sy-73-Jlw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -635,7 +654,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOc-dS-XLp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qzu-xc-gz9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qzu-xc-gz9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -653,7 +672,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FKl-ol-mSI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jjb-JJ-Ff0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jjb-JJ-Ff0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
