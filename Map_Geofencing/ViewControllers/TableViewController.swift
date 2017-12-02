@@ -7,10 +7,34 @@
 //
 
 import UIKit
+import CoreData
+
+enum PlantsResult {
+    case success([Plant])
+    case failure(Error)
+}
 
 class TableViewController: UIViewController {
 
-    var plants: [String: String] = ["image": "sample", "scientificName": "Aesculus Californica", "commonName": "California Buckeye"]
+    // MARK: - Properties
+    fileprivate let plantCellIdentifier = "plantCell"
+    var coreDataStack: CoreDataStack!
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
+        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+        fetchRequest.sortDescriptors = []
+        
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: self.coreDataStack.managedContext,
+            sectionNameKeyPath: nil,
+            cacheName: "SFBG")
+        
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
+
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,21 +43,102 @@ class TableViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         tableView.dataSource = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        
     }
-
 }
 
+// MARK: - UITableViewDataSource
+
 extension TableViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        return sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let sectionInfo = fetchedResultsController.sections?[section] else {
+            return 0
+        }
+        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell", for: indexPath) as! TableViewCell
-        cell.plantImageView?.image = UIImage(named: plants["image"]!)
-        cell.scientificName.text = plants["scientificName"]
-        cell.commonName.text = plants["commonName"]
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        configure(cell: cell, for: indexPath)
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = fetchedResultsController.sections?[section]
+        return sectionInfo?.name
+    }
 }
+
+
+// MARK: - NSFetchedResultsControllerDelegate
+extension TableViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .update:
+            let cell = tableView.cellForRow(at: indexPath!) as! TableViewCell
+            configure(cell: cell, for: indexPath!)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        let indexSet = IndexSet(integer: sectionIndex)
+        
+        switch type {
+        case .insert:
+            tableView.insertSections(indexSet, with: .automatic)
+        case .delete:
+            tableView.deleteSections(indexSet, with: .automatic)
+        default: break
+        }
+    }
+}
+
+// MARK: - Internal
+extension TableViewController {
+    
+    func configure(cell: UITableViewCell, for indexPath: IndexPath) {
+        
+        guard let cell = cell as? TableViewCell else {
+            return
+        }
+        
+        let plant = fetchedResultsController.object(at: indexPath)
+        
+        cell.scientificName.text = plant.scientificName
+        cell.commonName.text = plant.commonName
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        
+    }
+}
+

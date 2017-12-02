@@ -23,11 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // importJSONSeedDataIfNeeded()
         
         guard let navController = window?.rootViewController as? UINavigationController,
-            let viewController = navController.topViewController as? MapViewController else {
+            let viewController = navController.topViewController as? TableViewController else {
                 return true
         }
         
         viewController.coreDataStack = coreDataStack
+        
+        importJSONSeedDataIfNeeded()
         
         return true
     }
@@ -45,6 +47,8 @@ extension AppDelegate {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         let count = try? coreDataStack.managedContext.count(for: fetchRequest)
         
+        print(fetchRequest)
+        
         guard let plantCount = count,
             plantCount == 0 else {
                 return
@@ -60,22 +64,22 @@ extension AppDelegate {
 
         do {
             let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: [.allowFragments]) as! [String: AnyObject]
-
-            for jsonDictionary in jsonArray["plant"] as! [[String: AnyObject]] {
+            
+            for jsonDictionary in jsonArray["plants"] as! [[String: AnyObject]] {
                 let scientificName = jsonDictionary["scientificName"] as! String
-                let commonName = jsonDictionary["commonName"] as! String
-                // let plantType = jsonDictionary["plantType"] as! String
-                // let plantSize = jsonDictionary["plantSize"] as! String
-                // let droughtTolerant = jsonDictionary["droughtTolerant"] as! Bool
-                // let waterNeeds = jsonDictionary["waterNeeds"] as! [[String:Any]]
-                let latitude = jsonDictionary["latitude"] as! Double
-                let longitude = jsonDictionary["longiitude"] as! Double
+                let commonNames = jsonDictionary["commonName"] as! [String]
+                let plantTypes = jsonDictionary["commonName"] as! [String]
+                let plantType = plantTypes[0]
+                let location = jsonDictionary["location"] as! [String:AnyObject]
+                let coordinate = location["coordinate"] as! [String:AnyObject]
+                let latitude = coordinate["latitude"] as! Double
+                let longitude = coordinate["longitude"] as! Double
                 // let sunExposure = jsonDictionary["sunExposure"] as! [[String:Any]]
                 let photos = jsonDictionary["photos"] as! [[String:Any]]
 
                 let plant = Plant(context: coreDataStack.managedContext)
                 plant.scientificName = scientificName
-                plant.commonName = commonName
+                plant.commonName = commonNames[0]
                 // plant.plantType = plantType
                 // plant.plantSize = plantSize
                 // plant.droughtTolerant = droughtTolerant
@@ -88,14 +92,15 @@ extension AppDelegate {
                     let image = Photo(context: coreDataStack.managedContext)
                     plant.addToPhoto(image)
                 }
+                print("plant: ", plant)
 
             }
 
             coreDataStack.saveContext()
-            print("Imported \(jsonArray.count) teams")
+            print("Imported \(jsonArray.count) plants")
 
         } catch let error as NSError {
-            print("Error importing teams: \(error)")
+            print("Error importing plants: \(error)")
         }
     }
 }

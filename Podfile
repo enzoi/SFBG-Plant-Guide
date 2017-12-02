@@ -9,7 +9,7 @@ target 'Map_Geofencing' do
 
   # Pods for Map_Geofencing
 
-  pod 'GoogleMaps', '= 2.3.0'
+  pod 'GoogleMaps'
 
   target 'Map_GeofencingTests' do
     inherit! :search_paths
