@@ -9,11 +9,6 @@
 import UIKit
 import CoreData
 
-enum PlantsResult {
-    case success([Plant])
-    case failure(Error)
-}
-
 class TableViewController: UIViewController {
 
     // MARK: - Properties

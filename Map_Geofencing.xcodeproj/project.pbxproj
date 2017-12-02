@@ -21,6 +21,7 @@
 		CF4FB24D1FCFBF4400CC885E /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2471FCFBF4400CC885E /* Photo+CoreDataClass.swift */; };
 		CF4FB24E1FCFBF4400CC885E /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2481FCFBF4400CC885E /* Photo+CoreDataProperties.swift */; };
 		CF4FB2501FD1215D00CC885E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB24F1FD1215D00CC885E /* MapViewController.swift */; };
+		CF4FB2541FD2816B00CC885E /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */; };
 		CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1601FA9216000893C65 /* AppDelegate.swift */; };
 		CF76A1661FA9216000893C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1641FA9216000893C65 /* Main.storyboard */; };
 		CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */; };
@@ -73,6 +74,7 @@
 		CF4FB2471FCFBF4400CC885E /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CF4FB2481FCFBF4400CC885E /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CF4FB24F1FD1215D00CC885E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF76A1651FA9216000893C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */,
 				CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */,
 				CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */,
+				CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */,
 				CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
@@ -538,6 +541,7 @@
 				CF97BEE21FCDEA7300E9931C /* TableViewController.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,
 				CF4FB24D1FCFBF4400CC885E /* Photo+CoreDataClass.swift in Sources */,
+				CF4FB2541FD2816B00CC885E /* FavoriteTableViewCell.swift in Sources */,
 				CF4FB24B1FCFBF4400CC885E /* Plant+CoreDataClass.swift in Sources */,
 				CF4FB24A1FCFBF4400CC885E /* User+CoreDataProperties.swift in Sources */,
 				CF4FB23E1FCE9EF000CC885E /* ProfileViewController.swift in Sources */,
