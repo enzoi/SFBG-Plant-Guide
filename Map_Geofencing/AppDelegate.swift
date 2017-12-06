@@ -14,7 +14,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy var  coreDataStack = CoreDataStack(modelName: "SFBG")
+    lazy var  photoStore = PhotoStore(modelName: "SFBG")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
         }
         
-        viewController.coreDataStack = coreDataStack
+        viewController.photoStore = photoStore
         
         importJSONSeedDataIfNeeded()
         
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        coreDataStack.saveContext()
+        photoStore.saveContext()
     }
 }
 
@@ -45,7 +45,7 @@ extension AppDelegate {
     func importJSONSeedDataIfNeeded() {
         
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        let count = try? coreDataStack.managedContext.count(for: fetchRequest)
+        let count = try? self.photoStore.managedContext.count(for: fetchRequest)
         
         print(fetchRequest)
         
@@ -77,7 +77,7 @@ extension AppDelegate {
                 // let sunExposure = jsonDictionary["sunExposure"] as! [[String:Any]]
                 let photos = jsonDictionary["photos"] as! [[String:Any]]
 
-                let plant = Plant(context: coreDataStack.managedContext)
+                let plant = Plant(context: self.photoStore.managedContext)
                 plant.scientificName = scientificName
                 plant.commonName = commonNames[0]
                 // plant.plantType = plantType
@@ -89,14 +89,14 @@ extension AppDelegate {
                 // plant.sunExposure = sunExposure
 
                 for photo in photos {
-                    let image = Photo(context: coreDataStack.managedContext)
+                    let image = Photo(context: self.photoStore.managedContext)
                     plant.addToPhoto(image)
                 }
                 print("plant: ", plant)
 
             }
 
-            coreDataStack.saveContext()
+            photoStore.saveContext()
             print("Imported \(jsonArray.count) plants")
 
         } catch let error as NSError {

@@ -12,7 +12,7 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
-    var coreDataStack: CoreDataStack!
+    var photoStore: PhotoStore!
     var locationManager = CLLocationManager()
     lazy var mapView = GMSMapView()
     

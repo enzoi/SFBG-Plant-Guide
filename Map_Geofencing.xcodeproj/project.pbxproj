@@ -12,7 +12,6 @@
 		CF4FB23A1FCE545E00CC885E /* SFBG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */; };
 		CF4FB23C1FCE9E9A00CC885E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */; };
 		CF4FB23E1FCE9EF000CC885E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */; };
-		CF4FB2401FCFB43B00CC885E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB23F1FCFB43B00CC885E /* CoreDataStack.swift */; };
 		CF4FB2421FCFB48D00CC885E /* seed.json in Resources */ = {isa = PBXBuildFile; fileRef = CF4FB2411FCFB48D00CC885E /* seed.json */; };
 		CF4FB2491FCFBF4400CC885E /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2431FCFBF4400CC885E /* User+CoreDataClass.swift */; };
 		CF4FB24A1FCFBF4400CC885E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2441FCFBF4400CC885E /* User+CoreDataProperties.swift */; };
@@ -33,6 +32,7 @@
 		CF97BEE41FCDEEA000E9931C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */; };
 		CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEE71FCDF75B00E9931C /* Assets.xcassets */; };
 		CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */; };
+		CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */; };
 		D5F649EF935D3035F6920A22 /* Pods_Map_GeofencingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247BD9A1F272140DB7822364 /* Pods_Map_GeofencingTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,6 @@
 		CF4FB2391FCE545E00CC885E /* SFBG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SFBG.xcdatamodel; sourceTree = "<group>"; };
 		CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		CF4FB23F1FCFB43B00CC885E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		CF4FB2411FCFB48D00CC885E /* seed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed.json; sourceTree = "<group>"; };
 		CF4FB2431FCFBF4400CC885E /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CF4FB2441FCFBF4400CC885E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -92,6 +91,7 @@
 		CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		CF97BEE71FCDF75B00E9931C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		F4729FEB26920090F10DFB1A /* Pods-Map_GeofencingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingUITests/Pods-Map_GeofencingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */,
-				CF4FB23F1FCFB43B00CC885E /* CoreDataStack.swift */,
 				CF4FB2431FCFBF4400CC885E /* User+CoreDataClass.swift */,
 				CF4FB2441FCFBF4400CC885E /* User+CoreDataProperties.swift */,
 				CF4FB2451FCFBF4400CC885E /* Plant+CoreDataClass.swift */,
@@ -179,6 +178,7 @@
 				CF76A1601FA9216000893C65 /* AppDelegate.swift */,
 				CF4FB2411FCFB48D00CC885E /* seed.json */,
 				CF76A18F1FA92B4400893C65 /* ViewControllers */,
+				CFD3C24B1FD7BAA80084637B /* ModelControllers */,
 				CF4FB2351FCE3E9600CC885E /* Model */,
 				CF76A1901FA92B6300893C65 /* Assets */,
 				CF76A18E1FA92B3A00893C65 /* Supporting Files */,
@@ -236,6 +236,14 @@
 				CF97BEE71FCDF75B00E9931C /* Assets.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		CFD3C24B1FD7BAA80084637B /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */,
+			);
+			name = ModelControllers;
 			sourceTree = "<group>";
 		};
 		D27A09E2DC0ACB93178F2DF2 /* Frameworks */ = {
@@ -536,7 +544,7 @@
 				CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */,
 				CF4FB24E1FCFBF4400CC885E /* Photo+CoreDataProperties.swift in Sources */,
 				CF4FB24C1FCFBF4400CC885E /* Plant+CoreDataProperties.swift in Sources */,
-				CF4FB2401FCFB43B00CC885E /* CoreDataStack.swift in Sources */,
+				CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */,
 				CF4FB2491FCFBF4400CC885E /* User+CoreDataClass.swift in Sources */,
 				CF97BEE21FCDEA7300E9931C /* TableViewController.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,

@@ -1,15 +1,14 @@
 //
-//  CoreDataStack.swift
+//  PhotoStore.swift
 //  Map_Geofencing
 //
-//  Created by Yeontae Kim on 11/29/17.
+//  Created by Yeontae Kim on 12/5/17.
 //  Copyright © 2017 YTK. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
-class CoreDataStack {
+class PhotoStore {
     
     private let modelName: String
     
@@ -41,4 +40,5 @@ class CoreDataStack {
             print("Unresolved error \(error), \(error.userInfo)")
         }
     }
+    
 }

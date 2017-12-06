@@ -13,7 +13,7 @@ class TableViewController: UIViewController {
 
     // MARK: - Properties
     fileprivate let plantCellIdentifier = "plantCell"
-    var coreDataStack: CoreDataStack!
+    var photoStore: PhotoStore!
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
@@ -21,7 +21,7 @@ class TableViewController: UIViewController {
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: self.coreDataStack.managedContext,
+            managedObjectContext: self.photoStore.managedContext,
             sectionNameKeyPath: nil,
             cacheName: "SFBG")
         

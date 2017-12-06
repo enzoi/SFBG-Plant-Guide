@@ -13,7 +13,7 @@ class FavoriteViewController: UIViewController {
 
     // MARK: - Properties
     fileprivate let plantCellIdentifier = "favoriteCell"
-    var coreDataStack: CoreDataStack!
+    var photoStore: PhotoStore!
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
@@ -21,7 +21,7 @@ class FavoriteViewController: UIViewController {
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: self.coreDataStack.managedContext,
+            managedObjectContext: self.photoStore.managedContext,
             sectionNameKeyPath: nil,
             cacheName: "SFBG")
         
@@ -130,7 +130,7 @@ extension FavoriteViewController {
         }
         
         let plant = fetchedResultsController.object(at: indexPath)
-        print(plant)
+        print("configure plant cell: ", plant)
         
         cell.scientificName.text = plant.scientificName
         cell.commonName.text = plant.commonName
