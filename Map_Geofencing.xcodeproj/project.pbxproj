@@ -92,6 +92,7 @@
 		CF97BEE71FCDF75B00E9931C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
+		CFD3C24E1FD7BCF00084637B /* SFBG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 2.xcdatamodel"; sourceTree = "<group>"; };
 		F4729FEB26920090F10DFB1A /* Pods-Map_GeofencingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingUITests/Pods-Map_GeofencingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -870,9 +871,10 @@
 		CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				CFD3C24E1FD7BCF00084637B /* SFBG 2.xcdatamodel */,
 				CF4FB2391FCE545E00CC885E /* SFBG.xcdatamodel */,
 			);
-			currentVersion = CF4FB2391FCE545E00CC885E /* SFBG.xcdatamodel */;
+			currentVersion = CFD3C24E1FD7BCF00084637B /* SFBG 2.xcdatamodel */;
 			path = SFBG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

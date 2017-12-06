@@ -1,6 +1,6 @@
 { "plants": [
              {
-             "id": "a2f213g2s3lfg",
+             "uid": "a2f213g2s3lfg",
              "scientificName": "Aesculus Californica",
              "commonName": [ "California Buckeye" ],
              "other_names": [""],
@@ -45,7 +45,7 @@
              "soilPH_max": 10.0,
              "uses": "",
              "description": "",
-             "user": { "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com", "favorites": [] },
+             "user": { "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com" },
              "photos": [
                         {
                         "id": "alasdfdfkjaf",
@@ -60,7 +60,7 @@
                         ]
              },
              {
-             "id": "a2f213g2s3adf",
+             "uid": "a2f213g2s3adf",
              "scientificName": "Leptospermum Scoparium",
              "commonName": [ "Manuka Myrtle", "New Zealand teatree" ],
              "other_names": [""],
@@ -103,7 +103,7 @@
              "soilPH_max": 10.0,
              "uses": "",
              "description": "",
-             "user": { "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com", "favorites": [] },
+             "user": { "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com" },
              "photos": [
                         {
                         "description" : "shape",

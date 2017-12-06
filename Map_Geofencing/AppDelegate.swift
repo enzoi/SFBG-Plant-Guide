@@ -78,6 +78,7 @@ extension AppDelegate {
                 let photos = jsonDictionary["photos"] as! [[String:Any]]
 
                 let plant = Plant(context: self.photoStore.managedContext)
+
                 plant.scientificName = scientificName
                 plant.commonName = commonNames[0]
                 // plant.plantType = plantType
