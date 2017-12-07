@@ -17,7 +17,7 @@ class FavoriteViewController: UIViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        // fetchRequest.predicate = NSPredicate(format: "%K == %@", "user.email", "email@gmail.com")
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", "users.email", "email@gmail.com")
         fetchRequest.sortDescriptors = []
         
         let fetchedResultsController = NSFetchedResultsController(
