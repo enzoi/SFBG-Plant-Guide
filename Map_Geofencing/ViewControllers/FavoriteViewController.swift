@@ -17,13 +17,14 @@ class FavoriteViewController: UIViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+        // fetchRequest.predicate = NSPredicate(format: "%K == %@", "user.email", "email@gmail.com")
         fetchRequest.sortDescriptors = []
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: self.photoStore.managedContext,
             sectionNameKeyPath: nil,
-            cacheName: "SFBG")
+            cacheName: nil)
         
         fetchedResultsController.delegate = self
         
@@ -44,7 +45,8 @@ class FavoriteViewController: UIViewController {
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
         }
-        
+     
+        print("fetched result: ", fetchedResultsController.fetchedObjects!)
     }
 }
 
@@ -130,7 +132,7 @@ extension FavoriteViewController {
         }
         
         let plant = fetchedResultsController.object(at: indexPath)
-        print("configure plant cell: ", plant)
+        print("plant: ", plant)
         
         cell.scientificName.text = plant.scientificName
         cell.commonName.text = plant.commonName

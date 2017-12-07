@@ -24,7 +24,7 @@ extension Plant {
     @NSManaged public var scientificName: String?
     @NSManaged public var thumbnailPhoto: NSData?
     @NSManaged public var photo: NSSet?
-    @NSManaged public var user: User?
+    @NSManaged public var users: User?
 
 }
 
