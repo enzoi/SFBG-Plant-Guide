@@ -17,7 +17,10 @@ class TableViewController: UIViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        fetchRequest.sortDescriptors = []
+        
+        let scientificNameSort = NSSortDescriptor(
+            key: #keyPath(Plant.scientificName), ascending: true)
+        fetchRequest.sortDescriptors = [scientificNameSort]
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
