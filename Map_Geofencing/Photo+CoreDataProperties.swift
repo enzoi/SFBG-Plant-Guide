@@ -2,7 +2,7 @@
 //  Photo+CoreDataProperties.swift
 //  
 //
-//  Created by Yeontae Kim on 11/29/17.
+//  Created by Yeontae Kim on 12/6/17.
 //
 //
 
@@ -16,9 +16,9 @@ extension Photo {
         return NSFetchRequest<Photo>(entityName: "Photo")
     }
 
-    @NSManaged public var remoteURL: NSObject?
     @NSManaged public var imageData: NSData?
     @NSManaged public var photoID: String?
+    @NSManaged public var remoteURL: NSObject?
     @NSManaged public var plant: Plant?
 
 }

@@ -45,7 +45,7 @@
              "soilPH_max": 10.0,
              "uses": "",
              "description": "",
-             "user": { "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com" },
+             "users": [{ "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com" }],
              "photos": [
                         {
                         "id": "alasdfdfkjaf",
@@ -103,7 +103,7 @@
              "soilPH_max": 10.0,
              "uses": "",
              "description": "",
-             "user": { "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com" },
+             "users": [{ "uid": "a123d45f8s3fd2s3f", "email": "email@gmail.com" }],
              "photos": [
                         {
                         "description" : "shape",

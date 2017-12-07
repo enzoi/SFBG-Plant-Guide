@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  
 //
-//  Created by Yeontae Kim on 11/29/17.
+//  Created by Yeontae Kim on 12/6/17.
 //
 //
 
@@ -16,27 +16,26 @@ extension User {
         return NSFetchRequest<User>(entityName: "User")
     }
 
-    @NSManaged public var uid: String?
     @NSManaged public var email: String?
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
-    @NSManaged public var plant: NSSet?
+    @NSManaged public var favoritePlants: NSSet?
 
 }
 
-// MARK: Generated accessors for plant
+// MARK: Generated accessors for favoritePlants
 extension User {
 
-    @objc(addPlantObject:)
-    @NSManaged public func addToPlant(_ value: Plant)
+    @objc(addFavoritePlantsObject:)
+    @NSManaged public func addToFavoritePlants(_ value: Plant)
 
-    @objc(removePlantObject:)
-    @NSManaged public func removeFromPlant(_ value: Plant)
+    @objc(removeFavoritePlantsObject:)
+    @NSManaged public func removeFromFavoritePlants(_ value: Plant)
 
-    @objc(addPlant:)
-    @NSManaged public func addToPlant(_ values: NSSet)
+    @objc(addFavoritePlants:)
+    @NSManaged public func addToFavoritePlants(_ values: NSSet)
 
-    @objc(removePlant:)
-    @NSManaged public func removeFromPlant(_ values: NSSet)
+    @objc(removeFavoritePlants:)
+    @NSManaged public func removeFromFavoritePlants(_ values: NSSet)
 
 }

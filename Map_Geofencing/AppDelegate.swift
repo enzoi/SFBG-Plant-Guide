@@ -68,32 +68,33 @@ extension AppDelegate {
             for jsonDictionary in jsonArray["plants"] as! [[String: AnyObject]] {
                 let scientificName = jsonDictionary["scientificName"] as! String
                 let commonNames = jsonDictionary["commonName"] as! [String]
-                let plantTypes = jsonDictionary["commonName"] as! [String]
-                let plantType = plantTypes[0]
                 let location = jsonDictionary["location"] as! [String:AnyObject]
                 let coordinate = location["coordinate"] as! [String:AnyObject]
                 let latitude = coordinate["latitude"] as! Double
                 let longitude = coordinate["longitude"] as! Double
-                // let sunExposure = jsonDictionary["sunExposure"] as! [[String:Any]]
                 let photos = jsonDictionary["photos"] as! [[String:Any]]
 
                 let plant = Plant(context: self.photoStore.managedContext)
 
                 plant.scientificName = scientificName
                 plant.commonName = commonNames[0]
-                // plant.plantType = plantType
-                // plant.plantSize = plantSize
-                // plant.droughtTolerant = droughtTolerant
-                // plant.waterNeeds = waterNeeds
                 plant.latitude = latitude
                 plant.longitude = longitude
-                // plant.sunExposure = sunExposure
 
-                for photo in photos {
+                let users = jsonDictionary["users"] as! [[String:Any]]
+                
+                for user in users {
+                    let _user = User(context: self.photoStore.managedContext)
+                    _user.email = user["email"] as! String
+                    _user.addToFavoritePlants(plant)
+                }
+                
+                for _ in photos {
                     let image = Photo(context: self.photoStore.managedContext)
                     plant.addToPhoto(image)
                 }
                 print("plant: ", plant)
+                
 
             }
 

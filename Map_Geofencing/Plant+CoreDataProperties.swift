@@ -2,7 +2,7 @@
 //  Plant+CoreDataProperties.swift
 //  
 //
-//  Created by Yeontae Kim on 11/29/17.
+//  Created by Yeontae Kim on 12/6/17.
 //
 //
 
@@ -16,15 +16,15 @@ extension Plant {
         return NSFetchRequest<Plant>(entityName: "Plant")
     }
 
-    @NSManaged public var scientificName: String?
     @NSManaged public var commonName: String?
-    @NSManaged public var thumbnailPhoto: NSData?
+    @NSManaged public var distance: Double
+    @NSManaged public var isFavoriate: Bool
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
-    @NSManaged public var isFavoriate: Bool
-    @NSManaged public var distance: Double
-    @NSManaged public var user: User?
+    @NSManaged public var scientificName: String?
+    @NSManaged public var thumbnailPhoto: NSData?
     @NSManaged public var photo: NSSet?
+    @NSManaged public var user: User?
 
 }
 
