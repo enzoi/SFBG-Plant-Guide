@@ -15,6 +15,8 @@ protocol ToggleFavoriteDelegate: class { // Define Protocol
 class TableViewCell: UITableViewCell {
 
     weak var delegate: ToggleFavoriteDelegate?
+    let starButton = UIButton(type: .system)
+    var isFavorite: Bool = false
     
     @IBOutlet weak var plantImageView: UIImageView!
     @IBOutlet weak var scientificName: UILabel!
@@ -24,10 +26,9 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        let starButton = UIButton(type: .system)
-        starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
+        setUpToggleFavorite()
+        
         starButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        starButton.tintColor = .red
         starButton.addTarget(self, action: #selector(handleMarkAsFavorite), for: .touchUpInside)
         self.accessoryView = starButton
     }
@@ -40,7 +41,20 @@ class TableViewCell: UITableViewCell {
     
     @objc private func handleMarkAsFavorite() {
         print("favorite button pressed")
+        setUpToggleFavorite()
         delegate?.toggleFavorite(cell: self)
+        
+    }
+    
+    // TODO: toggle buton image when clicked
+    func setUpToggleFavorite() {
+        if isFavorite {
+            starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
+            isFavorite = false
+        } else {
+            starButton.setImage(#imageLiteral(resourceName: "icons8-star-filled-40"), for: .normal)
+            isFavorite = true
+        }
     }
 
 }

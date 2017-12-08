@@ -171,6 +171,8 @@ extension TableViewController: ToggleFavoriteDelegate {
 
         let indexPathTapped = tableView.indexPath(for: cell)
         
+        // TODO: add current user to the plant
+
     }
     
 }
