@@ -150,7 +150,6 @@ extension TableViewController {
                         cell.plantImageView.image = image
                         cell.scientificName.text = plant.scientificName
                         cell.commonName.text = plant.commonName
-                        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                     }
                     
                 } else {
@@ -159,7 +158,17 @@ extension TableViewController {
             })
         }
         
+        let starButton = UIButton(type: .system)
+        starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
+        starButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        starButton.tintColor = .red
+        starButton.addTarget(self, action: #selector(handleMarkAsFavorite), for: .touchUpInside)
+        cell.accessoryView = starButton
 
+    }
+    
+    @objc private func handleMarkAsFavorite() {
+        print("favorite button pressed")
     }
 }
 
