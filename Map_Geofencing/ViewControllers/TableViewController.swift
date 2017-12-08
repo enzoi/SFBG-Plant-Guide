@@ -70,6 +70,7 @@ extension TableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell", for: indexPath) as! TableViewCell
+ 
         configure(cell: cell, for: indexPath)
         
         return cell
@@ -133,10 +134,32 @@ extension TableViewController {
         
         let plant = fetchedResultsController.object(at: indexPath)
         
-        cell.scientificName.text = plant.scientificName
-        cell.commonName.text = plant.commonName
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        // Getting photos from plant
+        let photos = Array(plant.photo!) as! [Photo]
+        print("photos: ", photos)
         
+        if let photo = photos.first {
+            
+            print("photo: ", photo)
+            
+            photoStore.fetchImage(for: photo, completion: { (result) -> Void in
+                
+                if case let .success(image) = result {
+                    
+                    DispatchQueue.main.async {
+                        cell.plantImageView.image = image
+                        cell.scientificName.text = plant.scientificName
+                        cell.commonName.text = plant.commonName
+                        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                    }
+                    
+                } else {
+                    print("something wrong")
+                }
+            })
+        }
+        
+
     }
 }
 

@@ -3,7 +3,7 @@
     <entity name="Photo" representedClassName="Photo" syncable="YES">
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="photoID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="remoteURL" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="remoteURL" optional="YES" attributeType="Transformable" customClassName="NSURL" syncable="YES"/>
         <relationship name="plant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plant" inverseName="photo" inverseEntity="Plant" syncable="YES"/>
     </entity>
     <entity name="Plant" representedClassName="Plant" syncable="YES">

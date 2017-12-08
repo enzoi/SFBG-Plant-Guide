@@ -89,12 +89,13 @@ extension AppDelegate {
                     _user.addToFavoritePlants(plant)
                 }
                 
-                for _ in photos {
+                for photo in photos {
                     let image = Photo(context: self.photoStore.managedContext)
+                    image.remoteURL = NSURL(string: photo["remoteURL"] as! String)
+                    image.photoID = UUID().uuidString // Add unique photoID
                     plant.addToPhoto(image)
                 }
                 print("plant: ", plant)
-                
 
             }
 

@@ -50,12 +50,12 @@
                         {
                         "id": "alasdfdfkjaf",
                         "description" : "flower",
-                        "remoteURL" : "https://en.wikipedia.org/wiki/Aesculus_californica#/media/File:Californicaspike.JPG/"
+                        "remoteURL" : "https://selectree.calpoly.edu/images/0100/32/original/aesculus-californica-tree-flowering.jpg"
                         },
                         {
                         "id": "aldf123gfg",
                         "desciption" : "seed",
-                        "remoteURL" : "https://en.wikipedia.org/wiki/Aesculus_californica#/media/File:Aesculus_californica-29.jpg"
+                        "remoteURL" : "https://selectree.calpoly.edu/images/0100/32/original/aesculus-californica-flowers.jpg"
                         }
                         ]
              },
@@ -107,7 +107,7 @@
              "photos": [
                         {
                         "description" : "shape",
-                        "remoteURL" : "https://en.wikipedia.org/wiki/Leptospermum_scoparium#/media/File:Manukaflowers.jpg"
+                        "remoteURL" : "https://selectree.calpoly.edu/images/1400/96/original/leptospermum-scoparium-flowers-2.jpg"
                         }
                         ]
              }
