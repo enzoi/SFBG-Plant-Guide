@@ -15,6 +15,7 @@ class TableViewController: UIViewController {
     fileprivate let plantCellIdentifier = "plantCell"
     var photoStore: PhotoStore!
     
+    
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         
@@ -38,7 +39,7 @@ class TableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         
@@ -132,6 +133,8 @@ extension TableViewController {
             return
         }
         
+        cell.delegate = self
+        
         let plant = fetchedResultsController.object(at: indexPath)
         
         // Getting photos from plant
@@ -157,18 +160,18 @@ extension TableViewController {
                 }
             })
         }
-        
-        let starButton = UIButton(type: .system)
-        starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
-        starButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        starButton.tintColor = .red
-        starButton.addTarget(self, action: #selector(handleMarkAsFavorite), for: .touchUpInside)
-        cell.accessoryView = starButton
 
     }
+
+}
+
+extension TableViewController: ToggleFavoriteDelegate {
     
-    @objc private func handleMarkAsFavorite() {
-        print("favorite button pressed")
+    func toggleFavorite(cell: UITableViewCell) {
+
+        let indexPathTapped = tableView.indexPath(for: cell)
+        
     }
+    
 }
 
