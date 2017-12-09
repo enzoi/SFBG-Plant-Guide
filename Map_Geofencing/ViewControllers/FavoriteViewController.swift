@@ -48,6 +48,29 @@ class FavoriteViewController: UIViewController {
      
         print("fetched result: ", fetchedResultsController.fetchedObjects!)
     }
+    
+    // Prepare for segue to detail view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let cell = sender as? FavoriteTableViewCell,
+            let selectedIndexPath = tableView.indexPath(for: cell) {
+            
+            let detailVC = segue.destination as! DetailViewController
+            let plant = fetchedResultsController.object(at: selectedIndexPath)
+            detailVC.plant = plant
+        }
+        
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension FavoriteViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showDetailView", sender: indexPath)
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
