@@ -65,8 +65,6 @@ class PhotoStore {
                 }
         }
         
-        print("UIImage: ", image)
-        
         return .success(image)
     }
     
@@ -84,6 +82,9 @@ class PhotoStore {
         
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
+            
+            photo.imageData = data as! NSData
+            self.saveContext()
             
             let result = self.processImageRequest(data: data, error: error)
             

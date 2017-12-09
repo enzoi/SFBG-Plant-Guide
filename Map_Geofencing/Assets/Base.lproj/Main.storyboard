@@ -274,13 +274,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="tcq-5v-ik1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tcq-5v-ik1">
                                 <rect key="frame" x="0.0" y="60" width="375" height="288"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="288" id="xEE-zb-qk6"/>
+                                </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K5o-ZM-GLa">
-                                <rect key="frame" x="0.0" y="356" width="375" height="844"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K5o-ZM-GLa">
+                                <rect key="frame" x="0.0" y="348" width="375" height="852"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="HgW-AK-0if">
@@ -594,6 +595,18 @@
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="K5o-ZM-GLa" secondAttribute="trailing" id="Cd1-gE-nqX"/>
+                            <constraint firstItem="K5o-ZM-GLa" firstAttribute="top" secondItem="tcq-5v-ik1" secondAttribute="bottom" id="IWw-ox-x1k"/>
+                            <constraint firstItem="K5o-ZM-GLa" firstAttribute="leading" secondItem="BnV-ky-Zkw" secondAttribute="leading" id="Pvb-hW-dg4"/>
+                            <constraint firstAttribute="trailing" secondItem="tcq-5v-ik1" secondAttribute="trailing" id="QfB-8H-K9P"/>
+                            <constraint firstItem="K5o-ZM-GLa" firstAttribute="leading" secondItem="BnV-ky-Zkw" secondAttribute="leading" id="Z5q-Y3-klF"/>
+                            <constraint firstItem="tcq-5v-ik1" firstAttribute="leading" secondItem="BnV-ky-Zkw" secondAttribute="leading" id="iO3-Ul-XjI"/>
+                            <constraint firstAttribute="trailing" secondItem="K5o-ZM-GLa" secondAttribute="trailing" id="lNV-QL-04K"/>
+                            <constraint firstItem="WfU-3U-815" firstAttribute="top" secondItem="K5o-ZM-GLa" secondAttribute="bottom" id="m5B-jC-pMJ"/>
+                            <constraint firstAttribute="trailing" secondItem="tcq-5v-ik1" secondAttribute="trailing" id="nIl-MR-oqG"/>
+                            <constraint firstItem="tcq-5v-ik1" firstAttribute="top" secondItem="BnV-ky-Zkw" secondAttribute="top" constant="60" id="zqI-La-WN5"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1200"/>
@@ -611,7 +624,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jxh-Uh-k3H" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="989-SV-7tx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="989-SV-7tx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -629,7 +642,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dzU-va-zGz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5sy-73-Jlw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5sy-73-Jlw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -647,7 +660,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOc-dS-XLp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qzu-xc-gz9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qzu-xc-gz9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -665,7 +678,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FKl-ol-mSI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jjb-JJ-Ff0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jjb-JJ-Ff0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

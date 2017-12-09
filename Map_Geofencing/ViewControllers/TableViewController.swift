@@ -50,6 +50,20 @@ class TableViewController: UIViewController {
         }
         
     }
+    
+    // Prepare for segue to detail view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let cell = sender as? TableViewCell,
+           let selectedIndexPath = tableView.indexPath(for: cell) {
+            
+            let detailVC = segue.destination as! DetailViewController
+            let plant = fetchedResultsController.object(at: selectedIndexPath)
+            detailVC.plant = plant
+        }
+
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -83,8 +97,15 @@ extension TableViewController: UITableViewDataSource {
     }
 }
 
+extension TableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showDetailView", sender: indexPath)
+    }
+}
+
 
 // MARK: - NSFetchedResultsControllerDelegate
+
 extension TableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -169,10 +190,12 @@ extension TableViewController: ToggleFavoriteDelegate {
     
     func toggleFavorite(cell: UITableViewCell) {
 
-        let indexPathTapped = tableView.indexPath(for: cell)
-        
+        if let indexPathTapped = tableView.indexPath(for: cell) {
+            print(fetchedResultsController.object(at: indexPathTapped))
         // TODO: add current user to the plant
-
+            
+            
+        }
     }
     
 }
