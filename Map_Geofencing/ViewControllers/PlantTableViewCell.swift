@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  PlantTableViewCell.swift
 //  Map_Geofencing
 //
 //  Created by Yeontae Kim on 11/28/17.
@@ -12,7 +12,7 @@ protocol ToggleFavoriteDelegate: class { // Define Protocol
     func toggleFavorite(cell: UITableViewCell)
 }
 
-class TableViewCell: UITableViewCell {
+class PlantTableViewCell: UITableViewCell {
 
     weak var delegate: ToggleFavoriteDelegate?
     let starButton = UIButton(type: .system)

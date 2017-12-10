@@ -22,8 +22,8 @@
 		CF76A1811FA9216000893C65 /* Map_GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */; };
 		CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */; };
 		CF97BEDE1FCDD67500E9931C /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEDD1FCDD67500E9931C /* style.json */; };
-		CF97BEE21FCDEA7300E9931C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE11FCDEA7300E9931C /* TableViewController.swift */; };
-		CF97BEE41FCDEEA000E9931C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */; };
+		CF97BEE21FCDEA7300E9931C /* PlantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */; };
+		CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */; };
 		CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEE71FCDF75B00E9931C /* Assets.xcassets */; };
 		CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */; };
 		CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */; };
@@ -67,7 +67,7 @@
 		CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CF4FB2411FCFB48D00CC885E /* seed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed.json; sourceTree = "<group>"; };
 		CF4FB24F1FD1215D00CC885E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTableViewCell.swift; path = ViewControllers/FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF76A1651FA9216000893C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 		CF76A1821FA9216000893C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CF97BEDD1FCDD67500E9931C /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = style.json; path = ../style.json; sourceTree = "<group>"; };
-		CF97BEE11FCDEA7300E9931C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantTableViewController.swift; sourceTree = "<group>"; };
+		CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantTableViewCell.swift; path = ViewControllers/PlantTableViewCell.swift; sourceTree = "<group>"; };
 		CF97BEE71FCDF75B00E9931C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
@@ -180,9 +180,11 @@
 			children = (
 				CF76A1601FA9216000893C65 /* AppDelegate.swift */,
 				CF4FB2411FCFB48D00CC885E /* seed.json */,
+				CFD3C26B1FDD09F90084637B /* Table View Cells */,
 				CF76A18F1FA92B4400893C65 /* ViewControllers */,
 				CFD3C24B1FD7BAA80084637B /* ModelControllers */,
 				CF4FB2351FCE3E9600CC885E /* Model */,
+				CFD3C26E1FDD0B120084637B /* Storyboards */,
 				CF76A1901FA92B6300893C65 /* Assets */,
 				CF76A18E1FA92B3A00893C65 /* Supporting Files */,
 			);
@@ -220,11 +222,9 @@
 			isa = PBXGroup;
 			children = (
 				CF4FB24F1FD1215D00CC885E /* MapViewController.swift */,
-				CF97BEE11FCDEA7300E9931C /* TableViewController.swift */,
-				CF97BEE31FCDEEA000E9931C /* TableViewCell.swift */,
+				CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */,
 				CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */,
 				CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */,
-				CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */,
 				CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
@@ -234,8 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */,
-				CF76A1641FA9216000893C65 /* Main.storyboard */,
-				CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */,
 				CF97BEE71FCDF75B00E9931C /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -247,6 +245,40 @@
 				CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */,
 			);
 			name = ModelControllers;
+			sourceTree = "<group>";
+		};
+		CFD3C26A1FDD09A90084637B /* Favorite Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */,
+			);
+			name = "Favorite Table View Cells";
+			sourceTree = "<group>";
+		};
+		CFD3C26B1FDD09F90084637B /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */,
+				CFD3C26A1FDD09A90084637B /* Favorite Table View Cells */,
+				CFD3C26C1FDD0A320084637B /* Profile Table View Cells */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		CFD3C26C1FDD0A320084637B /* Profile Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Profile Table View Cells";
+			sourceTree = "<group>";
+		};
+		CFD3C26E1FDD0B120084637B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CF76A1641FA9216000893C65 /* Main.storyboard */,
+				CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		D27A09E2DC0ACB93178F2DF2 /* Frameworks */ = {
@@ -543,12 +575,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF97BEE41FCDEEA000E9931C /* TableViewCell.swift in Sources */,
+				CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */,
 				CFD3C2641FD909770084637B /* Photo+CoreDataClass.swift in Sources */,
 				CFD3C2691FD909770084637B /* User+CoreDataProperties.swift in Sources */,
 				CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */,
 				CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */,
-				CF97BEE21FCDEA7300E9931C /* TableViewController.swift in Sources */,
+				CF97BEE21FCDEA7300E9931C /* PlantTableViewController.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,
 				CFD3C2651FD909770084637B /* Photo+CoreDataProperties.swift in Sources */,
 				CF4FB2541FD2816B00CC885E /* FavoriteTableViewCell.swift in Sources */,
@@ -600,6 +632,7 @@
 				CF76A1651FA9216000893C65 /* Base */,
 			);
 			name = Main.storyboard;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */ = {
@@ -608,6 +641,7 @@
 				CF76A16A1FA9216000893C65 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

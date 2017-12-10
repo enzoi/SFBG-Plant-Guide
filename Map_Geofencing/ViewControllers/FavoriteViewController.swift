@@ -119,7 +119,7 @@ extension FavoriteViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
         case .update:
-            let cell = tableView.cellForRow(at: indexPath!) as! TableViewCell
+            let cell = tableView.cellForRow(at: indexPath!) as! PlantTableViewCell
             configure(cell: cell, for: indexPath!)
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .automatic)

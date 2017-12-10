@@ -1,5 +1,5 @@
 //
-//  TableViewController.swift
+//  PlantTableViewController.swift
 //  Map_Geofencing
 //
 //  Created by Yeontae Kim on 11/28/17.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TableViewController: UIViewController {
+class PlantTableViewController: UIViewController {
 
     // MARK: - Properties
     fileprivate let plantCellIdentifier = "plantCell"
@@ -68,7 +68,7 @@ class TableViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 
-extension TableViewController: UITableViewDataSource {
+extension PlantTableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let sections = fetchedResultsController.sections else {
             return 0
@@ -97,7 +97,7 @@ extension TableViewController: UITableViewDataSource {
     }
 }
 
-extension TableViewController: UITableViewDelegate {
+extension PlantTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showDetailView", sender: indexPath)
     }
@@ -106,7 +106,7 @@ extension TableViewController: UITableViewDelegate {
 
 // MARK: - NSFetchedResultsControllerDelegate
 
-extension TableViewController: NSFetchedResultsControllerDelegate {
+extension PlantTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
@@ -186,7 +186,7 @@ extension TableViewController {
 
 }
 
-extension TableViewController: ToggleFavoriteDelegate {
+extension PlantTableViewController: ToggleFavoriteDelegate {
     
     func toggleFavorite(cell: UITableViewCell) {
 
