@@ -10,22 +10,24 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var plantImageView: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView?
     
     var plant: Plant!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let viewModel = PlantViewModel(plant: plant)
+        
+        tableView?.dataSource = viewModel
   
-        // Get plant data from TableViewController
-        // Populate table view with the data
-        let photos = Array(plant.photo!) as! [Photo]
-        if let imageData = photos[0].imageData {
-            self.plantImageView.image = UIImage(data: imageData as Data)
-        }
+        tableView?.estimatedRowHeight = 100
+        tableView?.rowHeight = UITableViewAutomaticDimension
+        
+        tableView?.register(PlantPhotosTableViewCell.nib, forCellReuseIdentifier: PlantPhotosTableViewCell.identifier)
+        tableView?.register(PlantNameTableViewCell.nib, forCellReuseIdentifier: PlantNameTableViewCell.identifier)
+        tableView?.register(PlantPropertiesTableViewCell.nib, forCellReuseIdentifier: PlantPropertiesTableViewCell.identifier)
+
     }
-
-
 
 }

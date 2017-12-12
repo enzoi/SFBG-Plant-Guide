@@ -27,7 +27,7 @@ class PlantTableViewController: UIViewController {
             fetchRequest: fetchRequest,
             managedObjectContext: self.photoStore.managedContext,
             sectionNameKeyPath: nil,
-            cacheName: "SFBG")
+            cacheName: nil)
         
         fetchedResultsController.delegate = self
         
@@ -54,7 +54,7 @@ class PlantTableViewController: UIViewController {
     // Prepare for segue to detail view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let cell = sender as? TableViewCell,
+        if let cell = sender as? PlantTableViewCell,
            let selectedIndexPath = tableView.indexPath(for: cell) {
             
             let detailVC = segue.destination as! DetailViewController
@@ -84,7 +84,7 @@ extension PlantTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell", for: indexPath) as! PlantTableViewCell
  
         configure(cell: cell, for: indexPath)
         
@@ -119,7 +119,7 @@ extension PlantTableViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
         case .update:
-            let cell = tableView.cellForRow(at: indexPath!) as! TableViewCell
+            let cell = tableView.cellForRow(at: indexPath!) as! PlantTableViewCell
             configure(cell: cell, for: indexPath!)
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
@@ -146,11 +146,11 @@ extension PlantTableViewController: NSFetchedResultsControllerDelegate {
 }
 
 // MARK: - Internal
-extension TableViewController {
+extension PlantTableViewController {
     
     func configure(cell: UITableViewCell, for indexPath: IndexPath) {
         
-        guard let cell = cell as? TableViewCell else {
+        guard let cell = cell as? PlantTableViewCell else {
             return
         }
         

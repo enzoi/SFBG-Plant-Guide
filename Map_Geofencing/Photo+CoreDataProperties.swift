@@ -2,7 +2,7 @@
 //  Photo+CoreDataProperties.swift
 //  
 //
-//  Created by Yeontae Kim on 12/6/17.
+//  Created by Yeontae Kim on 12/11/17.
 //
 //
 
@@ -18,7 +18,7 @@ extension Photo {
 
     @NSManaged public var imageData: NSData?
     @NSManaged public var photoID: String?
-    @NSManaged public var remoteURL: NSObject?
+    @NSManaged public var remoteURL: NSURL?
     @NSManaged public var plant: Plant?
 
 }

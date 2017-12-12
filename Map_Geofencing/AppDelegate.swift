@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // importJSONSeedDataIfNeeded()
         
         guard let navController = window?.rootViewController as? UINavigationController,
-            let viewController = navController.topViewController as? FavoriteViewController else {
+            let viewController = navController.topViewController as? PlantTableViewController else {
                 return true
         }
         
@@ -69,6 +69,10 @@ extension AppDelegate {
                 let scientificName = jsonDictionary["scientificName"] as! String
                 let commonNames = jsonDictionary["commonName"] as! [String]
                 let location = jsonDictionary["location"] as! [String:AnyObject]
+                let plantType = jsonDictionary["plantType"] as! String
+                let climateZones = jsonDictionary["climateZones"] as! String
+                let sunExposure = jsonDictionary["sunExposure"] as! String
+                let waterNeeds = jsonDictionary["waterNeeds"] as! String
                 let coordinate = location["coordinate"] as! [String:AnyObject]
                 let latitude = coordinate["latitude"] as! Double
                 let longitude = coordinate["longitude"] as! Double
@@ -80,6 +84,10 @@ extension AppDelegate {
                 plant.commonName = commonNames[0]
                 plant.latitude = latitude
                 plant.longitude = longitude
+                plant.plantType = plantType
+                plant.climateZones = climateZones
+                plant.sunExposure = sunExposure
+                plant.waterNeeds = waterNeeds
 
                 let users = jsonDictionary["users"] as! [[String:Any]]
                 
