@@ -18,8 +18,6 @@ class PlantNameTableViewCell: UITableViewCell {
             guard let item = item else {
                 return
             }
-            
-            print(item.scientificName, item.commonName)
             scientificNameLabel?.text = item.scientificName
             commonNameLabel?.text = item.commonName
         }

@@ -31,6 +31,10 @@ class PlantPhotosTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        plantImageView?.clipsToBounds = true
+        plantImageView?.contentMode = .scaleAspectFit
+        plantImageView?.backgroundColor = UIColor.lightGray
 
     }
 

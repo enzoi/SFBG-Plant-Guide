@@ -39,7 +39,7 @@
                 <outlet property="pageControl" destination="n1M-5B-nOO" id="wgL-ge-LXc"/>
                 <outlet property="plantImageView" destination="3Yp-fB-DlG" id="uc3-gL-hnn"/>
             </connections>
-            <point key="canvasLocation" x="35" y="93"/>
+            <point key="canvasLocation" x="34.5" y="93"/>
         </tableViewCell>
     </objects>
 </document>

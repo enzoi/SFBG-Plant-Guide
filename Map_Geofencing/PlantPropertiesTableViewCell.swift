@@ -20,7 +20,6 @@ class PlantPropertiesTableViewCell: UITableViewCell {
             guard let item = item else {
                 return
             }
-           
             plantTypeLabel.text = item.plantType
             climateZonesLabel.text = item.climateZones
             sunExposureLabel.text = item.sunExposure

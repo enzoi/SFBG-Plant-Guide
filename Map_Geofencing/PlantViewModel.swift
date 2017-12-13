@@ -27,10 +27,9 @@ class PlantViewModel: NSObject {
     
     var items = [PlantViewModelItem]()
     
+    var reloadSections: ((_ section: Int) -> Void)?
+    
     init(plant: Plant) {
-        super.init()
-        
-        print("plant in view model: ", plant)
         
         if let scientificName = plant.scientificName, let commonName = plant.commonName {
             let namesItem = PlantViewModelNamesItem(scientificName: scientificName, commonName: commonName)
@@ -54,10 +53,6 @@ class PlantViewModel: NSObject {
             }
         }
         
-        for item in items {
-           print("item: ", item)
-        }
-        
     }
 }
 
@@ -67,15 +62,21 @@ extension PlantViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let item = self.items[section]
-        if item.isCollapsible && item.isCollapsed {
-            return 0
+        let item = items[section]
+        guard item.isCollapsible else {
+            return item.rowCount
         }
-        return item.rowCount
+        
+        if item.isCollapsed {
+            return 0
+        } else {
+            return item.rowCount
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.section]
+        
         switch item.type {
         case .photos:
             if let item = item as? PlantViewModelPhotosItem, let cell = tableView.dequeueReusableCell(withIdentifier: PlantPhotosTableViewCell.identifier, for: indexPath) as? PlantPhotosTableViewCell {
@@ -88,13 +89,13 @@ extension PlantViewModel: UITableViewDataSource {
             }
         case .names:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PlantNameTableViewCell.identifier, for: indexPath) as? PlantNameTableViewCell {
-                cell.item = item as! PlantViewModelNamesItem
+                cell.item = item as? PlantViewModelNamesItem
 
                 return cell
             }
         case .properties:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PlantPropertiesTableViewCell.identifier, for: indexPath) as? PlantPropertiesTableViewCell {
-                cell.item = item as! PlantViewModelPropertiesItem
+                cell.item = item as? PlantViewModelPropertiesItem
 
                 return cell
             }
@@ -102,23 +103,46 @@ extension PlantViewModel: UITableViewDataSource {
         return UITableViewCell()
     }
     
+}
+
+extension PlantViewModel: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.identifier) as? HeaderView {
-            headerView.item = self.items[section]
+            let item = items[section]
+            
+            headerView.item = item
             headerView.section = section
-            headerView.delegate = self as! HeaderViewDelegate // don't forget this line!!!
+            headerView.delegate = self
             return headerView
         }
         return UIView()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("cell tapped")
+    }
 }
 
- extension PlantViewModel: UITableViewDelegate {
- 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("click cell")
-    }
 
+extension PlantViewModel: HeaderViewDelegate {
+    
+    func toggleSection(header: HeaderView, section: Int) {
+        var item = items[section]
+        if item.isCollapsible {
+            
+            // Toggle collapse
+            let collapsed = !item.isCollapsed
+            item.isCollapsed = collapsed
+            header.setCollapsed(collapsed: collapsed)
+            
+            // Adjust the number of the rows inside the section
+            
+            DispatchQueue.main.async {
+                self.reloadSections?(section)
+            }
+        }
+    }
 }
 
 
@@ -132,6 +156,7 @@ extension PlantViewModelItem {
     }
 }
 
+
 // MARK: Plant View Model Items
 
 class PlantViewModelPhotosItem: PlantViewModelItem {
@@ -140,7 +165,7 @@ class PlantViewModelPhotosItem: PlantViewModelItem {
     }
     
     var sectionTitle: String {
-        return "Photos"
+        return "Plant Images"
     }
     
     var rowCount: Int {

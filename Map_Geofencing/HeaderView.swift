@@ -1,9 +1,9 @@
 //
 //  HeaderView.swift
-//  Map_Geofencing
+//  
 //
-//  Created by Yeontae Kim on 12/10/17.
-//  Copyright © 2017 YTK. All rights reserved.
+//  Created by Yeontae Kim on 12/12/17.
+//
 //
 
 import UIKit
@@ -14,34 +14,38 @@ protocol HeaderViewDelegate: class {
 
 class HeaderView: UITableViewHeaderFooterView {
     
+    var item: PlantViewModelItem? {
+        didSet {
+            guard let item = item else {
+                return
+            }
+            
+            titleLabel?.text = item.sectionTitle
+            setCollapsed(collapsed: item.isCollapsed)
+        }
+    }
+    
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var arrowLabel: UILabel?
     var section: Int = 0
     
     weak var delegate: HeaderViewDelegate?
     
+    static var nib:UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
+    
     static var identifier: String {
         return String(describing: self)
     }
     
-    var item: PlantViewModelItem? {
-        didSet {
-            guard let item = item else {
-                return
-            }
-            titleLabel?.text = item.sectionTitle
-            setCollapsed(collapsed: item.isCollapsed)
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
     }
-    @objc private func didTapHeader() {
-    }
     
-    @objc private func tapHeader(gestureRecognizer: UITapGestureRecognizer) {
+    @objc private func didTapHeader() {
         delegate?.toggleSection(header: self, section: section)
     }
     
@@ -50,13 +54,16 @@ class HeaderView: UITableViewHeaderFooterView {
     }
 }
 
+
 extension UIView {
     func rotate(_ toValue: CGFloat, duration: CFTimeInterval = 0.2) {
         let animation = CABasicAnimation(keyPath: "transform.rotation")
+        
         animation.toValue = toValue
         animation.duration = duration
         animation.isRemovedOnCompletion = false
         animation.fillMode = kCAFillModeForwards
+        
         self.layer.add(animation, forKey: nil)
     }
 }
