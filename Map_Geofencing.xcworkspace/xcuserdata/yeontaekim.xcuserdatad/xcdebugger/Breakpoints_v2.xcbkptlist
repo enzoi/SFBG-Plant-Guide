@@ -83,5 +83,114 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+            timestampString = "535072813.024112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+            timestampString = "535072158.810594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Map_Geofencing.PlantTableViewController.fetchedResultsController.getter : __ObjC.NSFetchedResultsController&lt;Map_Geofencing.Plant&gt;"
+                  moduleName = "Map_Geofencing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+                  timestampString = "535072158.844368"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Map_Geofencing.PlantTableViewController.fetchedResultsController.setter : __ObjC.NSFetchedResultsController&lt;Map_Geofencing.Plant&gt;"
+                  moduleName = "Map_Geofencing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+                  timestampString = "535072158.84867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Map_Geofencing.PlantTableViewController.(fetchedResultsController.getter : __ObjC.NSFetchedResultsController&lt;Map_Geofencing.Plant&gt;).(closure #1)"
+                  moduleName = "Map_Geofencing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+                  timestampString = "535072158.85062"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Map_Geofencing.PlantTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Map_Geofencing.PlantTableViewController"
+                  moduleName = "Map_Geofencing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+                  timestampString = "535072158.852318"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Map_Geofencing.PlantTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Map_Geofencing.PlantTableViewController&gt;"
+                  moduleName = "Map_Geofencing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+                  timestampString = "535072158.853864"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "179">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

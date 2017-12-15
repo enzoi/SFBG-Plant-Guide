@@ -12,12 +12,16 @@ import CoreData
 class PlantTableViewController: UIViewController {
 
     // MARK: - Properties
+    
+    var filteredPlants = [Plant]()
+    let searchController = UISearchController(searchResultsController: nil)
+    
     fileprivate let plantCellIdentifier = "plantCell"
     var photoStore: PhotoStore!
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        
+
         let scientificNameSort = NSSortDescriptor(
             key: #keyPath(Plant.scientificName), ascending: true)
         fetchRequest.sortDescriptors = [scientificNameSort]
@@ -33,13 +37,23 @@ class PlantTableViewController: UIViewController {
         return fetchedResultsController
     }()
 
-    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
         
-        // Do any additional setup after loading the view.
+        // Setup the Scope Bar
+        searchController.searchBar.scopeButtonTitles = ["All", "Tree", "Shrub", "Other"]
+        searchController.searchBar.delegate = self
+        
         tableView.dataSource = self
         
         do {
@@ -64,6 +78,28 @@ class PlantTableViewController: UIViewController {
     }
     
 }
+
+// MARK: - UISearchResultsUpdating Delegate
+
+extension PlantTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+
+    func updateSearchResults(for searchController: UISearchController) {
+
+        let searchText = searchController.searchBar.text ?? ""
+        let predicate = NSPredicate(format: "%K CONTAINS[c] %@", argumentArray: ["scientificName", searchText])
+        fetchedResultsController.fetchRequest.predicate = predicate
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+        }
+       
+        tableView.reloadData()
+    }
+}
+
 
 // MARK: - UITableViewDataSource
 
@@ -156,6 +192,8 @@ extension PlantTableViewController {
         cell.delegate = self
         
         let plant = fetchedResultsController.object(at: indexPath)
+        
+        
         
         // Getting photos from plant
         let photos = Array(plant.photo!) as! [Photo]
