@@ -9,14 +9,14 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
+
     @IBOutlet weak var tableView: UITableView?
     
     var plant: Plant!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let viewModel = PlantViewModel(plant: plant)
         
         viewModel.reloadSections = { [weak self] (section: Int) in

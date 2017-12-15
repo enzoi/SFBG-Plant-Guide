@@ -9,7 +9,7 @@
 import UIKit
 
 class PlantPhotosTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var plantImageView: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
     
@@ -21,10 +21,10 @@ class PlantPhotosTableViewCell: UITableViewCell {
                 return
             }
             
-            print(item.photos)
-            let photos = item.photos
-                
-            
+            guard let photo = item.photos.first else { return }
+            let image = UIImage(data: photo.imageData as! Data)
+            plantImageView.image = image
+
         }
     }
     

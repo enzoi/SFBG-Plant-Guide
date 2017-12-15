@@ -15,7 +15,6 @@ class PlantTableViewController: UIViewController {
     fileprivate let plantCellIdentifier = "plantCell"
     var photoStore: PhotoStore!
     
-    
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         
@@ -160,17 +159,20 @@ extension PlantTableViewController {
         
         // Getting photos from plant
         let photos = Array(plant.photo!) as! [Photo]
-        print("photos: ", photos)
         
         if let photo = photos.first {
-            
-            print("photo: ", photo)
             
             photoStore.fetchImage(for: photo, completion: { (result) -> Void in
                 
                 if case let .success(image) = result {
                     
+                    // Save image to plant instance
+                    let data = UIImagePNGRepresentation(image) as NSData?
+                    photo.imageData = data
+                    plant.addToPhoto(photo)
+                    
                     DispatchQueue.main.async {
+                        
                         cell.plantImageView.image = image
                         cell.scientificName.text = plant.scientificName
                         cell.commonName.text = plant.commonName

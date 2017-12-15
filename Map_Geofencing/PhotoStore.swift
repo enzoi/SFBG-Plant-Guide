@@ -20,6 +20,8 @@ enum PhotoError: Error {
 
 class PhotoStore {
     
+    private let imageStore = ImageStore()
+    
     private let modelName: String
     
     init(modelName: String) {
@@ -71,7 +73,15 @@ class PhotoStore {
     // photoURL for photo instance --> download image using web service and return UIImage
     func fetchImage(for photo: Photo, completion: @escaping (ImageResult) -> Void) {
         
-        print("fetchImage called")
+        guard let photoKey = photo.photoID else {
+            preconditionFailure("Photo key does not exist.")
+        }
+        if let image = imageStore.image(forKey: photoKey) {
+            OperationQueue.main.addOperation {
+                completion(.success(image))
+            }
+            return
+        }
         
         guard let photoURL = photo.remoteURL else {
             preconditionFailure("Photo expected to have a remote URL.")
@@ -87,6 +97,10 @@ class PhotoStore {
             self.saveContext()
             
             let result = self.processImageRequest(data: data, error: error)
+            
+            if case let .success(image) = result {
+                self.imageStore.setImage(image, forKey: photoKey)
+            }
             
             OperationQueue.main.addOperation {
                 completion(result)

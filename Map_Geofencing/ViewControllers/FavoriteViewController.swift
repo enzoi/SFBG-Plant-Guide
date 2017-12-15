@@ -155,7 +155,6 @@ extension FavoriteViewController {
         }
         
         let plant = fetchedResultsController.object(at: indexPath)
-        print("plant: ", plant)
         
         cell.scientificName.text = plant.scientificName
         cell.commonName.text = plant.commonName

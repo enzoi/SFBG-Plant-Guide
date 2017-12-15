@@ -103,12 +103,10 @@ extension AppDelegate {
                     image.photoID = UUID().uuidString // Add unique photoID
                     plant.addToPhoto(image)
                 }
-                print("plant: ", plant)
 
             }
 
             photoStore.saveContext()
-            print("Imported \(jsonArray.count) plants")
 
         } catch let error as NSError {
             print("Error importing plants: \(error)")

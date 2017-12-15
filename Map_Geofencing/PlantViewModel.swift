@@ -32,7 +32,6 @@ class PlantViewModel: NSObject {
         
         if let scientificName = plant.scientificName, let commonName = plant.commonName {
             let namesItem = PlantViewModelNamesItem(scientificName: scientificName, commonName: commonName)
-            print(namesItem.commonName)
             items.append(namesItem)
         }
         
@@ -42,7 +41,6 @@ class PlantViewModel: NSObject {
             let waterNeeds = plant.waterNeeds
         {
             let propertiesItem = PlantViewModelPropertiesItem(plantType: plantType, climateZones: climateZones, sunExposure: sunExposure, waterNeeds: waterNeeds)
-            print(propertiesItem.climateZones)
             items.append(propertiesItem)
         }
         
@@ -195,9 +193,11 @@ class PlantViewModelPhotosItem: PlantViewModelItem {
     var isCollapsed = true
     
     var photos: [Photo]
+    var image: UIImage?
     
     init(photos: [Photo]) {
         self.photos = photos
+        self.image = nil
     }
 }
 

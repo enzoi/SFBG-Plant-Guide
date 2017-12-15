@@ -28,6 +28,7 @@
 		CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */; };
 		CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEE71FCDF75B00E9931C /* Assets.xcassets */; };
 		CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */; };
+		CFCDF1C21FE392B100C15C43 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF1C11FE392B100C15C43 /* ImageStore.swift */; };
 		CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */; };
 		CFD3C2711FDD0C7C0084637B /* PlantNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C26F1FDD0C7C0084637B /* PlantNameTableViewCell.swift */; };
 		CFD3C2721FDD0C7C0084637B /* PlantNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD3C2701FDD0C7C0084637B /* PlantNameTableViewCell.xib */; };
@@ -96,6 +97,7 @@
 		CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantTableViewCell.swift; path = ViewControllers/PlantTableViewCell.swift; sourceTree = "<group>"; };
 		CF97BEE71FCDF75B00E9931C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CFCDF1C11FE392B100C15C43 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		CFD3C24E1FD7BCF00084637B /* SFBG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 2.xcdatamodel"; sourceTree = "<group>"; };
 		CFD3C2501FD8C68B0084637B /* SFBG 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */,
+				CFCDF1C11FE392B100C15C43 /* ImageStore.swift */,
 			);
 			name = ModelControllers;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				CFD3C2751FDD1B970084637B /* PlantPropertiesTableViewCell.swift in Sources */,
 				CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */,
 				CF97BEE21FCDEA7300E9931C /* PlantTableViewController.swift in Sources */,
+				CFCDF1C21FE392B100C15C43 /* ImageStore.swift in Sources */,
 				CFE592A91FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift in Sources */,
 				CFE592A81FDF4C9D00F0BBE2 /* User+CoreDataClass.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,
