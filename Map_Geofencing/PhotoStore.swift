@@ -87,7 +87,6 @@ class PhotoStore {
             preconditionFailure("Photo expected to have a remote URL.")
         }
         
-        print("photoURL: ", photoURL)
         let request = URLRequest(url: photoURL as! URL)
         
         let task = session.dataTask(with: request) {

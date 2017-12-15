@@ -83,25 +83,22 @@ extension PlantViewModel: UITableViewDataSource {
         case .photos:
             if let item = item as? PlantViewModelPhotosItem, let cell = tableView.dequeueReusableCell(withIdentifier: PlantPhotosTableViewCell.identifier, for: indexPath) as? PlantPhotosTableViewCell {
                 
-                // Page control
+                // Get photo for page control later
                 let photo = item.photos[indexPath.row]
                 cell.item = item
                 
-                print("photos cell: ", cell)
                 return cell
             }
         case .names:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PlantNameTableViewCell.identifier, for: indexPath) as? PlantNameTableViewCell {
                 cell.item = item as? PlantViewModelNamesItem
 
-                print("names cell: ", cell)
                 return cell
             }
         case .properties:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PlantPropertiesTableViewCell.identifier, for: indexPath) as? PlantPropertiesTableViewCell {
                 cell.item = item as? PlantViewModelPropertiesItem
 
-                print("properties cell: ", cell)
                 return cell
             }
         }
@@ -129,7 +126,7 @@ extension PlantViewModel: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 30
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

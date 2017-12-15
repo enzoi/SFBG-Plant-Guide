@@ -27,8 +27,6 @@ class DetailViewController: UIViewController {
 
         tableView?.estimatedRowHeight = 100
         tableView?.rowHeight = UITableViewAutomaticDimension
-        tableView?.sectionHeaderHeight = 40
-        tableView?.separatorStyle = .singleLine
         tableView?.dataSource = viewModel
         tableView?.delegate = viewModel
      
