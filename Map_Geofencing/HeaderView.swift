@@ -30,7 +30,7 @@ class HeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var arrowLabel: UILabel?
     var section: Int = 0
     
-    weak var delegate: HeaderViewDelegate?
+    var delegate: HeaderViewDelegate?
     
     static var nib:UINib {
         return UINib(nibName: identifier, bundle: nil)
@@ -47,17 +47,11 @@ class HeaderView: UITableViewHeaderFooterView {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
     }
     
-    @objc private func didTapHeader(_ gestureRecognizer: UITapGestureRecognizer) {
-   
-        guard let cell = gestureRecognizer.view as? HeaderView else {
-            return
-        }
-        
-        delegate?.toggleSection(header: self, section: cell.section)
+    @objc private func didTapHeader() {
+        delegate?.toggleSection(header: self, section: section)
     }
     
     func setCollapsed(collapsed: Bool) {
-        print("setCollapsed called - is collapsed:", collapsed)
         arrowLabel?.rotate(collapsed ? 0.0 : .pi)
     }
 }

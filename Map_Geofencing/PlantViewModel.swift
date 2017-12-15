@@ -63,9 +63,7 @@ extension PlantViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("number of rows in section called")
-        
+      
         let item = items[section]
 
         guard item.isCollapsible else {
@@ -117,18 +115,18 @@ extension PlantViewModel: UITableViewDataSource {
 extension PlantViewModel: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-  
+
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.identifier) as? HeaderView {
-        
+    
             let item = items[section]
             
             headerView.item = item
             headerView.section = section
             headerView.delegate = self
-            
+
             return headerView
         }
-        
+
         return UIView()
     }
     
@@ -149,15 +147,11 @@ extension PlantViewModel: UITableViewDelegate {
 extension PlantViewModel: HeaderViewDelegate {
     
     func toggleSection(header: HeaderView, section: Int) {
-        
-        print("toggleSection called")
-        
+
         var item = items[section]
-        print("item: ", item)
         
         if item.isCollapsible {
             
-            print("collapsible")
             print(item.isCollapsed)
             // Toggle collapse
             let collapsed = !item.isCollapsed
@@ -168,8 +162,6 @@ extension PlantViewModel: HeaderViewDelegate {
             
             self.reloadSections?(section)
         }
-        
-        print("not collapsible")
     }
 }
 
