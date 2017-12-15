@@ -10,6 +10,7 @@ import UIKit
 
 protocol HeaderViewDelegate: class {
     func toggleSection(header: HeaderView, section: Int)
+    
 }
 
 class HeaderView: UITableViewHeaderFooterView {
@@ -42,14 +43,21 @@ class HeaderView: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.contentView.backgroundColor = .darkGray
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
     }
     
-    @objc private func didTapHeader() {
-        delegate?.toggleSection(header: self, section: section)
+    @objc private func didTapHeader(_ gestureRecognizer: UITapGestureRecognizer) {
+   
+        guard let cell = gestureRecognizer.view as? HeaderView else {
+            return
+        }
+        
+        delegate?.toggleSection(header: self, section: cell.section)
     }
     
     func setCollapsed(collapsed: Bool) {
+        print("setCollapsed called - is collapsed:", collapsed)
         arrowLabel?.rotate(collapsed ? 0.0 : .pi)
     }
 }

@@ -26,13 +26,13 @@ protocol PlantViewModelItem {
 class PlantViewModel: NSObject {
     
     var items = [PlantViewModelItem]()
-    
     var reloadSections: ((_ section: Int) -> Void)?
     
     init(plant: Plant) {
         
         if let scientificName = plant.scientificName, let commonName = plant.commonName {
             let namesItem = PlantViewModelNamesItem(scientificName: scientificName, commonName: commonName)
+            print(namesItem.commonName)
             items.append(namesItem)
         }
         
@@ -42,6 +42,7 @@ class PlantViewModel: NSObject {
             let waterNeeds = plant.waterNeeds
         {
             let propertiesItem = PlantViewModelPropertiesItem(plantType: plantType, climateZones: climateZones, sunExposure: sunExposure, waterNeeds: waterNeeds)
+            print(propertiesItem.climateZones)
             items.append(propertiesItem)
         }
         
@@ -62,7 +63,11 @@ extension PlantViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print("number of rows in section called")
+        
         let item = items[section]
+
         guard item.isCollapsible else {
             return item.rowCount
         }
@@ -75,6 +80,7 @@ extension PlantViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let item = items[indexPath.section]
         
         switch item.type {
@@ -85,18 +91,21 @@ extension PlantViewModel: UITableViewDataSource {
                 let photo = item.photos[indexPath.row]
                 cell.item = item
                 
+                print("photos cell: ", cell)
                 return cell
             }
         case .names:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PlantNameTableViewCell.identifier, for: indexPath) as? PlantNameTableViewCell {
                 cell.item = item as? PlantViewModelNamesItem
 
+                print("names cell: ", cell)
                 return cell
             }
         case .properties:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PlantPropertiesTableViewCell.identifier, for: indexPath) as? PlantPropertiesTableViewCell {
                 cell.item = item as? PlantViewModelPropertiesItem
 
+                print("properties cell: ", cell)
                 return cell
             }
         }
@@ -108,19 +117,31 @@ extension PlantViewModel: UITableViewDataSource {
 extension PlantViewModel: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+  
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.identifier) as? HeaderView {
+        
             let item = items[section]
             
             headerView.item = item
             headerView.section = section
             headerView.delegate = self
+            
             return headerView
         }
+        
         return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("cell tapped")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
     }
 }
 
@@ -128,9 +149,16 @@ extension PlantViewModel: UITableViewDelegate {
 extension PlantViewModel: HeaderViewDelegate {
     
     func toggleSection(header: HeaderView, section: Int) {
+        
+        print("toggleSection called")
+        
         var item = items[section]
+        print("item: ", item)
+        
         if item.isCollapsible {
             
+            print("collapsible")
+            print(item.isCollapsed)
             // Toggle collapse
             let collapsed = !item.isCollapsed
             item.isCollapsed = collapsed
@@ -138,10 +166,10 @@ extension PlantViewModel: HeaderViewDelegate {
             
             // Adjust the number of the rows inside the section
             
-            DispatchQueue.main.async {
-                self.reloadSections?(section)
-            }
+            self.reloadSections?(section)
         }
+        
+        print("not collapsible")
     }
 }
 

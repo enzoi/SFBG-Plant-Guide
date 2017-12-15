@@ -24,22 +24,19 @@ class DetailViewController: UIViewController {
             self?.tableView?.reloadSections([section], with: .fade)
             self?.tableView?.endUpdates()
         }
-        
-        print("plant", plant)
-        print("view model: ", viewModel.items[2].sectionTitle)
-        
+
         tableView?.estimatedRowHeight = 100
         tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.sectionHeaderHeight = 40
-        tableView?.separatorStyle = .none
+        tableView?.separatorStyle = .singleLine
         tableView?.dataSource = viewModel
         tableView?.delegate = viewModel
-        
+     
         tableView?.register(PlantPhotosTableViewCell.nib, forCellReuseIdentifier: PlantPhotosTableViewCell.identifier)
         tableView?.register(PlantNameTableViewCell.nib, forCellReuseIdentifier: PlantNameTableViewCell.identifier)
         tableView?.register(PlantPropertiesTableViewCell.nib, forCellReuseIdentifier: PlantPropertiesTableViewCell.identifier)
-        
-        print(tableView)
+        tableView?.register(HeaderView.nib, forHeaderFooterViewReuseIdentifier: HeaderView.identifier)
+
     }
     
 }

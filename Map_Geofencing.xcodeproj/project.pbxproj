@@ -36,8 +36,6 @@
 		CFD3C2791FDE3A7A0084637B /* PlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C2781FDE3A7A0084637B /* PlantViewModel.swift */; };
 		CFD3C27C1FDE48500084637B /* PlantPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C27A1FDE48500084637B /* PlantPhotosTableViewCell.swift */; };
 		CFD3C27D1FDE48500084637B /* PlantPhotosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD3C27B1FDE48500084637B /* PlantPhotosTableViewCell.xib */; };
-		CFD3C2821FDE499D0084637B /* PlantMiscellaneousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C2801FDE499D0084637B /* PlantMiscellaneousTableViewCell.swift */; };
-		CFD3C2831FDE499D0084637B /* PlantMiscellaneousTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD3C2811FDE499D0084637B /* PlantMiscellaneousTableViewCell.xib */; };
 		CFE592A81FDF4C9D00F0BBE2 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A21FDF4C9D00F0BBE2 /* User+CoreDataClass.swift */; };
 		CFE592A91FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */; };
 		CFE592AA1FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A41FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift */; };
@@ -109,8 +107,6 @@
 		CFD3C2781FDE3A7A0084637B /* PlantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantViewModel.swift; sourceTree = "<group>"; };
 		CFD3C27A1FDE48500084637B /* PlantPhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		CFD3C27B1FDE48500084637B /* PlantPhotosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlantPhotosTableViewCell.xib; sourceTree = "<group>"; };
-		CFD3C2801FDE499D0084637B /* PlantMiscellaneousTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantMiscellaneousTableViewCell.swift; sourceTree = "<group>"; };
-		CFD3C2811FDE499D0084637B /* PlantMiscellaneousTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlantMiscellaneousTableViewCell.xib; sourceTree = "<group>"; };
 		CFE592A11FDF4A5100F0BBE2 /* SFBG 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 5.xcdatamodel"; sourceTree = "<group>"; };
 		CFE592A21FDF4C9D00F0BBE2 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -325,8 +321,6 @@
 				CFD3C2701FDD0C7C0084637B /* PlantNameTableViewCell.xib */,
 				CFD3C2731FDD1B970084637B /* PlantPropertiesTableViewCell.swift */,
 				CFD3C2741FDD1B970084637B /* PlantPropertiesTableViewCell.xib */,
-				CFD3C2801FDE499D0084637B /* PlantMiscellaneousTableViewCell.swift */,
-				CFD3C2811FDE499D0084637B /* PlantMiscellaneousTableViewCell.xib */,
 			);
 			name = "Detail Table View Cells";
 			sourceTree = "<group>";
@@ -467,7 +461,6 @@
 			files = (
 				CFD3C2721FDD0C7C0084637B /* PlantNameTableViewCell.xib in Resources */,
 				CFD3C2761FDD1B970084637B /* PlantPropertiesTableViewCell.xib in Resources */,
-				CFD3C2831FDE499D0084637B /* PlantMiscellaneousTableViewCell.xib in Resources */,
 				CF369D2A1FE0A9630064E251 /* HeaderView.xib in Resources */,
 				CFD3C27D1FDE48500084637B /* PlantPhotosTableViewCell.xib in Resources */,
 				CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */,
@@ -657,7 +650,6 @@
 				CF4FB23C1FCE9E9A00CC885E /* FavoriteViewController.swift in Sources */,
 				CFE592AC1FDF4C9D00F0BBE2 /* Plant+CoreDataClass.swift in Sources */,
 				CF4FB2501FD1215D00CC885E /* MapViewController.swift in Sources */,
-				CFD3C2821FDE499D0084637B /* PlantMiscellaneousTableViewCell.swift in Sources */,
 				CFE592AB1FDF4C9D00F0BBE2 /* Photo+CoreDataProperties.swift in Sources */,
 				CF4FB23A1FCE545E00CC885E /* SFBG.xcdatamodeld in Sources */,
 			);

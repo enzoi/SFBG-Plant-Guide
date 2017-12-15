@@ -34,7 +34,6 @@ class PlantPhotosTableViewCell: UITableViewCell {
         
         plantImageView?.clipsToBounds = true
         plantImageView?.contentMode = .scaleAspectFit
-        plantImageView?.backgroundColor = UIColor.lightGray
 
     }
 
