@@ -23,11 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // importJSONSeedDataIfNeeded()
         
         guard let navController = window?.rootViewController as? UINavigationController,
-            let viewController = navController.topViewController as? PlantTableViewController else {
+            let viewController = navController.topViewController as? ProfileViewController else {
                 return true
         }
         
-        viewController.photoStore = photoStore
+        // viewController.photoStore = photoStore
         
         importJSONSeedDataIfNeeded()
         
