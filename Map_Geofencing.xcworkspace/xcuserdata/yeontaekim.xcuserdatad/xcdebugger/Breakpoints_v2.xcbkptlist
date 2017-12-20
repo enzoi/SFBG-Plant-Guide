@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Map_Geofencing/ViewControllers/PlantTableViewController.swift"
-            timestampString = "535072813.024112"
+            timestampString = "535337334.112215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "fetchedResultsController"
             landmarkType = "24">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Map_Geofencing/ViewControllers/PlantTableViewController.swift"
-            timestampString = "535072158.810594"
+            timestampString = "535337334.112215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "fetchedResultsController"
             landmarkType = "24">
             <Locations>
@@ -188,6 +188,54 @@
                   startingLineNumber = "22"
                   endingLineNumber = "22"
                   offsetFromSymbolStart = "179">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+            timestampString = "535499367.99497"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Map_Geofencing.PlantTableViewController.updateSearchResults (for : __ObjC.UISearchController) -&gt; ()"
+                  moduleName = "Map_Geofencing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+                  timestampString = "535491106.090794"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "526">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Map_Geofencing.PlantTableViewController.updateSearchResults (for : __ObjC.UISearchController) -&gt; ()"
+                  moduleName = "Map_Geofencing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/ViewControllers/PlantTableViewController.swift"
+                  timestampString = "535491106.102762"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "615">
                </Location>
             </Locations>
          </BreakpointContent>

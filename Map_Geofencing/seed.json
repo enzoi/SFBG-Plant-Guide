@@ -13,7 +13,7 @@
              "climateZones": "3-10, 14-24",
              "growthRate": "fast",
              "lifeSpan": "250-280",
-             "plantType": "deciduous trees or shrubs",
+             "plantType": "Tree",
              "size": { "height": { "min": 10, "max": 20, "unit": "ft" }, "width": { "min": "", "max": 30, "unit": "ft" } },
              "foliageColor": { "front": "dark green", "back": "light green" },
              "drought_tolerent": true,
@@ -65,7 +65,7 @@
              "updatedAt": "",
              "climateZones": "14-24",
              "growthRate": "fast",
-             "plantType": "evergreen shrub or tree",
+             "plantType": "Shrub",
              
              "size": { "height": { "min": 10, "max": 20, "unit": "ft" },
                        "width": { "min": 5, "max": 15, "unit": "ft" } },

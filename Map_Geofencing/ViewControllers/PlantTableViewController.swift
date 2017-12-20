@@ -12,9 +12,11 @@ import CoreData
 class PlantTableViewController: UIViewController {
 
     // MARK: - Properties
-    
-    var filteredPlants = [Plant]()
     let searchController = UISearchController(searchResultsController: nil)
+    var filteredPlants : [Plant]? = nil
+    var searchPredicate: NSPredicate?
+    var scopePredicate: NSPredicate?
+    var compoundPredicate: NSCompoundPredicate?
     
     fileprivate let plantCellIdentifier = "plantCell"
     var photoStore: PhotoStore!
@@ -32,8 +34,7 @@ class PlantTableViewController: UIViewController {
             sectionNameKeyPath: nil,
             cacheName: nil)
         
-        fetchedResultsController.delegate = self
-        
+        // fetchedResultsController.delegate = self
         return fetchedResultsController
     }()
 
@@ -47,6 +48,7 @@ class PlantTableViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Plants"
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
@@ -74,29 +76,82 @@ class PlantTableViewController: UIViewController {
             let plant = fetchedResultsController.object(at: selectedIndexPath)
             detailVC.plant = plant
         }
-
     }
     
 }
 
-// MARK: - UISearchResultsUpdating Delegate
+// MARK: - UISearchBarDelegate
 
-extension PlantTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension PlantTableViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
 
-    func updateSearchResults(for searchController: UISearchController) {
-
-        let searchText = searchController.searchBar.text ?? ""
-        let predicate = NSPredicate(format: "%K CONTAINS[c] %@", argumentArray: ["scientificName", searchText])
-        fetchedResultsController.fetchRequest.predicate = predicate
+        scopePredicate = (scope == "All") ? nil : NSPredicate(format: "plantType == %@", scope)
         
-        do {
-            try self.fetchedResultsController.performFetch()
-        } catch {
-            let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
+        if searchBarIsEmpty() {
+            if scopePredicate == nil {
+                self.fetchedResultsController.fetchRequest.predicate = nil
+                filteredPlants = self.fetchedResultsController.fetchedObjects
+            } else {
+                filteredPlants = self.fetchedResultsController.fetchedObjects?.filter() {
+                    return scopePredicate!.evaluate(with: $0)
+                    } as [Plant]?
+            }
+            
+        } else {
+            searchPredicate = NSPredicate(format: "scientificName contains[c] %@", searchText)
+            let predicate = scopePredicate == nil ? searchPredicate : NSCompoundPredicate(andPredicateWithSubpredicates: [scopePredicate!, searchPredicate!])
+            
+            filteredPlants = self.fetchedResultsController.fetchedObjects?.filter() {
+                return (predicate?.evaluate(with: $0))!
+                } as [Plant]?
+            
         }
-       
         tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.fetchedResultsController.fetchRequest.predicate = nil
+        filteredPlants = self.fetchedResultsController.fetchedObjects
+        
+        tableView.reloadData()
+    }
+    
+}
+
+
+// MARK: - UISearchResultsUpdating Delegate (informed when search bar became first responder)
+
+extension PlantTableViewController: UISearchResultsUpdating {
+    
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    // called when text added or removed
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filteredPlants = self.fetchedResultsController.fetchedObjects
+        
+        let searchText = self.searchController.searchBar.text
+        
+        if !(searchBarIsEmpty()) {
+            searchPredicate = NSPredicate(format: "scientificName contains[c] %@", searchText!)
+            filteredPlants = self.fetchedResultsController.fetchedObjects?.filter() {
+                return self.searchPredicate!.evaluate(with: $0)
+                } as [Plant]?
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -105,24 +160,23 @@ extension PlantTableViewController: UISearchResultsUpdating, UISearchBarDelegate
 
 extension PlantTableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            return 0
-        }
-        return sections.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sectionInfo = fetchedResultsController.sections?[section] else {
-            return 0
+        
+        if self.searchPredicate == nil && self.scopePredicate == nil {
+            let sectionInfo = self.fetchedResultsController.sections![section] 
+            return sectionInfo.numberOfObjects
+        } else {
+            return filteredPlants?.count ?? 0
         }
-        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell", for: indexPath) as! PlantTableViewCell
- 
-        configure(cell: cell, for: indexPath)
         
+        configure(cell: cell, for: indexPath)
         return cell
     }
     
@@ -132,6 +186,8 @@ extension PlantTableViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension PlantTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showDetailView", sender: indexPath)
@@ -139,48 +195,8 @@ extension PlantTableViewController: UITableViewDelegate {
 }
 
 
-// MARK: - NSFetchedResultsControllerDelegate
+// MARK: - Configure TableView Cell
 
-extension PlantTableViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .automatic)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .automatic)
-        case .update:
-            let cell = tableView.cellForRow(at: indexPath!) as! PlantTableViewCell
-            configure(cell: cell, for: indexPath!)
-        case .move:
-            tableView.deleteRows(at: [indexPath!], with: .automatic)
-            tableView.insertRows(at: [newIndexPath!], with: .automatic)
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        
-        let indexSet = IndexSet(integer: sectionIndex)
-        
-        switch type {
-        case .insert:
-            tableView.insertSections(indexSet, with: .automatic)
-        case .delete:
-            tableView.deleteSections(indexSet, with: .automatic)
-        default: break
-        }
-    }
-}
-
-// MARK: - Internal
 extension PlantTableViewController {
     
     func configure(cell: UITableViewCell, for indexPath: IndexPath) {
@@ -189,12 +205,14 @@ extension PlantTableViewController {
             return
         }
         
-        cell.delegate = self
+        let plant: Plant
         
-        let plant = fetchedResultsController.object(at: indexPath)
-        
-        
-        
+        if self.searchPredicate == nil && self.scopePredicate == nil {
+            plant = fetchedResultsController.object(at: indexPath)
+        } else {
+            plant = filteredPlants![indexPath.row]
+        }
+            
         // Getting photos from plant
         let photos = Array(plant.photo!) as! [Photo]
         
@@ -225,6 +243,8 @@ extension PlantTableViewController {
     }
 
 }
+
+// MARK: ToggleFavoriteDelgate
 
 extension PlantTableViewController: ToggleFavoriteDelegate {
     
