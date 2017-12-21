@@ -8,8 +8,10 @@
 
 import UIKit
 import GoogleMaps
+import Firebase
 import FacebookCore
 import FacebookLogin
+import GoogleSignIn
 import CoreData
 
 @UIApplicationMain
@@ -23,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyAhnYWiV0UWHVEeppPkE55RDJbV8vO2VGk")
         
         // importJSONSeedDataIfNeeded()
+        
+        FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
         guard let navController = window?.rootViewController as? UINavigationController,
             let viewController = navController.topViewController as? ProfileViewController else {
@@ -41,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
         let handled = SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        
+        GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
         
         return handled
         

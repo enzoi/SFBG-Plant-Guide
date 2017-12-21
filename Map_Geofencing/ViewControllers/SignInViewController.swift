@@ -8,18 +8,27 @@
 
 import UIKit
 import FacebookLogin
+import GoogleSignIn
 
-class SignInViewController: UIViewController, LoginButtonDelegate {
+class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+        let facebookLoginButton = LoginButton(readPermissions: [ .publicProfile ])
 
-        loginButton.center = view.center
-        view.addSubview(loginButton)
+        facebookLoginButton.center = view.center
+        facebookLoginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width - 32, height: 50)
+        view.addSubview(facebookLoginButton)
         
-        loginButton.delegate = self
+        facebookLoginButton.delegate = self
+        
+        // Add google sign in button
+        let googleButton = GIDSignInButton()
+        googleButton.frame = CGRect(x: 16, y: 110, width: view.frame.width - 32, height: 50)
+        view.addSubview(googleButton)
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
 
     func loginButtonDidLogOut(_ loginButton: LoginButton) {

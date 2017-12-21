@@ -11,6 +11,9 @@ target 'Map_Geofencing' do
 
   pod 'GoogleMaps'
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  
+  pod 'GoogleSignIn'
   
   pod 'FacebookCore', '~> 0.2.0'
   pod 'FacebookLogin', '~> 0.2.0'

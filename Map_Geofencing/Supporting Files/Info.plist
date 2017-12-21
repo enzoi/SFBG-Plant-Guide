@@ -16,8 +16,38 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1044972464174-f204r3ca38kubbnr6v7vr04fb219s6d8</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb153151108641848</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>153151108641848</string>
+	<key>FacebookDisplayName</key>
+	<string>PlantListApp</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -41,30 +71,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb153151108641848</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>153151108641848</string>
-    <key>FacebookDisplayName</key>
-    <string>PlantListApp</string>
-    
-    
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-share-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
-    
 </dict>
 </plist>
