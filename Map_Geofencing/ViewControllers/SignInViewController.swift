@@ -35,6 +35,7 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
         customFBButton.layer.cornerRadius = 25
         view.addSubview(customFBButton)
         
+        customFBButton.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
         
         // Add google sign in button
         let googleButton = GIDSignInButton()
@@ -42,6 +43,21 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
         view.addSubview(googleButton)
         
         GIDSignIn.sharedInstance().uiDelegate = self
+    }
+    
+    @objc func handleCustomFBLogin() {
+        let loginManager = LoginManager()
+        loginManager.logIn([.email, .publicProfile], viewController: self) { result in
+            switch result {
+            case .failed(let error):
+                print("FACEBOOK LOGIN FAILED: \(error)")
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                print("Successfully logged in!")
+                print("ACCESS TOKEN \(accessToken)")
+            }
+        }
     }
 
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
@@ -64,10 +80,10 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
                 print("Something went wrong with our FB user", error ?? "")
                 return
             }
-            
             print("Successfully logged in with our user", user ?? "")
         }
         
+        // https://stackoverflow.com/questions/39683862/facebook-graph-request-using-swift3
         let params = ["fields" : "id, email, name"]
         let graphRequest = GraphRequest(graphPath: "me", parameters: params)
         graphRequest.start {
