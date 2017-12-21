@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // importJSONSeedDataIfNeeded()
         
+        
+        
         guard let navController = window?.rootViewController as? UINavigationController,
             let viewController = navController.topViewController as? ProfileViewController else {
                 return true

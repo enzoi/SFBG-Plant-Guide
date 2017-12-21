@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
 
@@ -10,6 +10,10 @@ target 'Map_Geofencing' do
   # Pods for Map_Geofencing
 
   pod 'GoogleMaps'
+  pod 'Firebase/Core'
+  
+  pod 'FacebookCore', '~> 0.2.0'
+  pod 'FacebookLogin', '~> 0.2.0'
 
   target 'Map_GeofencingTests' do
     inherit! :search_paths
