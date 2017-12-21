@@ -45,7 +45,7 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
         GIDSignIn.sharedInstance().uiDelegate = self
     }
     
-    @objc func handleCustomFBLogin() {
+    func handleCustomFBLogin() {
         let loginManager = LoginManager()
         loginManager.logIn([.email, .publicProfile], viewController: self) { result in
             switch result {
@@ -56,6 +56,8 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 print("Successfully logged in!")
                 print("ACCESS TOKEN \(accessToken)")
+                
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }

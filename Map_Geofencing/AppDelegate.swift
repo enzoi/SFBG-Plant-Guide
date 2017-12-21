@@ -31,12 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
-        guard let navController = window?.rootViewController as? UINavigationController,
-            let viewController = navController.topViewController as? ProfileViewController else {
+        guard let tabBarController = window?.rootViewController as? TabBarController else {
                 return true
         }
         
-        // viewController.photoStore = photoStore
+        tabBarController.photoStore = photoStore
         
         importJSONSeedDataIfNeeded()
         

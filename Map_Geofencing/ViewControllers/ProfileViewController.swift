@@ -10,12 +10,17 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    var photoStore: PhotoStore!
+    
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let tabBar = self.tabBarController as! TabBarController
+        self.photoStore = tabBar.photoStore
+        
         // Do any additional setup after loading the view.
     }
 

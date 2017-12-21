@@ -37,7 +37,9 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        let tabBar = self.tabBarController as! TabBarController
+        self.photoStore = tabBar.photoStore
+        
         tableView.dataSource = self
         
         do {
@@ -119,7 +121,7 @@ extension FavoriteViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
         case .update:
-            let cell = tableView.cellForRow(at: indexPath!) as! PlantTableViewCell
+            let cell = tableView.cellForRow(at: indexPath!) as! FavoriteTableViewCell
             configure(cell: cell, for: indexPath!)
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .automatic)

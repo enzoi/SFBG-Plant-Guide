@@ -44,6 +44,9 @@ class PlantTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let tabBar = self.tabBarController as! TabBarController
+        self.photoStore = tabBar.photoStore
+        
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
