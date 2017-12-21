@@ -9,16 +9,25 @@
 import UIKit
 import FacebookLogin
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, LoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+
         loginButton.center = view.center
-        
         view.addSubview(loginButton)
+        
+        loginButton.delegate = self
     }
 
-
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {
+        print("Did log out of facebook")
+    }
+    
+    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+        print(result)
+    }
+    
 }

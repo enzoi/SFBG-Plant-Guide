@@ -84,6 +84,7 @@
 		CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTableViewCell.swift; path = ViewControllers/FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		CF7429061FEB3663004E26AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF7429081FEB45FE004E26AE /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		CF74290A1FEB6D1A004E26AE /* Map_Geofencing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Map_Geofencing.entitlements; path = ../Map_Geofencing.entitlements; sourceTree = "<group>"; };
 		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF76A1651FA9216000893C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -240,6 +241,7 @@
 			children = (
 				CF76A16C1FA9216000893C65 /* Info.plist */,
 				CF7429061FEB3663004E26AE /* GoogleService-Info.plist */,
+				CF74290A1FEB6D1A004E26AE /* Map_Geofencing.entitlements */,
 				CF97BEDD1FCDD67500E9931C /* style.json */,
 			);
 			path = "Supporting Files";
@@ -430,6 +432,11 @@
 					CF76A15C1FA9216000893C65 = {
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					CF76A1701FA9216000893C65 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -832,6 +839,7 @@
 			baseConfigurationReference = 31BE1C5E7C7C5310182497BE /* Pods-Map_Geofencing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Map_Geofencing/Map_Geofencing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TVHJ8VSCRK;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -853,6 +861,7 @@
 			baseConfigurationReference = 64749C65EF8459BEF4CA9131 /* Pods-Map_Geofencing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Map_Geofencing/Map_Geofencing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TVHJ8VSCRK;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMaps
+import FacebookCore
+import FacebookLogin
 import CoreData
 
 @UIApplicationMain
@@ -22,8 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // importJSONSeedDataIfNeeded()
         
-        
-        
         guard let navController = window?.rootViewController as? UINavigationController,
             let viewController = navController.topViewController as? ProfileViewController else {
                 return true
@@ -33,7 +33,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         importJSONSeedDataIfNeeded()
         
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let handled = SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        
+        return handled
+        
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
