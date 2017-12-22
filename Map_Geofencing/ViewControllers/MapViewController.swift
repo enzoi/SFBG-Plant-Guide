@@ -13,6 +13,7 @@ import CoreLocation
 class MapViewController: UIViewController {
     
     var photoStore: PhotoStore!
+    var fetchedPlants = [Plant]()
     var locationManager = CLLocationManager()
     lazy var mapView = GMSMapView()
     
@@ -63,19 +64,17 @@ class MapViewController: UIViewController {
     
     func fetchAllPlantMarkers() {
         
-        var fetchedPlants = [Plant]()
-        
-        photoStore.fetchAllPins() { (plantsResult) in
+        photoStore.fetchAllMarkers() { (plantsResult) in
             
             switch plantsResult {
                 
             case let .success(plants):
                 
-                fetchedPlants = plants
+                self.fetchedPlants = plants
                 
-                if fetchedPlants.count > 0 {
+                if self.fetchedPlants.count > 0 {
 
-                    for plant in fetchedPlants {
+                    for plant in self.fetchedPlants {
                         
                         let plantMarker = GMSMarker()
                         plantMarker.position = CLLocationCoordinate2D(latitude: plant.latitude, longitude: plant.longitude)
@@ -90,12 +89,11 @@ class MapViewController: UIViewController {
                 }
                 
             case .failure(_):
-                fetchedPlants = []
+                self.fetchedPlants = []
             }
         }
         
     }
-    
 }
 
 // MARK: - CLLocation Manager Delegate
@@ -122,6 +120,22 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print("didTapInfoWindowOf")
+        // TODO: present detail view
+        
+        let storyboard = UIStoryboard (name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        if let index = fetchedPlants.index(where: { $0.scientificName == marker.title }) {
+            let selectedPlant = fetchedPlants[index]
+            detailVC.plant = selectedPlant
+        }
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+
+    }
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = UIView(frame: CGRect.init(x: 0, y: 0, width: 200, height: 50))
