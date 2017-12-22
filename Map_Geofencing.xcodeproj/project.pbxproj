@@ -17,9 +17,9 @@
 		CF4FB2421FCFB48D00CC885E /* seed.json in Resources */ = {isa = PBXBuildFile; fileRef = CF4FB2411FCFB48D00CC885E /* seed.json */; };
 		CF4FB2501FD1215D00CC885E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB24F1FD1215D00CC885E /* MapViewController.swift */; };
 		CF4FB2541FD2816B00CC885E /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */; };
-		CF7429071FEB3663004E26AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF7429061FEB3663004E26AE /* GoogleService-Info.plist */; };
 		CF7429091FEB45FE004E26AE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7429081FEB45FE004E26AE /* SignInViewController.swift */; };
 		CF74290C1FEC7135004E26AE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74290B1FEC7135004E26AE /* TabBarController.swift */; };
+		CF7429111FECC6BF004E26AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF7429101FECC6BF004E26AE /* GoogleService-Info.plist */; };
 		CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1601FA9216000893C65 /* AppDelegate.swift */; };
 		CF76A1661FA9216000893C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1641FA9216000893C65 /* Main.storyboard */; };
 		CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */; };
@@ -83,10 +83,10 @@
 		CF4FB2411FCFB48D00CC885E /* seed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed.json; sourceTree = "<group>"; };
 		CF4FB24F1FD1215D00CC885E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTableViewCell.swift; path = ViewControllers/FavoriteTableViewCell.swift; sourceTree = "<group>"; };
-		CF7429061FEB3663004E26AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF7429081FEB45FE004E26AE /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CF74290A1FEB6D1A004E26AE /* Map_Geofencing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Map_Geofencing.entitlements; path = ../Map_Geofencing.entitlements; sourceTree = "<group>"; };
 		CF74290B1FEC7135004E26AE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CF7429101FECC6BF004E26AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF76A1651FA9216000893C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				CF76A16C1FA9216000893C65 /* Info.plist */,
-				CF7429061FEB3663004E26AE /* GoogleService-Info.plist */,
+				CF7429101FECC6BF004E26AE /* GoogleService-Info.plist */,
 				CF74290A1FEB6D1A004E26AE /* Map_Geofencing.entitlements */,
 				CF97BEDD1FCDD67500E9931C /* style.json */,
 			);
@@ -481,12 +481,12 @@
 				CFD3C2721FDD0C7C0084637B /* PlantNameTableViewCell.xib in Resources */,
 				CFD3C2761FDD1B970084637B /* PlantPropertiesTableViewCell.xib in Resources */,
 				CF369D2A1FE0A9630064E251 /* HeaderView.xib in Resources */,
+				CF7429111FECC6BF004E26AE /* GoogleService-Info.plist in Resources */,
 				CFD3C27D1FDE48500084637B /* PlantPhotosTableViewCell.xib in Resources */,
 				CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */,
 				CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */,
 				CF97BEDE1FCDD67500E9931C /* style.json in Resources */,
 				CF76A1661FA9216000893C65 /* Main.storyboard in Resources */,
-				CF7429071FEB3663004E26AE /* GoogleService-Info.plist in Resources */,
 				CF4FB2421FCFB48D00CC885E /* seed.json in Resources */,
 				CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */,
 			);

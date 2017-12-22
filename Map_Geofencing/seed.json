@@ -24,8 +24,8 @@
              "location": {
              "id": 1234567,
              "coordinate": {
-             "latitude": -37.21362,
-             "longitude": 122.51242 },
+             "latitude": 37.767184,
+             "longitude": -122.467432 },
              "gardenName": ["Native California"],
              "bedNumber": ["23A"] },
              "bloomTime": [ "february", "march", "april" ],
@@ -76,8 +76,8 @@
              "waterNeeds": "little or no water to moderate water",
              "location": { "id": 1234567,
              "coordinate": {
-             "latitude": -37.2135,
-             "longitude": 122.5123 },
+             "latitude": 37.7672,
+             "longitude": -122.4674 },
              "gardenName": ["Native California"],
              "bedNumber": ["23A"] },
              "bloomTime": [ "february", "march", "april" ],

@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1044972464174-f204r3ca38kubbnr6v7vr04fb219s6d8.apps.googleusercontent.com</string>
+	<string>1044972464174-cagsuqp1eejfvnkn6qpadavfpqn32u6h.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1044972464174-f204r3ca38kubbnr6v7vr04fb219s6d8</string>
+	<string>com.googleusercontent.apps.1044972464174-cagsuqp1eejfvnkn6qpadavfpqn32u6h</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAfqIROyy9bL5-LOkbZsu_ISJ5Z1qY6lFM</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.ytk.Final-Project</string>
+	<string>com.ytk.Map-Geofencing</string>
 	<key>PROJECT_ID</key>
 	<string>beaconnotification-2d7d1</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1044972464174:ios:6d4b2edcd2b38aec</string>
+	<string>1:1044972464174:ios:4b1f256427c8a0ad</string>
 	<key>DATABASE_URL</key>
 	<string>https://beaconnotification-2d7d1.firebaseio.com</string>
 </dict>

@@ -7,42 +7,64 @@
 //
 
 import UIKit
-import GoogleMaps
 import Firebase
+import GoogleMaps
 import FacebookCore
 import FacebookLogin
 import GoogleSignIn
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     lazy var  photoStore = PhotoStore(modelName: "SFBG")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        GMSServices.provideAPIKey("AIzaSyAhnYWiV0UWHVEeppPkE55RDJbV8vO2VGk")
         
-        // importJSONSeedDataIfNeeded()
-        
+        // Google Maps API Key
+        GMSServices.provideAPIKey("AIzaSyAfqIROyy9bL5-LOkbZsu_ISJ5Z1qY6lFM")
+
+        // Firebase Setup
         FirebaseApp.configure()
         
+        // Google Auth Setup
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
-        guard let tabBarController = window?.rootViewController as? TabBarController else {
-                return true
-        }
+        // Facebook Auth Setup
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        // Pass photoStore to TabBarController
+        guard let tabBarController = window?.rootViewController as? TabBarController else {
+            return true
+        }
         tabBarController.photoStore = photoStore
         
+        // Provide core data with hard coded plants data
         importJSONSeedDataIfNeeded()
-        
-        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let handled = SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        
+        GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+        
+        return handled
+        
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        photoStore.saveContext()
+    }
+}
+
+// MARK: - GIDSignInDelegate
+
+extension AppDelegate: GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
@@ -65,21 +87,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             guard let uid = user?.uid else { return }
             print("Successfully logged into Firebase with Google account", uid)
         }
-    }
-    
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        let handled = SDKApplicationDelegate.shared.application(app, open: url, options: options)
-        
-        GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
-        
-        return handled
-        
-    }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        photoStore.saveContext()
     }
 }
 

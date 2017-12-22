@@ -18,6 +18,11 @@ enum PhotoError: Error {
     case imageCreationError
 }
 
+enum PlantsResult {
+    case success([Plant])
+    case failure(Error)
+}
+
 class PhotoStore {
     
     private let imageStore = ImageStore()
@@ -106,6 +111,23 @@ class PhotoStore {
             }
         }
         task.resume()
+    }
+    
+    // MARK: Fetch All Pins in MapVC
+    
+    func fetchAllPins(completion: @escaping (PlantsResult) -> Void) {
+        
+        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+        let moc = storeContainer.viewContext
+        
+        moc.perform {
+            do {
+                let allPlants = try moc.fetch(fetchRequest)
+                completion(.success(allPlants))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
     
     // MARK: Core Data
