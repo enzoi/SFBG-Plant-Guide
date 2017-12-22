@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
     var photoStore: PhotoStore!
     var fetchedPlants = [Plant]()
     var locationManager = CLLocationManager()
+    var userCurrentLocation:CLLocation?
     lazy var mapView = GMSMapView()
     
     override func viewDidLoad() {
@@ -79,9 +80,9 @@ class MapViewController: UIViewController {
                         let plantMarker = GMSMarker()
                         plantMarker.position = CLLocationCoordinate2D(latitude: plant.latitude, longitude: plant.longitude)
                         plantMarker.title = plant.scientificName
-                        // plantMarker.snippet = plant.commonName
+                        plantMarker.snippet = plant.commonName
                         plantMarker.map = self.mapView
-
+                        
                     }
                     
                 } else {
@@ -96,7 +97,7 @@ class MapViewController: UIViewController {
     }
 }
 
-// MARK: - CLLocation Manager Delegate
+// MARK: - CLLocationManagerDelegate
 
 extension MapViewController: CLLocationManagerDelegate {
     
@@ -104,12 +105,8 @@ extension MapViewController: CLLocationManagerDelegate {
         let userLocation = locations.last
         let _ = CLLocationCoordinate2D(latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude)
         
-//        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude,
-//                                              longitude: userLocation!.coordinate.longitude, zoom: 13.0)
-//         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-
-        mapView.isMyLocationEnabled = true
-        self.view = mapView
+        // User's current location to calculate distance to specific plant
+        userCurrentLocation = userLocation
         
         locationManager.stopUpdatingLocation()
     }
@@ -119,12 +116,12 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 }
 
+// MARK: - GMSMapViewDelegate
+
 extension MapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print("didTapInfoWindowOf")
-        // TODO: present detail view
-        
+
         let storyboard = UIStoryboard (name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
@@ -146,6 +143,14 @@ extension MapViewController: GMSMapViewDelegate {
         scientificNameLabel.text = marker.title
         scientificNameLabel.font = UIFont.systemFont(ofSize: 14)
         view.addSubview(scientificNameLabel)
+        
+        let distanceLabel = UILabel(frame: CGRect.init(x: 8, y: 30, width: view.frame.size.width - 16, height: 15))
+        if let distance = userCurrentLocation?.distance(from: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)) {
+            distanceLabel.text = "\(distance) meters"
+        } else {
+            distanceLabel.text = "--- meters"
+        }
+        view.addSubview(distanceLabel)
         
         return view
     }
