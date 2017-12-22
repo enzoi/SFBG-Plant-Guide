@@ -28,6 +28,7 @@ class MapViewController: UIViewController {
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.isMyLocationEnabled = true
         self.view = mapView
+        self.mapView.delegate = self
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: 37.7669, longitude: -122.4716)
@@ -79,7 +80,7 @@ class MapViewController: UIViewController {
                         let plantMarker = GMSMarker()
                         plantMarker.position = CLLocationCoordinate2D(latitude: plant.latitude, longitude: plant.longitude)
                         plantMarker.title = plant.scientificName
-                        plantMarker.snippet = plant.commonName
+                        // plantMarker.snippet = plant.commonName
                         plantMarker.map = self.mapView
 
                     }
@@ -117,5 +118,21 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func centerMapOnLocation(location: CLLocation) {
         
+    }
+}
+
+extension MapViewController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: 200, height: 50))
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 6
+        
+        let scientificNameLabel = UILabel(frame: CGRect.init(x: 8, y: 8, width: view.frame.size.width - 16, height: 15))
+        scientificNameLabel.text = marker.title
+        scientificNameLabel.font = UIFont.systemFont(ofSize: 14)
+        view.addSubview(scientificNameLabel)
+        
+        return view
     }
 }
