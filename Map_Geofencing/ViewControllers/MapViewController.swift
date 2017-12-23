@@ -137,14 +137,19 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = UIView(frame: CGRect.init(x: 0, y: 0, width: 200, height: 50))
         view.backgroundColor = UIColor.white
-        view.layer.cornerRadius = 6
+//        view.layer.cornerRadius = 25
         
-        let scientificNameLabel = UILabel(frame: CGRect.init(x: 8, y: 8, width: view.frame.size.width - 16, height: 15))
+        let plantImage =  UIImageView(frame: CGRect(x: view.frame.origin.x + 2.5, y: view.frame.origin.y + 2.5, width: 45, height: 45))
+        plantImage.layer.cornerRadius = 22.5
+        plantImage.image = UIImage(named: "sample")
+        view.addSubview(plantImage)
+        
+        let scientificNameLabel = UILabel(frame: CGRect.init(x: 58, y: 8, width: view.frame.size.width - 16, height: 15))
         scientificNameLabel.text = marker.title
         scientificNameLabel.font = UIFont.systemFont(ofSize: 14)
         view.addSubview(scientificNameLabel)
         
-        let distanceLabel = UILabel(frame: CGRect.init(x: 8, y: 30, width: view.frame.size.width - 16, height: 15))
+        let distanceLabel = UILabel(frame: CGRect.init(x: 58, y: 25, width: view.frame.size.width - 16, height: 15))
         if let distance = userCurrentLocation?.distance(from: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)) {
             distanceLabel.text = self.formatDistance(distance)
             distanceLabel.font = UIFont.systemFont(ofSize: 12)
