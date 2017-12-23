@@ -146,12 +146,31 @@ extension MapViewController: GMSMapViewDelegate {
         
         let distanceLabel = UILabel(frame: CGRect.init(x: 8, y: 30, width: view.frame.size.width - 16, height: 15))
         if let distance = userCurrentLocation?.distance(from: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)) {
-            distanceLabel.text = "\(distance) meters"
-        } else {
-            distanceLabel.text = "--- meters"
+            distanceLabel.text = self.formatDistance(distance)
+            distanceLabel.font = UIFont.systemFont(ofSize: 12)
         }
         view.addSubview(distanceLabel)
         
         return view
+    }
+    
+    // Format distance(meters) to miles in String
+    
+    func formatDistance(_ distance: Double) -> String {
+        
+        let distanceMeters = Measurement(value: distance, unit: UnitLength.meters)
+        let miles = distanceMeters.converted(to: UnitLength.miles).value
+        print("\(miles) miles")
+        
+        let numDecimalDigits = (miles >= 4) ? 0 : 1
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.roundingMode = .halfUp
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = numDecimalDigits
+        
+        let formattedDistance: String = formatter.string(for: miles)!
+        return "Distance: \(formattedDistance) miles"
     }
 }
