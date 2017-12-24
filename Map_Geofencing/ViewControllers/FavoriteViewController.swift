@@ -8,16 +8,17 @@
 
 import UIKit
 import CoreData
+import FirebaseAuth
 
 class FavoriteViewController: UIViewController {
 
     // MARK: - Properties
     fileprivate let plantCellIdentifier = "favoriteCell"
     var photoStore: PhotoStore!
+    var favoritePlants: [Plant]?
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
-        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", "users.email", "email@gmail.com")
+    lazy var fetchedResultsController: NSFetchedResultsController<User> = {
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.sortDescriptors = []
         
         let fetchedResultsController = NSFetchedResultsController(
@@ -42,13 +43,46 @@ class FavoriteViewController: UIViewController {
         
         tableView.dataSource = self
         
+        if let user = Auth.auth().currentUser {
+            let predicate = NSPredicate(format: "%K == %@", "uid", user.uid)
+            fetchedResultsController.fetchRequest.predicate = predicate
+        }
+        
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
         }
+        
+        if let users = fetchedResultsController.fetchedObjects {
+            let user = Array(users).first! as User
+            favoritePlants = Array(user.favoritePlants!) as? [Plant]
+        }
+        tableView.reloadData()
      
         print("fetched result: ", fetchedResultsController.fetchedObjects!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let user = Auth.auth().currentUser {
+            let predicate = NSPredicate(format: "%K == %@", "uid", user.uid)
+            fetchedResultsController.fetchRequest.predicate = predicate
+        }
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        
+        if let users = fetchedResultsController.fetchedObjects {
+            let user = Array(users).first! as User
+            favoritePlants = Array(user.favoritePlants!) as? [Plant]
+        }
+        
+        tableView.reloadData()
     }
     
     // Prepare for segue to detail view controller
@@ -56,10 +90,9 @@ class FavoriteViewController: UIViewController {
         
         if let cell = sender as? FavoriteTableViewCell,
             let selectedIndexPath = tableView.indexPath(for: cell) {
-            
             let detailVC = segue.destination as! DetailViewController
-            let plant = fetchedResultsController.object(at: selectedIndexPath)
-            detailVC.plant = plant
+            // let plant = fetchedResultsController.object(at: selectedIndexPath)
+            // detailVC.plant = plant
         }
         
     }
@@ -79,17 +112,15 @@ extension FavoriteViewController: UITableViewDelegate {
 
 extension FavoriteViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            return 0
-        }
-        return sections.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sectionInfo = fetchedResultsController.sections?[section] else {
+        if favoritePlants != nil {
+            return favoritePlants!.count
+        } else {
             return 0
         }
-        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -156,11 +187,10 @@ extension FavoriteViewController {
             return
         }
         
-        let plant = fetchedResultsController.object(at: indexPath)
+        let plant = favoritePlants?[indexPath.row]
         
-        cell.scientificName.text = plant.scientificName
-        cell.commonName.text = plant.commonName
-        
+        cell.scientificName.text = plant?.scientificName
+        cell.commonName.text = plant?.commonName
     }
 }
 

@@ -140,6 +140,7 @@ extension AppDelegate {
                 plant.sunExposure = sunExposure
                 plant.waterNeeds = waterNeeds
 
+                /*
                 let users = jsonDictionary["users"] as! [[String:Any]]
                 
                 for user in users {
@@ -147,6 +148,7 @@ extension AppDelegate {
                     _user.email = user["email"] as! String
                     _user.addToFavoritePlants(plant)
                 }
+                 */
                 
                 for photo in photos {
                     let image = Photo(context: self.photoStore.managedContext)

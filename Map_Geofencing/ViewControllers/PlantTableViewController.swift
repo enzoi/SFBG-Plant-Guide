@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FirebaseAuth
 
 class PlantTableViewController: UIViewController {
 
@@ -38,7 +39,7 @@ class PlantTableViewController: UIViewController {
         return fetchedResultsController
     }()
 
-    @IBOutlet weak var searchBar: UISearchBar!
+    // @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -179,6 +180,7 @@ extension PlantTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell", for: indexPath) as! PlantTableViewCell
         
+        cell.delegate = self
         configure(cell: cell, for: indexPath)
         return cell
     }
@@ -215,7 +217,18 @@ extension PlantTableViewController {
         } else {
             plant = filteredPlants![indexPath.row]
         }
-            
+        
+        guard let users = plant.users else { return }
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        for user in users {
+            if (user as! User).uid == currentUser.uid {
+                cell.isFavorite = true
+            } else {
+                cell.isFavorite = false
+            }
+        }
+        
         // Getting photos from plant
         let photos = Array(plant.photo!) as! [Photo]
         
@@ -251,13 +264,78 @@ extension PlantTableViewController {
 
 extension PlantTableViewController: ToggleFavoriteDelegate {
     
-    func toggleFavorite(cell: UITableViewCell) {
+    func toggleFavorite(cell: PlantTableViewCell) {
+        
+        print("toggleFavorite called")
+        
+        guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        let plant = fetchedResultsController.object(at: indexPathTapped)
+        let moc = self.photoStore.managedContext
+        
+        if plant.users?.count == 0 {
 
-        if let indexPathTapped = tableView.indexPath(for: cell) {
-            print(fetchedResultsController.object(at: indexPathTapped))
-        // TODO: add current user to the plant
+            if currentUser.uid != "" { // there is current user logged in
+
+                let fetchRequest =  NSFetchRequest<NSManagedObject>(entityName: "User")
+                
+                // Fetch photos associalted with the specific pin
+                let predicate = NSPredicate(format: "uid == %@", currentUser.uid)
+                fetchRequest.predicate = predicate
+                
+                moc.perform {
+                    
+                    guard let users = try? moc.fetch(fetchRequest) else { return }
+                    
+                    if users.count == 0 { // no user in core data yet
+                        // Create a user
+                        let theUser = User(context: moc)
+                        theUser.uid = currentUser.uid
+                        theUser.addToFavoritePlants(plant)
+                        
+                    } else {
+                        let theUser = users.first! as! User
+                        theUser.addToFavoritePlants(plant)
+                    }
+                    
+                    do {
+                        try moc.save()
+                    } catch {
+                        moc.rollback()
+                    }
+
+                }
+
+            } else {
+                // TODO: Alert View Controller notifies only signed in user can add favorite
+                
+            }
             
+        } else { // Remove user from plant
+
+            let fetchRequest =  NSFetchRequest<NSManagedObject>(entityName: "User")
+
+            // Fetch photos associalted with the specific pin
+            let predicate = NSPredicate(format: "uid == %@", currentUser.uid)
+            fetchRequest.predicate = predicate
             
+            moc.perform {
+                
+                if let users = try? moc.fetch(fetchRequest) {
+                    let currentUser = users.first as! User
+                    currentUser.removeFromFavoritePlants(plant)
+                }
+                
+                do {
+                    try moc.save()
+                } catch {
+                    moc.rollback()
+                }
+                
+                // toggle favorite button
+                cell.isFavorite = false
+            }
         }
     }
     

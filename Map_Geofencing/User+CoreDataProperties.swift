@@ -17,6 +17,7 @@ extension User {
     }
 
     @NSManaged public var email: String?
+    @NSManaged public var uid: String
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
     @NSManaged public var favoritePlants: NSSet?

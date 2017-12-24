@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ToggleFavoriteDelegate: class { // Define Protocol
-    func toggleFavorite(cell: UITableViewCell)
+    func toggleFavorite(cell: PlantTableViewCell)
 }
 
 class PlantTableViewCell: UITableViewCell {
@@ -25,9 +25,7 @@ class PlantTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        setUpToggleFavorite()
-        
+        starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
         starButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         starButton.addTarget(self, action: #selector(handleMarkAsFavorite), for: .touchUpInside)
         self.accessoryView = starButton
@@ -41,19 +39,17 @@ class PlantTableViewCell: UITableViewCell {
     
     @objc private func handleMarkAsFavorite() {
         print("favorite button pressed")
-        setUpToggleFavorite()
         delegate?.toggleFavorite(cell: self)
-        
+        setUpToggleFavorite()
     }
     
-    // TODO: toggle buton image when clicked
     func setUpToggleFavorite() {
-        if isFavorite {
-            starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
-            isFavorite = false
-        } else {
+        if isFavorite == false {
             starButton.setImage(#imageLiteral(resourceName: "icons8-star-filled-40"), for: .normal)
             isFavorite = true
+        } else {
+            starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
+            isFavorite = false
         }
     }
 
