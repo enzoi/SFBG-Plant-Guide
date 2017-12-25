@@ -94,11 +94,13 @@ class FavoriteViewController: UIViewController {
         
         if let cell = sender as? FavoriteTableViewCell,
             let selectedIndexPath = tableView.indexPath(for: cell) {
+            
             let detailVC = segue.destination as! DetailViewController
-            // let plant = fetchedResultsController.object(at: selectedIndexPath)
-            // detailVC.plant = plant
+            guard let favoritePlants = favoritePlants else { return }
+            
+            let plant = favoritePlants[selectedIndexPath.row]
+            detailVC.plant = plant
         }
-        
     }
 }
 
