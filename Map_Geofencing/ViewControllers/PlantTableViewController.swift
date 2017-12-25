@@ -215,8 +215,10 @@ extension PlantTableViewController {
         for user in users {
             if (user as! User).uid == currentUser.uid {
                 cell.isFavorite = true
+                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-star-filled-40"), for: .normal)
             } else {
                 cell.isFavorite = false
+                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
             }
         }
         

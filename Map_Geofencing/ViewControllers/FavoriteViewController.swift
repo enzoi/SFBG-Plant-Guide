@@ -55,14 +55,14 @@ class FavoriteViewController: UIViewController {
         }
         
         if let users = fetchedResultsController.fetchedObjects {
-            let user = Array(users).first! as User
-            favoritePlants = Array(user.favoritePlants!) as? [Plant]
-        } else {
-            favoritePlants = []
+            if users.count > 0 {
+                let user = Array(users).first! as User
+                favoritePlants = Array(user.favoritePlants!) as? [Plant]
+            } else {
+                favoritePlants = []
+            }
         }
         tableView.reloadData()
-     
-        print("fetched result: ", fetchedResultsController.fetchedObjects!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,12 +80,13 @@ class FavoriteViewController: UIViewController {
         }
         
         if let users = fetchedResultsController.fetchedObjects {
-            let user = Array(users).first! as User
-            favoritePlants = Array(user.favoritePlants!) as? [Plant]
-        } else {
-            favoritePlants = []
+            if users.count > 0 {
+                let user = Array(users).first! as User
+                favoritePlants = Array(user.favoritePlants!) as? [Plant]
+            } else {
+                favoritePlants = []
+            }
         }
-        
         tableView.reloadData()
     }
     
