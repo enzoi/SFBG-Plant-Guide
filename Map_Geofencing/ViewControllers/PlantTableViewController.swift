@@ -144,18 +144,9 @@ extension PlantTableViewController: UISearchResultsUpdating {
     
     // called when text added or removed
     func updateSearchResults(for searchController: UISearchController) {
-        
-        filteredPlants = self.fetchedResultsController.fetchedObjects
-        
-        let searchText = self.searchController.searchBar.text
-        
-        if !(searchBarIsEmpty()) {
-            searchPredicate = NSPredicate(format: "scientificName contains[c] %@", searchText!)
-            filteredPlants = self.fetchedResultsController.fetchedObjects?.filter() {
-                return self.searchPredicate!.evaluate(with: $0)
-                } as [Plant]?
-            self.tableView.reloadData()
-        }
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
     }
 }
 
