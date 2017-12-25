@@ -190,9 +190,13 @@ extension FavoriteViewController {
         }
         
         let plant = favoritePlants?[indexPath.row]
+        let photos = plant?.photo?.allObjects
+        if let photo = photos?.first as? Photo, let imageData = photo.imageData {
+            cell.scientificName.text = plant?.scientificName
+            cell.commonName.text = plant?.commonName
+            cell.plantImageView.image = UIImage(data: imageData as Data ,scale:1.0)
+        }
         
-        cell.scientificName.text = plant?.scientificName
-        cell.commonName.text = plant?.commonName
     }
 }
 

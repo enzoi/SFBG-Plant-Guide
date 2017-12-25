@@ -247,27 +247,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Map_Geofencing/ViewControllers/FavoriteViewController.swift"
-            timestampString = "535880739.814705"
+            timestampString = "535882692.617197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "configure(cell:for:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Map_Geofencing/ViewControllers/FavoriteViewController.swift"
-            timestampString = "535880739.814705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "configure(cell:for:)"
             landmarkType = "7">
          </BreakpointContent>
