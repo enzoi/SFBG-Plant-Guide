@@ -230,18 +230,19 @@ extension PlantTableViewController {
             photoStore.fetchImage(for: photo, completion: { (result) -> Void in
                 
                 if case let .success(image) = result {
+
+                    DispatchQueue.main.async {
+                        if cell.plantImageView.image == nil {
+                            cell.plantImageView.image = image
+                        }
+                        cell.scientificName.text = plant.scientificName
+                        cell.commonName.text = plant.commonName
+                    }
                     
                     // Save image to plant instance
                     let data = UIImagePNGRepresentation(image) as NSData?
                     photo.imageData = data
                     plant.addToPhoto(photo)
-                    
-                    // TODO: select only one image and assign as icon 
-                    DispatchQueue.main.async {
-                        cell.plantImageView.image = UIImage(data: photo.imageData! as Data, scale: 1.0)
-                        cell.scientificName.text = plant.scientificName
-                        cell.commonName.text = plant.commonName
-                    }
                     
                 } else {
                     print("something wrong")
