@@ -85,6 +85,7 @@ class FavoriteViewController: UIViewController {
                 favoritePlants = Array(user.favoritePlants!) as? [Plant]
             } else {
                 favoritePlants = []
+                getAlertView(title: "No User Found", error: "You need to log in to save or view your favorite plants")
             }
         }
         tableView.reloadData()
@@ -198,6 +199,18 @@ extension FavoriteViewController {
             cell.plantImageView.image = UIImage(data: imageData as Data ,scale:1.0)
         }
         
+    }
+}
+
+// MARK - FavoriteViewController (AlertController)
+
+extension UIViewController {
+    
+    func getAlertView(title: String, error: String) {
+        let alertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel)
+        alertController.addAction(dismissAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
