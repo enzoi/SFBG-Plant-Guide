@@ -236,20 +236,17 @@ extension PlantTableViewController {
                     photo.imageData = data
                     plant.addToPhoto(photo)
                     
+                    // TODO: select only one image and assign as icon 
+                    DispatchQueue.main.async {
+                        cell.plantImageView.image = UIImage(data: photo.imageData! as Data, scale: 1.0)
+                        cell.scientificName.text = plant.scientificName
+                        cell.commonName.text = plant.commonName
+                    }
+                    
                 } else {
                     print("something wrong")
                 }
             })
-        }
-        
-        if let photo = (Array(plant.photo!) as! [Photo]).first {
-        
-            DispatchQueue.main.async {
-                
-                cell.plantImageView.image = UIImage(data: photo.imageData! as Data, scale: 1.0)
-                cell.scientificName.text = plant.scientificName
-                cell.commonName.text = plant.commonName
-            }
         }
 
     }

@@ -21,22 +21,8 @@
                 <subviews>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SiQ-E5-mKF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                        <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="n1M-5B-nOO">
-                                <rect key="frame" x="168" y="205" width="39" height="37"/>
-                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="pageChange:" destination="KGk-i7-Jjw" eventType="valueChanged" id="56E-49-Y5g"/>
-                                </connections>
-                            </pageControl>
-                        </subviews>
                         <constraints>
                             <constraint firstAttribute="height" constant="300" id="4ut-6s-2h4"/>
-                            <constraint firstAttribute="trailing" secondItem="n1M-5B-nOO" secondAttribute="trailing" constant="168" id="JMQ-Mc-BUo"/>
-                            <constraint firstItem="n1M-5B-nOO" firstAttribute="centerX" secondItem="SiQ-E5-mKF" secondAttribute="centerX" id="bUX-wd-FiM"/>
-                            <constraint firstItem="n1M-5B-nOO" firstAttribute="top" secondItem="SiQ-E5-mKF" secondAttribute="top" constant="205" id="cUl-80-I4v"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="n1M-5B-nOO" secondAttribute="bottom" id="gE2-v2-5Dv"/>
                             <constraint firstAttribute="width" constant="375" id="zeg-l9-AVQ"/>
                         </constraints>
                     </scrollView>
@@ -49,7 +35,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="pageControl" destination="n1M-5B-nOO" id="wgL-ge-LXc"/>
                 <outlet property="scrollView" destination="SiQ-E5-mKF" id="UH2-Gi-YBM"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="93"/>

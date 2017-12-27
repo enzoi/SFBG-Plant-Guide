@@ -100,10 +100,155 @@
              "description": "",
              "photos": [
                         {
-                        "description" : "shape",
+                        "description" : "flower",
                         "remoteURL" : "https://selectree.calpoly.edu/images/1400/96/original/leptospermum-scoparium-flowers-2.jpg"
+                        }
+                        ]
+             },
+             {
+             "uid": "adf214g2s3adf",
+             "scientificName": "Pinus Pinea",
+             "commonName": [ "Italian Stone Pine" ],
+             "other_names": [""],
+             "family": "",
+             "genus": "",
+             "species": "",
+             "cultivar": "",
+             "createdAt": "",
+             "updatedAt": "",
+             "climateZones": "6-9, 13,24",
+             "growthRate": "",
+             "plantType": "Tree",
+             
+             "size": { "height": { "min": 40, "max": 80, "unit": "ft" },
+             "width": { "min": 15, "max": 30, "unit": "ft" } },
+             "foliageColor": { "front": "green", "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "waterNeeds": "little or no water to moderate water",
+             "location": { "id": 1234563,
+             "coordinate": {
+             "latitude": 37.767312,
+             "longitude": -122.467475 },
+             "gardenName": [],
+             "bedNumber": [] },
+             "bloomTime": [],
+             "bloomColor": [],
+             "bloomShape": "",
+             "flowerFragrance": [""],
+             "sunExposure": "full sun",
+             "pruning": "",
+             "soilPH_min": 0.0,
+             "soilPH_max": 0.0,
+             "uses": "",
+             "description": "",
+             "photos": [
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Pino_Monserrato.JPG/800px-Pino_Monserrato.JPG"
+                        },
+                        {
+                        "description" : "leaf",
+                        "remoteURL" : "https://oregonstate.edu/dept/ldplants/images/pipinea70.jpg"
+                        }
+                        ]
+             },
+             {
+             "uid": "c2d213g2s3adf",
+             "scientificName": "Rhamnus alaternus",
+             "commonName": [ "Italian buckthorn" ],
+             "other_names": [""],
+             "family": "",
+             "genus": "",
+             "species": "",
+             "cultivar": "",
+             "createdAt": "2017-04-23T18:25:43.511Z",
+             "updatedAt": "",
+             "climateZones": "4-24",
+             "growthRate": "fast",
+             "plantType": "Shrub or Small Tree",
+             
+             "size": { "height": { "min": 10, "max": 20, "unit": "ft" },
+             "width": { "min": 5, "max": 15, "unit": "ft" } },
+             "foliageColor": { "front": "green", "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "waterNeeds": "Water infrequently",
+             "location": { "id": 1232567,
+             "coordinate": {
+             "latitude": 37.767388,
+             "longitude": -122.471075 },
+             "gardenName": [],
+             "bedNumber": [] },
+             "bloomTime": [],
+             "bloomColor": [],
+             "bloomShape": "",
+             "flowerFragrance": [""],
+             "sunExposure": "full sun",
+             "pruning": "",
+             "soilPH_min": 0.0,
+             "soilPH_max": 0.0,
+             "uses": "",
+             "description": "",
+             "photos": [
+                        {
+                        "description" : "fruit",
+                        "remoteURL" : "https://upload.wikimedia.org/wikipedia/commons/7/73/Rhamnaceae_-_Rhamnus_alaternus.JPG"
+                        }
+                        ]
+             },
+             {
+             "uid": "12f213g2s3adf",
+             "scientificName": "Sequoia sempervirens",
+             "commonName": [ "Coast redwood" ],
+             "other_names": [""],
+             "family": "",
+             "genus": "",
+             "species": "",
+             "cultivar": "",
+             "createdAt": "",
+             "updatedAt": "",
+             "climateZones": "4-9, 14-24",
+             "growthRate": "fast",
+             "plantType": "Tree",
+             
+             "size": { "height": { "min": 0, "max": 300, "unit": "ft" },
+             "width": { "min": 0, "max": 20, "unit": "ft" } },
+             "foliageColor": { "front": "green", "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "waterNeeds": "Water regularly",
+             "location": { "id": 1234567,
+             "coordinate": {
+             "latitude": 37.766621,
+             "longitude": -122.472009 },
+             "gardenName": ["Native California"],
+             "bedNumber": [] },
+             "bloomTime": [],
+             "bloomColor": [],
+             "bloomShape": "",
+             "flowerFragrance": [""],
+             "sunExposure": "Full Sun",
+             "pruning": "",
+             "soilPH_min": 0.0,
+             "soilPH_max": 0.0,
+             "uses": "",
+             "description": "",
+             "photos": [
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://upload.wikimedia.org/wikipedia/commons/4/48/Sequoia_sempervirens_Big_Basin_Redwoods_State_Park_7.jpg"
+                        },
+                        {
+                        "description" : "leaf",
+                        "remoteURL" : "https://oregonstate.edu/dept/ldplants/images/sese33.jpg"
                         }
                         ]
              }
              
-             ]}
+             ]
+
+}

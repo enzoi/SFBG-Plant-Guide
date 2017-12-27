@@ -13,7 +13,7 @@ class PlantPhotosTableViewCell: UITableViewCell, UIScrollViewDelegate {
     // @IBOutlet weak var scrollView: UIScrollView!
     // @IBOutlet weak var pageControl: UIPageControl!
     var scrollView = UIScrollView()
-    var pageControl : UIPageControl = UIPageControl(frame:CGRect(x: 50, y: 215, width: 200, height: 50))
+    var pageControl : UIPageControl = UIPageControl(frame:CGRect(x: 137.5, y: 275, width: 100, height: 20))
     
     var pages = [UIView?]()
     var transitioning = false
@@ -26,7 +26,6 @@ class PlantPhotosTableViewCell: UITableViewCell, UIScrollViewDelegate {
                 return
             }
             let photos = item.photos
-            print("photos in item: ", photos)
             imageArray = photos.map{ UIImage(data: $0.imageData! as Data, scale: 1.0)! }
             print(item, photos, imageArray, imageArray.count)
         }
