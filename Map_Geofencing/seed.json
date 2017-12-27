@@ -41,15 +41,24 @@
              "photos": [
                         {
                         "id": "alasdfdfkjaf",
-                        "description" : "flower",
+                        "description" : "shape",
                         "remoteURL" : "https://selectree.calpoly.edu/images/0100/32/original/aesculus-californica-tree-flowering.jpg"
                         },
                         {
                         "id": "aldf123gfg",
-                        "desciption" : "seed",
+                        "desciption" : "flower",
                         "remoteURL" : "https://selectree.calpoly.edu/images/0100/32/original/aesculus-californica-flowers.jpg"
-                        }
-                        ]
+                        },
+                        {
+                        "id": "aldf12324fg",
+                        "desciption" : "leaf",
+                        "remoteURL" : "https://selectree.calpoly.edu/images/0100/32/original/aesculus-californica-leaves.jpg"
+                        },
+                        {
+                        "id": "aldf12324f2",
+                        "desciption" : "fruit",
+                        "remoteURL" : "https://selectree.calpoly.edu/images/0100/32/original/aesculus-californica-fruit.jpg"
+                        }]
              },
              {
              "uid": "a2f213g2s3adf",

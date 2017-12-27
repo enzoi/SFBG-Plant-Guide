@@ -98,6 +98,7 @@ class PhotoStore {
             (data, response, error) -> Void in
             
             photo.imageData = data as! NSData
+            print("imageData: ", photo.imageData)
             self.saveContext()
             
             let result = self.processImageRequest(data: data, error: error)

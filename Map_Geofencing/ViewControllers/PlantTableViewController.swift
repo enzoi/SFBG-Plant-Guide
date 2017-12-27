@@ -225,7 +225,7 @@ extension PlantTableViewController {
         // Getting photos from plant
         let photos = Array(plant.photo!) as! [Photo]
         
-        if let photo = photos.first {
+        for photo in photos {
             
             photoStore.fetchImage(for: photo, completion: { (result) -> Void in
                 
@@ -236,17 +236,20 @@ extension PlantTableViewController {
                     photo.imageData = data
                     plant.addToPhoto(photo)
                     
-                    DispatchQueue.main.async {
-                        
-                        cell.plantImageView.image = image
-                        cell.scientificName.text = plant.scientificName
-                        cell.commonName.text = plant.commonName
-                    }
-                    
                 } else {
                     print("something wrong")
                 }
             })
+        }
+        
+        if let photo = (Array(plant.photo!) as! [Photo]).first {
+        
+            DispatchQueue.main.async {
+                
+                cell.plantImageView.image = UIImage(data: photo.imageData! as Data, scale: 1.0)
+                cell.scientificName.text = plant.scientificName
+                cell.commonName.text = plant.commonName
+            }
         }
 
     }

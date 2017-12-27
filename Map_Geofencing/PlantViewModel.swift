@@ -133,9 +133,9 @@ extension PlantViewModel: UITableViewDelegate {
         print("cell tapped")
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1.0
-    }
+    // func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    //     return 1.0
+    // }
 }
 
 
@@ -147,7 +147,6 @@ extension PlantViewModel: HeaderViewDelegate {
         
         if item.isCollapsible {
             
-            print(item.isCollapsed)
             // Toggle collapse
             let collapsed = !item.isCollapsed
             item.isCollapsed = collapsed
@@ -184,10 +183,10 @@ class PlantViewModelPhotosItem: PlantViewModelItem {
     }
     
     var rowCount: Int {
-        return photos.count
+        return 1
     }
     
-    var isCollapsed = true
+    var isCollapsed = false
     
     var photos: [Photo]
     var image: UIImage?
@@ -211,7 +210,7 @@ class PlantViewModelNamesItem: PlantViewModelItem {
         return 1
     }
     
-    var isCollapsed = true
+    var isCollapsed = false
     
     var scientificName: String
     var commonName: String
@@ -235,7 +234,7 @@ class PlantViewModelPropertiesItem: PlantViewModelItem {
         return 1
     }
     
-    var isCollapsed = true
+    var isCollapsed = false
     
     var plantType: String
     var climateZones: String
