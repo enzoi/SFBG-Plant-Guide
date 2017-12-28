@@ -260,33 +260,12 @@ extension PlantTableViewController {
             }
         }
         
-        // Getting photos from plant
         let photos = Array(plant.photo!) as! [Photo]
+        let imageData = photos.first?.imageData
         
-        for photo in photos {
-            
-            photoStore.fetchImage(for: photo, completion: { (result) -> Void in
-                
-                if case let .success(image) = result {
-
-                    DispatchQueue.main.async {
-                        if cell.plantImageView.image == nil {
-                            cell.plantImageView.image = image
-                        }
-                        cell.scientificName.text = plant.scientificName
-                        cell.commonName.text = plant.commonName
-                    }
-                    
-                    // Save image to plant instance
-                    let data = UIImagePNGRepresentation(image) as NSData?
-                    photo.imageData = data
-                    plant.addToPhoto(photo)
-                    
-                } else {
-                    print("something wrong")
-                }
-            })
-        }
+        cell.scientificName.text = plant.scientificName
+        cell.commonName.text = plant.commonName
+        cell.plantImageView.image = UIImage(data: imageData as! Data)
 
     }
 

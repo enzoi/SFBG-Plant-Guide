@@ -56,6 +56,23 @@ class MapViewController: UIViewController {
         
         // Fetch all plant markers
         fetchAllPlantMarkers()
+        
+        // Fetch plant images to core data
+        for plant in fetchedPlants {
+            
+            let photos = plant.photo?.allObjects as! [Photo]
+            
+            for photo in photos {
+            
+                guard let url = photo.remoteURL else { return }
+                let data = try? Data(contentsOf: url as URL) // error handler?
+                
+                photo.imageData = data! as NSData
+                plant.addToPhoto(photo)
+            }
+        }
+        
+        photoStore.saveContext()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,19 +160,8 @@ class MapViewController: UIViewController {
                         plantMarker.snippet = plant.commonName
                         plantMarker.map = self.mapView
                         
-                        let photos = plant.photo?.allObjects as! [Photo]
-        
-                        for photo in photos {
-                            
-                            guard let url = photo.remoteURL else { return }
-                            let data = try? Data(contentsOf: url as URL)
-                            
-                            photo.imageData = data! as NSData
-                            plant.addToPhoto(photo)
-                        }
+                        self.hideActivityIndicator(uiView: self.view)
                     }
-                    
-                    self.hideActivityIndicator(uiView: self.view)
                     
                 } else {
                     print("Nothing to fetch")
@@ -227,7 +233,7 @@ extension MapViewController: GMSMapViewDelegate {
         let plantImage =  UIImageView(frame: CGRect(x: view.frame.origin.x + 2.5, y: view.frame.origin.y + 2.5, width: 45, height: 45))
         plantImage.layer.cornerRadius = 22.5
         // TODO: Get image data from core data(using background fetch & cache)
-        // plantImage.image = marker.icon!
+        // plantImage.image =
         plantImage.clipsToBounds = true
         view.addSubview(plantImage)
         
