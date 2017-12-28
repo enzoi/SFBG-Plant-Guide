@@ -58,8 +58,6 @@ class PhotoStore {
     
     func processImageRequest(data: Data?, error: Error?) -> ImageResult {
         
-        print("processImageRequest called", UIImage(data: data!))
-        
         guard
             let imageData = data,
             let image = UIImage(data: imageData) else {
@@ -94,7 +92,7 @@ class PhotoStore {
         
         print("photoURL: ", photoURL)
         
-        let request = URLRequest(url: photoURL as! URL)
+        let request = URLRequest(url: photoURL as URL)
         
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in

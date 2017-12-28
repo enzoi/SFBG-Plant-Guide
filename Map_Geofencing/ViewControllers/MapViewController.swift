@@ -18,6 +18,11 @@ class MapViewController: UIViewController {
     var userCurrentLocation:CLLocation?
     lazy var mapView = GMSMapView()
     
+    var container: UIView = UIView()
+    var loadingView: UIView = UIView()
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,6 +74,40 @@ class MapViewController: UIViewController {
         
     }
     
+    // Activity Indicator
+    func showActivityIndicator(uiView: UIView) {
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColorFromHex(rgbValue: 0xffffff, alpha: 0.3)
+        
+        loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        loadingView.center = uiView.center
+        loadingView.backgroundColor = UIColorFromHex(rgbValue: 0x444444, alpha: 0.7)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        
+        loadingView.addSubview(activityIndicator)
+        container.addSubview(loadingView)
+        uiView.addSubview(container)
+        activityIndicator.startAnimating()
+    }
+    
+    func hideActivityIndicator(uiView: UIView) {
+        activityIndicator.stopAnimating()
+        container.removeFromSuperview()
+    }
+    
+    func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+        let blue = CGFloat(rgbValue & 0xFF)/256.0
+        return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+    }
+    
     // Change map types
     func mapType(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -83,6 +122,8 @@ class MapViewController: UIViewController {
     
     // Fetch all saved pins with annotation
     func fetchAllPlantMarkers() {
+        
+        showActivityIndicator(uiView: self.view)
         
         photoStore.fetchAllMarkers() { (plantsResult) in
             
@@ -102,7 +143,19 @@ class MapViewController: UIViewController {
                         plantMarker.snippet = plant.commonName
                         plantMarker.map = self.mapView
                         
+                        let photos = plant.photo?.allObjects as! [Photo]
+        
+                        for photo in photos {
+                            
+                            guard let url = photo.remoteURL else { return }
+                            let data = try? Data(contentsOf: url as URL)
+                            
+                            photo.imageData = data! as NSData
+                            plant.addToPhoto(photo)
+                        }
                     }
+                    
+                    self.hideActivityIndicator(uiView: self.view)
                     
                 } else {
                     print("Nothing to fetch")
@@ -170,10 +223,11 @@ extension MapViewController: GMSMapViewDelegate {
         let view = UIView(frame: CGRect.init(x: 0, y: 0, width: 225, height: 50))
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 25
-        
+
         let plantImage =  UIImageView(frame: CGRect(x: view.frame.origin.x + 2.5, y: view.frame.origin.y + 2.5, width: 45, height: 45))
         plantImage.layer.cornerRadius = 22.5
-        plantImage.image = UIImage(named: "sample")
+        // TODO: Get image data from core data(using background fetch & cache)
+        // plantImage.image = marker.icon!
         plantImage.clipsToBounds = true
         view.addSubview(plantImage)
         

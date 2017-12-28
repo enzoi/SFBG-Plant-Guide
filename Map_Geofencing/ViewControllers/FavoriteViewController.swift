@@ -25,7 +25,7 @@ class FavoriteViewController: UIViewController {
             fetchRequest: fetchRequest,
             managedObjectContext: self.photoStore.managedContext,
             sectionNameKeyPath: nil,
-            cacheName: nil)
+            cacheName: "User")
         
         fetchedResultsController.delegate = self
         
