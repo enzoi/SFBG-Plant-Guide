@@ -232,8 +232,12 @@ extension MapViewController: GMSMapViewDelegate {
 
         let plantImage =  UIImageView(frame: CGRect(x: view.frame.origin.x + 2.5, y: view.frame.origin.y + 2.5, width: 45, height: 45))
         plantImage.layer.cornerRadius = 22.5
-        // TODO: Get image data from core data(using background fetch & cache)
-        // plantImage.image =
+
+        let plant = fetchedPlants.filter{ $0.scientificName == marker.title }.first
+        let photos = plant?.photo?.allObjects as! [Photo]
+        let imageData = photos.first?.imageData
+        
+        plantImage.image = UIImage(data: imageData as! Data)
         plantImage.clipsToBounds = true
         view.addSubview(plantImage)
         
