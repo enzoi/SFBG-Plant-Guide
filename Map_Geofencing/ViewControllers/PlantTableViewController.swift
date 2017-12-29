@@ -265,6 +265,7 @@ extension PlantTableViewController {
         
         cell.scientificName.text = plant.scientificName
         cell.commonName.text = plant.commonName
+        // image not available yet
         cell.plantImageView.image = UIImage(data: imageData as! Data)
 
     }
@@ -319,8 +320,7 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
                 }
 
             } else {
-                // TODO: Alert View Controller notifies only signed in user can add favorite
-                
+                getAlertView(title: "Cannot add it to favorite plants", error: "Sign in required to save a plant to favorite. Please log in first")
             }
             
         } else { // Remove user from plant

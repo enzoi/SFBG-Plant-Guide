@@ -33,6 +33,7 @@
 		CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */; };
 		CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEE71FCDF75B00E9931C /* Assets.xcassets */; };
 		CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */; };
+		CFB4EE0B1FF62BC3003DD45A /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4EE0A1FF62BC3003DD45A /* GCDBlackBox.swift */; };
 		CFCDF1C21FE392B100C15C43 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF1C11FE392B100C15C43 /* ImageStore.swift */; };
 		CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */; };
 		CFD3C2711FDD0C7C0084637B /* PlantNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C26F1FDD0C7C0084637B /* PlantNameTableViewCell.swift */; };
@@ -108,6 +109,7 @@
 		CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantTableViewCell.swift; path = ViewControllers/PlantTableViewCell.swift; sourceTree = "<group>"; };
 		CF97BEE71FCDF75B00E9931C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CFB4EE0A1FF62BC3003DD45A /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		CFCDF1C11FE392B100C15C43 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		CFD3C24E1FD7BCF00084637B /* SFBG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				CF7429101FECC6BF004E26AE /* GoogleService-Info.plist */,
 				CF74290A1FEB6D1A004E26AE /* Map_Geofencing.entitlements */,
 				CF97BEDD1FCDD67500E9931C /* style.json */,
+				CFB4EE0A1FF62BC3003DD45A /* GCDBlackBox.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				CF8A07121FEF680E005F9C19 /* Plant+CoreDataClass.swift in Sources */,
 				CF97BEE21FCDEA7300E9931C /* PlantTableViewController.swift in Sources */,
 				CFCDF1C21FE392B100C15C43 /* ImageStore.swift in Sources */,
+				CFB4EE0B1FF62BC3003DD45A /* GCDBlackBox.swift in Sources */,
 				CFE592A91FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift in Sources */,
 				CFE592A81FDF4C9D00F0BBE2 /* User+CoreDataClass.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,

@@ -56,28 +56,12 @@ class MapViewController: UIViewController {
         
         // Fetch all plant markers
         fetchAllPlantMarkers()
-        
-        // Fetch plant images to core data
-        for plant in fetchedPlants {
-            
-            let photos = plant.photo?.allObjects as! [Photo]
-            
-            for photo in photos {
-            
-                guard let url = photo.remoteURL else { return }
-                let data = try? Data(contentsOf: url as URL) // error handler?
-                
-                photo.imageData = data! as NSData
-                plant.addToPhoto(photo)
-            }
-        }
-        
-        photoStore.saveContext()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // TODO: Check if there is an update then fetch again
         mapView.clear()
         fetchAllPlantMarkers()
     }
@@ -160,7 +144,17 @@ class MapViewController: UIViewController {
                         plantMarker.snippet = plant.commonName
                         plantMarker.map = self.mapView
                         
-                        self.hideActivityIndicator(uiView: self.view)
+                        let photos = plant.photo?.allObjects as! [Photo]
+                        
+                        for photo in photos {
+                            
+                            self.photoStore.fetchImage(for: photo, completion: { (result) in
+                                if case let .success(image) = result {
+                                    self.hideActivityIndicator(uiView: self.view)
+                                }
+                            })
+                        }
+
                     }
                     
                 } else {
@@ -171,7 +165,24 @@ class MapViewController: UIViewController {
                 self.fetchedPlants = []
             }
         }
+    
+    }
+    
+    func imageDataScaledToHeight(_ imageData: Data, height: CGFloat) -> Data {
         
+        let image = UIImage(data: imageData)!
+        let oldHeight = image.size.height
+        let scaleFactor = height / oldHeight
+        let newWidth = image.size.width * scaleFactor
+        let newSize = CGSize(width: newWidth, height: height)
+        let newRect = CGRect(x: 0, y: 0, width: newWidth, height: height)
+        
+        UIGraphicsBeginImageContext(newSize)
+        image.draw(in: newRect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return UIImageJPEGRepresentation(newImage!, 0.8)!
     }
     
     @IBAction func mapTypeChange(_ sender: UISegmentedControl!) {
@@ -235,9 +246,12 @@ extension MapViewController: GMSMapViewDelegate {
 
         let plant = fetchedPlants.filter{ $0.scientificName == marker.title }.first
         let photos = plant?.photo?.allObjects as! [Photo]
-        let imageData = photos.first?.imageData
+        let photo = photos.first!
         
-        plantImage.image = UIImage(data: imageData as! Data)
+        performUIUpdatesOnMain {
+            plantImage.image = UIImage(data: photo.imageData! as Data)
+        }
+        
         plantImage.clipsToBounds = true
         view.addSubview(plantImage)
         
