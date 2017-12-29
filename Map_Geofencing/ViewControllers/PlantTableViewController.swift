@@ -247,6 +247,9 @@ extension PlantTableViewController {
             plant = filteredPlants![indexPath.row]
         }
         
+        cell.scientificName.text = plant.scientificName
+        cell.commonName.text = plant.commonName
+        
         let photos = Array(plant.photo!) as! [Photo]
         
         guard let users = plant.users else { return }
@@ -267,9 +270,6 @@ extension PlantTableViewController {
             photoStore.fetchImage(for: photo, completion: { (result) in
                 
                 if case let .success(image) = result {
-                    
-                    cell.scientificName.text = plant.scientificName
-                    cell.commonName.text = plant.commonName
                     
                     self.hideActivityIndicator(uiView: self.view)
                     

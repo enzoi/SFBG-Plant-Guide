@@ -44,7 +44,7 @@ class PlantTableViewCell: UITableViewCell {
         if let imageToDisplay = image {
             plantImageView.image = imageToDisplay
         } else {
-            plantImageView.image = nil
+            plantImageView.image = #imageLiteral(resourceName: "icons8-tree-filled-100")
         }
         
     }
