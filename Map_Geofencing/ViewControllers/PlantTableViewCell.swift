@@ -25,16 +25,28 @@ class PlantTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
+        starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
         starButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         starButton.addTarget(self, action: #selector(handleMarkAsFavorite), for: .touchUpInside)
         self.accessoryView = starButton
+        
+        update(with: nil)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        update(with: nil)
+    }
+    
+    func update(with image: UIImage?) {
+        
+        if let imageToDisplay = image {
+            plantImageView.image = imageToDisplay
+        } else {
+            plantImageView.image = nil
+        }
+        
     }
     
     @objc private func handleMarkAsFavorite() {
@@ -45,10 +57,10 @@ class PlantTableViewCell: UITableViewCell {
     
     func setUpToggleFavorite() {
         if isFavorite == false {
-            starButton.setImage(#imageLiteral(resourceName: "icons8-star-filled-40"), for: .normal)
+            starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
             isFavorite = true
         } else {
-            starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
+            starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
             isFavorite = false
         }
     }

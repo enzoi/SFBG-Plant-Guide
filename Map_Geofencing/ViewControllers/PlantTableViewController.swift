@@ -247,6 +247,8 @@ extension PlantTableViewController {
             plant = filteredPlants![indexPath.row]
         }
         
+        let photos = Array(plant.photo!) as! [Photo]
+        
         guard let users = plant.users else { return }
         guard let currentUser = Auth.auth().currentUser else { return }
         
@@ -259,15 +261,24 @@ extension PlantTableViewController {
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
             }
         }
-        
-        let photos = Array(plant.photo!) as! [Photo]
-        let imageData = photos.first?.imageData
-        
-        cell.scientificName.text = plant.scientificName
-        cell.commonName.text = plant.commonName
-        // image not available yet
-        cell.plantImageView.image = UIImage(data: imageData as! Data)
 
+        if let photo = photos.first {
+        
+            photoStore.fetchImage(for: photo, completion: { (result) in
+                
+                if case let .success(image) = result {
+                    
+                    cell.scientificName.text = plant.scientificName
+                    cell.commonName.text = plant.commonName
+                    
+                    self.hideActivityIndicator(uiView: self.view)
+                    
+                    performUIUpdatesOnMain() {
+                        cell.plantImageView.image = image
+                    }
+                }
+            })
+        }
     }
 
 }
@@ -277,8 +288,6 @@ extension PlantTableViewController {
 extension PlantTableViewController: ToggleFavoriteDelegate {
     
     func toggleFavorite(cell: PlantTableViewCell) {
-        
-        print("toggleFavorite called")
         
         guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
         guard let currentUser = Auth.auth().currentUser else { return }

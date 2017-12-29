@@ -31,7 +31,6 @@
 		CF97BEDE1FCDD67500E9931C /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEDD1FCDD67500E9931C /* style.json */; };
 		CF97BEE21FCDEA7300E9931C /* PlantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */; };
 		CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */; };
-		CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEE71FCDF75B00E9931C /* Assets.xcassets */; };
 		CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */; };
 		CFB4EE0B1FF62BC3003DD45A /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4EE0A1FF62BC3003DD45A /* GCDBlackBox.swift */; };
 		CFCDF1C21FE392B100C15C43 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF1C11FE392B100C15C43 /* ImageStore.swift */; };
@@ -47,6 +46,7 @@
 		CFE592A91FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */; };
 		CFE592AA1FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A41FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift */; };
 		CFE592AB1FDF4C9D00F0BBE2 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A51FDF4C9D00F0BBE2 /* Photo+CoreDataProperties.swift */; };
+		CFF226F11FF6E1FB00B72926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFF226F01FF6E1FB00B72926 /* Assets.xcassets */; };
 		D5F649EF935D3035F6920A22 /* Pods_Map_GeofencingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247BD9A1F272140DB7822364 /* Pods_Map_GeofencingTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,7 +107,6 @@
 		CF97BEDD1FCDD67500E9931C /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = style.json; path = ../style.json; sourceTree = "<group>"; };
 		CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantTableViewController.swift; sourceTree = "<group>"; };
 		CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantTableViewCell.swift; path = ViewControllers/PlantTableViewCell.swift; sourceTree = "<group>"; };
-		CF97BEE71FCDF75B00E9931C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CFB4EE0A1FF62BC3003DD45A /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		CFCDF1C11FE392B100C15C43 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
@@ -127,6 +126,7 @@
 		CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CFE592A41FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CFE592A51FDF4C9D00F0BBE2 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CFF226F01FF6E1FB00B72926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4729FEB26920090F10DFB1A /* Pods-Map_GeofencingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingUITests/Pods-Map_GeofencingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,8 +271,8 @@
 		CF76A1901FA92B6300893C65 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				CFF226F01FF6E1FB00B72926 /* Assets.xcassets */,
 				CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */,
-				CF97BEE71FCDF75B00E9931C /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -489,6 +489,7 @@
 				CFD3C2721FDD0C7C0084637B /* PlantNameTableViewCell.xib in Resources */,
 				CFD3C2761FDD1B970084637B /* PlantPropertiesTableViewCell.xib in Resources */,
 				CF369D2A1FE0A9630064E251 /* HeaderView.xib in Resources */,
+				CFF226F11FF6E1FB00B72926 /* Assets.xcassets in Resources */,
 				CF7429111FECC6BF004E26AE /* GoogleService-Info.plist in Resources */,
 				CFD3C27D1FDE48500084637B /* PlantPhotosTableViewCell.xib in Resources */,
 				CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */,
@@ -496,7 +497,6 @@
 				CF97BEDE1FCDD67500E9931C /* style.json in Resources */,
 				CF76A1661FA9216000893C65 /* Main.storyboard in Resources */,
 				CF4FB2421FCFB48D00CC885E /* seed.json in Resources */,
-				CF97BEE81FCDF75B00E9931C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

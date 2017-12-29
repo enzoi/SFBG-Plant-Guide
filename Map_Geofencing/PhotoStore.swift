@@ -98,7 +98,7 @@ class PhotoStore {
                 if case let .success(image) = result {
                     
                     // Turn image into JPEG data
-                    if let data = UIImageJPEGRepresentation(image, 0.5) {
+                    if let data = UIImageJPEGRepresentation(image, 0.3) {
                         
                         // Write it to Core Data
                         let moc = self.managedContext

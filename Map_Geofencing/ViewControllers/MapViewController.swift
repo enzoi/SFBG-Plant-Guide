@@ -226,19 +226,19 @@ extension MapViewController: GMSMapViewDelegate {
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 25
 
-        let plantImage =  UIImageView(frame: CGRect(x: view.frame.origin.x + 2.5, y: view.frame.origin.y + 2.5, width: 45, height: 45))
-        plantImage.layer.cornerRadius = 22.5
+        let plantImageView =  UIImageView(frame: CGRect(x: view.frame.origin.x + 2.5, y: view.frame.origin.y + 2.5, width: 45, height: 45))
+        plantImageView.layer.cornerRadius = 22.5
 
         let plant = fetchedPlants.filter{ $0.scientificName == marker.title }.first
         let photos = plant?.photo?.allObjects as! [Photo]
         let photo = photos.first!
         
         performUIUpdatesOnMain {
-            plantImage.image = UIImage(data: photo.imageData! as Data)
+            plantImageView.image = UIImage(data: photo.imageData! as Data)
         }
         
-        plantImage.clipsToBounds = true
-        view.addSubview(plantImage)
+        plantImageView.clipsToBounds = true
+        view.addSubview(plantImageView)
         
         let scientificNameLabel = UILabel(frame: CGRect.init(x: 58, y: 8, width: view.frame.size.width - 16, height: 16))
         scientificNameLabel.text = marker.title
