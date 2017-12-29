@@ -168,22 +168,7 @@ class MapViewController: UIViewController {
     
     }
     
-    func imageDataScaledToHeight(_ imageData: Data, height: CGFloat) -> Data {
-        
-        let image = UIImage(data: imageData)!
-        let oldHeight = image.size.height
-        let scaleFactor = height / oldHeight
-        let newWidth = image.size.width * scaleFactor
-        let newSize = CGSize(width: newWidth, height: height)
-        let newRect = CGRect(x: 0, y: 0, width: newWidth, height: height)
-        
-        UIGraphicsBeginImageContext(newSize)
-        image.draw(in: newRect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return UIImageJPEGRepresentation(newImage!, 0.8)!
-    }
+
     
     @IBAction func mapTypeChange(_ sender: UISegmentedControl!) {
         switch (sender.selectedSegmentIndex) {
@@ -261,10 +246,13 @@ extension MapViewController: GMSMapViewDelegate {
         view.addSubview(scientificNameLabel)
         
         let distanceLabel = UILabel(frame: CGRect.init(x: 58, y: 28, width: view.frame.size.width - 16, height: 14))
+        distanceLabel.font = UIFont.systemFont(ofSize: 14)
+        distanceLabel.textColor = .lightGray
+        
         if let distance = userCurrentLocation?.distance(from: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)) {
             distanceLabel.text = self.formatDistance(distance)
-            distanceLabel.font = UIFont.systemFont(ofSize: 14)
-            distanceLabel.textColor = .lightGray
+        } else {
+            distanceLabel.text = "Distance: N/A"
         }
         view.addSubview(distanceLabel)
         
