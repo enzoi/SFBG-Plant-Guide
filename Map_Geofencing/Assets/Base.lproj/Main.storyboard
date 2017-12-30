@@ -549,9 +549,9 @@
         <!--Navigation Controller-->
         <scene sceneID="2aF-BK-385">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U8s-3a-pq7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="signInViewController" automaticallyAdjustsScrollViewInsets="NO" id="U8s-3a-pq7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IJq-mU-wn0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IJq-mU-wn0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

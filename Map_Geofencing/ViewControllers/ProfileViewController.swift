@@ -47,7 +47,10 @@ class ProfileViewController: UIViewController {
                 print ("Error signing out: %@", signOutError)
             }
         } else {
-            // TODO: Present SignInViewController
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let navigationController = storyBoard.instantiateViewController(withIdentifier: "signInViewController") as! UINavigationController
+            self.present(navigationController, animated: true, completion: nil)
         }
     }
 
