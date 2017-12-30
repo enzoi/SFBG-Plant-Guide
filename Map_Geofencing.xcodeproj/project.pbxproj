@@ -33,6 +33,7 @@
 		CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */; };
 		CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */; };
 		CFB11DE11FF76588001FBEE6 /* SignInWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB11DE01FF76588001FBEE6 /* SignInWithEmailViewController.swift */; };
+		CFB11DE31FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB11DE21FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift */; };
 		CFB4EE0B1FF62BC3003DD45A /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4EE0A1FF62BC3003DD45A /* GCDBlackBox.swift */; };
 		CFCDF1C21FE392B100C15C43 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF1C11FE392B100C15C43 /* ImageStore.swift */; };
 		CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */; };
@@ -110,6 +111,7 @@
 		CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantTableViewCell.swift; path = ViewControllers/PlantTableViewCell.swift; sourceTree = "<group>"; };
 		CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CFB11DE01FF76588001FBEE6 /* SignInWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithEmailViewController.swift; sourceTree = "<group>"; };
+		CFB11DE21FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWithEmailViewController.swift; sourceTree = "<group>"; };
 		CFB4EE0A1FF62BC3003DD45A /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		CFCDF1C11FE392B100C15C43 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */,
 				CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */,
 				CF7429081FEB45FE004E26AE /* SignInViewController.swift */,
+				CFB11DE21FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift */,
 				CFB11DE01FF76588001FBEE6 /* SignInWithEmailViewController.swift */,
 			);
 			path = ViewControllers;
@@ -667,6 +670,7 @@
 				CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */,
 				CF8A07131FEF680E005F9C19 /* Plant+CoreDataProperties.swift in Sources */,
 				CFD3C2791FDE3A7A0084637B /* PlantViewModel.swift in Sources */,
+				CFB11DE31FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift in Sources */,
 				CFD3C2711FDD0C7C0084637B /* PlantNameTableViewCell.swift in Sources */,
 				CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */,
 				CF369D261FE0A8B10064E251 /* HeaderView.swift in Sources */,

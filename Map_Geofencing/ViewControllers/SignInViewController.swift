@@ -87,13 +87,16 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
     }
     
     func signUpButtonTapped(sender: UIButton) {
-        print("sign up button pressed")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let signUpWithEmailViewController = storyBoard.instantiateViewController(withIdentifier: "signUpWithEmailViewController")
+        self.navigationController?.pushViewController(signUpWithEmailViewController, animated: true)
     }
     
     func signInButtonTapped(sender: UIButton) {
 
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
+    
         let signInWithEmailViewController = storyBoard.instantiateViewController(withIdentifier: "signInWithEmailViewController")
         self.navigationController?.pushViewController(signInWithEmailViewController, animated: true)
     }
