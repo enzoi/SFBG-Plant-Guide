@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol ToggleFavoriteDelegate: class { // Define Protocol
     func toggleFavorite(cell: PlantTableViewCell)
@@ -50,9 +51,15 @@ class PlantTableViewCell: UITableViewCell {
     }
     
     @objc private func handleMarkAsFavorite() {
-        print("favorite button pressed")
-        delegate?.toggleFavorite(cell: self)
-        setUpToggleFavorite()
+        
+        if Auth.auth().currentUser != nil {
+            print("there is a logged-in user", Auth.auth().currentUser!)
+            delegate?.toggleFavorite(cell: self)
+            setUpToggleFavorite()
+        } else {
+            print("there is no user")
+            parentViewController?.getAlertView(title: "Oops!!", error: "Saving a favorite requires sign-in. Please sign-in or sign-up")
+        }
     }
     
     func setUpToggleFavorite() {
@@ -65,4 +72,17 @@ class PlantTableViewCell: UITableViewCell {
         }
     }
 
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if parentResponder is UIViewController {
+                return parentResponder as! UIViewController!
+            }
+        }
+        return nil
+    }
 }

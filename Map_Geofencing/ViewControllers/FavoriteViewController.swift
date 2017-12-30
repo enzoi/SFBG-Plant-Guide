@@ -159,8 +159,10 @@ extension FavoriteViewController: NSFetchedResultsControllerDelegate {
             tableView.insertRows(at: [newIndexPath!], with: .automatic)
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
-        default:
-            print("unexpected case occured")
+        case .update:
+            tableView.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
         }
     }
     

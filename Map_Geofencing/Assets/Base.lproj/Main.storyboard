@@ -210,7 +210,7 @@
                                                         <constraint firstItem="cRM-lh-QBE" firstAttribute="top" secondItem="H6B-oq-QUh" secondAttribute="top" constant="20" symbolic="YES" id="6Uk-ME-1Xt"/>
                                                     </constraints>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="7BU-DV-ZhZ">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7BU-DV-ZhZ">
                                                     <rect key="frame" x="13" y="13" width="349" height="94"/>
                                                 </imageView>
                                             </subviews>
@@ -271,60 +271,48 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="DVa-EY-amq">
-                                <rect key="frame" x="16" y="548" width="343" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUZ-YI-fzY">
-                                        <rect key="frame" x="0.0" y="0.0" width="162.5" height="30"/>
-                                        <color key="backgroundColor" red="0.6705882353" green="0.92549019610000005" blue="0.40784313729999999" alpha="1" colorSpace="deviceRGB"/>
-                                        <state key="normal" title="SIGN IN">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="6Xw-K4-dkZ" kind="presentation" id="ixM-jH-vx9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh1-ML-vTg">
-                                        <rect key="frame" x="162.5" y="0.0" width="180.5" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="SIGN UP">
-                                            <color key="titleColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUZ-YI-fzY">
+                                <rect key="frame" x="16" y="340" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yUl-IW-fAk"/>
+                                </constraints>
+                                <state key="normal" title="SIGN IN">
+                                    <color key="titleColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.29685217142105103" green="0.57536488771438599" blue="0.063015222549438477" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="U8s-3a-pq7" kind="presentation" id="ixM-jH-vx9"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anonymous" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVr-Mc-DCi">
-                                <rect key="frame" x="146.5" y="304" width="82.5" height="27.5"/>
+                                <rect key="frame" x="146" y="297" width="83" height="28"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.2672139075194444" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gMH-Ik-aIg" firstAttribute="top" secondItem="kgg-gP-O2D" secondAttribute="bottom" constant="75" id="1yL-wy-y9l"/>
-                            <constraint firstItem="SZo-hI-4V3" firstAttribute="top" secondItem="DVa-EY-amq" secondAttribute="bottom" constant="40" id="Gte-j2-h5H"/>
-                            <constraint firstItem="DVa-EY-amq" firstAttribute="leading" secondItem="4sj-88-X9Z" secondAttribute="leadingMargin" id="dqr-sV-434"/>
-                            <constraint firstItem="JVr-Mc-DCi" firstAttribute="top" secondItem="gMH-Ik-aIg" secondAttribute="bottom" constant="15" id="hgt-Y8-FHk"/>
+                            <constraint firstItem="JUZ-YI-fzY" firstAttribute="leading" secondItem="4sj-88-X9Z" secondAttribute="leadingMargin" id="73m-FD-4Bz"/>
+                            <constraint firstItem="JUZ-YI-fzY" firstAttribute="centerX" secondItem="gMH-Ik-aIg" secondAttribute="centerX" id="OgR-bV-NdO"/>
+                            <constraint firstItem="JVr-Mc-DCi" firstAttribute="top" secondItem="gMH-Ik-aIg" secondAttribute="bottom" constant="8" id="hgt-Y8-FHk"/>
                             <constraint firstItem="gMH-Ik-aIg" firstAttribute="centerX" secondItem="4sj-88-X9Z" secondAttribute="centerX" id="j5u-nG-cj9"/>
+                            <constraint firstItem="JUZ-YI-fzY" firstAttribute="top" secondItem="JVr-Mc-DCi" secondAttribute="bottom" constant="15" id="k3h-h5-hX0"/>
                             <constraint firstItem="JVr-Mc-DCi" firstAttribute="centerX" secondItem="4sj-88-X9Z" secondAttribute="centerX" id="pLY-gd-XVi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DVa-EY-amq" secondAttribute="trailing" id="xsr-gz-eT3"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="U7M-4q-PnD"/>
-                    <navigationItem key="navigationItem" title="Profile" id="AT3-os-lW7">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="TvZ-hv-pse"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Profile" id="AT3-os-lW7"/>
                     <connections>
                         <outlet property="profileName" destination="JVr-Mc-DCi" id="Oaz-Ox-UBT"/>
                         <outlet property="profilePicture" destination="gMH-Ik-aIg" id="ehh-Uk-yAC"/>
@@ -347,10 +335,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="h2K-WW-K1T">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Gja-so-2Jg">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="6Xw-K4-dkZ" id="dY0-3C-pHx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVD-db-Znk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="2256.521739130435"/>
+            <point key="canvasLocation" x="3505" y="2257"/>
         </scene>
         <!--Plant Detail-->
         <scene sceneID="ZH7-YO-Urq">
@@ -391,7 +386,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOc-dS-XLp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="FAVORITE" image="icon_favorite-selected" id="ydo-Ya-ePF"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qzu-xc-gz9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qzu-xc-gz9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -410,7 +405,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FKl-ol-mSI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="PROFILE" image="icon_profile-selected" id="ZPI-Oj-H8X"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jjb-JJ-Ff0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jjb-JJ-Ff0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -429,7 +424,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qat-9K-ifq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="PLANTS" image="icon_listview-selected" id="OMz-bp-i5d"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cah-um-Gs7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cah-um-Gs7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -448,7 +443,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eBa-c8-PXV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="MAP" image="icon_mapview-selected" id="roG-54-VYo"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Rj-td-gzT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0Rj-td-gzT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -482,13 +477,30 @@
             </objects>
             <point key="canvasLocation" x="184.80000000000001" y="1241.8290854572715"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2aF-BK-385">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U8s-3a-pq7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IJq-mU-wn0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Xw-K4-dkZ" kind="relationship" relationship="rootViewController" id="Lw5-rs-SVr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qr3-NR-H7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2768.8000000000002" y="2256.521739130435"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon_favorite-selected" width="75" height="50"/>
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
         <image name="icon_profile-selected" width="75" height="50"/>
-        <image name="sample" width="650" height="574"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JEe-Ej-Gv3"/>

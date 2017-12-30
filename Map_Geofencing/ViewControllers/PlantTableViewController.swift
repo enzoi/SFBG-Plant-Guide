@@ -74,6 +74,11 @@ class PlantTableViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     // Prepare for segue to detail view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -153,6 +158,7 @@ extension PlantTableViewController: UISearchBarDelegate {
                 } as [Plant]?
             
         }
+        
         tableView.reloadData()
     }
     
@@ -249,29 +255,29 @@ extension PlantTableViewController {
         
         cell.scientificName.text = plant.scientificName
         cell.commonName.text = plant.commonName
-        
-        let photos = Array(plant.photo!) as! [Photo]
-        
+
+        // Set up favorite status for current user
         guard let users = plant.users else { return }
         guard let currentUser = Auth.auth().currentUser else { return }
         
         for user in users {
             if (user as! User).uid == currentUser.uid {
                 cell.isFavorite = true
-                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-star-filled-40"), for: .normal)
+                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
             } else {
                 cell.isFavorite = false
-                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-star-40"), for: .normal)
+                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
             }
         }
 
+        // Get icon image for plant cell
+        let photos = Array(plant.photo!) as! [Photo]
+        
         if let photo = photos.first {
         
             photoStore.fetchImage(for: photo, completion: { (result) in
                 
                 if case let .success(image) = result {
-                    
-                    self.hideActivityIndicator(uiView: self.view)
                     
                     performUIUpdatesOnMain() {
                         cell.plantImageView.image = image
@@ -357,6 +363,7 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
                 cell.isFavorite = false
             }
         }
+
     }
     
 }

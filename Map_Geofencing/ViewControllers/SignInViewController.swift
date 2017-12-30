@@ -17,6 +17,7 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /*
         let facebookLoginButton = LoginButton(readPermissions: [ .publicProfile ])
 
         facebookLoginButton.center = view.center
@@ -24,25 +25,52 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
         view.addSubview(facebookLoginButton)
         
         facebookLoginButton.delegate = self
+        */
+        
+        // Button for signing up with email and password
+        let signUpButton = UIButton(type: .system)
+        signUpButton.backgroundColor = .green
+        signUpButton.frame = CGRect(x: 16, y: 80, width: view.frame.width - 32, height: 40)
+        signUpButton.setTitle("Sign up with Email", for: .normal)
+        signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        signUpButton.setTitleColor(.white, for: .normal)
+        signUpButton.layer.cornerRadius = 5
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped(sender:)), for: .touchUpInside)
+        view.addSubview(signUpButton)
         
         // Add custom fb login button
         let customFBButton = UIButton(type: .system)
         customFBButton.backgroundColor = .blue
-        customFBButton.frame = CGRect(x: 16, y: 110, width: view.frame.width - 32, height: 50)
-        customFBButton.setTitle("Login Facebook", for: .normal)
+        customFBButton.frame = CGRect(x: 16, y: 130, width: view.frame.width - 32, height: 40)
+        customFBButton.setTitle("Continue with Facebook", for: .normal)
         customFBButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         customFBButton.setTitleColor(.white, for: .normal)
-        customFBButton.layer.cornerRadius = 25
+        customFBButton.layer.cornerRadius = 5
         view.addSubview(customFBButton)
         
         customFBButton.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
         
         // Add google sign in button
         let googleButton = GIDSignInButton()
-        googleButton.frame = CGRect(x: 16, y: 170, width: view.frame.width - 32, height: 50)
+        googleButton.frame = CGRect(x: 16, y: 180, width: view.frame.width - 32, height: 50)
         view.addSubview(googleButton)
         
         GIDSignIn.sharedInstance().uiDelegate = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func signUpButtonTapped(sender: UIButton) {
+        print("sign up button pressed")
     }
     
     func handleCustomFBLogin() {
