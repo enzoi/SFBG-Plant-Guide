@@ -291,7 +291,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="U8s-3a-pq7" kind="presentation" id="ixM-jH-vx9"/>
+                                    <action selector="buttonPressed:" destination="Ka2-Q7-rUt" eventType="touchUpInside" id="Rvw-W6-BjR"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anonymous" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVr-Mc-DCi">

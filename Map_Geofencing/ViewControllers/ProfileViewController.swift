@@ -35,6 +35,24 @@ class ProfileViewController: UIViewController {
             signInButton.setTitle("SIGN IN", for: .normal)
         }
     }
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        
+        if Auth.auth().currentUser != nil { // Log out
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                signInButton.setTitle("SIGN IN", for: .normal)
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        } else {
+            // TODO: Present SignInViewController
+        }
+    }
+
+    
+    
 
 
 }
