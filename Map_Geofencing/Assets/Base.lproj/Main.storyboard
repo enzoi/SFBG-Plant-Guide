@@ -316,6 +316,7 @@
                     <connections>
                         <outlet property="profileName" destination="JVr-Mc-DCi" id="Oaz-Ox-UBT"/>
                         <outlet property="profilePicture" destination="gMH-Ik-aIg" id="ehh-Uk-yAC"/>
+                        <outlet property="signInButton" destination="JUZ-YI-fzY" id="I9e-ud-ZCW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1V-Su-dzV" userLabel="First Responder" sceneMemberID="firstResponder"/>
