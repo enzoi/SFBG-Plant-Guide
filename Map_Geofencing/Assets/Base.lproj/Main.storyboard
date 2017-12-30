@@ -566,7 +566,7 @@
         <!--Sign Up-->
         <scene sceneID="J1N-4R-Ivx">
             <objects>
-                <viewController storyboardIdentifier="signUpWithEmailViewController" title="Sign Up" id="8sv-SI-wof" customClass="SignUpWithEmailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpWithEmailViewController" title="Sign Up" id="8sv-SI-wof" customClass="SignUpWithEmailViewController" customModule="Map_Geofencing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PKA-BV-DXP"/>
                         <viewControllerLayoutGuide type="bottom" id="vlK-8W-eGO"/>
@@ -576,7 +576,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nqs-Hk-thX">
-                                <rect key="frame" x="16" y="271" width="343" height="128"/>
+                                <rect key="frame" x="16" y="271" width="343" height="170"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ste-Rr-yau">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="32"/>
@@ -597,8 +597,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hIK-Xs-gsW">
+                                        <rect key="frame" x="0.0" y="84" width="343" height="32"/>
+                                        <color key="backgroundColor" red="0.73699063060000003" green="0.92333555219999996" blue="0.51484405990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="2F3-aJ-MXM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p42-Ok-roO" userLabel="Login Button">
-                                        <rect key="frame" x="0.0" y="84" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="126" width="343" height="44"/>
                                         <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="W3j-4G-bo5"/>
@@ -607,6 +616,9 @@
                                         <state key="normal" title="SIGN UP">
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signUpPressed:" destination="8sv-SI-wof" eventType="touchUpInside" id="jNn-vM-wEm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -618,6 +630,12 @@
                             <constraint firstItem="nqs-Hk-thX" firstAttribute="leading" secondItem="NvP-w0-nG0" secondAttribute="leadingMargin" id="tFo-0g-xqM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="hIK-Xs-gsW" id="BXI-Nb-D0A"/>
+                        <outlet property="passwordTextField" destination="ixX-EZ-Kor" id="jSq-Ak-aaB"/>
+                        <outlet property="signUpButton" destination="p42-Ok-roO" id="Txq-BH-ixx"/>
+                        <outlet property="usernameTextField" destination="Ste-Rr-yau" id="Xmd-5e-1fA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYq-3D-ixD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

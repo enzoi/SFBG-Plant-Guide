@@ -16,16 +16,6 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        /*
-        let facebookLoginButton = LoginButton(readPermissions: [ .publicProfile ])
-
-        facebookLoginButton.center = view.center
-        facebookLoginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width - 32, height: 50)
-        view.addSubview(facebookLoginButton)
-        
-        facebookLoginButton.delegate = self
-        */
         
         // Button for signing up with email and password
         let signUpButton = UIButton(type: .system)
@@ -89,7 +79,7 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
     func signUpButtonTapped(sender: UIButton) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
-        let signUpWithEmailViewController = storyBoard.instantiateViewController(withIdentifier: "signUpWithEmailViewController")
+        let signUpWithEmailViewController = storyBoard.instantiateViewController(withIdentifier: "signUpWithEmailViewController") as! SignUpWithEmailViewController
         self.navigationController?.pushViewController(signUpWithEmailViewController, animated: true)
     }
     
@@ -97,7 +87,7 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
 
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     
-        let signInWithEmailViewController = storyBoard.instantiateViewController(withIdentifier: "signInWithEmailViewController")
+        let signInWithEmailViewController = storyBoard.instantiateViewController(withIdentifier: "signInWithEmailViewController") as! SignInWithEmailViewController
         self.navigationController?.pushViewController(signInWithEmailViewController, animated: true)
     }
     
