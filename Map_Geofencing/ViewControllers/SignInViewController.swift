@@ -57,6 +57,23 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
         
         GIDSignIn.sharedInstance().uiDelegate = self
         
+        // Button for signing in with email and password
+        let label = UILabel()
+        label.frame = CGRect(x: 45, y: 230, width: 200, height: 40)
+        label.textAlignment = .right
+        label.text = "Already have an account?"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.black
+        view.addSubview(label)
+        
+        let signInButton = UIButton(type: .system)
+        signInButton.frame = CGRect(x: 250, y: 230, width: 50, height: 40)
+        signInButton.setTitle("Sign in", for: .normal)
+        signInButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        signInButton.setTitleColor(.green, for: .normal)
+        signInButton.addTarget(self, action: #selector(signInButtonTapped(sender:)), for: .touchUpInside)
+        view.addSubview(signInButton)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +88,14 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
     
     func signUpButtonTapped(sender: UIButton) {
         print("sign up button pressed")
+    }
+    
+    func signInButtonTapped(sender: UIButton) {
+
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let signInWithEmailViewController = storyBoard.instantiateViewController(withIdentifier: "signInWithEmailViewController")
+        self.navigationController?.pushViewController(signInWithEmailViewController, animated: true)
     }
     
     func handleCustomFBLogin() {
