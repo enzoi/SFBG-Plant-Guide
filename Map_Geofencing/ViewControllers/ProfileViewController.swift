@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import FacebookCore
+import FacebookLogin
 
 class ProfileViewController: UIViewController {
 
@@ -28,6 +30,9 @@ class ProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        // Set button label
+        print("Current User: ", Auth.auth().currentUser)
         
         if Auth.auth().currentUser != nil {
             signInButton.setTitle("LOG OUT", for: .normal)
@@ -38,15 +43,20 @@ class ProfileViewController: UIViewController {
     
     @IBAction func buttonPressed(_ sender: Any) {
         
-        if Auth.auth().currentUser != nil { // Log out
+        print(signInButton.titleLabel?.text)
+        
+        if Auth.auth().currentUser != nil && signInButton.titleLabel?.text == "LOG OUT" {
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()
-                signInButton.setTitle("SIGN IN", for: .normal)
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }
-        } else {
+            
+            signInButton.setTitle("SIGN IN", for: .normal)
+        }
+        
+        if signInButton.titleLabel?.text == "SIGN IN" {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             
             let navigationController = storyBoard.instantiateViewController(withIdentifier: "signInViewController") as! UINavigationController

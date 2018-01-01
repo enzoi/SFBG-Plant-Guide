@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Google Auth Setup
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
         
         // Facebook Auth Setup
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -62,33 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-// MARK: - GIDSignInDelegate
-
-extension AppDelegate: GIDSignInDelegate {
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            print("Failed to log into Google: ", error)
-            return
-        }
-        
-        print("Successfully logged into Google", user)
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("Failed to create a Firebase User with Google account: ", error)
-                return
-            }
-            
-            guard let uid = user?.uid else { return }
-            print("Successfully logged into Firebase with Google account", uid)
-        }
-    }
-}
 
 // MARK: - Helper methods to create core data from seed.json
 

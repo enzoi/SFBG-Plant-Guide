@@ -12,7 +12,7 @@ import FacebookCore
 import FacebookLogin
 import GoogleSignIn
 
-class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
+class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,7 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
         view.addSubview(googleButton)
         
         GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
         
         // Button for signing in with email and password
         let label = UILabel()
@@ -102,9 +103,35 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 print("Successfully logged in!")
                 print("ACCESS TOKEN \(accessToken)")
+                print("Current User: ", Auth.auth().currentUser)
                 
                 self.dismiss(animated: true, completion: nil)
             }
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if let error = error {
+            print("Failed to log into Google: ", error)
+            return
+        }
+        
+        print("Successfully logged into Google", user)
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if let error = error {
+                print("Failed to create a Firebase User with Google account: ", error)
+                return
+            }
+            
+            guard let uid = user?.uid else { return }
+            print("Successfully logged into Firebase with Google account", uid)
+            
+            self.dismiss(animated: true, completion: nil)
         }
     }
 

@@ -25,7 +25,7 @@ class FavoriteViewController: UIViewController {
             fetchRequest: fetchRequest,
             managedObjectContext: self.photoStore.managedContext,
             sectionNameKeyPath: nil,
-            cacheName: "User")
+            cacheName: nil)
         
         fetchedResultsController.delegate = self
         
@@ -42,27 +42,7 @@ class FavoriteViewController: UIViewController {
         self.photoStore = tabBar.photoStore
         
         tableView.dataSource = self
-        
-        if let user = Auth.auth().currentUser {
-            let predicate = NSPredicate(format: "%K == %@", "uid", user.uid)
-            fetchedResultsController.fetchRequest.predicate = predicate
-        }
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch let error as NSError {
-            print("Fetching error: \(error), \(error.userInfo)")
-        }
-        
-        if let users = fetchedResultsController.fetchedObjects {
-            if users.count > 0 {
-                let user = Array(users).first! as User
-                favoritePlants = Array(user.favoritePlants!) as? [Plant]
-            } else {
-                favoritePlants = []
-            }
-        }
-        tableView.reloadData()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,24 +51,31 @@ class FavoriteViewController: UIViewController {
         if let user = Auth.auth().currentUser {
             let predicate = NSPredicate(format: "%K == %@", "uid", user.uid)
             fetchedResultsController.fetchRequest.predicate = predicate
-        }
         
-        do {
-            try fetchedResultsController.performFetch()
-        } catch let error as NSError {
-            print("Fetching error: \(error), \(error.userInfo)")
-        }
-        
-        if let users = fetchedResultsController.fetchedObjects {
-            if users.count > 0 {
-                let user = Array(users).first! as User
-                favoritePlants = Array(user.favoritePlants!) as? [Plant]
-            } else {
-                favoritePlants = []
-                getAlertView(title: "No User Found", error: "You need to log in to save or view your favorite plants")
+            do {
+                try fetchedResultsController.performFetch()
+            } catch let error as NSError {
+                print("Fetching error: \(error), \(error.userInfo)")
             }
+            
+            if let users = fetchedResultsController.fetchedObjects {
+                if users.count > 0 {
+                    let user = Array(users).first! as User
+                    favoritePlants = Array(user.favoritePlants!) as? [Plant]
+                    print("user: ", user)
+                    print("favorite plants: ", favoritePlants)
+                } else {
+                    favoritePlants = []
+                }
+            }
+            
+            tableView.reloadData()
+            
+        } else {
+            favoritePlants = []
+            tableView.reloadData()
+            getAlertView(title: "No User Found", error: "You need to log in to save or view your favorite plants")
         }
-        tableView.reloadData()
     }
     
     // Prepare for segue to detail view controller
@@ -159,10 +146,12 @@ extension FavoriteViewController: NSFetchedResultsControllerDelegate {
             tableView.insertRows(at: [newIndexPath!], with: .automatic)
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+//        case .update:
+//            tableView.reloadRows(at: [indexPath!], with: .fade)
+//        case .move:
+//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        default:
+            print("Exceptional case")
         }
     }
     

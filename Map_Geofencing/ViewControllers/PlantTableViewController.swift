@@ -37,7 +37,7 @@ class PlantTableViewController: UIViewController {
             fetchRequest: fetchRequest,
             managedObjectContext: self.photoStore.managedContext,
             sectionNameKeyPath: nil,
-            cacheName: "PlantList")
+            cacheName: nil)
         
         // fetchedResultsController.delegate = self
         return fetchedResultsController
@@ -76,6 +76,7 @@ class PlantTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         tableView.reloadData()
     }
     
@@ -258,18 +259,24 @@ extension PlantTableViewController {
 
         // Set up favorite status for current user
         guard let users = plant.users else { return }
-        guard let currentUser = Auth.auth().currentUser else { return }
         
-        for user in users {
-            if (user as! User).uid == currentUser.uid {
-                cell.isFavorite = true
-                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
-            } else {
-                cell.isFavorite = false
-                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
+        if let currentUser = Auth.auth().currentUser {
+        
+            for user in users {
+                if (user as! User).uid == currentUser.uid {
+                    cell.isFavorite = true
+                    cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
+                } else {
+                    cell.isFavorite = false
+                    cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
+                }
             }
+        } else {
+            cell.isFavorite = false
+            cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
         }
-
+        
+        
         // Get icon image for plant cell
         let photos = Array(plant.photo!) as! [Photo]
         
@@ -298,69 +305,43 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
         guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
         guard let currentUser = Auth.auth().currentUser else { return }
         
+        print("current user: ", currentUser, currentUser.email!)
+        
         let plant = fetchedResultsController.object(at: indexPathTapped)
         let moc = self.photoStore.managedContext
         
-        if plant.users?.count == 0 {
-
-            if currentUser.uid != "" { // there is current user logged in
-
-                let fetchRequest =  NSFetchRequest<NSManagedObject>(entityName: "User")
-                
-                // Fetch photos associalted with the specific pin
-                let predicate = NSPredicate(format: "uid == %@", currentUser.uid)
-                fetchRequest.predicate = predicate
-                
-                moc.perform {
-                    
-                    guard let users = try? moc.fetch(fetchRequest) else { return }
-                    
-                    if users.count == 0 { // no user in core data yet
-                        // Create a user
-                        let theUser = User(context: moc)
-                        theUser.uid = currentUser.uid
-                        theUser.addToFavoritePlants(plant)
-                        
-                    } else {
-                        let theUser = users.first! as! User
-                        theUser.addToFavoritePlants(plant)
-                    }
-                    
-                    do {
-                        try moc.save()
-                    } catch {
-                        moc.rollback()
-                    }
-
-                }
-
-            } else {
-                getAlertView(title: "Cannot add it to favorite plants", error: "Sign in required to save a plant to favorite. Please log in first")
-            }
+        print("plant: ", plant)
+        
+        // TODO: current user exist but the plant hasn't been added to favorite
+        let fetchRequest =  NSFetchRequest<NSManagedObject>(entityName: "User")
+        
+        // Fetch photos associalted with the specific pin
+        let predicate = NSPredicate(format: "uid == %@", currentUser.uid) ///// no uid in user instances yet
+        fetchRequest.predicate = predicate
+        
+        moc.perform {
             
-        } else { // Remove user from plant
-
-            let fetchRequest =  NSFetchRequest<NSManagedObject>(entityName: "User")
-
-            // Fetch photos associalted with the specific pin
-            let predicate = NSPredicate(format: "uid == %@", currentUser.uid)
-            fetchRequest.predicate = predicate
+            guard let users = try? moc.fetch(fetchRequest) else { return }
+            print("users: ", users)
             
-            moc.perform {
-                
-                if let users = try? moc.fetch(fetchRequest) {
-                    let currentUser = users.first as! User
-                    currentUser.removeFromFavoritePlants(plant)
+            if cell.isFavorite == false { // the user hasn't added the plant to core data yet
+                // Create a user if no user exist
+                if users.count == 0 {
+                    let theUser = User(context: moc)
+                    theUser.uid = currentUser.uid
+                    theUser.addToFavoritePlants(plant)
+                } else { // if there is already a user just add the plant to the user 
+                    let theUser = users.first as! User
+                    theUser.addToFavoritePlants(plant)
                 }
+                cell.isFavorite = true
+                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
                 
-                do {
-                    try moc.save()
-                } catch {
-                    moc.rollback()
-                }
-                
-                // toggle favorite button
+            } else { // the user has added the plant already so remove it
+                let theUser = users.first! as! User
+                theUser.removeFromFavoritePlants(plant)
                 cell.isFavorite = false
+                cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
             }
         }
 

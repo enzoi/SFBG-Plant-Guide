@@ -55,7 +55,7 @@ class PlantTableViewCell: UITableViewCell {
         if Auth.auth().currentUser != nil {
             print("there is a logged-in user", Auth.auth().currentUser!)
             delegate?.toggleFavorite(cell: self)
-            setUpToggleFavorite()
+            // setUpToggleFavorite()
         } else {
             print("there is no user")
             parentViewController?.getAlertView(title: "Oops!!", error: "Saving a favorite requires sign-in. Please sign-in or sign-up")
@@ -63,13 +63,7 @@ class PlantTableViewCell: UITableViewCell {
     }
     
     func setUpToggleFavorite() {
-        if isFavorite == false {
-            starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
-            isFavorite = true
-        } else {
-            starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
-            isFavorite = false
-        }
+
     }
 
 }
