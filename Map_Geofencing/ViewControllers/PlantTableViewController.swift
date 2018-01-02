@@ -86,8 +86,15 @@ class PlantTableViewController: UIViewController {
         if let cell = sender as? PlantTableViewCell,
            let selectedIndexPath = tableView.indexPath(for: cell) {
             
+            let plant: Plant
+            
+            if self.searchPredicate == nil && self.scopePredicate == nil {
+                plant = fetchedResultsController.object(at: selectedIndexPath)
+            } else {
+                plant = filteredPlants![selectedIndexPath.row]
+            }
+            
             let detailVC = segue.destination as! DetailViewController
-            let plant = fetchedResultsController.object(at: selectedIndexPath)
             detailVC.plant = plant
         }
     }
@@ -159,7 +166,6 @@ extension PlantTableViewController: UISearchBarDelegate {
                 } as [Plant]?
             
         }
-        
         tableView.reloadData()
     }
     
@@ -256,26 +262,35 @@ extension PlantTableViewController {
         
         cell.scientificName.text = plant.scientificName
         cell.commonName.text = plant.commonName
-
+        
         // Set up favorite status for current user
         guard let users = plant.users else { return }
         
-        if let currentUser = Auth.auth().currentUser {
-        
-            for user in users {
-                if (user as! User).uid == currentUser.uid {
-                    cell.isFavorite = true
-                    cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
-                } else {
-                    cell.isFavorite = false
-                    cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
-                }
-            }
-        } else {
+        if users.count == 0 {
+    
             cell.isFavorite = false
             cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
-        }
         
+        } else {
+            
+            if let currentUser = Auth.auth().currentUser {
+                
+                print("currentUser: ", currentUser)
+                
+                for user in users {
+                    if (user as! User).uid == currentUser.uid {
+                        
+                        print("user: ", user, currentUser)
+                        
+                        cell.isFavorite = true
+                        cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
+                    }
+                }
+                
+            } else {
+                print("NO CURRENT LOGGED IN USER")
+            }
+        }
         
         // Get icon image for plant cell
         let photos = Array(plant.photo!) as! [Photo]
@@ -305,24 +320,24 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
         guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
         guard let currentUser = Auth.auth().currentUser else { return }
         
-        print("current user: ", currentUser, currentUser.email!)
+        let plant: Plant
         
-        let plant = fetchedResultsController.object(at: indexPathTapped)
+        if self.searchPredicate == nil && self.scopePredicate == nil {
+            plant = fetchedResultsController.object(at: indexPathTapped)
+        } else {
+            plant = filteredPlants![indexPathTapped.row]
+        }
+   
         let moc = self.photoStore.managedContext
-        
-        print("plant: ", plant)
-        
-        // TODO: current user exist but the plant hasn't been added to favorite
         let fetchRequest =  NSFetchRequest<NSManagedObject>(entityName: "User")
         
         // Fetch photos associalted with the specific pin
         let predicate = NSPredicate(format: "uid == %@", currentUser.uid) ///// no uid in user instances yet
         fetchRequest.predicate = predicate
         
-        moc.perform {
+        moc.performAndWait {
             
             guard let users = try? moc.fetch(fetchRequest) else { return }
-            print("users: ", users)
             
             if cell.isFavorite == false { // the user hasn't added the plant to core data yet
                 // Create a user if no user exist

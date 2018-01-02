@@ -26,6 +26,8 @@ class PlantTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // TODO: Fix this
         starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
         starButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         starButton.addTarget(self, action: #selector(handleMarkAsFavorite), for: .touchUpInside)
