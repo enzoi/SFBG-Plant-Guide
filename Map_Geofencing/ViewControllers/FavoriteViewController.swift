@@ -48,6 +48,8 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print(Auth.auth().currentUser)
+        
         if let user = Auth.auth().currentUser {
             let predicate = NSPredicate(format: "%K == %@", "uid", user.uid)
             fetchedResultsController.fetchRequest.predicate = predicate

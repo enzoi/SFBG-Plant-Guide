@@ -31,20 +31,49 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // Set button label
-        print("Current User: ", Auth.auth().currentUser)
-        
-        if Auth.auth().currentUser != nil {
+        if let currentUser = Auth.auth().currentUser {
+            
+            if let userImageURL = currentUser.photoURL {
+                
+                let session = URLSession(configuration: URLSessionConfiguration.default)
+                let request = URLRequest(url: userImageURL)
+                
+                let task = session.dataTask(with: request) { (data, response, error) -> Void in
+                    
+                    let result = self.photoStore.processImageRequest(data: data, error: error)
+
+                    if case let .success(image) = result {
+                        
+                        performUIUpdatesOnMain() {
+                            self.profilePicture.image = image
+                            self.profilePicture.layer.masksToBounds = true
+                            self.profilePicture.layer.cornerRadius = 75
+                        }
+                    }
+                }
+                task.resume()
+            }
+            
+            if let userName = currentUser.displayName {
+                self.profileName.text = userName
+            } else {
+                self.profileName.text = currentUser.email
+            }
+            
             signInButton.setTitle("LOG OUT", for: .normal)
+            signInButton.setTitleColor(UIColor(red:1.0, green:0.0, blue:0.0, alpha:1.0), for: .normal)
+            
         } else {
+            
+            self.profilePicture.image = nil
             signInButton.setTitle("SIGN IN", for: .normal)
+            signInButton.setTitleColor(UIColor(red:0.0, green:1.0, blue:0.0, alpha:1.0), for: .normal)
+
         }
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
-        
-        print(signInButton.titleLabel?.text)
-        
+
         if Auth.auth().currentUser != nil && signInButton.titleLabel?.text == "LOG OUT" {
             let firebaseAuth = Auth.auth()
             do {
@@ -53,7 +82,9 @@ class ProfileViewController: UIViewController {
                 print ("Error signing out: %@", signOutError)
             }
             
+            self.profilePicture.image = nil
             signInButton.setTitle("SIGN IN", for: .normal)
+            signInButton.setTitleColor(UIColor(red:0.0, green:1.0, blue:0.0, alpha:1.0), for: .normal)
         }
         
         if signInButton.titleLabel?.text == "SIGN IN" {
