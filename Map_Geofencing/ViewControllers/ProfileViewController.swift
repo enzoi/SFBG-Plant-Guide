@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController {
 
         if let currentUser = Auth.auth().currentUser {
             
+            // Set user image
             if let userImageURL = currentUser.photoURL {
                 
                 let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -52,12 +53,17 @@ class ProfileViewController: UIViewController {
                     }
                 }
                 task.resume()
+            } else {
+                self.profilePicture.image = #imageLiteral(resourceName: "profile_default-100")
             }
             
+            // Set user name
             if let userName = currentUser.displayName {
                 self.profileName.text = userName
+            } else if let email = currentUser.email {
+                self.profileName.text = email
             } else {
-                self.profileName.text = currentUser.email
+                self.profileName.text = "user name"
             }
             
             signInButton.setTitle("LOG OUT", for: .normal)
@@ -65,7 +71,7 @@ class ProfileViewController: UIViewController {
             
         } else {
             
-            self.profilePicture.image = nil
+            self.profilePicture.image = #imageLiteral(resourceName: "profile_default-100")
             signInButton.setTitle("SIGN IN", for: .normal)
             signInButton.setTitleColor(UIColor(red:0.0, green:1.0, blue:0.0, alpha:1.0), for: .normal)
 
@@ -82,7 +88,7 @@ class ProfileViewController: UIViewController {
                 print ("Error signing out: %@", signOutError)
             }
             
-            self.profilePicture.image = nil
+            self.profilePicture.image = #imageLiteral(resourceName: "profile_default-100")
             signInButton.setTitle("SIGN IN", for: .normal)
             signInButton.setTitleColor(UIColor(red:0.0, green:1.0, blue:0.0, alpha:1.0), for: .normal)
         }
