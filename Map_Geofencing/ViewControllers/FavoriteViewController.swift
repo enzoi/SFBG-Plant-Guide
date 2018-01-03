@@ -27,7 +27,7 @@ class FavoriteViewController: UIViewController {
             sectionNameKeyPath: nil,
             cacheName: nil)
         
-        fetchedResultsController.delegate = self
+        // fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
@@ -47,11 +47,9 @@ class FavoriteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print(Auth.auth().currentUser)
-        
-        if let user = Auth.auth().currentUser {
-            let predicate = NSPredicate(format: "%K == %@", "uid", user.uid)
+              
+        if let currenUser = Auth.auth().currentUser {
+            let predicate = NSPredicate(format: "uid == %@", currenUser.uid)
             fetchedResultsController.fetchRequest.predicate = predicate
         
             do {
@@ -64,12 +62,12 @@ class FavoriteViewController: UIViewController {
                 if users.count > 0 {
                     let user = Array(users).first! as User
                     favoritePlants = Array(user.favoritePlants!) as? [Plant]
-                    print("user: ", user)
-                    print("favorite plants: ", favoritePlants)
                 } else {
                     favoritePlants = []
                 }
             }
+            
+            print("favoritePlants: ", favoritePlants)
             
             tableView.reloadData()
             
@@ -135,7 +133,7 @@ extension FavoriteViewController: UITableViewDataSource {
 
 
 // MARK: - NSFetchedResultsControllerDelegate
-
+/*
 extension FavoriteViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -159,19 +157,8 @@ extension FavoriteViewController: NSFetchedResultsControllerDelegate {
         tableView.endUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        
-        let indexSet = IndexSet(integer: sectionIndex)
-        
-        switch type {
-        case .insert:
-            tableView.insertSections(indexSet, with: .automatic)
-        case .delete:
-            tableView.deleteSections(indexSet, with: .automatic)
-        default: break
-        }
-    }
 }
+*/
 
 // MARK: - Internal
 extension FavoriteViewController {
