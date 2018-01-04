@@ -66,9 +66,7 @@ class FavoriteViewController: UIViewController {
                     favoritePlants = []
                 }
             }
-            
-            print("favoritePlants: ", favoritePlants)
-            
+
             tableView.reloadData()
             
         } else {

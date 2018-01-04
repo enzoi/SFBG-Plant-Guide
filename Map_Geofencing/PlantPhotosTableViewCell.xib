@@ -19,6 +19,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="raW-vm-F1r">
+                        <rect key="frame" x="168" y="249.5" width="39" height="37"/>
+                        <color key="pageIndicatorTintColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </pageControl>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SiQ-E5-mKF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <constraints>
@@ -28,6 +33,8 @@
                     </scrollView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="raW-vm-F1r" secondAttribute="bottom" constant="5" id="1Gv-7Z-bZW"/>
+                    <constraint firstItem="raW-vm-F1r" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="2GY-tc-wZX"/>
                     <constraint firstAttribute="bottomMargin" secondItem="SiQ-E5-mKF" secondAttribute="bottom" constant="-8.5" id="40o-Nz-oSG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="SiQ-E5-mKF" secondAttribute="trailing" constant="-8" id="JLR-3A-eof"/>
                     <constraint firstItem="SiQ-E5-mKF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="pz1-Ym-Pzx"/>
@@ -35,7 +42,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="scrollView" destination="SiQ-E5-mKF" id="UH2-Gi-YBM"/>
+                <outlet property="pageControl" destination="raW-vm-F1r" id="lsB-X8-3mv"/>
+                <outlet property="scrollView" destination="SiQ-E5-mKF" id="YdT-S6-eDu"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="93"/>
         </tableViewCell>

@@ -70,8 +70,6 @@ extension AppDelegate {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         let count = try? self.photoStore.managedContext.count(for: fetchRequest)
         
-        print(fetchRequest)
-        
         guard let plantCount = count,
             plantCount == 0 else {
                 return

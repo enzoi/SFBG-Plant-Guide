@@ -183,11 +183,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Map_Geofencing/ViewControllers/FavoriteViewController.swift"
-            timestampString = "536715582.640618"
+            timestampString = "536784757.55613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "configure(cell:for:)"
             landmarkType = "7">
          </BreakpointContent>

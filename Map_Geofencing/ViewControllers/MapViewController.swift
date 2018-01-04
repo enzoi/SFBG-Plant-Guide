@@ -113,10 +113,6 @@ class MapViewController: UIViewController {
                 if self.fetchedPlants.count > 0 {
                     
                     for plant in self.fetchedPlants {
-                        print(plant)
-                    }
-                    
-                    for plant in self.fetchedPlants {
                         
                         let pinAnnotation = plant.getPinAnnotationsFromPin(plant: plant)
                         

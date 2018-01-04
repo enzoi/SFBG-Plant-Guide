@@ -55,11 +55,13 @@ class PlantTableViewCell: UITableViewCell {
     @objc private func handleMarkAsFavorite() {
         
         if Auth.auth().currentUser != nil {
-            print("there is a logged-in user", Auth.auth().currentUser!)
+            
             delegate?.toggleFavorite(cell: self)
+        
         } else {
-            print("there is no user")
+            
             parentViewController?.getAlertView(title: "Oops!!", error: "Saving a favorite requires sign-in. Please sign-in or sign-up")
+        
         }
     }
     

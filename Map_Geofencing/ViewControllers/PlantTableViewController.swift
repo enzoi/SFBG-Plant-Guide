@@ -277,9 +277,7 @@ extension PlantTableViewController {
 
                 for user in users {
                     if (user as! User).uid == currentUser.uid {
-                        
-                        print("user: ", user, currentUser)
-                        
+
                         cell.isFavorite = true
                         cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
                     }
@@ -329,8 +327,6 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
             plant = filteredPlants![indexPathTapped.row]
         }
    
-        print("plant: ", plant)
-        
         let moc = self.photoStore.managedContext
         let fetchRequest =  NSFetchRequest<NSManagedObject>(entityName: "User")
         
