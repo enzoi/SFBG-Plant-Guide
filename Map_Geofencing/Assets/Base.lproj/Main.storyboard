@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Delegate-->
+        <!--SFBG Map-->
         <scene sceneID="gTt-qV-i0D">
             <objects>
                 <viewController id="IFS-6D-BnZ" customClass="MapViewController" customModule="Map_Geofencing" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,27 +22,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2SF-s5-UIo" customClass="GMSMapView">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Vc-mI-2H6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="delegate" destination="IFS-6D-BnZ" id="JQu-tx-MVH"/>
+                                    <outlet property="delegate" destination="IFS-6D-BnZ" id="ubR-gt-Gel"/>
                                 </connections>
-                            </view>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Et-5b-dsS">
+                                <rect key="frame" x="81" y="72" width="212" height="29"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlActionWithSender:" destination="IFS-6D-BnZ" eventType="valueChanged" id="Cfv-Am-AeI"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="2SF-s5-UIo" firstAttribute="trailing" secondItem="GIC-Bc-nVj" secondAttribute="trailingMargin" constant="16" id="7yS-I3-JfR"/>
-                            <constraint firstItem="kzO-EC-dUM" firstAttribute="top" secondItem="2SF-s5-UIo" secondAttribute="bottom" id="OFX-Wz-2pf"/>
-                            <constraint firstItem="2SF-s5-UIo" firstAttribute="leading" secondItem="GIC-Bc-nVj" secondAttribute="leadingMargin" constant="-16" id="Qss-Wc-2LC"/>
-                            <constraint firstItem="2SF-s5-UIo" firstAttribute="top" secondItem="dZa-jV-qeg" secondAttribute="bottom" id="zQm-g4-MNB"/>
+                            <constraint firstItem="5Vc-mI-2H6" firstAttribute="top" secondItem="2Et-5b-dsS" secondAttribute="bottom" constant="-36" id="8pC-5c-X6A"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Vc-mI-2H6" secondAttribute="trailing" constant="-16" id="CRV-5l-mmx"/>
+                            <constraint firstItem="2Et-5b-dsS" firstAttribute="centerX" secondItem="GIC-Bc-nVj" secondAttribute="centerX" id="drD-EY-xYy"/>
+                            <constraint firstItem="5Vc-mI-2H6" firstAttribute="leading" secondItem="GIC-Bc-nVj" secondAttribute="leadingMargin" constant="-16" id="usg-PL-i0O"/>
+                            <constraint firstItem="5Vc-mI-2H6" firstAttribute="top" secondItem="dZa-jV-qeg" secondAttribute="bottom" id="xHg-v0-KDB"/>
+                            <constraint firstItem="kzO-EC-dUM" firstAttribute="top" secondItem="5Vc-mI-2H6" secondAttribute="bottom" id="yFJ-X2-LfF"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="lsN-8U-9ae"/>
                     <navigationItem key="navigationItem" title="SFBG Map" id="rKe-2N-5ey"/>
                     <connections>
-                        <outlet property="mapView" destination="2SF-s5-UIo" id="6fa-8i-2Po"/>
+                        <outlet property="mapView" destination="5Vc-mI-2H6" id="bdU-6E-CGZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4VL-9s-AP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -551,7 +563,7 @@
             <objects>
                 <navigationController storyboardIdentifier="signInViewController" automaticallyAdjustsScrollViewInsets="NO" id="U8s-3a-pq7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IJq-mU-wn0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IJq-mU-wn0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

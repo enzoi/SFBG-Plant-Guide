@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import MapKit
 
 
 extension Plant {
@@ -63,4 +64,12 @@ extension Plant {
     @objc(removeUsers:)
     @NSManaged public func removeFromUsers(_ values: NSSet)
 
+}
+
+extension Plant: MKAnnotation {
+    public var coordinate: CLLocationCoordinate2D {
+        let lat = CLLocationDegrees(latitude)
+        let lon = CLLocationDegrees(longitude)
+        return CLLocationCoordinate2D(latitude: lat, longitude: lon)
+    }
 }

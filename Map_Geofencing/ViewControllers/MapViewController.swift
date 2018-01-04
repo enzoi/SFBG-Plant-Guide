@@ -7,17 +7,19 @@
 //
 
 import UIKit
-import GoogleMaps
+import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
+    var annotations = [MKAnnotation]()
     var photoStore: PhotoStore!
     var fetchedPlants = [Plant]()
     var locationManager = CLLocationManager()
     var userCurrentLocation:CLLocation?
-    lazy var mapView = GMSMapView()
-    
+
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -26,43 +28,27 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.showsUserLocation = true
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+
+        let sfbgLocation = CLLocation(latitude: 37.7672, longitude: -122.4675)
+        centerMapOnLocation(location: sfbgLocation)
+        
         // Get photoStore from TabBarController
         let tabBar = self.tabBarController as! TabBarController
         self.photoStore = tabBar.photoStore
         
-        // Google Maps setting
-        let camera = GMSCameraPosition.camera(withLatitude: 37.7669, longitude: -122.4716, zoom: 15.0)
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.mapType = .normal
-        mapView.isMyLocationEnabled = true
-        self.view = mapView
-        self.mapView.delegate = self
-        
-        // Initialize Segmented Control
-        let items = ["Standard", "Hybrid", "Satellite"]
-        let segmentedControl = UISegmentedControl(items: items)
-        segmentedControl.selectedSegmentIndex = 0
-        
-        // Set up SegmentedControl
-        segmentedControl.frame = CGRect(x: 90, y: 75,
-                                      width: 200, height: 25)
-        segmentedControl.addTarget(self, action: #selector(mapType(sender:)), for: .valueChanged)
-        segmentedControl.backgroundColor = .white
-        segmentedControl.tintColor = .black
-        self.view.addSubview(segmentedControl)
-        
         //Location Manager code to fetch current location
         setUpLocationManager()
         
-        // Fetch all plant markers
-        fetchAllPlantMarkers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // TODO: Check if there is an update then fetch again
-        mapView.clear()
+        mapView.removeAnnotations(mapView.annotations)
         fetchAllPlantMarkers()
     }
     
@@ -109,40 +95,30 @@ class MapViewController: UIViewController {
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
     
-    // Change map types
-    func mapType(sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            mapView.mapType = .normal
-        case 1:
-            mapView.mapType = .hybrid
-        default:
-            mapView.mapType = .satellite
-        }
-    }
-    
     // Fetch all saved pins with annotation
     func fetchAllPlantMarkers() {
-        
+  
+        mapView.delegate = self
         showActivityIndicator(uiView: self.view)
         
+        // Get all plants
         photoStore.fetchAllMarkers() { (plantsResult) in
             
             switch plantsResult {
                 
             case let .success(plants):
-                
+
                 self.fetchedPlants = plants
                 
                 if self.fetchedPlants.count > 0 {
-
+                    
+                    for plant in self.fetchedPlants {
+                        print(plant)
+                    }
+                    
                     for plant in self.fetchedPlants {
                         
-                        let plantMarker = GMSMarker()
-                        plantMarker.position = CLLocationCoordinate2D(latitude: plant.latitude, longitude: plant.longitude)
-                        plantMarker.title = plant.scientificName
-                        plantMarker.snippet = plant.commonName
-                        plantMarker.map = self.mapView
+                        let pinAnnotation = plant.getPinAnnotationsFromPin(plant: plant)
                         
                         let photos = plant.photo?.allObjects as! [Photo]
                         
@@ -150,11 +126,18 @@ class MapViewController: UIViewController {
                             
                             self.photoStore.fetchImage(for: photo, completion: { (result) in
                                 if case let .success(image) = result {
+
                                     self.hideActivityIndicator(uiView: self.view)
                                 }
                             })
                         }
-
+                        
+                        self.annotations.append(pinAnnotation)
+                        
+                    }
+                    
+                    performUIUpdatesOnMain {
+                        self.mapView.addAnnotations(self.annotations)
                     }
                     
                 } else {
@@ -165,106 +148,95 @@ class MapViewController: UIViewController {
                 self.fetchedPlants = []
             }
         }
-    
+        
     }
     
-
-    
-    @IBAction func mapTypeChange(_ sender: UISegmentedControl!) {
+    @IBAction func segmentedControlAction(sender: UISegmentedControl!) {
         switch (sender.selectedSegmentIndex) {
         case 0:
-            mapView.mapType = .normal
+            mapView.mapType = .standard
         case 1:
             mapView.mapType = .hybrid
-        case 2:
-            mapView.mapType = .satellite
         default:
-            mapView.mapType = .normal
+            mapView.mapType = .satellite
         }
     }
+
 }
 
-// MARK: - CLLocationManagerDelegate
+// MARK: - Map View Delegate
 
-extension MapViewController: CLLocationManagerDelegate {
+extension MapViewController: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+   
+        let identifier = "pin"
+        var view: MKPinAnnotationView
+        
+        if annotation is PinAnnotation {
+            
+            if let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+                as? MKPinAnnotationView {
+                
+                pinView.annotation = annotation
+                view = pinView
+                
+            } else {
+                
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                
+                let plant = fetchedPlants.filter{ $0.scientificName == annotation.title! }.first
+                let photos = plant?.photo?.allObjects as! [Photo]
+                
+                if let photo = photos.first {
+                    
+                    let plantImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+                    plantImageView.layer.cornerRadius = 22.5
+                    plantImageView.layer.masksToBounds = true
+                    plantImageView.image = UIImage(data: photo.imageData! as Data)
+                    
+                    performUIUpdatesOnMain {
+                        plantImageView.image = UIImage(data: photo.imageData! as Data)
+                        view.leftCalloutAccessoryView = plantImageView
+                    }
+                }
+            
+                // Button to lead to detail view controller
+                let arrowButton = UIButton(frame: CGRect.init(x: 200, y: 25, width: 25, height: 25))
+                arrowButton.setImage(UIImage(named: "icons8-Forward Filled-50"), for: .normal)
+                view.rightCalloutAccessoryView = arrowButton
+
+            }
+
+            return view
+            
+        } else {
+            return nil
+        }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation = locations.last
-        let _ = CLLocationCoordinate2D(latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude)
-        
-        // User's current location to calculate distance to specific plant
-        userCurrentLocation = userLocation
-        
-        locationManager.stopUpdatingLocation()
     }
     
-    func centerMapOnLocation(location: CLLocation) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-    }
-}
-
-// MARK: - GMSMapViewDelegate
-
-extension MapViewController: GMSMapViewDelegate {
-    
-    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-
         let storyboard = UIStoryboard (name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
-        if let index = fetchedPlants.index(where: { $0.scientificName == marker.title }) {
+        if let index = fetchedPlants.index(where: { $0.scientificName == (view.annotation?.title)! }) {
             let selectedPlant = fetchedPlants[index]
             detailVC.plant = selectedPlant
         }
         
         self.navigationController?.pushViewController(detailVC, animated: true)
-
+        
     }
     
-    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: 225, height: 50))
-        view.backgroundColor = UIColor.white
-        view.layer.cornerRadius = 25
-
-        let plantImageView =  UIImageView(frame: CGRect(x: view.frame.origin.x + 2.5, y: view.frame.origin.y + 2.5, width: 45, height: 45))
-        plantImageView.layer.cornerRadius = 22.5
-
-        let plant = fetchedPlants.filter{ $0.scientificName == marker.title }.first
-        let photos = plant?.photo?.allObjects as! [Photo]
-        let photo = photos.first!
-        
-        performUIUpdatesOnMain {
-            plantImageView.image = UIImage(data: photo.imageData! as Data)
-        }
-        
-        plantImageView.clipsToBounds = true
-        view.addSubview(plantImageView)
-        
-        let scientificNameLabel = UILabel(frame: CGRect.init(x: 58, y: 8, width: view.frame.size.width - 16, height: 16))
-        scientificNameLabel.text = marker.title
-        scientificNameLabel.font = UIFont.systemFont(ofSize: 16)
-        view.addSubview(scientificNameLabel)
-        
-        let distanceLabel = UILabel(frame: CGRect.init(x: 58, y: 28, width: view.frame.size.width - 16, height: 14))
-        distanceLabel.font = UIFont.systemFont(ofSize: 14)
-        distanceLabel.textColor = .lightGray
-        
-        if let distance = userCurrentLocation?.distance(from: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)) {
-            distanceLabel.text = self.formatDistance(distance)
-        } else {
-            distanceLabel.text = "Distance: N/A"
-        }
-        view.addSubview(distanceLabel)
-        
-        return view
-    }
     
-    // Format distance(meters) to miles in String
+    // TODO: Get and update distance label
     func formatDistance(_ distance: Double) -> String {
         
         let distanceMeters = Measurement(value: distance, unit: UnitLength.meters)
         let miles = distanceMeters.converted(to: UnitLength.miles).value
-        print("\(miles) miles")
         
         let numDecimalDigits = (miles >= 4) ? 0 : 1
         
@@ -277,4 +249,51 @@ extension MapViewController: GMSMapViewDelegate {
         let formattedDistance: String = formatter.string(for: miles)!
         return "Distance: \(formattedDistance) miles"
     }
+
 }
+
+
+// MARK: - CLLocationManagerDelegate
+
+extension MapViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation = locations.last
+        let _ = CLLocationCoordinate2D(latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude)
+        
+        // User's current location to calculate distance to specific plant
+        userCurrentLocation = userLocation
+
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        
+        let coordinateRegion = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.02, 0.02))
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+
+}
+
+// MARK: - Custom Pin Annotation
+
+class PinAnnotation : NSObject, MKAnnotation {
+    private var coord: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    private var pinAnnotations = [PinAnnotation]()
+    
+    var coordinate: CLLocationCoordinate2D {
+        get {
+            return coord
+        }
+    }
+    
+    var id: String?
+    var title: String?
+    var subtitle: String?
+
+    func setCoordinate(newCoordinate: CLLocationCoordinate2D) {
+        self.coord = newCoordinate
+    }
+    
+}
+

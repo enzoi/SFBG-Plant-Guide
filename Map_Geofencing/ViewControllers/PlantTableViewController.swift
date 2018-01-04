@@ -286,9 +286,10 @@ extension PlantTableViewController {
                 }
                 
             } else {
-                print("NO CURRENT LOGGED IN USER")
+                
                 cell.isFavorite = false
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
+            
             }
         }
         

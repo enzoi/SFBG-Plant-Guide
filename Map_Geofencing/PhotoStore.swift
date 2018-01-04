@@ -88,7 +88,7 @@ class PhotoStore {
             
             // Otherwise, get an image using URL
             let photoURL = photo.remoteURL
-            let request = URLRequest(url: photoURL as! URL)
+            let request = URLRequest(url: photoURL! as URL)
             
             let task = session.dataTask(with: request) { (data, response, error) -> Void in
                 
