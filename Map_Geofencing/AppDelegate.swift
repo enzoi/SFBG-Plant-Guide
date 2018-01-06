@@ -13,6 +13,10 @@ import FacebookCore
 import FacebookLogin
 import GoogleSignIn
 import CoreData
+import CoreLocation
+import UserNotifications
+import UserNotificationsUI
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,10 +42,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let tabBarController = window?.rootViewController as? TabBarController else {
             return true
         }
-        tabBarController.photoStore = photoStore
         
         // Provide core data with hard coded plants data
         importJSONSeedDataIfNeeded()
+        
+        // Requesting Authorization for User Interactions
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+        }
+        
+        // Request Authorization for User Location Access
+        let locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization() // Move to AppDelegate
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        
+        
+        tabBarController.photoStore = photoStore
+        tabBarController.locationManager = locationManager
         
         return true
     }
@@ -133,6 +154,110 @@ extension AppDelegate {
 
         } catch let error as NSError {
             print("Error importing plants: \(error)")
+        }
+    }
+    
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+
+    // MARK: - Region monitoring event handler
+    
+    func handleEvent(forRegion region: CLRegion!, plant: Plant) {
+        
+        // Create notification contents
+        let content = UNMutableNotificationContent()
+        content.title = "Nearby Plant"
+        content.subtitle = plant.scientificName!
+        content.body = "Find your plant nearby"
+        
+        let openAction = UNNotificationAction(identifier:"open",
+                                              title:"Open",options:[])
+        
+        let category = UNNotificationCategory(identifier: "actionCategory",
+                                              actions: [openAction],
+                                              intentIdentifiers: [], options: [])
+        
+        content.categoryIdentifier = "actionCategory"
+        
+        UNUserNotificationCenter.current().setNotificationCategories(
+            [category])
+        
+        let photos = Array(plant.photo!) as! [Photo]
+        guard let photo = photos.first else { return }
+        
+        if let attachment = UNNotificationAttachment.create(identifier: plant.scientificName!, imageData: photo.imageData! as Data, options: nil) {
+            content.attachments = [attachment]
+        }
+        
+        // Deliver the notification in five seconds.
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1.0, repeats: false)
+        
+        let requestIdentifier = "plantNotification"
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request) { (error) in
+            
+            if (error != nil){
+                print(error?.localizedDescription)
+            }
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        switch response.actionIdentifier {
+        case "open":
+            
+            // Open Detail View Controller
+            guard let tabBarController = window?.rootViewController as? TabBarController else { return }
+            
+            if let favoriteVC = tabBarController.viewControllers?[2].navigationController?.viewControllers.first {
+                
+                let storyboard = UIStoryboard (name: "Main", bundle: nil)
+                let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+                
+                favoriteVC.navigationController?.pushViewController(detailVC, animated: true)
+            }
+            
+        default:
+            break
+        }
+        completionHandler()
+    }
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        if notification.request.identifier == "plantNotification" {
+            
+            completionHandler( [.alert,.sound,.badge])
+            
+        }
+    }
+}
+
+extension AppDelegate: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        
+        if region is CLCircularRegion {
+            
+            photoStore.fetchAllPlants() { (plantsResult) in
+                
+                switch plantsResult {
+                    
+                case let .success(plants):
+                    
+                    // Get plant with specific user & get favorite plants
+                    let plant = plants.filter { $0.scientificName! == region.identifier }.first!
+                    self.handleEvent(forRegion: region, plant: plant)
+                    
+                case .failure(_):
+                    print("No plants")
+                }
+            }
         }
     }
 }

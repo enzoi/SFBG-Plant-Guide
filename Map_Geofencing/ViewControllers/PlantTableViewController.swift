@@ -8,7 +8,10 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+import MapKit
 import FirebaseAuth
+
 
 class PlantTableViewController: UIViewController {
 
@@ -25,6 +28,7 @@ class PlantTableViewController: UIViewController {
     
     fileprivate let plantCellIdentifier = "plantCell"
     var photoStore: PhotoStore!
+    var locationManager: CLLocationManager!
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
@@ -51,6 +55,7 @@ class PlantTableViewController: UIViewController {
 
         let tabBar = self.tabBarController as! TabBarController
         self.photoStore = tabBar.photoStore
+        self.locationManager = tabBar.locationManager
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
@@ -344,18 +349,65 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
                     let theUser = users.first as! User
                     theUser.addToFavoritePlants(plant)
                 }
-                    
+                
+                self.startMonitoring(coordinate: plant.coordinate, identifier: plant.scientificName!)
+                
                 cell.isFavorite = true
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
                 
             } else {
                 let theUser = users.first! as! User
                 theUser.removeFromFavoritePlants(plant)
+                
+                self.stopMonitoring(coordinate: plant.coordinate, name: plant.scientificName!)
+                
                 cell.isFavorite = false
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
+
             }
         }
 
+    }
+    
+    
+    // Helper methods regarding Geofencing
+    func region(withCoordinate coordinate: CLLocationCoordinate2D, identifier: String) -> CLCircularRegion {
+        
+        let radius = 10
+        let coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let region = CLCircularRegion(center: coordinate, radius: CLLocationDistance(radius), identifier: identifier)
+        
+        region.notifyOnEntry = true
+        return region
+    }
+    
+    func startMonitoring(coordinate: CLLocationCoordinate2D, identifier: String) {
+        
+        print("startMonitoring called")
+        
+        if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+            showAlertWithMessage(title:"Error", message: "Geofencing is not supported on this device!")
+            return
+        }
+        
+        if CLLocationManager.authorizationStatus() != .authorizedAlways {
+            showAlertWithMessage(title:"Warning", message: "Your plant is saved but Geofencing will only be activated only when the app is active")
+        }
+        
+        let region = self.region(withCoordinate: coordinate, identifier: identifier)
+        locationManager.startMonitoring(for: region)
+        
+        print("location manager start monitoring")
+    }
+    
+    func stopMonitoring(coordinate: CLLocationCoordinate2D, name: String) {
+        
+        print("location manager stop monitoring")
+        
+        for region in locationManager.monitoredRegions {
+            guard let circularRegion = region as? CLCircularRegion, circularRegion.identifier == name else { continue }
+            locationManager.stopMonitoring(for: circularRegion)
+        }
     }
     
 }

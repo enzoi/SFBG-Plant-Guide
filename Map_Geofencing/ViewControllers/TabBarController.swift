@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class TabBarController: UITabBarController {
 
     var photoStore: PhotoStore!
+    var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -125,7 +125,7 @@ class PhotoStore {
     
     // MARK: Fetch All Pins in MapVC
     
-    func fetchAllMarkers(completion: @escaping (PlantsResult) -> Void) {
+    func fetchAllPlants(completion: @escaping (PlantsResult) -> Void) {
         
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         let moc = storeContainer.viewContext

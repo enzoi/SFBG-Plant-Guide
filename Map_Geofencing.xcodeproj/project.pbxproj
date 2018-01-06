@@ -17,6 +17,7 @@
 		CF4FB2421FCFB48D00CC885E /* seed.json in Resources */ = {isa = PBXBuildFile; fileRef = CF4FB2411FCFB48D00CC885E /* seed.json */; };
 		CF4FB2501FD1215D00CC885E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB24F1FD1215D00CC885E /* MapViewController.swift */; };
 		CF4FB2541FD2816B00CC885E /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */; };
+		CF631B9A1FFEC96600A0E6AA /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF631B991FFEC96600A0E6AA /* Utilities.swift */; };
 		CF7429091FEB45FE004E26AE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7429081FEB45FE004E26AE /* SignInViewController.swift */; };
 		CF74290C1FEC7135004E26AE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74290B1FEC7135004E26AE /* TabBarController.swift */; };
 		CF7429111FECC6BF004E26AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF7429101FECC6BF004E26AE /* GoogleService-Info.plist */; };
@@ -86,6 +87,8 @@
 		CF4FB2411FCFB48D00CC885E /* seed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed.json; sourceTree = "<group>"; };
 		CF4FB24F1FD1215D00CC885E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTableViewCell.swift; path = ViewControllers/FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		CF631B991FFEC96600A0E6AA /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		CF631B9B200047DE00A0E6AA /* SFBG 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 8.xcdatamodel"; sourceTree = "<group>"; };
 		CF7429081FEB45FE004E26AE /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CF74290A1FEB6D1A004E26AE /* Map_Geofencing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Map_Geofencing.entitlements; path = ../Map_Geofencing.entitlements; sourceTree = "<group>"; };
 		CF74290B1FEC7135004E26AE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -254,6 +257,7 @@
 				CF74290A1FEB6D1A004E26AE /* Map_Geofencing.entitlements */,
 				CF97BEDD1FCDD67500E9931C /* style.json */,
 				CFB4EE0A1FF62BC3003DD45A /* GCDBlackBox.swift */,
+				CF631B991FFEC96600A0E6AA /* Utilities.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -667,6 +671,7 @@
 			files = (
 				CFE592AA1FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift in Sources */,
 				CFD3C27C1FDE48500084637B /* PlantPhotosTableViewCell.swift in Sources */,
+				CF631B9A1FFEC96600A0E6AA /* Utilities.swift in Sources */,
 				CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */,
 				CF8A07131FEF680E005F9C19 /* Plant+CoreDataProperties.swift in Sources */,
 				CFD3C2791FDE3A7A0084637B /* PlantViewModel.swift in Sources */,
@@ -1018,6 +1023,7 @@
 		CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				CF631B9B200047DE00A0E6AA /* SFBG 8.xcdatamodel */,
 				CF8A070F1FEF67BA005F9C19 /* SFBG 7.xcdatamodel */,
 				CF8A070E1FEE3588005F9C19 /* SFBG 6.xcdatamodel */,
 				CFE592A11FDF4A5100F0BBE2 /* SFBG 5.xcdatamodel */,

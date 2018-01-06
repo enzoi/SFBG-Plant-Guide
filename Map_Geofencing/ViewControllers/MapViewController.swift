@@ -16,8 +16,8 @@ class MapViewController: UIViewController {
     
     var annotations = [MKAnnotation]()
     var photoStore: PhotoStore!
+    var locationManager: CLLocationManager!
     var fetchedPlants = [Plant]()
-    var locationManager = CLLocationManager()
     var userCurrentLocation:CLLocation?
 
     var container: UIView = UIView()
@@ -29,18 +29,13 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.showsUserLocation = true
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-
+        
         let sfbgLocation = CLLocation(latitude: 37.7672, longitude: -122.4675)
         centerMapOnLocation(location: sfbgLocation)
         
         // Get photoStore from TabBarController
         let tabBar = self.tabBarController as! TabBarController
         self.photoStore = tabBar.photoStore
-        
-        //Location Manager code to fetch current location
-        setUpLocationManager()
         
     }
     
@@ -49,15 +44,12 @@ class MapViewController: UIViewController {
         
         // TODO: Check if there is an update then fetch again
         mapView.removeAnnotations(mapView.annotations)
-        fetchAllPlantMarkers()
-    }
-    
-    func setUpLocationManager() {
         
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
+        if fetchedPlants.count == 0 {
+            fetchAllPlantMarkers()
+        } else {
+            self.mapView.addAnnotations(self.annotations)
+        }
         
     }
     
@@ -102,7 +94,7 @@ class MapViewController: UIViewController {
         showActivityIndicator(uiView: self.view)
         
         // Get all plants
-        photoStore.fetchAllMarkers() { (plantsResult) in
+        photoStore.fetchAllPlants() { (plantsResult) in
             
             switch plantsResult {
                 
@@ -186,16 +178,21 @@ extension MapViewController: MKMapViewDelegate {
                 let photos = plant?.photo?.allObjects as! [Photo]
                 
                 if let photo = photos.first {
-                    
+
                     let plantImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
                     plantImageView.layer.cornerRadius = 22.5
                     plantImageView.layer.masksToBounds = true
-                    plantImageView.image = UIImage(data: photo.imageData! as Data)
                     
-                    performUIUpdatesOnMain {
-                        plantImageView.image = UIImage(data: photo.imageData! as Data)
-                        view.leftCalloutAccessoryView = plantImageView
-                    }
+                    photoStore.fetchImage(for: photo, completion: { (result) in
+                        
+                        if case let .success(image) = result {
+                            
+                            performUIUpdatesOnMain() {
+                                plantImageView.image = image
+                                view.leftCalloutAccessoryView = plantImageView
+                            }
+                        }
+                    })
                 }
             
                 // Button to lead to detail view controller
@@ -270,6 +267,7 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 
 }
+
 
 // MARK: - Custom Pin Annotation
 

@@ -74,7 +74,7 @@ class SignUpWithEmailViewController: UIViewController {
         
         guard let username = usernameTextField.text, let password = passwordTextField.text, let confirmedPassword = confirmPasswordTextField.text else {
             self.activityIndicator.stopAnimating()
-            self.getAlertView(title: "Sign up Failed", error: "User Name or Password is empty!!!")
+            self.showAlertWithError(title: "Sign up Failed", error: "User Name or Password is empty!!!")
             return
         }
         
@@ -89,13 +89,13 @@ class SignUpWithEmailViewController: UIViewController {
                         self.completeSignup()
                     } else {
                         print(error!)
-                        self.getAlertView(title: "Sign up Error", error: (error?.localizedDescription)!)
+                        self.showAlertWithError(title: "Sign up Error", error: (error?.localizedDescription)!)
                     }
                 }
             }
         } else {
             self.activityIndicator.stopAnimating()
-            self.getAlertView(title: "Sign up Failed", error: "Passwords not matched!!!")
+            self.showAlertWithError(title: "Sign up Failed", error: "Passwords not matched!!!")
         }
     }
     

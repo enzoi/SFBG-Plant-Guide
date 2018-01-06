@@ -17,6 +17,7 @@ class FavoriteViewController: UIViewController {
     var photoStore: PhotoStore!
     var favoritePlants: [Plant]?
     
+    // TODO: make this simple fetch request not controller
     lazy var fetchedResultsController: NSFetchedResultsController<User> = {
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.sortDescriptors = []
@@ -26,9 +27,7 @@ class FavoriteViewController: UIViewController {
             managedObjectContext: self.photoStore.managedContext,
             sectionNameKeyPath: nil,
             cacheName: nil)
-        
-        // fetchedResultsController.delegate = self
-        
+
         return fetchedResultsController
     }()
     
@@ -72,7 +71,7 @@ class FavoriteViewController: UIViewController {
         } else {
             favoritePlants = []
             tableView.reloadData()
-            getAlertView(title: "No User Found", error: "You need to log in to save or view your favorite plants")
+            showAlertWithError(title: "No User Found", error: "You need to log in to save or view your favorite plants")
         }
     }
     
@@ -130,34 +129,6 @@ extension FavoriteViewController: UITableViewDataSource {
 }
 
 
-// MARK: - NSFetchedResultsControllerDelegate
-/*
-extension FavoriteViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .automatic)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .automatic)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-    
-}
-*/
-
 // MARK: - Internal
 extension FavoriteViewController {
     
@@ -178,15 +149,4 @@ extension FavoriteViewController {
     }
 }
 
-// MARK - FavoriteViewController (AlertController)
-
-extension UIViewController {
-    
-    func getAlertView(title: String, error: String) {
-        let alertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel)
-        alertController.addAction(dismissAction)
-        present(alertController, animated: true, completion: nil)
-    }
-}
 
