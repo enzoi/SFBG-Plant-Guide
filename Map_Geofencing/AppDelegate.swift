@@ -55,11 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Request Authorization for User Location Access
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization() // Move to AppDelegate
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
+        print("location manager start updating location")
         
         tabBarController.photoStore = photoStore
         tabBarController.locationManager = locationManager
@@ -190,7 +188,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             content.attachments = [attachment]
         }
         
-        // Deliver the notification in five seconds.
+        // Deliver the notification in one seconds.
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1.0, repeats: false)
         
         let requestIdentifier = "plantNotification"

@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import CoreLocation
 import MapKit
 
 @objc(Plant)
@@ -19,7 +18,7 @@ public class Plant: NSManagedObject {
         let pinAnnotation = PinAnnotation()
         pinAnnotation.setCoordinate(newCoordinate: CLLocationCoordinate2D(latitude: plant.latitude, longitude: plant.longitude))
         pinAnnotation.title = plant.scientificName
-        pinAnnotation.subtitle = "Distance: N/A"
+        pinAnnotation.subtitle = plant.commonName
         
         return pinAnnotation
     }

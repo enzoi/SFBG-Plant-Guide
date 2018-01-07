@@ -36,6 +36,9 @@ class MapViewController: UIViewController {
         // Get photoStore from TabBarController
         let tabBar = self.tabBarController as! TabBarController
         self.photoStore = tabBar.photoStore
+        self.locationManager = tabBar.locationManager
+        
+        locationManager.delegate = self
         
     }
     
@@ -158,6 +161,8 @@ extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
    
+        print("view for annotation called")
+        
         let identifier = "pin"
         var view: MKPinAnnotationView
         
@@ -224,25 +229,6 @@ extension MapViewController: MKMapViewDelegate {
         
     }
     
-    
-    // TODO: Get and update distance label
-    func formatDistance(_ distance: Double) -> String {
-        
-        let distanceMeters = Measurement(value: distance, unit: UnitLength.meters)
-        let miles = distanceMeters.converted(to: UnitLength.miles).value
-        
-        let numDecimalDigits = (miles >= 4) ? 0 : 1
-        
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.roundingMode = .halfUp
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = numDecimalDigits
-        
-        let formattedDistance: String = formatter.string(for: miles)!
-        return "Distance: \(formattedDistance) miles"
-    }
-
 }
 
 
@@ -253,11 +239,8 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations.last
         let _ = CLLocationCoordinate2D(latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude)
-        
-        // User's current location to calculate distance to specific plant
-        userCurrentLocation = userLocation
 
-        locationManager.stopUpdatingLocation()
+         locationManager.stopUpdatingLocation()
     }
     
     func centerMapOnLocation(location: CLLocation) {
