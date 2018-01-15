@@ -12,17 +12,23 @@ class WebViewController: UIViewController {
 
     @IBOutlet weak var webView: UIWebView!
     
+    var url: URL!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = URL(string: "https://en.wikipedia.org/wiki/Sequoia_sempervirens")
+        self.title = "More Info"
+        self.tabBarController?.tabBar.isHidden = true
+        
         let request = URLRequest(url: url!)
         
         webView.loadRequest(request)
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
 
 }

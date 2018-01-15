@@ -24,7 +24,7 @@ struct Appearance {
         // Tab Bar
         UITabBar.appearance().barTintColor = UIColor.darkGreen
         UITabBar.appearance().tintColor = UIColor.white
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.lightGray], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
         
         // Segmented Control
@@ -44,7 +44,7 @@ extension UIColor {
     }
     
     class var lighterGreen: UIColor {
-        return UIColor(red: 188.0 / 255.0, green: 235.0 / 255.0, blue: 131.0 / 255.0, alpha: 0.2)
+        return UIColor(red: 225.0 / 255.0, green: 240.0 / 255.0, blue: 194.0 / 255.0, alpha: 1.0)
     }
 
 }

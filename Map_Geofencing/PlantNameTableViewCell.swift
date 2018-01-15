@@ -45,6 +45,12 @@ class PlantNameTableViewCell: UITableViewCell {
 
     func buttonTapped(sender: UIButton) {
         print("button tapped")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let webVC = storyboard.instantiateViewController(withIdentifier :"webViewController") as! WebViewController
+        webVC.url = URL(string: "https://en.wikipedia.org/wiki/Sequoia_sempervirens")
+        
+        let presentingVC = self.parentViewController as! DetailViewController
+        presentingVC.navigationController?.pushViewController(webVC, animated: true)
     }
     
 }
