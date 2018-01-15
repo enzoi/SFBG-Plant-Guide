@@ -221,6 +221,7 @@ extension MapViewController: MKMapViewDelegate {
         if let index = fetchedPlants.index(where: { $0.scientificName == (view.annotation?.title)! }) {
             let selectedPlant = fetchedPlants[index]
             detailVC.plant = selectedPlant
+            detailVC.photoStore = photoStore
         }
         
         self.navigationController?.pushViewController(detailVC, animated: true)
