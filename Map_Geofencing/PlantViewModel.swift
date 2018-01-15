@@ -128,8 +128,12 @@ extension PlantViewModel: UITableViewDelegate {
         return 30
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("cell tapped")
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("cell tapped")
+//    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        print("wiki icon tapped")
     }
     
     // func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

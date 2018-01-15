@@ -34,16 +34,17 @@ class PlantNameTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        // Initialization code
-        self.accessoryType = .disclosureIndicator
-
+        // Accessory Button
+        let wikiButton = UIButton(type: .custom)
+        wikiButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        wikiButton.setImage(#imageLiteral(resourceName: "icons8-wikipedia-100"), for: .normal)
+        wikiButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        self.accessoryView = wikiButton
+        
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-        print("cell selected")
+    func buttonTapped(sender: UIButton) {
+        print("button tapped")
     }
     
 }
