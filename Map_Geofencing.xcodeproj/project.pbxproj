@@ -44,6 +44,7 @@
 		CFD3C2761FDD1B970084637B /* PlantPropertiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD3C2741FDD1B970084637B /* PlantPropertiesTableViewCell.xib */; };
 		CFD3C2791FDE3A7A0084637B /* PlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C2781FDE3A7A0084637B /* PlantViewModel.swift */; };
 		CFDC058B200C74520024CFE6 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC058A200C74520024CFE6 /* Appearance.swift */; };
+		CFDC058D200C9C6C0024CFE6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC058C200C9C6C0024CFE6 /* WebViewController.swift */; };
 		CFE592A81FDF4C9D00F0BBE2 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A21FDF4C9D00F0BBE2 /* User+CoreDataClass.swift */; };
 		CFE592A91FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */; };
 		CFE592AA1FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A41FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift */; };
@@ -126,6 +127,7 @@
 		CFD3C2741FDD1B970084637B /* PlantPropertiesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlantPropertiesTableViewCell.xib; sourceTree = "<group>"; };
 		CFD3C2781FDE3A7A0084637B /* PlantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantViewModel.swift; sourceTree = "<group>"; };
 		CFDC058A200C74520024CFE6 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		CFDC058C200C9C6C0024CFE6 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CFE592A11FDF4A5100F0BBE2 /* SFBG 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 5.xcdatamodel"; sourceTree = "<group>"; };
 		CFE592A21FDF4C9D00F0BBE2 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				CF4FB24F1FD1215D00CC885E /* MapViewController.swift */,
 				CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */,
 				CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */,
+				CFDC058C200C9C6C0024CFE6 /* WebViewController.swift */,
 				CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */,
 				CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */,
 				CF7429081FEB45FE004E26AE /* SignInViewController.swift */,
@@ -694,6 +697,7 @@
 				CFB4EE0B1FF62BC3003DD45A /* GCDBlackBox.swift in Sources */,
 				CFE592A91FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift in Sources */,
 				CFE592A81FDF4C9D00F0BBE2 /* User+CoreDataClass.swift in Sources */,
+				CFDC058D200C9C6C0024CFE6 /* WebViewController.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,
 				CF4FB2541FD2816B00CC885E /* FavoriteTableViewCell.swift in Sources */,
 				CF4FB23E1FCE9EF000CC885E /* ProfileViewController.swift in Sources */,

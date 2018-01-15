@@ -35,6 +35,7 @@ class PlantNameTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         // Initialization code
+        self.accessoryType = .disclosureIndicator
 
     }
 
@@ -42,6 +43,7 @@ class PlantNameTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        print("cell selected")
     }
     
 }

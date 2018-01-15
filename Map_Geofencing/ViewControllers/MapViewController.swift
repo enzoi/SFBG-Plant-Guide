@@ -203,6 +203,7 @@ extension MapViewController: MKMapViewDelegate {
                 arrowButton.setImage(UIImage(named: "icons8-Forward Filled-50"), for: .normal)
                 view.rightCalloutAccessoryView = arrowButton
 
+                
             }
 
             return view
@@ -266,7 +267,7 @@ class PinAnnotation : NSObject, MKAnnotation {
     var id: String?
     var title: String?
     var subtitle: String?
-
+    
     func setCoordinate(newCoordinate: CLLocationCoordinate2D) {
         self.coord = newCoordinate
     }
