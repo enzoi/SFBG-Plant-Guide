@@ -439,37 +439,8 @@
                     <view key="view" contentMode="scaleToFill" id="BnV-ky-Zkw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6o-QN-OEW">
-                                <rect key="frame" x="0.0" y="64" width="375" height="250"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="aAd-zl-1Qu"/>
-                                </constraints>
-                            </scrollView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ynv-n7-quD">
-                                <rect key="frame" x="0.0" y="314" width="375" height="304"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="H6o-QN-OEW" firstAttribute="trailing" secondItem="ynv-n7-quD" secondAttribute="trailing" id="3lE-o3-rPD"/>
-                            <constraint firstItem="ynv-n7-quD" firstAttribute="top" secondItem="H6o-QN-OEW" secondAttribute="bottom" id="5RR-T5-AEB"/>
-                            <constraint firstItem="ynv-n7-quD" firstAttribute="top" secondItem="Y40-yC-nJx" secondAttribute="bottom" constant="250" id="674-Hu-GI8"/>
-                            <constraint firstItem="H6o-QN-OEW" firstAttribute="top" secondItem="Y40-yC-nJx" secondAttribute="bottom" id="HS7-iX-Srp"/>
-                            <constraint firstItem="ynv-n7-quD" firstAttribute="leading" secondItem="BnV-ky-Zkw" secondAttribute="leading" id="Prp-8L-4TN"/>
-                            <constraint firstItem="H6o-QN-OEW" firstAttribute="leading" secondItem="ynv-n7-quD" secondAttribute="leading" id="ViN-gF-kM9"/>
-                            <constraint firstAttribute="trailing" secondItem="H6o-QN-OEW" secondAttribute="trailing" id="bby-QD-G1m"/>
-                            <constraint firstItem="H6o-QN-OEW" firstAttribute="leading" secondItem="BnV-ky-Zkw" secondAttribute="leading" id="cZf-aH-7QE"/>
-                            <constraint firstItem="H6o-QN-OEW" firstAttribute="top" secondItem="Y40-yC-nJx" secondAttribute="bottom" id="dXc-Fh-Plh"/>
-                            <constraint firstAttribute="trailing" secondItem="ynv-n7-quD" secondAttribute="trailing" id="jCe-hi-lIa"/>
-                            <constraint firstItem="ynv-n7-quD" firstAttribute="bottom" secondItem="WfU-3U-815" secondAttribute="top" id="m6I-Yg-9X9"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="scrollView" destination="H6o-QN-OEW" id="8jY-pD-xq7"/>
-                        <outlet property="tableView" destination="ynv-n7-quD" id="zaQ-PN-VRa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Wi-bI-WRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

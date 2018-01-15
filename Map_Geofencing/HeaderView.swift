@@ -43,7 +43,7 @@ class HeaderView: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.contentView.backgroundColor = .darkGray
+        self.contentView.backgroundColor = UIColor.lighterGreen
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
     }
     

@@ -62,6 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.photoStore = photoStore
         tabBarController.locationManager = locationManager
         
+        // Setup styles - status bar, nav bar, item
+        Appearance.setGlobalAppearance()
+        
         return true
     }
     

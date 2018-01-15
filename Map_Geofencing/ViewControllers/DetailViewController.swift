@@ -22,14 +22,12 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        let navBarHeight: CGFloat = (self.navigationController?.navigationBar.frame.size.height)!
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
  
-        scrollView = UIScrollView(frame: CGRect(x:0, y: barHeight + navBarHeight, width: displayWidth, height: 250))
-        pageControl = UIPageControl(frame:CGRect(x: (displayWidth - 200)/2, y: barHeight + navBarHeight + 220, width: 200, height: 30))
-        tableView = UITableView(frame: CGRect(x: 0, y: barHeight + navBarHeight + 250, width: displayWidth, height: displayHeight - 250))
+        scrollView = UIScrollView(frame: CGRect(x:0, y: 0, width: displayWidth, height: 250))
+        pageControl = UIPageControl(frame:CGRect(x: (displayWidth - 200)/2, y: 220, width: 200, height: 30))
+        tableView = UITableView(frame: CGRect(x: 0, y: 250, width: displayWidth, height: displayHeight - 250))
         
         scrollView.delegate = self
         

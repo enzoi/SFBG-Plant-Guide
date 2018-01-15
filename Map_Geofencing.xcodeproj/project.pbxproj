@@ -43,6 +43,7 @@
 		CFD3C2751FDD1B970084637B /* PlantPropertiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C2731FDD1B970084637B /* PlantPropertiesTableViewCell.swift */; };
 		CFD3C2761FDD1B970084637B /* PlantPropertiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD3C2741FDD1B970084637B /* PlantPropertiesTableViewCell.xib */; };
 		CFD3C2791FDE3A7A0084637B /* PlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C2781FDE3A7A0084637B /* PlantViewModel.swift */; };
+		CFDC058B200C74520024CFE6 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC058A200C74520024CFE6 /* Appearance.swift */; };
 		CFE592A81FDF4C9D00F0BBE2 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A21FDF4C9D00F0BBE2 /* User+CoreDataClass.swift */; };
 		CFE592A91FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */; };
 		CFE592AA1FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A41FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift */; };
@@ -124,6 +125,7 @@
 		CFD3C2731FDD1B970084637B /* PlantPropertiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantPropertiesTableViewCell.swift; sourceTree = "<group>"; };
 		CFD3C2741FDD1B970084637B /* PlantPropertiesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlantPropertiesTableViewCell.xib; sourceTree = "<group>"; };
 		CFD3C2781FDE3A7A0084637B /* PlantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantViewModel.swift; sourceTree = "<group>"; };
+		CFDC058A200C74520024CFE6 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		CFE592A11FDF4A5100F0BBE2 /* SFBG 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 5.xcdatamodel"; sourceTree = "<group>"; };
 		CFE592A21FDF4C9D00F0BBE2 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				CFD3C24B1FD7BAA80084637B /* ModelControllers */,
 				CF4FB2351FCE3E9600CC885E /* Model */,
 				CF76A1901FA92B6300893C65 /* Assets */,
+				CFDC0589200C74230024CFE6 /* Extensions */,
 				CF76A18E1FA92B3A00893C65 /* Supporting Files */,
 			);
 			path = Map_Geofencing;
@@ -354,6 +357,15 @@
 				CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */,
 			);
 			name = "Plant Table View Cell";
+			sourceTree = "<group>";
+		};
+		CFDC0589200C74230024CFE6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CFDC058A200C74520024CFE6 /* Appearance.swift */,
+			);
+			name = Extensions;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		D27A09E2DC0ACB93178F2DF2 /* Frameworks */ = {
@@ -673,6 +685,7 @@
 				CF369D261FE0A8B10064E251 /* HeaderView.swift in Sources */,
 				CFD3C2751FDD1B970084637B /* PlantPropertiesTableViewCell.swift in Sources */,
 				CF74290C1FEC7135004E26AE /* TabBarController.swift in Sources */,
+				CFDC058B200C74520024CFE6 /* Appearance.swift in Sources */,
 				CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */,
 				CF8A07121FEF680E005F9C19 /* Plant+CoreDataClass.swift in Sources */,
 				CF97BEE21FCDEA7300E9931C /* PlantTableViewController.swift in Sources */,
