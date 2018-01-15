@@ -100,6 +100,7 @@ class PlantTableViewController: UIViewController {
             }
             
             let detailVC = segue.destination as! DetailViewController
+            detailVC.photoStore = photoStore
             detailVC.plant = plant
         }
     }

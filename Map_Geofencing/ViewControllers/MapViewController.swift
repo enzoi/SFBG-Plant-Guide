@@ -160,9 +160,7 @@ class MapViewController: UIViewController {
 extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-   
-        print("view for annotation called")
-        
+     
         let identifier = "pin"
         var view: MKPinAnnotationView
         

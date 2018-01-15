@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 enum PlantViewModelItemType {
-    case photos
     case names
     case properties
 }
@@ -44,13 +43,13 @@ class PlantViewModel: NSObject {
             items.append(propertiesItem)
         }
         
-        if let photos = plant.photo {
-            let photoArray = Array(photos)
-            if !photoArray.isEmpty {
-                let photosItem = PlantViewModelPhotosItem(photos: photoArray as! [Photo])
-                items.append(photosItem)
-            }
-        }
+//        if let photos = plant.photo {
+//            let photoArray = Array(photos)
+//            if !photoArray.isEmpty {
+//                let photosItem = PlantViewModelPhotosItem(photos: photoArray as! [Photo])
+//                items.append(photosItem)
+//            }
+//        }
         
     }
 }
@@ -80,15 +79,15 @@ extension PlantViewModel: UITableViewDataSource {
         let item = items[indexPath.section]
         
         switch item.type {
-        case .photos:
-            if let item = item as? PlantViewModelPhotosItem, let cell = tableView.dequeueReusableCell(withIdentifier: PlantPhotosTableViewCell.identifier, for: indexPath) as? PlantPhotosTableViewCell {
-                
-                // Get photo for page control later
-                let photo = item.photos[indexPath.row]
-                cell.item = item
-                
-                return cell
-            }
+//        case .photos:
+//            if let item = item as? PlantViewModelPhotosItem, let cell = tableView.dequeueReusableCell(withIdentifier: PlantPhotosTableViewCell.identifier, for: indexPath) as? PlantPhotosTableViewCell {
+//                
+//                // Get photo for page control later
+//                let photo = item.photos[indexPath.row]
+//                cell.item = item
+//                
+//                return cell
+//            }
         case .names:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PlantNameTableViewCell.identifier, for: indexPath) as? PlantNameTableViewCell {
                 cell.item = item as? PlantViewModelNamesItem
@@ -173,29 +172,29 @@ extension PlantViewModelItem {
 
 // MARK: Plant View Model Items
 
-class PlantViewModelPhotosItem: PlantViewModelItem {
-    var type: PlantViewModelItemType {
-        return .photos
-    }
-    
-    var sectionTitle: String {
-        return "Plant Images"
-    }
-    
-    var rowCount: Int {
-        return 1
-    }
-    
-    var isCollapsed = false
-    
-    var photos: [Photo]
-    var image: UIImage?
-    
-    init(photos: [Photo]) {
-        self.photos = photos
-        self.image = nil
-    }
-}
+//class PlantViewModelPhotosItem: PlantViewModelItem {
+//    var type: PlantViewModelItemType {
+//        return .photos
+//    }
+//    
+//    var sectionTitle: String {
+//        return "Plant Images"
+//    }
+//    
+//    var rowCount: Int {
+//        return 1
+//    }
+//    
+//    var isCollapsed = false
+//    
+//    var photos: [Photo]
+//    var image: UIImage?
+//    
+//    init(photos: [Photo]) {
+//        self.photos = photos
+//        self.image = nil
+//    }
+//}
 
 class PlantViewModelNamesItem: PlantViewModelItem {
     var type: PlantViewModelItemType {
