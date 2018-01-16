@@ -35,6 +35,15 @@ struct Appearance {
 }
 
 extension UIColor {
+    
+    class var whiteBackground: UIColor {
+        return UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 0.3)
+    }
+    
+    class var grayBackground: UIColor {
+        return UIColor(red: 68.0 / 255.0, green: 68.0 / 255.0, blue: 68.0 / 255.0, alpha: 0.7)
+    }
+    
     class var darkGreen: UIColor {
         return UIColor(red: 0.0 / 255.0, green: 143.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
     }

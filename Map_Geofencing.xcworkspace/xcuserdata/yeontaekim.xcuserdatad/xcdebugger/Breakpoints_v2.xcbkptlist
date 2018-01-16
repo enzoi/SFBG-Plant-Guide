@@ -199,11 +199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Map_Geofencing/ViewControllers/MapViewController.swift"
-            timestampString = "537684203.29479"
+            timestampString = "537824668.436399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "fetchAllPlantMarkers()"
             landmarkType = "7">
             <Locations>
@@ -295,12 +295,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Map_Geofencing/ViewControllers/MapViewController.swift"
-            timestampString = "537777313.7171381"
+            timestampString = "537824668.436399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "mapView(_:viewFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Map_Geofencing/ViewControllers/MapViewController.swift"
+            timestampString = "537825395.112138"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "showActivityIndicator(view:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
