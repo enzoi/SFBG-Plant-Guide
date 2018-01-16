@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cZ8-O9-g27">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="plantCell" rowHeight="60" id="ZcG-l0-47a" customClass="PlantTableViewCell" customModule="Map_Geofencing" customModuleProvider="target">
@@ -147,10 +147,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cZ8-O9-g27" firstAttribute="leading" secondItem="alF-e6-mfE" secondAttribute="leading" id="Fd7-lb-znF"/>
-                            <constraint firstItem="BU1-kV-f69" firstAttribute="top" secondItem="cZ8-O9-g27" secondAttribute="bottom" id="RVf-lE-X89"/>
-                            <constraint firstAttribute="trailing" secondItem="cZ8-O9-g27" secondAttribute="trailing" id="iys-QY-dTL"/>
-                            <constraint firstItem="cZ8-O9-g27" firstAttribute="top" secondItem="alF-e6-mfE" secondAttribute="top" id="kGi-BN-opO"/>
+                            <constraint firstItem="cZ8-O9-g27" firstAttribute="leading" secondItem="alF-e6-mfE" secondAttribute="leading" id="4FN-F9-nBd"/>
+                            <constraint firstItem="cZ8-O9-g27" firstAttribute="top" secondItem="alF-e6-mfE" secondAttribute="top" id="AIL-ao-o6A"/>
+                            <constraint firstAttribute="bottom" secondItem="cZ8-O9-g27" secondAttribute="bottom" id="QGf-UT-mmf"/>
+                            <constraint firstAttribute="trailing" secondItem="cZ8-O9-g27" secondAttribute="trailing" id="lHw-eo-PRL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="dpr-jj-pfc"/>
@@ -178,7 +178,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1809" y="910"/>
+            <point key="canvasLocation" x="1808.8" y="909.89505247376314"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="BO7-uI-UWX">

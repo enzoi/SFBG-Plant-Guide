@@ -47,7 +47,6 @@ class PlantTableViewController: UIViewController {
         return fetchedResultsController
     }()
 
-    // @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -70,6 +69,8 @@ class PlantTableViewController: UIViewController {
         searchController.searchBar.delegate = self
         
         tableView.dataSource = self
+        
+        self.extendedLayoutIncludesOpaqueBars = true
         
         do {
             try fetchedResultsController.performFetch()
@@ -232,11 +233,7 @@ extension PlantTableViewController: UITableViewDataSource {
         configure(cell: cell, for: indexPath)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionInfo = fetchedResultsController.sections?[section]
-        return sectionInfo?.name
-    }
+
 }
 
 // MARK: - UITableViewDelegate
