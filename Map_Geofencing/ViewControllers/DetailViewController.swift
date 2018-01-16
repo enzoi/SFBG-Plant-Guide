@@ -100,6 +100,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     func configurePageControl() {
 
         self.pageControl.numberOfPages = (plant.photo?.allObjects.count)!
+        
+        if self.pageControl.numberOfPages <= 1 {
+            pageControl.isHidden = true
+        } else {
+            pageControl.isHidden = false
+        }
+        
         self.pageControl.currentPage = 0
         self.pageControl.pageIndicatorTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.70)
         self.pageControl.currentPageIndicatorTintColor = UIColor.white
