@@ -13,10 +13,10 @@ import MapKit
 @objc(Plant)
 public class Plant: NSManagedObject {
 
-    func getPinAnnotationsFromPin(plant: Plant) -> PinAnnotation {
+    func getPinAnnotationsFromPin(plant: Plant) -> MKAnnotation {
         
-        let pinAnnotation = PinAnnotation()
-        pinAnnotation.setCoordinate(newCoordinate: CLLocationCoordinate2D(latitude: plant.latitude, longitude: plant.longitude))
+        let pinAnnotation = PinAnnotation(plant: plant)
+
         pinAnnotation.title = plant.scientificName
         pinAnnotation.subtitle = plant.commonName
         

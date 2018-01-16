@@ -162,22 +162,28 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
      
         let identifier = "pin"
-        var view: MKPinAnnotationView
+        var view: MKAnnotationView
         
         if annotation is PinAnnotation {
             
-            if let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-                as? MKPinAnnotationView {
+            if let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
                 
                 pinView.annotation = annotation
                 view = pinView
                 
             } else {
                 
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
+                view.image = #imageLiteral(resourceName: "icons8-oak-tree-100")
                 
                 let plant = fetchedPlants.filter{ $0.scientificName == annotation.title! }.first
+                
+                var frame = view.frame
+                frame.size.height = 35
+                frame.size.width = 35
+                view.frame = frame
+                
                 let photos = plant?.photo?.allObjects as! [Photo]
                 
                 if let photo = photos.first {
@@ -202,7 +208,6 @@ extension MapViewController: MKMapViewDelegate {
                 let arrowButton = UIButton(frame: CGRect.init(x: 200, y: 25, width: 25, height: 25))
                 arrowButton.setImage(UIImage(named: "icons8-Forward Filled-50"), for: .normal)
                 view.rightCalloutAccessoryView = arrowButton
-
                 
             }
 
@@ -255,21 +260,14 @@ extension MapViewController: CLLocationManagerDelegate {
 // MARK: - Custom Pin Annotation
 
 class PinAnnotation : NSObject, MKAnnotation {
-    private var coord: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-    private var pinAnnotations = [PinAnnotation]()
     
-    var coordinate: CLLocationCoordinate2D {
-        get {
-            return coord
-        }
-    }
+    var coordinate: CLLocationCoordinate2D
     
-    var id: String?
     var title: String?
     var subtitle: String?
     
-    func setCoordinate(newCoordinate: CLLocationCoordinate2D) {
-        self.coord = newCoordinate
+    init(plant: Plant) {
+        self.coordinate = plant.coordinate
     }
     
 }
