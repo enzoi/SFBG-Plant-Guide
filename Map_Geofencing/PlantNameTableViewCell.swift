@@ -47,7 +47,12 @@ class PlantNameTableViewCell: UITableViewCell {
         print("button tapped")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let webVC = storyboard.instantiateViewController(withIdentifier :"webViewController") as! WebViewController
-        webVC.url = URL(string: "https://en.wikipedia.org/wiki/Sequoia_sempervirens")
+        let baseUrlString = "https://en.wikipedia.org/wiki/"
+        
+        guard let plantNameArray = self.commonNameLabel.text?.lowercased().components(separatedBy: " ") else { return }
+        let searchURL = plantNameArray.joined(separator: "_")
+        
+        webVC.url = URL(string: baseUrlString + searchURL)
         
         let presentingVC = self.parentViewController as! DetailViewController
         presentingVC.navigationController?.pushViewController(webVC, animated: true)
