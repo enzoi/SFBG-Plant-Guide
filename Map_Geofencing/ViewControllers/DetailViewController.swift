@@ -14,7 +14,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     var scrollView: UIScrollView!
     var pageControl: UIPageControl!
     var frame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
-
+    
     var photoStore: PhotoStore!
     var plant: Plant!
     var imageArray = [UIImage]()

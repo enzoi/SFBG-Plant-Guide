@@ -108,12 +108,11 @@ class MapViewController: UIViewController {
                         let pinAnnotation = plant.getPinAnnotationsFromPin(plant: plant)
                         
                         let photos = plant.photo?.allObjects as! [Photo]
-                        
+            
                         for photo in photos {
-                            
+                        
                             self.photoStore.fetchImage(for: photo, completion: { (result) in
                                 if case let .success(image) = result {
-
                                     self.hideActivityIndicator(view: self.view)
                                 }
                             })

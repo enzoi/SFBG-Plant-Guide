@@ -22,7 +22,6 @@
 		CF74290C1FEC7135004E26AE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74290B1FEC7135004E26AE /* TabBarController.swift */; };
 		CF7429111FECC6BF004E26AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF7429101FECC6BF004E26AE /* GoogleService-Info.plist */; };
 		CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1601FA9216000893C65 /* AppDelegate.swift */; };
-		CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */; };
 		CF76A1761FA9216000893C65 /* Map_GeofencingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1751FA9216000893C65 /* Map_GeofencingTests.swift */; };
 		CF76A1811FA9216000893C65 /* Map_GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */; };
 		CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */; };
@@ -46,6 +45,7 @@
 		CFDC058B200C74520024CFE6 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC058A200C74520024CFE6 /* Appearance.swift */; };
 		CFDC058D200C9C6C0024CFE6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC058C200C9C6C0024CFE6 /* WebViewController.swift */; };
 		CFDC058F200DDA1D0024CFE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFDC058E200DDA1D0024CFE6 /* Assets.xcassets */; };
+		CFDC0591201130230024CFE6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFDC0590201130230024CFE6 /* Launch Screen.storyboard */; };
 		CFE592A81FDF4C9D00F0BBE2 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A21FDF4C9D00F0BBE2 /* User+CoreDataClass.swift */; };
 		CFE592A91FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */; };
 		CFE592AA1FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE592A41FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift */; };
@@ -95,7 +95,6 @@
 		CF7429101FECC6BF004E26AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CF76A16A1FA9216000893C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF76A16C1FA9216000893C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF76A1711FA9216000893C65 /* Map_GeofencingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Map_GeofencingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1751FA9216000893C65 /* Map_GeofencingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_GeofencingTests.swift; sourceTree = "<group>"; };
@@ -129,6 +128,7 @@
 		CFDC058A200C74520024CFE6 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		CFDC058C200C9C6C0024CFE6 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CFDC058E200DDA1D0024CFE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CFDC0590201130230024CFE6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		CFE592A11FDF4A5100F0BBE2 /* SFBG 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 5.xcdatamodel"; sourceTree = "<group>"; };
 		CFE592A21FDF4C9D00F0BBE2 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -328,7 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				CFCA45A4200B376800DAA4EF /* Main.storyboard */,
-				CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */,
+				CFDC0590201130230024CFE6 /* Launch Screen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -511,9 +511,9 @@
 				CF369D2A1FE0A9630064E251 /* HeaderView.xib in Resources */,
 				CFDC058F200DDA1D0024CFE6 /* Assets.xcassets in Resources */,
 				CF7429111FECC6BF004E26AE /* GoogleService-Info.plist in Resources */,
-				CF76A16B1FA9216000893C65 /* LaunchScreen.storyboard in Resources */,
 				CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */,
 				CF97BEDE1FCDD67500E9931C /* style.json in Resources */,
+				CFDC0591201130230024CFE6 /* Launch Screen.storyboard in Resources */,
 				CF4FB2421FCFB48D00CC885E /* seed.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,18 +739,6 @@
 			targetProxy = CF76A17D1FA9216000893C65 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CF76A1691FA9216000893C65 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CF76A16A1FA9216000893C65 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			path = Assets;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CF76A1831FA9216000893C65 /* Debug */ = {

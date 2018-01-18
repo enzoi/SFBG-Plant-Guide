@@ -18,6 +18,12 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        for item in self.tabBar.items! {
+            if let image = item.image {
+                item.image = image.withRenderingMode(.alwaysOriginal)
+            }
+        }
     }
 
 }

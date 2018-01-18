@@ -46,18 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Provide core data with hard coded plants data
         importJSONSeedDataIfNeeded()
         
-        // Requesting Authorization for User Interactions
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            // Enable or disable features based on authorization.
-        }
-        
         // Request Authorization for User Location Access
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         print("location manager start updating location")
+        
+        // Requesting Authorization for User Interactions
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+        }
         
         tabBarController.photoStore = photoStore
         tabBarController.locationManager = locationManager

@@ -198,60 +198,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Map_Geofencing/ViewControllers/MapViewController.swift"
-            timestampString = "537824668.436399"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "fetchAllPlantMarkers()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Map_Geofencing.MapViewController.(fetchAllPlantMarkers () -&gt; ()).(closure #1)"
-                  moduleName = "Map_Geofencing"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/ViewControllers/MapViewController.swift"
-                  timestampString = "536872674.05345"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "1500">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Map_Geofencing.MapViewController.(fetchAllPlantMarkers () -&gt; ()).(closure #1).(closure #2)"
-                  moduleName = "Map_Geofencing"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/ViewControllers/MapViewController.swift"
-                  timestampString = "536872674.0567"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Map_Geofencing/ViewControllers/PlantTableViewController.swift"
-            timestampString = "537780293.468794"
+            timestampString = "537865195.360446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "toggleFavorite(cell:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -295,28 +247,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Map_Geofencing/ViewControllers/MapViewController.swift"
-            timestampString = "537824668.436399"
+            timestampString = "537997925.69383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "mapView(_:viewFor:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Map_Geofencing/ViewControllers/MapViewController.swift"
-            timestampString = "537825395.112138"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "showActivityIndicator(view:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
