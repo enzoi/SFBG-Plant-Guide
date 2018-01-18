@@ -324,7 +324,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="U7M-4q-PnD"/>
-                    <navigationItem key="navigationItem" title="Profile" id="AT3-os-lW7"/>
+                    <navigationItem key="navigationItem" title="Profile" id="AT3-os-lW7">
+                        <barButtonItem key="rightBarButtonItem" title="Setting" id="YYe-hn-cG3">
+                            <connections>
+                                <action selector="appSettingButtonTapped:" destination="Ka2-Q7-rUt" id="SZ4-XH-z67"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="profileName" destination="JVr-Mc-DCi" id="Oaz-Ox-UBT"/>
                         <outlet property="profilePicture" destination="gMH-Ik-aIg" id="ehh-Uk-yAC"/>
