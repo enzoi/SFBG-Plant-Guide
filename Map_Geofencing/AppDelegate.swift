@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     lazy var  photoStore = PhotoStore(modelName: "SFBG")
+    var locationManager:CLLocationManager? = .none
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -38,25 +39,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Facebook Auth Setup
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        // Pass photoStore to TabBarController
-        guard let tabBarController = window?.rootViewController as? TabBarController else {
-            return true
-        }
-        
         // Provide core data with hard coded plants data
         importJSONSeedDataIfNeeded()
         
         // Request Authorization for User Location Access
-        let locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        print("location manager start updating location")
-        
-        // Requesting Authorization for User Interactions
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            // Enable or disable features based on authorization.
+        performUIUpdatesOnMain {
+            self.locationManager = CLLocationManager()
+            self.locationManager?.delegate = self
+            self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        }
+
+        // Pass photoStore to TabBarController
+        guard let tabBarController = window?.rootViewController as? TabBarController else {
+            return true
         }
         
         tabBarController.photoStore = photoStore
@@ -240,6 +235,34 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 }
 
 extension AppDelegate: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        print("location manager didChangeAuth called")
+        
+        switch status {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        
+            // Requesting Authorization for User Interactions only when location service granted
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                // Enable or disable features based on authorization.
+            }
+            break
+        case .restricted:
+            // restricted by e.g. parental controls. User can't enable Location Services
+            break
+        case .denied:
+            // user denied your app access to Location Services, but can grant access from Settings.app
+            break
+        default:
+            break
+        }
+        
+    }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         

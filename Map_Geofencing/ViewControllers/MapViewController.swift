@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
     
     var annotations = [MKAnnotation]()
     var photoStore: PhotoStore!
-    var locationManager: CLLocationManager!
+    var locationManager: CLLocationManager?
     var fetchedPlants = [Plant]()
     var userCurrentLocation:CLLocation?
 
@@ -38,7 +38,7 @@ class MapViewController: UIViewController {
         self.photoStore = tabBar.photoStore
         self.locationManager = tabBar.locationManager
         
-        locationManager.delegate = self
+        locationManager?.delegate = self
         
     }
     
@@ -240,7 +240,7 @@ extension MapViewController: CLLocationManagerDelegate {
         let userLocation = locations.last
         let _ = CLLocationCoordinate2D(latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude)
 
-         locationManager.stopUpdatingLocation()
+         locationManager?.stopUpdatingLocation()
     }
     
     func centerMapOnLocation(location: CLLocation) {
