@@ -28,7 +28,7 @@ class PlantTableViewController: UIViewController {
     
     fileprivate let plantCellIdentifier = "plantCell"
     var photoStore: PhotoStore!
-    var locationManager: CLLocationManager!
+    var locationManager: CLLocationManager?
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
@@ -381,12 +381,12 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
             return
         }
         
-        if CLLocationManager.authorizationStatus() != .authorizedAlways {
-            showAlertWithMessage(title:"Warning", message: "Your plant is saved but Geofencing will only be activated only when the app is active")
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            showAlertWithMessage(title:"Warning", message: "Your plant is saved but Geofencing doesn't work until location service granted.")
         }
         
         let region = self.region(withCoordinate: coordinate, identifier: identifier)
-        locationManager.startMonitoring(for: region)
+        locationManager?.startMonitoring(for: region)
         
         print("location manager start monitoring")
     }
@@ -395,9 +395,9 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
         
         print("location manager stop monitoring")
         
-        for region in locationManager.monitoredRegions {
+        for region in (locationManager?.monitoredRegions)! {
             guard let circularRegion = region as? CLCircularRegion, circularRegion.identifier == name else { continue }
-            locationManager.stopMonitoring(for: circularRegion)
+            locationManager?.stopMonitoring(for: circularRegion)
         }
     }
     
