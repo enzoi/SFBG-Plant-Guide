@@ -325,7 +325,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="U7M-4q-PnD"/>
                     <navigationItem key="navigationItem" title="Profile" id="AT3-os-lW7">
-                        <barButtonItem key="rightBarButtonItem" title="Setting" id="YYe-hn-cG3">
+                        <barButtonItem key="rightBarButtonItem" image="icons8-settings-filled-100" id="YYe-hn-cG3">
                             <connections>
                                 <action selector="appSettingButtonTapped:" destination="Ka2-Q7-rUt" id="SZ4-XH-z67"/>
                             </connections>
@@ -491,7 +491,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOc-dS-XLp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="FAVORITE" image="icon_favorite-selected" id="ydo-Ya-ePF"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qzu-xc-gz9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qzu-xc-gz9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -510,7 +510,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FKl-ol-mSI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="PROFILE" image="icon_profile-selected" id="ZPI-Oj-H8X"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jjb-JJ-Ff0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jjb-JJ-Ff0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -529,7 +529,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qat-9K-ifq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="PLANTS" image="icon_listview-selected" id="OMz-bp-i5d"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cah-um-Gs7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cah-um-Gs7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -548,7 +548,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eBa-c8-PXV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="MAP" image="icon_mapview-selected" id="roG-54-VYo"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0Rj-td-gzT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Rj-td-gzT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -587,7 +587,7 @@
             <objects>
                 <navigationController storyboardIdentifier="signInViewController" automaticallyAdjustsScrollViewInsets="NO" id="U8s-3a-pq7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IJq-mU-wn0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IJq-mU-wn0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -684,6 +684,7 @@
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
         <image name="icon_profile-selected" width="75" height="50"/>
+        <image name="icons8-settings-filled-100" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JEe-Ej-Gv3"/>
