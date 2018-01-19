@@ -26,6 +26,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         let displayHeight: CGFloat = self.view.frame.height
  
         scrollView = UIScrollView(frame: CGRect(x:0, y: 0, width: displayWidth, height: 250))
+        
         pageControl = UIPageControl(frame:CGRect(x: (displayWidth - 200)/2, y: 220, width: 200, height: 30))
         tableView = UITableView(frame: CGRect(x: 0, y: 250, width: displayWidth, height: displayHeight - 250))
         

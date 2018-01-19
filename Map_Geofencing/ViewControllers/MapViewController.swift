@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    
+    var loadingLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,17 +62,24 @@ class MapViewController: UIViewController {
         container.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height / 2)
         container.backgroundColor = UIColor.whiteBackground
         
-        loadingView.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+        loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         loadingView.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height / 2)
         loadingView.backgroundColor = UIColor.grayBackground
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10
         
-        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 25.0, height: 25.0)
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: 30)
+        
+        loadingLabel = UILabel(frame: CGRect(x: 0, y: 55, width: 80, height: 15))
+        loadingLabel.text = "Loading"
+        loadingLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 15)!
+        loadingLabel.textColor = UIColor.lightGray
+        loadingLabel.textAlignment = .center
         
         loadingView.addSubview(activityIndicator)
+        loadingView.addSubview(loadingLabel)
         container.addSubview(loadingView)
         view.addSubview(container)
         activityIndicator.startAnimating()

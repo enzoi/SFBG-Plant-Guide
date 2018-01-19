@@ -124,6 +124,8 @@ class PhotoStore {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         let moc = storeContainer.viewContext
         
+        fetchRequest.fetchBatchSize = 10
+        
         moc.perform {
             do {
                 let allPlants = try moc.fetch(fetchRequest)
