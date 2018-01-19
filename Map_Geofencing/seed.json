@@ -1,8 +1,8 @@
 { "plants": [
              {
              "uid": "a2f213g2s3lfg",
-             "scientificName": "Aesculus Californica",
-             "commonName": [ "California Buckeye" ],
+             "scientificName": "Aesculus californica",
+             "commonName": [ "California buckeye" ],
              "other_names": [""],
              "family": "Sapindaceae",
              "genus": "Aesculus",
@@ -24,8 +24,8 @@
              "location": {
              "id": 1234567,
              "coordinate": {
-             "latitude": 37.767184,
-             "longitude": -122.467432 },
+             "latitude": 37.766344,
+             "longitude": -122.470290 },
              "gardenName": ["Native California"],
              "bedNumber": ["23A"] },
              "bloomTime": [ "february", "march", "april" ],
@@ -62,8 +62,8 @@
              },
              {
              "uid": "a2f213g2s3adf",
-             "scientificName": "Leptospermum Scoparium",
-             "commonName": [ "Manuka Myrtle", "New Zealand teatree" ],
+             "scientificName": "Leptospermum scoparium",
+             "commonName": [ "Manuka myrtle", "New zealand teatree" ],
              "other_names": [""],
              "family": "Myrtaceae",
              "genus": "leptospermum",
@@ -84,8 +84,8 @@
              "waterNeeds": "little or no water to moderate water",
              "location": { "id": 1234567,
              "coordinate": {
-             "latitude": 37.7672,
-             "longitude": -122.4674 },
+             "latitude": 37.768232,
+             "longitude": -122.470305 },
              "gardenName": ["Native California"],
              "bedNumber": ["23A"] },
              "bloomTime": [ "february", "march", "april" ],
@@ -111,8 +111,8 @@
              },
              {
              "uid": "adf214g2s3adf",
-             "scientificName": "Pinus Pinea",
-             "commonName": [ "Italian Stone Pine" ],
+             "scientificName": "Pinus pinea",
+             "commonName": [ "Italian stone pine" ],
              "other_names": [""],
              "family": "",
              "genus": "",
@@ -160,8 +160,8 @@
              },
              {
              "uid": "c2d213g2s3adf",
-             "scientificName": "Rhamnus Alaternus",
-             "commonName": [ "Italian Buckthorn" ],
+             "scientificName": "Rhamnus alaternus",
+             "commonName": [ "Italian buckthorn" ],
              "other_names": [""],
              "family": "",
              "genus": "",
@@ -209,8 +209,8 @@
              },
              {
              "uid": "12f213g2s3add",
-             "scientificName": "Prunus Serrulata",
-             "commonName": [ "Japanese Flowering Tree" ],
+             "scientificName": "Prunus serrulata",
+             "commonName": [ "Japanese flowering tree" ],
              "other_names": [""],
              "family": "",
              "genus": "",
@@ -258,8 +258,8 @@
              },
              {
              "uid": "12f213g2s3adf",
-             "scientificName": "Sequoia Sempervirens",
-             "commonName": [ "Coast Redwood" ],
+             "scientificName": "Sequoia sempervirens",
+             "commonName": [ "Coast redwood" ],
              "other_names": [""],
              "family": "",
              "genus": "",
@@ -302,6 +302,55 @@
                         {
                         "description" : "leaf",
                         "remoteURL" : "https://horosho-zhivem.ru/wp-content/uploads/2016/02/Sekvojya.jpg"
+                        }
+                        ]
+             },
+             {
+             "uid": "adf214g2d3adf",
+             "scientificName": "Magnolia campbellii",
+             "commonName": [ "Campbell's magnolia" ],
+             "other_names": [""],
+             "family": "",
+             "genus": "",
+             "species": "",
+             "cultivar": "",
+             "createdAt": "",
+             "updatedAt": "",
+             "climateZones": "6-9, 13,24",
+             "growthRate": "",
+             "plantType": "Tree",
+             
+             "size": { "height": { "min": 40, "max": 100, "unit": "ft" },
+             "width": { "min": 20, "max": 40, "unit": "ft" } },
+             "foliageColor": { "front": "green", "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "waterNeeds": "little or no water to moderate water",
+             "location": { "id": 1234563,
+             "coordinate": {
+             "latitude": 37.768130,
+             "longitude": -122.471260 },
+             "gardenName": [],
+             "bedNumber": [] },
+             "bloomTime": [],
+             "bloomColor": [],
+             "bloomShape": "",
+             "flowerFragrance": [""],
+             "sunExposure": "full sun",
+             "pruning": "",
+             "soilPH_min": 0.0,
+             "soilPH_max": 0.0,
+             "uses": "",
+             "description": "",
+             "photos": [
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://i.pinimg.com/originals/ef/95/7d/ef957d6c5c0aca13384a79944aea84e5.jpg"
+                        },
+                        {
+                        "description" : "flower",
+                        "remoteURL" : "https://www.sfbotanicalgarden.org/graphics/bloom/13_01/main.jpg"
                         }
                         ]
              }

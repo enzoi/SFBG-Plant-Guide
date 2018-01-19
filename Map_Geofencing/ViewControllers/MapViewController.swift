@@ -30,7 +30,7 @@ class MapViewController: UIViewController {
         
         mapView.showsUserLocation = true
         
-        let sfbgLocation = CLLocation(latitude: 37.7672, longitude: -122.4675)
+        let sfbgLocation = CLLocation(latitude: 37.767527, longitude: -122.469890)
         centerMapOnLocation(location: sfbgLocation)
         
         // Get photoStore from TabBarController
@@ -273,7 +273,7 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func centerMapOnLocation(location: CLLocation) {
         
-        let coordinateRegion = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.02, 0.02))
+        let coordinateRegion = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.01, 0.01))
         mapView.setRegion(coordinateRegion, animated: true)
     }
 
