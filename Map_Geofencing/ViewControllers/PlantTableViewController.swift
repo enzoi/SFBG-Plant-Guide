@@ -55,6 +55,7 @@ class PlantTableViewController: UIViewController {
         let tabBar = self.tabBarController as! TabBarController
         self.photoStore = tabBar.photoStore
         self.locationManager = tabBar.locationManager
+        self.locationManager?.delegate = self as! CLLocationManagerDelegate
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
@@ -314,6 +315,9 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
                     theUser.addToFavoritePlants(plant)
                 }
                 
+                self.startMonitoring(coordinate: plant.coordinate, identifier: plant.scientificName!)
+                print("coordinate: ", plant.coordinate, plant.scientificName!)
+                
                 cell.isFavorite = true
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
                 
@@ -321,6 +325,9 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
                 let theUser = users.first! as! User
                 theUser.removeFromFavoritePlants(plant)
 
+                self.stopMonitoring(coordinate: plant.coordinate, identifier: plant.scientificName!)
+                print("coordinate: ", plant.coordinate, plant.scientificName!)
+                
                 cell.isFavorite = false
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
 
@@ -328,9 +335,7 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
         }
 
     }
-    
-    
-    // Helper methods regarding Geofencing
+
     func region(withCoordinate coordinate: CLLocationCoordinate2D, identifier: String) -> CLCircularRegion {
         
         let radius = 10
@@ -384,13 +389,13 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
 
     }
     
-    func stopMonitoring(coordinate: CLLocationCoordinate2D, name: String) {
+    func stopMonitoring(coordinate: CLLocationCoordinate2D, identifier: String) {
         
         print("location manager stop monitoring")
         guard let locationManager = locationManager else { return }
         
         for region in locationManager.monitoredRegions {
-            guard let circularRegion = region as? CLCircularRegion, circularRegion.identifier == name else { continue }
+            guard let circularRegion = region as? CLCircularRegion, circularRegion.identifier == identifier else { continue }
             locationManager.stopMonitoring(for: circularRegion)
         }
     }

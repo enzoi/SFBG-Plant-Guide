@@ -208,6 +208,55 @@
                         ]
              },
              {
+             "uid": "12f213g2s3add",
+             "scientificName": "Prunus Serrulata",
+             "commonName": [ "Japanese Flowering Tree" ],
+             "other_names": [""],
+             "family": "",
+             "genus": "",
+             "species": "",
+             "cultivar": "",
+             "createdAt": "",
+             "updatedAt": "",
+             "climateZones": "4-9, 14-24",
+             "growthRate": "fast",
+             "plantType": "Tree",
+             
+             "size": { "height": { "min": 0, "max": 25, "unit": "ft" },
+             "width": { "min": 0, "max": 20, "unit": "ft" } },
+             "foliageColor": { "front": "green", "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "waterNeeds": "Water regularly",
+             "location": { "id": 1234567,
+             "coordinate": {
+             "latitude": 37.757366,
+             "longitude": -122.484305 },
+             "gardenName": ["Native California"],
+             "bedNumber": [] },
+             "bloomTime": [],
+             "bloomColor": [],
+             "bloomShape": "",
+             "flowerFragrance": [""],
+             "sunExposure": "Full Sun",
+             "pruning": "",
+             "soilPH_min": 0.0,
+             "soilPH_max": 0.0,
+             "uses": "",
+             "description": "",
+             "photos": [
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://i.pinimg.com/originals/49/4c/04/494c049a750f95f16f625944ad33eeaa.jpg"
+                        },
+                        {
+                        "description" : "flower",
+                        "remoteURL" : "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Prunus_serrulata_Kanzan_blossom_Jardin_des_Plantes_2013-04-20_n2.jpg/800px-Prunus_serrulata_Kanzan_blossom_Jardin_des_Plantes_2013-04-20_n2.jpg"
+                        }
+                        ]
+             },
+             {
              "uid": "12f213g2s3adf",
              "scientificName": "Sequoia Sempervirens",
              "commonName": [ "Coast Redwood" ],

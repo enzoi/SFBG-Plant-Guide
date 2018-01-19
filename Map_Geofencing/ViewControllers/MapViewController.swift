@@ -259,6 +259,18 @@ extension MapViewController: CLLocationManagerDelegate {
          locationManager?.stopUpdatingLocation()
     }
     
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        mapView.showsUserLocation = status == .authorizedWhenInUse
+    }
+    
+    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
+        print("Monitoring failed for region with identifier: \(region!.identifier)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location Manager failed with the following error: \(error)")
+    }
+    
     func centerMapOnLocation(location: CLLocation) {
         
         let coordinateRegion = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.02, 0.02))
