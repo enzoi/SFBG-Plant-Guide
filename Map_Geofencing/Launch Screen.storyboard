@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,15 +22,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="San-Francisco-Botanical-Garden-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9wu-KG-SI8">
-                                <rect key="frame" x="86" y="195" width="203" height="297"/>
+                                <rect key="frame" x="137.5" y="258.5" width="100" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="4AN-Qh-qfs"/>
+                                    <constraint firstAttribute="width" constant="100" id="rs3-hh-BRm"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.11845477670431137" green="0.26357585191726685" blue="0.10331995040178299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jFx-ZO-O5Y" firstAttribute="top" secondItem="9wu-KG-SI8" secondAttribute="bottom" constant="175" id="3ha-Fs-rEG"/>
-                            <constraint firstItem="9wu-KG-SI8" firstAttribute="top" secondItem="kT5-eC-ZfB" secondAttribute="bottom" constant="175" id="Hz3-ba-KLQ"/>
-                            <constraint firstItem="9wu-KG-SI8" firstAttribute="leading" secondItem="Uxv-84-0S1" secondAttribute="leadingMargin" constant="70" id="Iem-H9-z4A"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9wu-KG-SI8" secondAttribute="trailing" constant="70" id="cQP-eH-KVH"/>
+                            <constraint firstItem="9wu-KG-SI8" firstAttribute="centerX" secondItem="Uxv-84-0S1" secondAttribute="centerX" id="SEH-qe-rul"/>
+                            <constraint firstItem="9wu-KG-SI8" firstAttribute="centerY" secondItem="Uxv-84-0S1" secondAttribute="centerY" id="zQX-A0-ah2"/>
                         </constraints>
                     </view>
                 </viewController>
