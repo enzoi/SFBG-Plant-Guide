@@ -90,7 +90,6 @@ class MapViewController: UIViewController {
     func fetchAllPlantMarkers() {
   
         mapView.delegate = self
-        showActivityIndicator(view: self.view)
         
         // Get all plants
         photoStore.fetchAllPlants() { (plantsResult) in
@@ -99,21 +98,27 @@ class MapViewController: UIViewController {
                 
             case let .success(plants):
 
+                let dispatchGroup = DispatchGroup()
+                
                 self.fetchedPlants = plants
                 
                 if self.fetchedPlants.count > 0 {
+                    
+                    self.showActivityIndicator(view: self.view)
                     
                     for plant in self.fetchedPlants {
                         
                         let pinAnnotation = plant.getPinAnnotationsFromPin(plant: plant)
                         
                         let photos = plant.photo?.allObjects as! [Photo]
-            
+
                         for photo in photos {
-                        
+                            
+                            dispatchGroup.enter()
+                            
                             self.photoStore.fetchImage(for: photo, completion: { (result) in
                                 if case let .success(image) = result {
-                                    self.hideActivityIndicator(view: self.view)
+                                    dispatchGroup.leave()
                                 }
                             })
                         }
@@ -124,6 +129,10 @@ class MapViewController: UIViewController {
                     
                     performUIUpdatesOnMain {
                         self.mapView.addAnnotations(self.annotations)
+                        dispatchGroup.notify(queue: .main) {
+                            print("Finished all requests.")
+                            self.hideActivityIndicator(view: self.view)
+                        }
                     }
                     
                 } else {

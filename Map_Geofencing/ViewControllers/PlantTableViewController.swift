@@ -106,33 +106,6 @@ class PlantTableViewController: UIViewController {
         }
     }
     
-    // Activity Indicator
-    func showActivityIndicator(view: UIView) {
-        container.frame = view.frame
-        container.center = view.center
-        container.backgroundColor = UIColor.whiteBackground
-        
-        loadingView.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
-        loadingView.center = view.center
-        loadingView.backgroundColor = UIColor.grayBackground
-        loadingView.clipsToBounds = true
-        loadingView.layer.cornerRadius = 10
-        
-        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
-        
-        loadingView.addSubview(activityIndicator)
-        container.addSubview(loadingView)
-        view.addSubview(container)
-        activityIndicator.startAnimating()
-    }
-    
-    func hideActivityIndicator(view: UIView) {
-        activityIndicator.stopAnimating()
-        container.removeFromSuperview()
-    }
-    
 }
 
 // MARK: - UISearchBarDelegate
@@ -295,7 +268,7 @@ extension PlantTableViewController {
             photoStore.fetchImage(for: photo, completion: { (result) in
                 
                 if case let .success(image) = result {
-                    
+
                     performUIUpdatesOnMain() {
                         cell.plantImageView.image = image
                     }
@@ -341,17 +314,13 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
                     theUser.addToFavoritePlants(plant)
                 }
                 
-                self.startMonitoring(coordinate: plant.coordinate, identifier: plant.scientificName!)
-                
                 cell.isFavorite = true
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
                 
             } else {
                 let theUser = users.first! as! User
                 theUser.removeFromFavoritePlants(plant)
-                
-                self.stopMonitoring(coordinate: plant.coordinate, name: plant.scientificName!)
-                
+
                 cell.isFavorite = false
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
 

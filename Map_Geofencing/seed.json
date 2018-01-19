@@ -102,6 +102,10 @@
                         {
                         "description" : "flower",
                         "remoteURL" : "https://selectree.calpoly.edu/images/1400/96/original/leptospermum-scoparium-flowers-2.jpg"
+                        },
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://www.fuf.net/wp-content/uploads/2012/10/AA.Leptospermum-scopariumfull-shot.jpg"
                         }
                         ]
              },
@@ -147,6 +151,10 @@
                         {
                         "description" : "shape",
                         "remoteURL" : "https://fthmb.tqn.com/ap-8h3CpaFALwuEViFFIAy20nZQ=/960x0/filters:no_upscale()/sb10064965ao-001-56b7eac45f9b5829f83cc3eb.jpg"
+                        },
+                        {
+                        "description" : "leaf",
+                        "remoteURL" : "https://apps.rhs.org.uk/plantselectorimages/detail/WSY0036084_6299.jpg"
                         }
                         ]
              },
@@ -192,6 +200,10 @@
                         {
                         "description" : "fruit",
                         "remoteURL" : "https://upload.wikimedia.org/wikipedia/commons/7/73/Rhamnaceae_-_Rhamnus_alaternus.JPG"
+                        },
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://calphotos.berkeley.edu/imgs/512x768/0000_0000/0511/0562.jpeg"
                         }
                         ]
              },
@@ -237,6 +249,10 @@
                         {
                         "description" : "shape",
                         "remoteURL" : "https://upload.wikimedia.org/wikipedia/commons/0/03/US_199_Redwood_Highway.jpg"
+                        },
+                        {
+                        "description" : "leaf",
+                        "remoteURL" : "https://horosho-zhivem.ru/wp-content/uploads/2016/02/Sekvojya.jpg"
                         }
                         ]
              }

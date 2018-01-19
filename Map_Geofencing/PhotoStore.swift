@@ -105,12 +105,6 @@ class PhotoStore {
                         
                         moc.perform {
                             photo.imageData = data as NSData
-                            
-                            do {
-                                try moc.save()
-                            } catch {
-                                moc.rollback()
-                            }
                         }
                     }
                 }
