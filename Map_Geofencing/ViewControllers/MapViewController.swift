@@ -175,59 +175,60 @@ extension MapViewController: MKMapViewDelegate {
         let identifier = "pin"
         var view: MKAnnotationView
         
-        if annotation is PinAnnotation {
+        if annotation is MKUserLocation {
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            return view
+        }
+        
+        // annotation is PinAnnotation
+        if let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
             
-            if let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
-                
-                pinView.annotation = annotation
-                view = pinView
-                
-            } else {
-                
-                view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.canShowCallout = true
-                view.image = #imageLiteral(resourceName: "icons8-oak-tree-100")
-                
-                let plant = fetchedPlants.filter{ $0.scientificName == annotation.title! }.first
-                
-                var frame = view.frame
-                frame.size.height = 35
-                frame.size.width = 35
-                view.frame = frame
-                
-                let photos = plant?.photo?.allObjects as! [Photo]
-                
-                if let photo = photos.first {
-
-                    let plantImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
-                    plantImageView.layer.cornerRadius = 22.5
-                    plantImageView.layer.masksToBounds = true
-                    
-                    photoStore.fetchImage(for: photo, completion: { (result) in
-                        
-                        if case let .success(image) = result {
-                            
-                            performUIUpdatesOnMain() {
-                                plantImageView.image = image
-                                view.leftCalloutAccessoryView = plantImageView
-                            }
-                        }
-                    })
-                }
+            pinView.annotation = annotation
+            view = pinView
             
-                // Button to lead to detail view controller
-                let arrowButton = UIButton(frame: CGRect.init(x: 200, y: 25, width: 25, height: 25))
-                arrowButton.setImage(UIImage(named: "icons8-Forward Filled-50"), for: .normal)
-                view.rightCalloutAccessoryView = arrowButton
-                
-            }
-
             return view
             
         } else {
-            return nil
+            
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.image = #imageLiteral(resourceName: "icons8-oak-tree-100")
+            
+            let plant = fetchedPlants.filter{ $0.scientificName == annotation.title! }.first
+            
+            var frame = view.frame
+            frame.size.height = 35
+            frame.size.width = 35
+            view.frame = frame
+            
+            let photos = plant?.photo?.allObjects as! [Photo]
+            
+            if let photo = photos.first {
+
+                let plantImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+                plantImageView.layer.cornerRadius = 22.5
+                plantImageView.layer.masksToBounds = true
+                
+                photoStore.fetchImage(for: photo, completion: { (result) in
+                    
+                    if case let .success(image) = result {
+                        
+                        performUIUpdatesOnMain() {
+                            plantImageView.image = image
+                            view.leftCalloutAccessoryView = plantImageView
+                        }
+                    }
+                })
+            }
+        
+            // Button to lead to detail view controller
+            let arrowButton = UIButton(frame: CGRect.init(x: 200, y: 25, width: 25, height: 25))
+            arrowButton.setImage(UIImage(named: "icons8-Forward Filled-50"), for: .normal)
+            view.rightCalloutAccessoryView = arrowButton
+            
+            return view
         }
-    
+
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
