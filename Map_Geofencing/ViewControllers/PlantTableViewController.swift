@@ -381,23 +381,48 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
             return
         }
         
-        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
-            showAlertWithMessage(title:"Warning", message: "Your plant is saved but Geofencing doesn't work until location service granted.")
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            
+            let region = self.region(withCoordinate: coordinate, identifier: identifier)
+            locationManager?.startMonitoring(for: region)
+            
+            print("location manager start monitoring")
+        
+        } else {
+        
+            print("location manager not authorized")
+            
+            let alertController = UIAlertController (title: "Allow location service", message: "Your plant is saved!! Would you like the app to give you a notification as you approach favorite plants. Press 'Setting' to update the appsetting.", preferredStyle: .alert)
+            
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+            }
+            alertController.addAction(settingsAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            present(alertController, animated: true, completion: nil)
         }
-        
-        let region = self.region(withCoordinate: coordinate, identifier: identifier)
-        locationManager?.startMonitoring(for: region)
-        
-        print("location manager start monitoring")
+
     }
     
     func stopMonitoring(coordinate: CLLocationCoordinate2D, name: String) {
         
         print("location manager stop monitoring")
+        guard let locationManager = locationManager else { return }
         
-        for region in (locationManager?.monitoredRegions)! {
+        for region in locationManager.monitoredRegions {
             guard let circularRegion = region as? CLCircularRegion, circularRegion.identifier == name else { continue }
-            locationManager?.stopMonitoring(for: circularRegion)
+            locationManager.stopMonitoring(for: circularRegion)
         }
     }
     
