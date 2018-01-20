@@ -76,45 +76,38 @@ class PhotoStore {
     // photoURL for photo instance --> download image using web service and return UIImage
     func fetchImage(for photo: Photo, completion: @escaping (ImageResult) -> Void) {
         
-        if let imageData = photo.imageData {
+        guard let photoKey = photo.photoID else {
+            preconditionFailure("Photo expected to have a photoID.")
+        }
+        
+        if let image = imageStore.image(forKey: photoKey) {
+            OperationQueue.main.addOperation {
+                completion(.success(image))
+            }
+            return
+        }
+        
+        // Otherwise, get an image using URL
+        guard let photoURL = photo.remoteURL else {
+            preconditionFailure("Photo expected to have a remote URL.")
+        }
+        
+        let request = URLRequest(url: photoURL as URL)
+        
+        let task = session.dataTask(with: request) { (data, response, error) -> Void in
             
-            let image = UIImage(data: imageData as Data)
+            let result = self.processImageRequest(data: data, error: error)
+            
+            // After get the imageData, store the image in core data
+            if case let .success(image) = result {
+                 self.imageStore.setImage(image, forKey: photoKey)
+            }
             
             OperationQueue.main.addOperation {
-                completion(.success(image!))
+                completion(result)
             }
-            
-        } else {
-            
-            // Otherwise, get an image using URL
-            let photoURL = photo.remoteURL
-            let request = URLRequest(url: photoURL! as URL)
-            
-            let task = session.dataTask(with: request) { (data, response, error) -> Void in
-                
-                let result = self.processImageRequest(data: data, error: error)
-                
-                // After get the imageData, store the image in core data
-                if case let .success(image) = result {
-                    
-                    // Turn image into JPEG data
-                    if let data = UIImageJPEGRepresentation(image, 0.3) {
-                        
-                        // Write it to Core Data
-                        let moc = self.managedContext
-                        
-                        moc.perform {
-                            photo.imageData = data as NSData
-                        }
-                    }
-                }
-                
-                OperationQueue.main.addOperation {
-                    completion(result)
-                }
-            }
-            task.resume()
         }
+        task.resume()
     }
     
     // MARK: Fetch All Pins in MapVC

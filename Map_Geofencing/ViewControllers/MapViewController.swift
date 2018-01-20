@@ -119,13 +119,16 @@ class MapViewController: UIViewController {
                         
                         let photos = plant.photo?.allObjects as! [Photo]
 
-                        for photo in photos {
+                        if let photo = photos.first {
                             
                             dispatchGroup.enter()
                             
                             self.photoStore.fetchImage(for: photo, completion: { (result) in
-                                if case let .success(image) = result {
-                                    dispatchGroup.leave()
+                                switch result {
+                                    case .success:
+                                        dispatchGroup.leave()
+                                    case let .failure(error):
+                                        print("Error fetching image for photo: \(error)")
                                 }
                             })
                         }
@@ -194,13 +197,12 @@ extension MapViewController: MKMapViewDelegate {
             view.canShowCallout = true
             view.image = #imageLiteral(resourceName: "icons8-oak-tree-100")
             
-            let plant = fetchedPlants.filter{ $0.scientificName == annotation.title! }.first
-            
             var frame = view.frame
             frame.size.height = 35
             frame.size.width = 35
             view.frame = frame
             
+            let plant = fetchedPlants.filter { $0.scientificName == annotation.title! }.first
             let photos = plant?.photo?.allObjects as! [Photo]
             
             if let photo = photos.first {
