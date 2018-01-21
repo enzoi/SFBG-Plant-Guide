@@ -32,7 +32,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(self.scrollView)
         
         pageControl = UIPageControl(frame:CGRect(x: (displayWidth - 200)/2, y: 220, width: 200, height: 30))
-        pageControl.currentPage = 0
+        view.addSubview(pageControl)
+        pageControl.isHidden = true
         
         spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         spinner.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
@@ -42,6 +43,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         
         tableView = UITableView(frame: CGRect(x: 0, y: 250, width: displayWidth, height: displayHeight - 250))
         scrollView.delegate = self
+        
+        configurePageControl()
         
         let photos = Array(plant.photo!) as! [Photo]
         
@@ -80,8 +83,11 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                 dispatchGroup.notify(queue: .main) {
 
                     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width * CGFloat(photos.count), height: 1.0)
-                    self.configurePageControl()
-                    self.view.addSubview(self.pageControl)
+
+                    if self.pageControl.numberOfPages > 1 {
+                        self.pageControl.isHidden = false
+                    }
+                    
                     self.tableView.reloadData()
                 }
             }
@@ -119,13 +125,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     func configurePageControl() {
 
         self.pageControl.numberOfPages = (plant.photo?.allObjects.count)!
-        
-        if self.pageControl.numberOfPages <= 1 {
-            pageControl.isHidden = true
-        } else {
-            pageControl.isHidden = false
-        }
-        
+        self.pageControl.currentPage = 0
         self.pageControl.pageIndicatorTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.70)
         self.pageControl.currentPageIndicatorTintColor = UIColor.white
         self.pageControl.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
