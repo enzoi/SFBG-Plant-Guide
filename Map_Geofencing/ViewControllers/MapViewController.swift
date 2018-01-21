@@ -104,8 +104,6 @@ class MapViewController: UIViewController {
             switch plantsResult {
                 
             case let .success(plants):
-
-                let dispatchGroup = DispatchGroup()
                 
                 self.fetchedPlants = plants
                 
@@ -121,12 +119,10 @@ class MapViewController: UIViewController {
 
                         if let photo = photos.first {
                             
-                            dispatchGroup.enter()
-                            
                             self.photoStore.fetchImage(for: photo, completion: { (result) in
                                 switch result {
                                     case .success:
-                                        dispatchGroup.leave()
+                                        print("fetch sucess")
                                     case let .failure(error):
                                         print("Error fetching image for photo: \(error)")
                                 }
@@ -139,10 +135,7 @@ class MapViewController: UIViewController {
                     
                     performUIUpdatesOnMain {
                         self.mapView.addAnnotations(self.annotations)
-                        dispatchGroup.notify(queue: .main) {
-                            print("Finished all requests.")
-                            self.hideActivityIndicator(view: self.view)
-                        }
+                        self.hideActivityIndicator(view: self.view)
                     }
                     
                 } else {

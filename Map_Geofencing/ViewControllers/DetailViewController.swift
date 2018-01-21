@@ -13,37 +13,50 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     var tableView: UITableView!
     var scrollView: UIScrollView!
     var pageControl: UIPageControl!
+    var spinner: UIActivityIndicatorView!
     var frame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
     
     var photoStore: PhotoStore!
     var plant: Plant!
-    var imageArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
- 
+        
         scrollView = UIScrollView(frame: CGRect(x:0, y: 0, width: displayWidth, height: 250))
+        scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width, height: 1.0)
+        scrollView.backgroundColor = UIColor.darkGreen20
+        scrollView.isPagingEnabled = true
+        view.addSubview(self.scrollView)
         
         pageControl = UIPageControl(frame:CGRect(x: (displayWidth - 200)/2, y: 220, width: 200, height: 30))
-        tableView = UITableView(frame: CGRect(x: 0, y: 250, width: displayWidth, height: displayHeight - 250))
+        pageControl.currentPage = 0
         
+        spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        spinner.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
+        spinner.center = scrollView.center
+        view.addSubview(spinner)
+        spinner.startAnimating()
+        
+        tableView = UITableView(frame: CGRect(x: 0, y: 250, width: displayWidth, height: displayHeight - 250))
         scrollView.delegate = self
         
         let photos = Array(plant.photo!) as! [Photo]
         
-        var index = 0
+        let dispatchGroup = DispatchGroup()
         
+        var index = 0
+
         for photo in photos {
+            
+            dispatchGroup.enter()
             
             photoStore.fetchImage(for: photo, completion: { (result) in
                 
                 if case let .success(image) = result {
                     
-                    self.imageArray.append(image)
-
                     self.frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
                     self.frame.size = self.scrollView.frame.size
                     
@@ -54,21 +67,26 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                     subView.clipsToBounds = true
                     
                     self.scrollView.addSubview(subView)
+                    self.spinner.stopAnimating()
                     
                     index += 1
+                    
+                    dispatchGroup.leave()
                 }
             })
+            
+            performUIUpdatesOnMain {
+
+                dispatchGroup.notify(queue: .main) {
+
+                    self.scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width * CGFloat(photos.count), height: 1.0)
+                    self.configurePageControl()
+                    self.view.addSubview(self.pageControl)
+                    self.tableView.reloadData()
+                }
+            }
 
         }
-        
-        configurePageControl()
-        
-        self.scrollView.isPagingEnabled = true
-        self.scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width * CGFloat(photos.count), height: 1.0)
-        pageControl.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
-        
-        self.view.addSubview(scrollView)
-        self.view.addSubview(pageControl)
         
         // View model for table view
         let viewModel = PlantViewModel(plant: plant)
@@ -108,10 +126,9 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             pageControl.isHidden = false
         }
         
-        self.pageControl.currentPage = 0
         self.pageControl.pageIndicatorTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.70)
         self.pageControl.currentPageIndicatorTintColor = UIColor.white
-        
+        self.pageControl.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
     }
     
     // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
