@@ -306,7 +306,7 @@
                         ]
              },
              {
-             "uid": "adf214g2d3adf",
+             "uid": "ddf214g2d3adf",
              "scientificName": "Magnolia campbellii",
              "commonName": [ "Campbell's magnolia" ],
              "other_names": [""],
@@ -351,6 +351,153 @@
                         {
                         "description" : "flower",
                         "remoteURL" : "https://www.sfbotanicalgarden.org/graphics/bloom/13_01/main.jpg"
+                        }
+                        ]
+             },
+             {
+             "uid": "aef214g2d3adf",
+             "scientificName": "Cedrus deodara",
+             "commonName": [ "Deodar" ],
+             "other_names": [""],
+             "family": "",
+             "genus": "",
+             "species": "",
+             "cultivar": "",
+             "createdAt": "",
+             "updatedAt": "",
+             "climateZones": "2-12, 14-24",
+             "growthRate": "",
+             "plantType": "Tree",
+             
+             "size": { "height": { "min": 0, "max": 150, "unit": "ft" },
+             "width": { "min": 0, "max": 50, "unit": "ft" } },
+             "foliageColor": { "front": "green", "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "waterNeeds": "need no water",
+             "location": { "id": 1234523,
+             "coordinate": {
+             "latitude": 37.767128,
+             "longitude": -122.468483 },
+             "gardenName": [],
+             "bedNumber": [] },
+             "bloomTime": [],
+             "bloomColor": [],
+             "bloomShape": "",
+             "flowerFragrance": [""],
+             "sunExposure": "full sun",
+             "pruning": "",
+             "soilPH_min": 0.0,
+             "soilPH_max": 0.0,
+             "uses": "",
+             "description": "",
+             "photos": [
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://selectree.calpoly.edu/images/0200/92/original/cedrus-deodara-tree-3.jpg"
+                        },
+                        {
+                        "description" : "leaf",
+                        "remoteURL" : "https://facultystaff.richmond.edu/~jhayden/conifers/cedrus_deodara_pollen_cones_1s.JPG"
+                        }
+                        ]
+             },
+             {
+             "uid": "aef314g2d3adf",
+             "scientificName": "Magnolia grandiflora",
+             "commonName": [ "Southern magnolia" ],
+             "other_names": [""],
+             "family": "",
+             "genus": "",
+             "species": "",
+             "cultivar": "",
+             "createdAt": "",
+             "updatedAt": "",
+             "climateZones": "4-12, 14-24",
+             "growthRate": "slow growth",
+             "plantType": "Tree",
+             
+             "size": { "height": { "min": 60, "max": 75, "unit": "ft" },
+             "width": { "min": 0, "max": 50, "unit": "ft" } },
+             "foliageColor": { "front": "green", "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "waterNeeds": "water ocacasionally",
+             "location": { "id": 1224523,
+             "coordinate": {
+             "latitude": 37.767583,
+             "longitude": -122.467850 },
+             "gardenName": [],
+             "bedNumber": [] },
+             "bloomTime": [],
+             "bloomColor": [],
+             "bloomShape": "",
+             "flowerFragrance": [""],
+             "sunExposure": "full sun",
+             "pruning": "",
+             "soilPH_min": 0.0,
+             "soilPH_max": 0.0,
+             "uses": "",
+             "description": "",
+             "photos": [
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://www.gardensonline.com.au/Uploads/Plant/1288/MagnoliaGrandifloraExmouthWs800.jpg"
+                        },
+                        {
+                        "description" : "flower",
+                        "remoteURL" : "https://t4.ftcdn.net/jpg/01/18/81/33/240_F_118813352_AhkmvQLNkaHyr5k6h5YKCAjdv6xsdsDe.jpg"
+                        }
+                        ]
+             },
+             {
+             "uid": "ae4314g2d3adf",
+             "scientificName": "Calodendrum capense",
+             "commonName": [ "Cape chestnut" ],
+             "other_names": [""],
+             "family": "",
+             "genus": "",
+             "species": "",
+             "cultivar": "",
+             "createdAt": "",
+             "updatedAt": "",
+             "climateZones": "17, 19, 21-24",
+             "growthRate": "slow growth",
+             "plantType": "Tree",
+             
+             "size": { "height": { "min": 25, "max": 70, "unit": "ft" },
+             "width": { "min": 0, "max": 60, "unit": "ft" } },
+             "foliageColor": { "front": "green", "back": "light green" },
+             "drought_tolerent": true,
+             "native": true,
+             "invasive": false,
+             "waterNeeds": "water regularally",
+             "location": { "id": 1224523,
+             "coordinate": {
+             "latitude": 37.767583,
+             "longitude": -122.467850 },
+             "gardenName": [],
+             "bedNumber": [] },
+             "bloomTime": [],
+             "bloomColor": [],
+             "bloomShape": "",
+             "flowerFragrance": [""],
+             "sunExposure": "full sun",
+             "pruning": "",
+             "soilPH_min": 0.0,
+             "soilPH_max": 0.0,
+             "uses": "",
+             "description": "",
+             "photos": [
+                        {
+                        "description" : "shape",
+                        "remoteURL" : "https://www.gardensonline.com.au/Uploads/Plant/1433/Calodendrum-Capense-WS2.jpg"
+                        },
+                        {
+                        "description" : "flower",
+                        "remoteURL" : "https://upload.wikimedia.org/wikipedia/commons/7/7f/Calodendrum_capense_%28flower%29.jpg"
                         }
                         ]
              }
