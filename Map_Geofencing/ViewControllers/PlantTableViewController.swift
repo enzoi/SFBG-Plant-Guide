@@ -55,7 +55,7 @@ class PlantTableViewController: UIViewController {
         let tabBar = self.tabBarController as! TabBarController
         self.photoStore = tabBar.photoStore
         self.locationManager = tabBar.locationManager
-        self.locationManager?.delegate = self as! CLLocationManagerDelegate
+        self.locationManager?.delegate = self as? CLLocationManagerDelegate
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self

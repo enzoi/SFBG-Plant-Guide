@@ -100,10 +100,9 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
                 print("FACEBOOK LOGIN FAILED: \(error)")
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let _, let accessToken):
+            case .success(let accessToken):
                 print("Successfully logged in!")
                 print("ACCESS TOKEN \(accessToken)")
-                print("Current User: ", Auth.auth().currentUser)
                 
                 self.dismiss(animated: true, completion: nil)
             }

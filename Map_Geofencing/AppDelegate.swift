@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import GoogleMaps
 import FacebookCore
 import FacebookLogin
 import GoogleSignIn
@@ -27,9 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Google Maps API Key
-        GMSServices.provideAPIKey("AIzaSyAfqIROyy9bL5-LOkbZsu_ISJ5Z1qY6lFM")
-
         // Firebase Setup
         FirebaseApp.configure()
         
@@ -126,16 +122,6 @@ extension AppDelegate {
                 plant.climateZones = climateZones
                 plant.sunExposure = sunExposure
                 plant.waterNeeds = waterNeeds
-
-                /*
-                let users = jsonDictionary["users"] as! [[String:Any]]
-                
-                for user in users {
-                    let _user = User(context: self.photoStore.managedContext)
-                    _user.email = user["email"] as! String
-                    _user.addToFavoritePlants(plant)
-                }
-                 */
                 
                 for photo in photos {
                     let image = Photo(context: self.photoStore.managedContext)
@@ -196,7 +182,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().add(request) { (error) in
             
             if (error != nil){
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "something wrong")
             }
         }
     }
