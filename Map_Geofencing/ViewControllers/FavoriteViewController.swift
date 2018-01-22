@@ -85,6 +85,7 @@ class FavoriteViewController: UIViewController {
             guard let favoritePlants = favoritePlants else { return }
             
             let plant = favoritePlants[selectedIndexPath.row]
+            detailVC.photoStore = photoStore
             detailVC.plant = plant
         }
     }
@@ -140,12 +141,19 @@ extension FavoriteViewController {
         
         let plant = favoritePlants?[indexPath.row]
         let photos = plant?.photo?.allObjects
-        if let photo = photos?.first as? Photo, let imageData = photo.imageData {
-            cell.scientificName.text = plant?.scientificName
-            cell.commonName.text = plant?.commonName
-            cell.plantImageView.image = UIImage(data: imageData as Data ,scale:1.0)
-        }
         
+        if let photo = photos?.first as? Photo {
+            
+            photoStore.fetchImage(for: photo, completion: { (result) in
+                
+                if case let .success(image) = result {
+                    cell.scientificName.text = plant?.scientificName
+                    cell.commonName.text = plant?.commonName
+                    cell.plantImageView.image = image
+                }
+            })
+
+        } 
     }
 }
 
