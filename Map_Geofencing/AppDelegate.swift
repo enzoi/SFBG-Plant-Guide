@@ -145,6 +145,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     // MARK: - Region monitoring event handler
     
+    // The geofencing related codes below refers to the solution from
+    // https://www.raywenderlich.com/136165/core-location-geofencing-tutorial
+    
+    //  The notification related codes below refers to the solution from
+    // https://stackoverflow.com/questions/39103095/unnotificationattachment-with-uiimage-or-remote-url
+    // and https://useyourloaf.com/blog/local-notifications-with-ios-10/
+    
     func handleEvent(forRegion region: CLRegion!, plant: Plant) {
         
         // Create notification contents

@@ -56,7 +56,9 @@ class MapViewController: UIViewController {
         
     }
     
-    // Activity Indicator
+    // Activity Indicator related codes below refers to the solution from
+    // https://coderwall.com/p/su1t1a/ios-customized-activity-indicator-with-swift
+    
     func showActivityIndicator(view: UIView) {
         container.frame = view.frame
         container.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height / 2)

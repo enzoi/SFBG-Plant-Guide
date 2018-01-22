@@ -113,6 +113,9 @@ class PlantTableViewController: UIViewController {
 
 extension PlantTableViewController: UISearchBarDelegate {
     
+    // The overall search bar related codes below refers to the solution from
+    // https://www.raywenderlich.com/157864/uisearchcontroller-tutorial-getting-started
+    
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
@@ -336,6 +339,10 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
 
     }
 
+    // The geofencing related codes below refers to the solution from
+    // https://www.raywenderlich.com/136165/core-location-geofencing-tutorial
+    // and https://useyourloaf.com/blog/local-notifications-with-ios-10/
+    
     func region(withCoordinate coordinate: CLLocationCoordinate2D, identifier: String) -> CLCircularRegion {
         
         let radius = 10

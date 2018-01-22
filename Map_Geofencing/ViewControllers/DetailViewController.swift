@@ -96,6 +96,10 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
 
         }
         
+        // The collapsible sections and view model for table view below and 
+        // the detail table view cells folder refers to the solution from
+        // https://medium.com/ios-os-x-development/ios-how-to-build-a-table-view-with-collapsible-sections-96badf3387d0
+        
         // View model for table view
         let viewModel = PlantViewModel(plant: plant)
         

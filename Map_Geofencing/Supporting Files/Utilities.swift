@@ -28,6 +28,9 @@ extension UIViewController {
     }
 }
 
+//  // The notification related codes below refers to the solution from
+// https://stackoverflow.com/questions/39103095/unnotificationattachment-with-uiimage-or-remote-url
+
 extension UNNotificationAttachment {
     
     static func create(identifier: String, imageData: Data, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
