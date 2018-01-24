@@ -200,6 +200,7 @@ extension PlantTableViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell", for: indexPath) as! PlantTableViewCell
         
         cell.delegate = self
+        cell.isFavorite = false
         configure(cell: cell, for: indexPath)
         return cell
     }
@@ -248,20 +249,23 @@ extension PlantTableViewController {
             
             if let currentUser = Auth.auth().currentUser {
 
-                for user in users {
-                    if (user as! User).uid == currentUser.uid {
-
-                        cell.isFavorite = true
-                        cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
-                    }
+                if let _ = users.first(where: { ($0 as! User).uid == currentUser.uid }) {
+                    
+                    cell.isFavorite = true
+                    cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
+                    
+                } else {
+                    
+                    cell.isFavorite = false
+                    cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
                 }
                 
             } else {
                 
                 cell.isFavorite = false
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)
-            
             }
+
         }
         
         // Get icon image for plant cell
@@ -310,26 +314,46 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
             if cell.isFavorite == false {
                 
                 if users.count == 0 {
+                    
                     let theUser = User(context: moc)
                     theUser.uid = currentUser.uid
+                    plant.addToUsers(theUser)
                     theUser.addToFavoritePlants(plant)
+                    
                 } else {
-                    let theUser = users.first as! User
-                    theUser.addToFavoritePlants(plant)
+                    
+                    for user in users {
+                        
+                        let theUser = user as! User
+                        
+                        if theUser.uid == currentUser.uid {
+                            plant.addToUsers(theUser)
+                            theUser.addToFavoritePlants(plant)
+                        } else {
+                            let theUser = User(context: moc)
+                            theUser.uid = currentUser.uid
+                            plant.addToUsers(theUser)
+                            theUser.addToFavoritePlants(plant)
+                        }
+                    }
                 }
                 
                 self.startMonitoring(coordinate: plant.coordinate, identifier: plant.scientificName!)
-                print("coordinate: ", plant.coordinate, plant.scientificName!)
                 
                 cell.isFavorite = true
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-filled-100"), for: .normal)
                 
             } else {
-                let theUser = users.first! as! User
-                theUser.removeFromFavoritePlants(plant)
+                
+                for user in users {
+                    let theUser = user as! User
+                    if theUser.uid == currentUser.uid {
+                        plant.removeFromUsers(theUser)
+                        theUser.removeFromFavoritePlants(plant)
+                    }
+                }
 
                 self.stopMonitoring(coordinate: plant.coordinate, identifier: plant.scientificName!)
-                print("coordinate: ", plant.coordinate, plant.scientificName!)
                 
                 cell.isFavorite = false
                 cell.starButton.setImage(#imageLiteral(resourceName: "icons8-heart-outline-100"), for: .normal)

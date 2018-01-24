@@ -88,6 +88,7 @@ class ProfileViewController: UIViewController {
             }
             
             self.profilePicture.image = #imageLiteral(resourceName: "profile_default-100")
+            self.profileName.text = "user"
             signInButton.setTitle("SIGN IN", for: .normal)
             signInButton.setTitleColor(UIColor(red:0.0, green:1.0, blue:0.0, alpha:1.0), for: .normal)
         }
