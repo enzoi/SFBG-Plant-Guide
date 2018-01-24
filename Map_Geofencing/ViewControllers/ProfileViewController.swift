@@ -47,8 +47,6 @@ class ProfileViewController: UIViewController {
                         
                         performUIUpdatesOnMain() {
                             self.profilePicture.image = image
-                            self.profilePicture.layer.masksToBounds = true
-                            self.profilePicture.layer.cornerRadius = 75
                         }
                     }
                 }
@@ -72,8 +70,6 @@ class ProfileViewController: UIViewController {
         } else {
             
             self.profilePicture.image = #imageLiteral(resourceName: "profile_default-100")
-            self.profilePicture.layer.cornerRadius = 75
-            self.profilePicture.layer.masksToBounds = true
             self.profileName.text = "user"
             signInButton.setTitle("SIGN IN", for: .normal)
             signInButton.setTitleColor(UIColor(red:0.0, green:1.0, blue:0.0, alpha:1.0), for: .normal)
@@ -92,8 +88,6 @@ class ProfileViewController: UIViewController {
             }
             
             self.profilePicture.image = #imageLiteral(resourceName: "profile_default-100")
-            self.profilePicture.layer.cornerRadius = 75
-            self.profilePicture.layer.masksToBounds = true
             signInButton.setTitle("SIGN IN", for: .normal)
             signInButton.setTitleColor(UIColor(red:0.0, green:1.0, blue:0.0, alpha:1.0), for: .normal)
         }
