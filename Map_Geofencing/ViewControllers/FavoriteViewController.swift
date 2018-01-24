@@ -15,7 +15,7 @@ class FavoriteViewController: UIViewController {
     // MARK: - Properties
     fileprivate let plantCellIdentifier = "favoriteCell"
     var photoStore: PhotoStore!
-    var favoritePlants: [Plant]?
+    var favoritePlants = [Plant]()
     
     // TODO: make this simple fetch request not controller
     lazy var fetchedResultsController: NSFetchedResultsController<User> = {
@@ -47,8 +47,8 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
               
-        if let currenUser = Auth.auth().currentUser {
-            let predicate = NSPredicate(format: "uid == %@", currenUser.uid)
+        if let currentUser = Auth.auth().currentUser {
+            let predicate = NSPredicate(format: "uid == %@", currentUser.uid)
             fetchedResultsController.fetchRequest.predicate = predicate
         
             do {
@@ -58,9 +58,12 @@ class FavoriteViewController: UIViewController {
             }
             
             if let users = fetchedResultsController.fetchedObjects {
+                
                 if users.count > 0 {
+                    
                     let user = Array(users).first! as User
-                    favoritePlants = Array(user.favoritePlants!) as? [Plant]
+                    favoritePlants = Array(user.favoritePlants!) as! [Plant]
+                    
                 } else {
                     favoritePlants = []
                 }
@@ -82,7 +85,6 @@ class FavoriteViewController: UIViewController {
             let selectedIndexPath = tableView.indexPath(for: cell) {
             
             let detailVC = segue.destination as! DetailViewController
-            guard let favoritePlants = favoritePlants else { return }
             
             let plant = favoritePlants[selectedIndexPath.row]
             detailVC.photoStore = photoStore
@@ -109,11 +111,7 @@ extension FavoriteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if favoritePlants != nil {
-            return favoritePlants!.count
-        } else {
-            return 0
-        }
+        return favoritePlants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,17 +137,20 @@ extension FavoriteViewController {
             return
         }
         
-        let plant = favoritePlants?[indexPath.row]
-        let photos = plant?.photo?.allObjects
+        let plant = favoritePlants[indexPath.row]
+        let photos = plant.photo?.allObjects
         
         if let photo = photos?.first as? Photo {
             
             photoStore.fetchImage(for: photo, completion: { (result) in
                 
                 if case let .success(image) = result {
-                    cell.scientificName.text = plant?.scientificName
-                    cell.commonName.text = plant?.commonName
-                    cell.plantImageView.image = image
+                    
+                    performUIUpdatesOnMain() {
+                        cell.scientificName.text = plant.scientificName
+                        cell.commonName.text = plant.commonName
+                        cell.plantImageView.image = image
+                    }
                 }
             })
 

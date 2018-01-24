@@ -89,6 +89,7 @@ class SignUpWithEmailViewController: UIViewController {
                         self.completeSignup()
                     } else {
                         print(error!)
+                        self.activityIndicator.stopAnimating()
                         self.showAlertWithError(title: "Sign up Error", error: (error?.localizedDescription)!)
                     }
                 }

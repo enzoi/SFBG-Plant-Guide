@@ -306,6 +306,9 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
    
         let moc = self.photoStore.managedContext
         let fetchRequest =  NSFetchRequest<NSManagedObject>(entityName: "User")
+        let predicate = NSPredicate(format: "uid == %@", currentUser.uid)
+        fetchRequest.predicate = predicate
+
         
         moc.performAndWait {
             
@@ -313,31 +316,18 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
             
             if cell.isFavorite == false {
                 
-                if users.count == 0 {
-                    
-                    let theUser = User(context: moc)
-                    theUser.uid = currentUser.uid
-                    plant.addToUsers(theUser)
-                    theUser.addToFavoritePlants(plant)
-                    
+                if users.first != nil {
+                    let user = users.first as! User
+                    user.uid = currentUser.uid
+                    plant.addToUsers(user)
+                    user.addToFavoritePlants(plant)
                 } else {
-                    
-                    for user in users {
-                        
-                        let theUser = user as! User
-                        
-                        if theUser.uid == currentUser.uid {
-                            plant.addToUsers(theUser)
-                            theUser.addToFavoritePlants(plant)
-                        } else {
-                            let theUser = User(context: moc)
-                            theUser.uid = currentUser.uid
-                            plant.addToUsers(theUser)
-                            theUser.addToFavoritePlants(plant)
-                        }
-                    }
+                    let user = User(context: moc)
+                    user.uid = currentUser.uid
+                    plant.addToUsers(user)
+                    user.addToFavoritePlants(plant)
                 }
-                
+
                 self.startMonitoring(coordinate: plant.coordinate, identifier: plant.scientificName!)
                 
                 cell.isFavorite = true
@@ -345,14 +335,11 @@ extension PlantTableViewController: ToggleFavoriteDelegate {
                 
             } else {
                 
-                for user in users {
-                    let theUser = user as! User
-                    if theUser.uid == currentUser.uid {
-                        plant.removeFromUsers(theUser)
-                        theUser.removeFromFavoritePlants(plant)
-                    }
+                if let user = users.first {
+                    plant.removeFromUsers(user as! User)
+                    (user as! User).removeFromFavoritePlants(plant)
                 }
-
+                
                 self.stopMonitoring(coordinate: plant.coordinate, identifier: plant.scientificName!)
                 
                 cell.isFavorite = false
