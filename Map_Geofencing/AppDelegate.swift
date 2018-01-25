@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Provide core data with hard coded plants data
-        importJSONSeedDataIfNeeded()
+        photoStore.importJSONSeedDataIfNeeded()
 
         // Pass photoStore to TabBarController
         guard let tabBarController = window?.rootViewController as? TabBarController else {
@@ -65,70 +65,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-
-// MARK: - Helper methods to create core data from seed.json
-
-extension AppDelegate {
-    func importJSONSeedDataIfNeeded() {
-        
-        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        let count = try? self.photoStore.managedContext.count(for: fetchRequest)
-        
-        guard let plantCount = count,
-            plantCount == 0 else {
-                return
-        }
-        
-        importJSONSeedData()
-    }
-    
-    func importJSONSeedData() {
-
-        let jsonURL = Bundle.main.url(forResource: "seed", withExtension: "json")!
-        let jsonData = try! Data(contentsOf: jsonURL)
-
-        do {
-            let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: [.allowFragments]) as! [String: AnyObject]
-            
-            for jsonDictionary in jsonArray["plants"] as! [[String: AnyObject]] {
-                let scientificName = jsonDictionary["scientificName"] as! String
-                let commonNames = jsonDictionary["commonName"] as! [String]
-                let location = jsonDictionary["location"] as! [String:AnyObject]
-                let plantType = jsonDictionary["plantType"] as! String
-                let climateZones = jsonDictionary["climateZones"] as! String
-                let sunExposure = jsonDictionary["sunExposure"] as! String
-                let waterNeeds = jsonDictionary["waterNeeds"] as! String
-                let coordinate = location["coordinate"] as! [String:AnyObject]
-                let latitude = coordinate["latitude"] as! Double
-                let longitude = coordinate["longitude"] as! Double
-                let photos = jsonDictionary["photos"] as! [[String:Any]]
-
-                let plant = Plant(context: self.photoStore.managedContext)
-
-                plant.scientificName = scientificName
-                plant.commonName = commonNames[0]
-                plant.latitude = latitude
-                plant.longitude = longitude
-                plant.plantType = plantType
-                plant.climateZones = climateZones
-                plant.sunExposure = sunExposure
-                plant.waterNeeds = waterNeeds
-                
-                for photo in photos {
-                    let image = Photo(context: self.photoStore.managedContext)
-                    image.remoteURL = NSURL(string: photo["remoteURL"] as! String)
-                    image.photoID = UUID().uuidString // Add unique photoID
-                    plant.addToPhoto(image)
-                }
-
-            }
-
-            photoStore.saveContext()
-
-        } catch let error as NSError {
-            print("Error importing plants: \(error)")
-        }
-    }
-    
-}
 

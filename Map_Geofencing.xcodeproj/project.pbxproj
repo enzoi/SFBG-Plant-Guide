@@ -313,16 +313,8 @@
 				CFD3C2891FDF36450084637B /* Plant Table View Cell */,
 				CFD3C2881FDF36180084637B /* Detail Table View Cells */,
 				CFD3C26A1FDD09A90084637B /* Favorite Table View Cell */,
-				CFD3C26C1FDD0A320084637B /* Profile Table View Cells */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		CFD3C26C1FDD0A320084637B /* Profile Table View Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Profile Table View Cells";
 			sourceTree = "<group>";
 		};
 		CFD3C26E1FDD0B120084637B /* Storyboards */ = {
