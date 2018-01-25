@@ -10,6 +10,19 @@ import UIKit
 import CoreData
 import FirebaseAuth
 
+enum UserError: Error {
+    case noUserError
+}
+
+extension UserError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .noUserError:
+            return NSLocalizedString("Saving favorite plants requires login. Please sign up in profile page", comment: "Favorite Error")
+        }
+    }
+}
+
 class FavoriteViewController: UIViewController {
 
     // MARK: - Properties
@@ -54,7 +67,7 @@ class FavoriteViewController: UIViewController {
             do {
                 try fetchedResultsController.performFetch()
             } catch let error as NSError {
-                print("Fetching error: \(error), \(error.userInfo)")
+                showAlertWithError(title: "Fetching error", error: error)
             }
             
             if let users = fetchedResultsController.fetchedObjects {
@@ -74,7 +87,7 @@ class FavoriteViewController: UIViewController {
         } else {
             favoritePlants = []
             tableView.reloadData()
-            showAlertWithError(title: "No User Found", error: "You need to log in to save or view your favorite plants")
+            showAlertWithError(title: "No User Found", error: UserError.noUserError)
         }
     }
     

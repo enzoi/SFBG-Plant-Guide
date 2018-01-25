@@ -61,49 +61,13 @@ class MapViewController: UIViewController {
         
     }
     
-    // Activity Indicator related codes below refers to the solution from
-    // https://coderwall.com/p/su1t1a/ios-customized-activity-indicator-with-swift
-    
-    func showActivityIndicator(view: UIView) {
-        container.frame = view.frame
-        container.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height / 2)
-        container.backgroundColor = UIColor.whiteBackground
-        
-        loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-        loadingView.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height / 2)
-        loadingView.backgroundColor = UIColor.grayBackground
-        loadingView.clipsToBounds = true
-        loadingView.layer.cornerRadius = 10
-        
-        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 25.0, height: 25.0)
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: 30)
-        
-        loadingLabel = UILabel(frame: CGRect(x: 0, y: 55, width: 80, height: 15))
-        loadingLabel.text = "Loading"
-        loadingLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 15)!
-        loadingLabel.textColor = UIColor.lightGray
-        loadingLabel.textAlignment = .center
-        
-        loadingView.addSubview(activityIndicator)
-        loadingView.addSubview(loadingLabel)
-        container.addSubview(loadingView)
-        view.addSubview(container)
-        activityIndicator.startAnimating()
-        
-        print(container, container.center, loadingView.center, activityIndicator)
-    }
-    
-    func hideActivityIndicator(view: UIView) {
-        activityIndicator.stopAnimating()
-        container.removeFromSuperview()
-    }
-    
     
     // Fetch all saved pins with annotation
     func fetchAllPlantMarkers() {
   
         mapView.delegate = self
+        
+        self.showActivityIndicator(vc: self, view: self.view)
         
         // Get all plants
         photoStore.fetchAllPlants() { (plantsResult) in
@@ -115,8 +79,6 @@ class MapViewController: UIViewController {
                 self.fetchedPlants = plants
                 
                 if self.fetchedPlants.count > 0 {
-                    
-                    self.showActivityIndicator(view: self.view)
                     
                     for plant in self.fetchedPlants {
                         
@@ -130,7 +92,9 @@ class MapViewController: UIViewController {
                                 switch result {
                                     case .success:
                                         print("fetch sucess")
+                                        self.hideActivityIndicator(vc: self, view: self.view)
                                     case let .failure(error):
+                                        self.showAlertWithError(title: "Error fetching data", error: PhotoError.imageCreationError)
                                         print("Error fetching image for photo: \(error)")
                                 }
                             })
@@ -142,7 +106,7 @@ class MapViewController: UIViewController {
                     
                     performUIUpdatesOnMain {
                         self.mapView.addAnnotations(self.annotations)
-                        self.hideActivityIndicator(view: self.view)
+                        // self.hideActivityIndicator(vc: self, view: self.view)
                     }
                     
                 } else {

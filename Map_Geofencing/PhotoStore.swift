@@ -18,6 +18,15 @@ enum PhotoError: Error {
     case imageCreationError
 }
 
+extension PhotoError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .imageCreationError:
+            return NSLocalizedString("Faied fetching image", comment: "Photo error")
+        }
+    }
+}
+
 enum PlantsResult {
     case success([Plant])
     case failure(Error)

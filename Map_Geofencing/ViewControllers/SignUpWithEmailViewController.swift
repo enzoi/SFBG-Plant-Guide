@@ -10,6 +10,22 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 
+enum SignUpError: Error {
+    case noUserNameOrPasswordError
+    case noMatchingPasswordError
+}
+
+extension SignUpError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .noUserNameOrPasswordError:
+            return NSLocalizedString("Text fields should not be empty", comment: "SignUp error")
+        case .noMatchingPasswordError:
+            return NSLocalizedString("Passwords don't match. Please double check your password", comment: "SignUp error")
+        }
+    }
+}
+
 class SignUpWithEmailViewController: UIViewController {
     
     // MARK: Properties
@@ -74,7 +90,7 @@ class SignUpWithEmailViewController: UIViewController {
         
         guard let username = usernameTextField.text, let password = passwordTextField.text, let confirmedPassword = confirmPasswordTextField.text else {
             self.activityIndicator.stopAnimating()
-            self.showAlertWithError(title: "Sign up Failed", error: "User Name or Password is empty!!!")
+            self.showAlertWithError(title: "Sign up Failed", error: SignUpError.noUserNameOrPasswordError)
             return
         }
         
@@ -88,15 +104,14 @@ class SignUpWithEmailViewController: UIViewController {
                         self.activityIndicator.stopAnimating()
                         self.completeSignup()
                     } else {
-                        print(error!)
                         self.activityIndicator.stopAnimating()
-                        self.showAlertWithError(title: "Sign up Error", error: (error?.localizedDescription)!)
+                        self.showAlertWithError(title: "Sign up Error", error: error!)
                     }
                 }
             }
         } else {
             self.activityIndicator.stopAnimating()
-            self.showAlertWithError(title: "Sign up Failed", error: "Passwords not matched!!!")
+            self.showAlertWithError(title: "Sign up Failed", error: SignUpError.noMatchingPasswordError)
         }
     }
     

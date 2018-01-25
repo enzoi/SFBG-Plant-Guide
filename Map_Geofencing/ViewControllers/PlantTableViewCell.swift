@@ -60,7 +60,7 @@ class PlantTableViewCell: UITableViewCell {
         
         } else {
             
-            parentViewController?.showAlertWithError(title: "Oops!!", error: "Saving a favorite requires sign-in. Please sign-in or sign-up")
+            parentViewController?.showAlertWithError(title: "Oops!!", error: UserError.noUserError)
         
         }
     }

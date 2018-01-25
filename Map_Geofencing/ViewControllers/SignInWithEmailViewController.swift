@@ -10,6 +10,10 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 
+enum SignInError: Error {
+    case noUserNameOrPasswordError
+}
+
 class SignInWithEmailViewController: UIViewController {
     
     // MARK: Properties
@@ -71,7 +75,7 @@ class SignInWithEmailViewController: UIViewController {
         
         guard let username = usernameTextField.text, let password = passwordTextField.text else {
             self.activityIndicator.stopAnimating()
-            self.showAlertWithError(title: "Login Failed", error: "User Name or Password is empty!!!")
+            self.showAlertWithError(title: "Login Failed", error: SignInError.noUserNameOrPasswordError)
             return
         }
         
@@ -85,7 +89,7 @@ class SignInWithEmailViewController: UIViewController {
                     self.completeLogin()
                 } else {
                     self.activityIndicator.stopAnimating()
-                    self.showAlertWithError(title: "Login Error", error: (error?.localizedDescription)!)
+                    self.showAlertWithError(title: "Login Error", error: error!)
                     
                     self.usernameTextField.text = ""
                     self.passwordTextField.text = ""
