@@ -370,7 +370,7 @@
         <!--Log In-->
         <scene sceneID="MOS-he-7rj">
             <objects>
-                <viewController storyboardIdentifier="signInWithEmailViewController" title="Log In" id="hzb-bM-Tow" customClass="SignInWithEmailViewController" customModule="Map_Geofencing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signInWithEmailViewController" title="Log In" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="hzb-bM-Tow" customClass="SignInWithEmailViewController" customModule="Map_Geofencing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B7b-m5-CNO"/>
                         <viewControllerLayoutGuide type="bottom" id="RXy-fh-Jbh"/>
@@ -384,13 +384,16 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WSn-gq-WNB">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="32"/>
-                                        <color key="backgroundColor" red="0.80000000000000004" green="1" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.73699063062667847" green="0.92333555221557617" blue="0.51484405994415283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="oiP-of-ofP"/>
                                         </constraints>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="hzb-bM-Tow" id="Wjq-c6-UI0"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXO-jA-D4a">
                                         <rect key="frame" x="0.0" y="42" width="343" height="32"/>
@@ -400,6 +403,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="hzb-bM-Tow" id="Sgn-Za-QLb"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk5-UE-4Za" userLabel="Login Button">
                                         <rect key="frame" x="0.0" y="84" width="343" height="44"/>
@@ -419,11 +425,15 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="iBm-0V-3O6" firstAttribute="top" secondItem="B7b-m5-CNO" secondAttribute="bottom" constant="251" id="2M8-MJ-F1Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iBm-0V-3O6" secondAttribute="trailing" id="3Va-kB-KS6"/>
                             <constraint firstItem="iBm-0V-3O6" firstAttribute="leading" secondItem="dHj-4w-nbC" secondAttribute="leadingMargin" id="6he-yq-SGG"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Lhu-3H-UpS" appends="YES" id="OmQ-Lm-pxg"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="Yk5-UE-4Za" id="ZPX-7S-tNz"/>
@@ -432,6 +442,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qfs-lp-ZtD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Lhu-3H-UpS">
+                    <connections>
+                        <action selector="userDidTapView:" destination="hzb-bM-Tow" id="NBa-AD-lBh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4190" y="2257"/>
         </scene>
@@ -492,7 +507,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOc-dS-XLp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="FAVORITE" image="icon_favorite-selected" id="ydo-Ya-ePF"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qzu-xc-gz9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qzu-xc-gz9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -511,7 +526,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FKl-ol-mSI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="PROFILE" image="icon_profile-selected" id="ZPI-Oj-H8X"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jjb-JJ-Ff0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jjb-JJ-Ff0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -530,7 +545,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qat-9K-ifq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="PLANTS" image="icon_listview-selected" id="OMz-bp-i5d"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cah-um-Gs7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cah-um-Gs7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -549,7 +564,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eBa-c8-PXV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="MAP" image="icon_mapview-selected" id="roG-54-VYo"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Rj-td-gzT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0Rj-td-gzT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -588,7 +603,7 @@
             <objects>
                 <navigationController storyboardIdentifier="signInViewController" automaticallyAdjustsScrollViewInsets="NO" id="U8s-3a-pq7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IJq-mU-wn0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IJq-mU-wn0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -604,7 +619,7 @@
         <!--Sign Up-->
         <scene sceneID="J1N-4R-Ivx">
             <objects>
-                <viewController storyboardIdentifier="signUpWithEmailViewController" title="Sign Up" id="8sv-SI-wof" customClass="SignUpWithEmailViewController" customModule="Map_Geofencing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpWithEmailViewController" title="Sign Up" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="8sv-SI-wof" customClass="SignUpWithEmailViewController" customModule="Map_Geofencing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PKA-BV-DXP"/>
                         <viewControllerLayoutGuide type="bottom" id="vlK-8W-eGO"/>
@@ -625,6 +640,9 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="8sv-SI-wof" id="QLK-gP-xJf"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ixX-EZ-Kor">
                                         <rect key="frame" x="0.0" y="42" width="343" height="32"/>
@@ -634,6 +652,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="8sv-SI-wof" id="g0w-Bz-cPL"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hIK-Xs-gsW">
                                         <rect key="frame" x="0.0" y="84" width="343" height="32"/>
@@ -643,6 +664,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="8sv-SI-wof" id="D6d-Au-1Ja"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p42-Ok-roO" userLabel="Login Button">
                                         <rect key="frame" x="0.0" y="126" width="343" height="44"/>
@@ -662,11 +686,15 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="nqs-Hk-thX" secondAttribute="trailing" id="GYh-Xb-meW"/>
                             <constraint firstItem="nqs-Hk-thX" firstAttribute="top" secondItem="PKA-BV-DXP" secondAttribute="bottom" constant="251" id="Voo-mk-Z52"/>
                             <constraint firstItem="nqs-Hk-thX" firstAttribute="leading" secondItem="NvP-w0-nG0" secondAttribute="leadingMargin" id="tFo-0g-xqM"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="pEI-1b-h5k" appends="YES" id="kfW-gb-86i"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="hIK-Xs-gsW" id="BXI-Nb-D0A"/>
@@ -676,6 +704,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYq-3D-ixD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pEI-1b-h5k">
+                    <connections>
+                        <action selector="userDidTapView:" destination="8sv-SI-wof" id="HGs-c0-Yg3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4841" y="2257"/>
         </scene>

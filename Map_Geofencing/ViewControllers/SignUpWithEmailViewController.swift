@@ -52,9 +52,6 @@ class SignUpWithEmailViewController: UIViewController {
         subscribeToNotification(.UIKeyboardDidHide, selector: #selector(keyboardDidHide))
         
         setupActivityIndicator()
-        
-        usernameTextField.delegate = self
-        passwordTextField.delegate = self
     }
     
     func setupActivityIndicator() {
@@ -96,6 +93,8 @@ class SignUpWithEmailViewController: UIViewController {
         
         
         if password == confirmedPassword {
+            
+            setUIEnabled(false)
             
             Auth.auth().createUser(withEmail: username, password: password) { (user, error) in
                 
@@ -175,6 +174,7 @@ extension SignUpWithEmailViewController: UITextFieldDelegate {
     @IBAction func userDidTapView(_ sender: AnyObject) {
         resignIfFirstResponder(usernameTextField)
         resignIfFirstResponder(passwordTextField)
+        resignIfFirstResponder(confirmPasswordTextField)
     }
     
     
@@ -187,6 +187,7 @@ extension SignUpWithEmailViewController {
     func setUIEnabled(_ enabled: Bool) {
         usernameTextField.isEnabled = enabled
         passwordTextField.isEnabled = enabled
+        confirmPasswordTextField.isEnabled = enabled
         signUpButton.isEnabled = enabled
         
         // adjust login button alpha

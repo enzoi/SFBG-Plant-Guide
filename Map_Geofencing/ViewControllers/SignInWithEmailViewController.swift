@@ -38,9 +38,6 @@ class SignInWithEmailViewController: UIViewController {
         subscribeToNotification(.UIKeyboardDidHide, selector: #selector(keyboardDidHide))
         
         setupActivityIndicator()
-        
-        usernameTextField.delegate = self
-        passwordTextField.delegate = self
     }
     
     func setupActivityIndicator() {
@@ -79,6 +76,8 @@ class SignInWithEmailViewController: UIViewController {
             return
         }
         
+        setUIEnabled(false)
+        
         Auth.auth().signIn(withEmail: username, password: password) { (user, error) in
             
             print(username, password)
@@ -100,6 +99,7 @@ class SignInWithEmailViewController: UIViewController {
     
     func completeLogin() {
         performUIUpdatesOnMain {
+            self.setUIEnabled(true)
             self.dismiss(animated: false, completion: {
                 self.navigationController!.popToRootViewController(animated: true)
             })
