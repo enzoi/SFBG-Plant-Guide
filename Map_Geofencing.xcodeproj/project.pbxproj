@@ -225,10 +225,10 @@
 				CFD3C26B1FDD09F90084637B /* Views */,
 				CFD3C2771FDE3A5E0084637B /* PlantViewModel */,
 				CF76A18F1FA92B4400893C65 /* ViewControllers */,
+				CFDC0589200C74230024CFE6 /* Extensions */,
 				CFD3C24B1FD7BAA80084637B /* ModelControllers */,
 				CF4FB2351FCE3E9600CC885E /* Model */,
 				CF76A1901FA92B6300893C65 /* Assets */,
-				CFDC0589200C74230024CFE6 /* Extensions */,
 				CF76A18E1FA92B3A00893C65 /* Supporting Files */,
 			);
 			path = Map_Geofencing;
@@ -260,7 +260,6 @@
 				CF74290A1FEB6D1A004E26AE /* Map_Geofencing.entitlements */,
 				CF97BEDD1FCDD67500E9931C /* style.json */,
 				CFB4EE0A1FF62BC3003DD45A /* GCDBlackBox.swift */,
-				CF631B991FFEC96600A0E6AA /* Utilities.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -369,6 +368,7 @@
 			children = (
 				CFDC058A200C74520024CFE6 /* Appearance.swift */,
 				CF745543201A5C1100FEB1F6 /* MapViewControllerExtension.swift */,
+				CF631B991FFEC96600A0E6AA /* Utilities.swift */,
 			);
 			name = Extensions;
 			path = "Supporting Files";

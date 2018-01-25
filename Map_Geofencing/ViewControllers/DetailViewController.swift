@@ -54,8 +54,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
 
         for photo in photos {
             
-            print("photo: ", photo)
-            
             dispatchGroup.enter()
             
             photoStore.fetchImage(for: photo, completion: { (result) in

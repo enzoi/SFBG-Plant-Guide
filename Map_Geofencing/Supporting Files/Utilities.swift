@@ -30,38 +30,55 @@ extension UIViewController {
     // Activity Indicator related codes below refers to the solution from
     // https://coderwall.com/p/su1t1a/ios-customized-activity-indicator-with-swift
     
-    func showActivityIndicator(vc: MapViewController, view: UIView) {
-        vc.container.frame = view.frame
-        vc.container.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height / 2)
-        vc.container.backgroundColor = UIColor.whiteBackground
+    func showActivityIndicator(view: UIView) {
         
-        vc.loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-        vc.loadingView.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height / 2)
-        vc.loadingView.backgroundColor = UIColor.grayBackground
-        vc.loadingView.clipsToBounds = true
-        vc.loadingView.layer.cornerRadius = 10
+        let container: UIView = UIView()
+        let loadingView: UIView = UIView()
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        var loadingLabel = UILabel()
         
-        vc.activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 25.0, height: 25.0)
-        vc.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        vc.activityIndicator.center = CGPoint(x: vc.loadingView.frame.size.width / 2, y: 30)
+        container.frame = view.frame
+        container.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height / 2)
+        container.backgroundColor = UIColor.whiteBackground
+        container.tag = 1
         
-        vc.loadingLabel = UILabel(frame: CGRect(x: 0, y: 55, width: 80, height: 15))
-        vc.loadingLabel.text = "Loading"
-        vc.loadingLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 15)!
-        vc.loadingLabel.textColor = UIColor.lightGray
-        vc.loadingLabel.textAlignment = .center
+        loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        loadingView.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height / 2)
+        loadingView.backgroundColor = UIColor.grayBackground
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
         
-        vc.loadingView.addSubview(vc.activityIndicator)
-        vc.loadingView.addSubview(vc.loadingLabel)
-        vc.container.addSubview(vc.loadingView)
-        view.addSubview(vc.container)
-        vc.activityIndicator.startAnimating()
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 25.0, height: 25.0)
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: 30)
+        activityIndicator.tag = 2
+        
+        loadingLabel = UILabel(frame: CGRect(x: 0, y: 55, width: 80, height: 15))
+        loadingLabel.text = "Loading"
+        loadingLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 15)!
+        loadingLabel.textColor = UIColor.lightGray
+        loadingLabel.textAlignment = .center
+        
+        loadingView.addSubview(activityIndicator)
+        loadingView.addSubview(loadingLabel)
+        container.addSubview(loadingView)
+        view.addSubview(container)
+        activityIndicator.startAnimating()
     }
     
-    func hideActivityIndicator(vc: MapViewController, view: UIView) {
-        vc.activityIndicator.stopAnimating()
-        vc.container.removeFromSuperview()
+    func hideActivityIndicator(view: UIView) {
+
+        let container = view.viewWithTag(1)
+        let acvitityIndicator = view.viewWithTag(2) as? UIActivityIndicatorView
+        acvitityIndicator?.stopAnimating()
+        container?.removeFromSuperview()
     }
+}
+
+extension UIView {
+    
+    
+    
 }
 
 //  // The notification related codes below refers to the solution from

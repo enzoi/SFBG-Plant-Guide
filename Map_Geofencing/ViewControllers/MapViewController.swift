@@ -21,11 +21,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var locationManager: CLLocationManager!
     var fetchedPlants = [Plant]()
     var userCurrentLocation: CLLocation?
-
-    var container: UIView = UIView()
-    var loadingView: UIView = UIView()
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var loadingLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   
         mapView.delegate = self
         
-        self.showActivityIndicator(vc: self, view: self.view)
+        self.showActivityIndicator(view: self.view)
         
         // Get all plants
         photoStore.fetchAllPlants() { (plantsResult) in
@@ -105,7 +100,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                             self.photoStore.fetchImage(for: photo, completion: { (result) in
                                 switch result {
                                     case .success:
-                                        self.hideActivityIndicator(vc: self, view: self.view)
+                                        self.hideActivityIndicator(view: self.view)
                                     case let .failure(error):
                                         self.showAlertWithError(title: "Error fetching data", error: PhotoError.imageCreationError)
                                         print("Error fetching image for photo: \(error)")
