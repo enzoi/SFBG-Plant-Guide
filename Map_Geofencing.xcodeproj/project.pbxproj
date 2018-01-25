@@ -21,6 +21,7 @@
 		CF7429091FEB45FE004E26AE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7429081FEB45FE004E26AE /* SignInViewController.swift */; };
 		CF74290C1FEC7135004E26AE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74290B1FEC7135004E26AE /* TabBarController.swift */; };
 		CF7429111FECC6BF004E26AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF7429101FECC6BF004E26AE /* GoogleService-Info.plist */; };
+		CF745544201A5C1100FEB1F6 /* MapViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF745543201A5C1100FEB1F6 /* MapViewControllerExtension.swift */; };
 		CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1601FA9216000893C65 /* AppDelegate.swift */; };
 		CF76A1761FA9216000893C65 /* Map_GeofencingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1751FA9216000893C65 /* Map_GeofencingTests.swift */; };
 		CF76A1811FA9216000893C65 /* Map_GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */; };
@@ -93,6 +94,7 @@
 		CF74290A1FEB6D1A004E26AE /* Map_Geofencing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Map_Geofencing.entitlements; path = ../Map_Geofencing.entitlements; sourceTree = "<group>"; };
 		CF74290B1FEC7135004E26AE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CF7429101FECC6BF004E26AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CF745543201A5C1100FEB1F6 /* MapViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerExtension.swift; sourceTree = "<group>"; };
 		CF76A15D1FA9216000893C65 /* Map_Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF76A1601FA9216000893C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF76A16C1FA9216000893C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				CFDC058A200C74520024CFE6 /* Appearance.swift */,
+				CF745543201A5C1100FEB1F6 /* MapViewControllerExtension.swift */,
 			);
 			name = Extensions;
 			path = "Supporting Files";
@@ -699,6 +702,7 @@
 				CFE592A81FDF4C9D00F0BBE2 /* User+CoreDataClass.swift in Sources */,
 				CFDC058D200C9C6C0024CFE6 /* WebViewController.swift in Sources */,
 				CF76A1611FA9216000893C65 /* AppDelegate.swift in Sources */,
+				CF745544201A5C1100FEB1F6 /* MapViewControllerExtension.swift in Sources */,
 				CF4FB2541FD2816B00CC885E /* FavoriteTableViewCell.swift in Sources */,
 				CF4FB23E1FCE9EF000CC885E /* ProfileViewController.swift in Sources */,
 				CF4FB23C1FCE9E9A00CC885E /* FavoriteViewController.swift in Sources */,
