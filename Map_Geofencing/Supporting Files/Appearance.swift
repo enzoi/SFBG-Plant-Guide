@@ -23,7 +23,7 @@ struct Appearance {
         
         // Tab Bar
         UITabBar.appearance().barTintColor = UIColor.darkGreen
-        // UITabBar.appearance().tintColor = UIColor.white
+        // UITabBar.appearance().tintColor = UIColor.clear
         UITabBar.appearance().isTranslucent = false
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.defaultBlue], for: .selected)
