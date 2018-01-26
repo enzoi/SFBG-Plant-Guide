@@ -60,6 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        photoStore.saveContext()
+    }
+    
     func applicationWillTerminate(_ application: UIApplication) {
         photoStore.saveContext()
     }
