@@ -47,7 +47,30 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewWillAppear(animated)
         
         mapView.removeAnnotations(mapView.annotations)
-        fetchAllPlantMarkers()
+        
+        self.photoStore.fetchAllPlants() { (plantsResult) in
+            
+            switch plantsResult {
+                
+            case let .success(plants):
+                
+                self.fetchedPlants = plants
+                
+            case let .failure(error):
+                print(error)
+                self.fetchedPlants = []
+            }
+        }
+        
+        if self.fetchedPlants.count == 0 {
+            
+            fetchAllPlantMarkers()
+        
+        } else {
+            hideActivityIndicator(view: self.view)
+            displayPins(plants: self.fetchedPlants)
+        }
+        
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -71,55 +94,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         self.showActivityIndicator(view: self.view)
-        
-        // Try to fetch all plants from core data first
-        self.photoStore.fetchAllPlants() { (plantsResult) in
+
+        self.photoStore.getDataFromContentful { (plantResult) in
+                        
+            switch plantResult {
             
-            switch plantsResult {
-                
             case let .success(plants):
-                
+            
                 self.fetchedPlants = plants
+                self.hideActivityIndicator(view: self.view)
+                
+                print("fetch from contentful success", self.fetchedPlants)
                 
                 if self.fetchedPlants.count > 0 {
-                    
-                    print("fetched core data exist")
-                    self.displayPins(plants: self.fetchedPlants)
-                    
-                } else {
-                    
-                    print("fetched core data doesn't exist so try to fetch using contentful api")
-                    
-                    self.photoStore.getDataFromContentful { (plantResult) in
-                        
-                        switch plantsResult {
-                        
-                        case let .success(plants):
-                        
-                            self.fetchedPlants = plants
-                            print("fetch from contentful success", self.fetchedPlants)
-                            
-                            if self.fetchedPlants.count > 0 {
-                                performUIUpdatesOnMain() {
-                                    self.displayPins(plants: self.fetchedPlants)
-                                }
-                            }
-                            
-                            print("no fetched plants from contentful")
-                        
-                        case let .failure(error):
-                            print(error)
-                            self.fetchedPlants = []
-                        }
-                        
+                    performUIUpdatesOnMain() {
+                        self.displayPins(plants: self.fetchedPlants)
                     }
                 }
-                
-                case let .failure(error):
-                    print(error)
-                    self.fetchedPlants = []
-                }
+            
+            case let .failure(error):
+                print(error)
+                self.fetchedPlants = []
             }
+        }
     }
     
     func displayPins(plants: [Plant]) {
