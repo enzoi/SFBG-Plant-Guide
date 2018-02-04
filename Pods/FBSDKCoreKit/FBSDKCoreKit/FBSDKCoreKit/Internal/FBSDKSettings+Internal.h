@@ -16,15 +16,14 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <FBSDKCoreKit/FBSDKSettings.h>
-
-@protocol FBSDKAccessTokenCaching;
+#import "FBSDKAccessTokenCache.h"
+#import "FBSDKSettings.h"
 
 @interface FBSDKSettings(Internal)
 
-+ (NSObject<FBSDKAccessTokenCaching> *)accessTokenCache;
++ (FBSDKAccessTokenCache *)accessTokenCache;
 
-+ (void)setAccessTokenCache:(NSObject<FBSDKAccessTokenCaching> *)accessTokenCache;
+- (void)setAccessTokenCache;
 
 + (NSString *)graphAPIDebugParamValue;
 

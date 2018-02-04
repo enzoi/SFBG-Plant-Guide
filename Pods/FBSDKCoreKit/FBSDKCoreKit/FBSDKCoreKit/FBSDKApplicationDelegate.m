@@ -55,13 +55,13 @@ static NSString *const FBSDKAppLinkInboundEvent = @"fb_al_inbound";
   FBSDKBridgeAPIRequest *_pendingRequest;
   FBSDKBridgeAPICallbackBlock _pendingRequestCompletionBlock;
   id<FBSDKURLOpening> _pendingURLOpen;
- #ifdef __IPHONE_11_0
-  SFAuthenticationSession *_authenticationSession NS_AVAILABLE_IOS(11_0);
- #endif
 #endif
   BOOL _expectingBackground;
   UIViewController *_safariViewController;
   BOOL _isDismissingSafariViewController;
+#ifdef __IPHONE_11_0
+  SFAuthenticationSession *_authenticationSession;
+#endif
 }
 
 #pragma mark - Class Methods
@@ -172,12 +172,6 @@ static NSString *const FBSDKAppLinkInboundEvent = @"fb_al_inbound";
                                                                        completion:completePendingOpenURLBlock];
     _safariViewController = nil;
   } else {
-#ifdef __IPHONE_11_0
-    if (_authenticationSession != nil) {
-      [_authenticationSession cancel];
-      _authenticationSession = nil;
-    }
-#endif
     completePendingOpenURLBlock();
   }
   if ([pendingURLOpen canOpenURL:url
@@ -202,7 +196,6 @@ static NSString *const FBSDKAppLinkInboundEvent = @"fb_al_inbound";
   // fetch app settings
   [FBSDKServerConfigurationManager loadServerConfigurationWithCompletionBlock:NULL];
 
-  [self _logSDKInitialize];
 #if !TARGET_OS_TV
   FBSDKProfile *cachedProfile = [FBSDKProfile fetchCachedProfile];
   [FBSDKProfile setCurrentProfile:cachedProfile];
@@ -241,13 +234,7 @@ static NSString *const FBSDKAppLinkInboundEvent = @"fb_al_inbound";
   //  _expectingBackground can be YES if the caller started doing work (like login)
   // within the app delegate's lifecycle like openURL, in which case there
   // might have been a "didBecomeActive" event pending that we want to ignore.
-  BOOL notExpectingBackground = !_expectingBackground && !_safariViewController && !_isDismissingSafariViewController;
-#if !TARGET_OS_TV
- #ifdef __IPHONE_11_0
-  notExpectingBackground = notExpectingBackground && !_authenticationSession;
- #endif
-#endif
-  if (notExpectingBackground) {
+  if (!_expectingBackground && !_safariViewController && !_isDismissingSafariViewController) {
     _active = YES;
 #if !TARGET_OS_TV
     [_pendingURLOpen applicationDidBecomeActive:[notification object]];
@@ -371,12 +358,6 @@ static NSString *const FBSDKAppLinkInboundEvent = @"fb_al_inbound";
 
   if (SFSafariViewControllerClass) {
     UIViewController *parent = fromViewController ?: [FBSDKInternalUtility topMostViewController];
-    if (parent == nil) {
-      [FBSDKLogger singleShotLogEntry:FBSDKLoggingBehaviorDeveloperErrors
-                         formatString:@"There are no valid ViewController to present SafariViewController with", nil];
-      return;
-    }
-
     NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
     NSURLQueryItem *sfvcQueryItem = [[NSURLQueryItem alloc] initWithName:@"sfvc" value:@"1"];
     [components setQueryItems:[components.queryItems arrayByAddingObject:sfvcQueryItem]];
@@ -485,31 +466,6 @@ static NSString *const FBSDKAppLinkInboundEvent = @"fb_al_inbound";
                         valueToSum:nil
                         parameters:logData
                        accessToken:nil];
-}
-
-- (void)_logSDKInitialize
-{
-  NSMutableDictionary *params = [NSMutableDictionary new];
-  [params setObject:@1 forKey:@"core_lib_included"];
-  if (objc_lookUpClass("FBSDKShareDialog") != nil) {
-    [params setObject:@1 forKey:@"share_lib_included"];
-  }
-  if (objc_lookUpClass("FBSDKLoginManager") != nil) {
-    [params setObject:@1 forKey:@"login_lib_included"];
-  }
-  if (objc_lookUpClass("FBSDKPlacesManager") != nil) {
-    [params setObject:@1 forKey:@"places_lib_included"];
-  }
-  if (objc_lookUpClass("FBSDKMessengerButton") != nil) {
-    [params setObject:@1 forKey:@"messenger_lib_included"];
-  }
-  if (objc_lookUpClass("FBSDKMessengerButton") != nil) {
-    [params setObject:@1 forKey:@"messenger_lib_included"];
-  }
-  if (objc_lookUpClass("FBSDKTVInterfaceFactory.m") != nil) {
-    [params setObject:@1 forKey:@"tv_lib_included"];
-  }
-  [FBSDKAppEvents logEvent:@"fb_sdk_initialize" parameters:params];
 }
 
 #pragma mark -- (non-tvos)

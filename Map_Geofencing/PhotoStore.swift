@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import Contentful
+import Interstellar
 
 enum ImageResult {
     case success(UIImage)
@@ -32,9 +34,13 @@ enum PlantsResult {
     case failure(Error)
 }
 
+let SPACE_ID = "whpdepxpcivz"
+let ACCESS_TOKEN = "8526f63558bb91e2943478125ec315f19a8a3d9ff01aa315749be1d67f4b64f1"
+
 class PhotoStore {
     
     private let imageStore = ImageStore()
+    private let contentful = Contentful(client: Client(spaceId: SPACE_ID, accessToken: ACCESS_TOKEN))
     
     private let modelName: String
     
@@ -109,7 +115,7 @@ class PhotoStore {
             
             // After get the imageData, store the image in core data
             if case let .success(image) = result {
-                 self.imageStore.setImage(image, forKey: photoKey)
+                self.imageStore.setImage(image, forKey: photoKey)
             }
             
             OperationQueue.main.addOperation {
@@ -124,7 +130,7 @@ class PhotoStore {
     func fetchAllPlants(completion: @escaping (PlantsResult) -> Void) {
         
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        let moc = storeContainer.viewContext
+        let moc = self.managedContext
         
         fetchRequest.fetchBatchSize = 10
         
@@ -151,67 +157,67 @@ class PhotoStore {
     }
     
     
-    // MARK: - Helper methods to create core data from seed.json
+    // MARK: - Helper methods to create core data from contentful
     
-    func importJSONSeedDataIfNeeded() {
+    func getDataFromContentful(completion: @escaping (PlantsResult) -> Void) {
         
-        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        let count = try? self.managedContext.count(for: fetchRequest)
-        
-        guard let plantCount = count,
-            plantCount == 0 else {
-                return
-        }
-        
-        importJSONSeedData()
-    }
-    
-    func importJSONSeedData() {
-        
-        let jsonURL = Bundle.main.url(forResource: "seed", withExtension: "json")!
-        let jsonData = try! Data(contentsOf: jsonURL)
-        
-        do {
-            let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: [.allowFragments]) as! [String: AnyObject]
+        contentful.client.fetchEntries() {(result: Result<ArrayResponse<Entry>>) in
             
-            for jsonDictionary in jsonArray["plants"] as! [[String: AnyObject]] {
-                let scientificName = jsonDictionary["scientificName"] as! String
-                let commonNames = jsonDictionary["commonName"] as! [String]
-                let location = jsonDictionary["location"] as! [String:AnyObject]
-                let plantType = jsonDictionary["plantType"] as! String
-                let climateZones = jsonDictionary["climateZones"] as! String
-                let sunExposure = jsonDictionary["sunExposure"] as! String
-                let waterNeeds = jsonDictionary["waterNeeds"] as! String
-                let coordinate = location["coordinate"] as! [String:AnyObject]
-                let latitude = coordinate["latitude"] as! Double
-                let longitude = coordinate["longitude"] as! Double
-                let photos = jsonDictionary["photos"] as! [[String:Any]]
+            var fetchedPlants = [Plant]()
+            
+            switch result {
                 
-                let plant = Plant(context: self.managedContext)
+            case .success(let entries):
                 
-                plant.scientificName = scientificName
-                plant.commonName = commonNames[0]
-                plant.latitude = latitude
-                plant.longitude = longitude
-                plant.plantType = plantType
-                plant.climateZones = climateZones
-                plant.sunExposure = sunExposure
-                plant.waterNeeds = waterNeeds
+                print("entries successfully fetched")
                 
-                for photo in photos {
-                    let image = Photo(context: self.managedContext)
-                    image.remoteURL = NSURL(string: photo["remoteURL"] as! String)
-                    image.photoID = UUID().uuidString // Add unique photoID
-                    plant.addToPhoto(image)
+                entries.items.forEach { entry in
+
+                    let jsonDictionary = entry.fields
+                    
+                    let scientificName = jsonDictionary["scientificName"] as! String
+                    let commonNames = jsonDictionary["commonName"] as! String
+                    let plantType = jsonDictionary["plantType"] as! String
+                    let climateZones = jsonDictionary["climateZones"] as! String
+                    let sunExposure = jsonDictionary["sunExposure"] as! String
+                    let waterNeeds = jsonDictionary["waterNeeds"] as! String
+                    let latitude = jsonDictionary["latitude"] as! Double
+                    let longitude = jsonDictionary["longitude"] as! Double
+                    let urls = jsonDictionary["imageURLs"] as! [String:AnyObject]
+                    let photos = urls["photos"] as! [[String:Any]]
+                    
+                    let plant = Plant(context: self.managedContext)
+                    
+                    plant.scientificName = scientificName
+                    plant.commonName = commonNames
+                    plant.latitude = latitude
+                    plant.longitude = longitude
+                    plant.plantType = plantType
+                    plant.climateZones = climateZones
+                    plant.sunExposure = sunExposure
+                    plant.waterNeeds = waterNeeds
+                    
+                    for photo in photos {
+                        let image = Photo(context: self.managedContext)
+                        image.remoteURL = NSURL(string: photo["remoteURL"] as! String)
+                        image.photoID = UUID().uuidString // Add unique photoID
+                        plant.addToPhoto(image)
+                    }
+                    
+                    fetchedPlants.append(plant)
+                    print("fetched plants: ", fetchedPlants)
                 }
                 
+                performUIUpdatesOnMain() {
+                    completion(.success(fetchedPlants))
+                }
+                
+            case .error(let error):
+                print("Uh oh, something went wrong. You can do what you want with this \(error)")
+                completion(.failure(error))
             }
-            
-            self.saveContext()
-            
-        } catch let error as NSError {
-            print("Error importing plants: \(error)")
         }
+
     }
     
 }

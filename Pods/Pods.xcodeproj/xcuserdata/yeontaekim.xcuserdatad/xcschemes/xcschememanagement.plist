@@ -9,12 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Contentful.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKShareKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -40,6 +50,16 @@
 			<false/>
 		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Interstellar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -72,12 +92,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1AD6D1C70E26832B165F9634C3C66468</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1C10A9C1C2E2B4E46D02C18C903FD157</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44CAD6CE523055ED339E87154473A254</key>
+		<key>312D781049D233BE4D403069F017DA00</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F0ECCA59EB4A3461C30A8F493660E39</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>531B78FD8AD31B542B8001A970D876EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +142,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B7F5FFDAC0FDE6B5EDCDE8CC9C01D37D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DFAB8FD9226927AF8E1D0CE36220F3FB</key>
+		<key>E396A93E4C79B22B7816E9F02F62ECED</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -33,9 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Facebook Auth Setup
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        // Provide core data with hard coded plants data
-        photoStore.importJSONSeedDataIfNeeded()
 
         // Pass photoStore to TabBarController
         guard let tabBarController = window?.rootViewController as? TabBarController else {

@@ -34,6 +34,5 @@
 - (BOOL)isCompatibleWithAppEventsState:(FBSDKAppEventsState *)appEventsState;
 - (BOOL)isCompatibleWithTokenString:(NSString *)tokenString appID:(NSString *)appID;
 - (NSString *)JSONStringForEvents:(BOOL)includeImplicitEvents;
-- (NSString *)extractReceiptData;
 
 @end

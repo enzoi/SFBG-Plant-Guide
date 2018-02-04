@@ -40,19 +40,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         let sfbgLocation = CLLocation(latitude: 37.767527, longitude: -122.469890)
         self.centerMapOnLocation(location: sfbgLocation)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         mapView.removeAnnotations(mapView.annotations)
-        
-        if self.fetchedPlants.count == 0 {
-            fetchAllPlantMarkers()
-        } else {
-            self.mapView.addAnnotations(self.annotations)
-        }
-        
+        fetchAllPlantMarkers()
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -70,7 +65,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-    
     // Fetch all saved pins with annotation
     func fetchAllPlantMarkers() {
   
@@ -78,8 +72,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         self.showActivityIndicator(view: self.view)
         
-        // Get all plants
-        photoStore.fetchAllPlants() { (plantsResult) in
+        // Try to fetch all plants from core data first
+        self.photoStore.fetchAllPlants() { (plantsResult) in
             
             switch plantsResult {
                 
@@ -89,45 +83,80 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
                 if self.fetchedPlants.count > 0 {
                     
-                    for plant in self.fetchedPlants {
-                        
-                        let pinAnnotation = plant.getPinAnnotationsFromPin(plant: plant)
-                        
-                        let photos = plant.photo?.allObjects as! [Photo]
-
-                        if let photo = photos.first {
-                            
-                            self.photoStore.fetchImage(for: photo, completion: { (result) in
-                                switch result {
-                                    case .success:
-                                        self.hideActivityIndicator(view: self.view)
-                                    case let .failure(error):
-                                        self.showAlertWithError(title: "Error fetching data", error: PhotoError.imageCreationError)
-                                        print("Error fetching image for photo: \(error)")
-                                }
-                            })
-                        }
-                        
-                        self.annotations.append(pinAnnotation)
-                        
-                    }
-                    
-                    performUIUpdatesOnMain {
-                        self.mapView.addAnnotations(self.annotations)
-                        // self.hideActivityIndicator(vc: self, view: self.view)
-                    }
+                    print("fetched core data exist")
+                    self.displayPins(plants: self.fetchedPlants)
                     
                 } else {
-                    print("Nothing to fetch")
+                    
+                    print("fetched core data doesn't exist so try to fetch using contentful api")
+                    
+                    self.photoStore.getDataFromContentful { (plantResult) in
+                        
+                        switch plantsResult {
+                        
+                        case let .success(plants):
+                        
+                            self.fetchedPlants = plants
+                            print("fetch from contentful success", self.fetchedPlants)
+                            
+                            if self.fetchedPlants.count > 0 {
+                                performUIUpdatesOnMain() {
+                                    self.displayPins(plants: self.fetchedPlants)
+                                }
+                            }
+                            
+                            print("no fetched plants from contentful")
+                        
+                        case let .failure(error):
+                            print(error)
+                            self.fetchedPlants = []
+                        }
+                        
+                    }
                 }
                 
-            case .failure(_):
-                self.fetchedPlants = []
+                case let .failure(error):
+                    print(error)
+                    self.fetchedPlants = []
+                }
             }
-        }
-        
     }
     
+    func displayPins(plants: [Plant]) {
+        
+        for plant in plants {
+            
+            let pinAnnotation = plant.getPinAnnotationsFromPin(plant: plant)
+            
+            let photos = plant.photo?.allObjects as! [Photo]
+            
+            if let photo = photos.first {
+                
+                self.photoStore.fetchImage(for: photo, completion: { (result) in
+                    
+                    switch result {
+                    
+                    case .success:
+                        self.hideActivityIndicator(view: self.view)
+                    
+                    case let .failure(error):
+                        self.showAlertWithError(title: "Error fetching data", error: PhotoError.imageCreationError)
+                        print("Error fetching image for photo: \(error)")
+                    }
+                })
+            }
+            
+            self.annotations.append(pinAnnotation)
+            
+        }
+        
+        performUIUpdatesOnMain {
+            self.mapView.addAnnotations(self.annotations)
+        }
+    }
+    
+
+
     @IBAction func segmentedControlAction(sender: UISegmentedControl!) {
         switch (sender.selectedSegmentIndex) {
         case 0:
