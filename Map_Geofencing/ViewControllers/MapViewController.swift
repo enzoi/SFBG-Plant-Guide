@@ -41,13 +41,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let sfbgLocation = CLLocation(latitude: 37.767527, longitude: -122.469890)
         self.centerMapOnLocation(location: sfbgLocation)
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        mapView.removeAnnotations(mapView.annotations)
-        
         self.photoStore.fetchAllPlants() { (plantsResult) in
             
             switch plantsResult {
@@ -63,13 +56,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         if self.fetchedPlants.count == 0 {
-            
             fetchAllPlantMarkers()
-        
         } else {
-            hideActivityIndicator(view: self.view)
             displayPins(plants: self.fetchedPlants)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
@@ -103,9 +97,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
                 self.fetchedPlants = plants
                 self.hideActivityIndicator(view: self.view)
-                
-                print("fetch from contentful success", self.fetchedPlants)
-                
+      
                 if self.fetchedPlants.count > 0 {
                     performUIUpdatesOnMain() {
                         self.displayPins(plants: self.fetchedPlants)
@@ -113,7 +105,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 }
             
             case let .failure(error):
-                print(error)
+                self.hideActivityIndicator(view: self.view)
+                self.showAlertWithError(title: "Error fetching data", error: error.localizedDescription as! Error)
                 self.fetchedPlants = []
             }
         }
@@ -137,8 +130,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                         self.hideActivityIndicator(view: self.view)
                     
                     case let .failure(error):
-                        self.showAlertWithError(title: "Error fetching data", error: PhotoError.imageCreationError)
-                        print("Error fetching image for photo: \(error)")
+                        self.showAlertWithError(title: "Error fetching image for photo", error: error.localizedDescription as! Error)
                     }
                 })
             }

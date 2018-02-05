@@ -134,7 +134,7 @@ class PhotoStore {
         
         fetchRequest.fetchBatchSize = 10
         
-        moc.perform {
+        moc.performAndWait {
             do {
                 let allPlants = try moc.fetch(fetchRequest)
                 completion(.success(allPlants))
