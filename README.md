@@ -32,9 +32,9 @@ To add this app to a Firebase project, use the bundleID from the Xcode project. 
 
 ## Todos
 
-* Add/Update more plant data into Contentful
-* Add more detailed plant information to detail view controller
-* Add audio-guide in detail view controller by using Contentful
-* Apply Contentful Image API to fetch the image assets and post images directly
-* A user can add images by taking a photo or selecting photos from photo library
-* Add unit testing
+- [ ] Add/Update more plant data into Contentful
+- [ ] Add more detailed plant information to detail view controller
+- [ ] Add audio-guide in detail view controller by using Contentful
+- [ ] Apply Contentful Image API to fetch the image assets and post images directly
+- [ ] A user can add images by taking a photo or selecting photos from photo library
+- [ ] Add unit testing
