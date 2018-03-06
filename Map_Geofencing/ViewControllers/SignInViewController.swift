@@ -77,14 +77,14 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
         dismiss(animated: true, completion: nil)
     }
     
-    func signUpButtonTapped(sender: UIButton) {
+    @objc func signUpButtonTapped(sender: UIButton) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
         let signUpWithEmailViewController = storyBoard.instantiateViewController(withIdentifier: "signUpWithEmailViewController") as! SignUpWithEmailViewController
         self.navigationController?.pushViewController(signUpWithEmailViewController, animated: true)
     }
     
-    func signInButtonTapped(sender: UIButton) {
+    @objc func signInButtonTapped(sender: UIButton) {
 
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     
@@ -92,9 +92,9 @@ class SignInViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDe
         self.navigationController?.pushViewController(signInWithEmailViewController, animated: true)
     }
     
-    func handleCustomFBLogin() {
+    @objc func handleCustomFBLogin() {
         let loginManager = LoginManager()
-        loginManager.logIn([.email, .publicProfile], viewController: self) { result in
+        loginManager.logIn(readPermissions: [.email, .publicProfile], viewController: self) { result in
             switch result {
             case .failed(let error):
                 print("FACEBOOK LOGIN FAILED: \(error)")

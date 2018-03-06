@@ -43,7 +43,7 @@ class PlantNameTableViewCell: UITableViewCell {
         
     }
 
-    func buttonTapped(sender: UIButton) {
+    @objc func buttonTapped(sender: UIButton) {
         print("button tapped")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let webVC = storyboard.instantiateViewController(withIdentifier :"webViewController") as! WebViewController

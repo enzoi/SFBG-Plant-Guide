@@ -136,7 +136,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
-    func changePage(sender: AnyObject) -> () {
+    @objc func changePage(sender: AnyObject) -> () {
         let x = CGFloat(pageControl.currentPage) * scrollView.frame.size.width
         scrollView.setContentOffset(CGPoint(x: x,y :0), animated: true)
     }

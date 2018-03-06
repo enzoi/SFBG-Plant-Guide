@@ -67,6 +67,7 @@ NSString *const FBSDKAppEventNameSpentCredits            = @"fb_mobile_spent_cre
 NSString *const FBSDKAppEventParameterNameCurrency               = @"fb_currency";
 NSString *const FBSDKAppEventParameterNameRegistrationMethod     = @"fb_registration_method";
 NSString *const FBSDKAppEventParameterNameContentType            = @"fb_content_type";
+NSString *const FBSDKAppEventParameterNameContent                = @"fb_content";
 NSString *const FBSDKAppEventParameterNameContentID              = @"fb_content_id";
 NSString *const FBSDKAppEventParameterNameSearchString           = @"fb_search_string";
 NSString *const FBSDKAppEventParameterNameSuccess                = @"fb_success";
@@ -153,6 +154,8 @@ NSString *const FBSDKAppEventParameterDialogOutcome               = @"fb_dialog_
 NSString *const FBSDKAppEventParameterDialogErrorMessage          = @"fb_dialog_outcome_error_message";
 NSString *const FBSDKAppEventParameterDialogMode                  = @"fb_dialog_mode";
 NSString *const FBSDKAppEventParameterDialogShareContentType      = @"fb_dialog_share_content_type";
+NSString *const FBSDKAppEventParameterDialogShareContentUUID      = @"fb_dialog_share_content_uuid";
+NSString *const FBSDKAppEventParameterDialogShareContentPageID    = @"fb_dialog_share_content_page_id";
 NSString *const FBSDKAppEventParameterShareTrayActivityName       = @"fb_share_tray_activity";
 NSString *const FBSDKAppEventParameterShareTrayResult             = @"fb_share_tray_result";
 NSString *const FBSDKAppEventParameterLogTime = @"_logTime";
@@ -173,11 +176,15 @@ NSString *const FBSDKAppEventsDialogShareModeFeedBrowser    = @"FeedBrowser";
 NSString *const FBSDKAppEventsDialogShareModeFeedWeb        = @"FeedWeb";
 NSString *const FBSDKAppEventsDialogShareModeUnknown        = @"Unknown";
 
-NSString *const FBSDKAppEventsDialogShareContentTypeOpenGraph       = @"OpenGraph";
-NSString *const FBSDKAppEventsDialogShareContentTypeStatus          = @"Status";
-NSString *const FBSDKAppEventsDialogShareContentTypePhoto           = @"Photo";
-NSString *const FBSDKAppEventsDialogShareContentTypeVideo           = @"Video";
-NSString *const FBSDKAppEventsDialogShareContentTypeUnknown         = @"Unknown";
+NSString *const FBSDKAppEventsDialogShareContentTypeOpenGraph                         = @"OpenGraph";
+NSString *const FBSDKAppEventsDialogShareContentTypeStatus                            = @"Status";
+NSString *const FBSDKAppEventsDialogShareContentTypePhoto                             = @"Photo";
+NSString *const FBSDKAppEventsDialogShareContentTypeVideo                             = @"Video";
+NSString *const FBSDKAppEventsDialogShareContentTypeCamera                            = @"Camera";
+NSString *const FBSDKAppEventsDialogShareContentTypeMessengerGenericTemplate          = @"GenericTemplate";
+NSString *const FBSDKAppEventsDialogShareContentTypeMessengerMediaTemplate            = @"MediaTemplate";
+NSString *const FBSDKAppEventsDialogShareContentTypeMessengerOpenGraphMusicTemplate   = @"OpenGraphMusicTemplate";
+NSString *const FBSDKAppEventsDialogShareContentTypeUnknown                           = @"Unknown";
 
 NSString *const FBSDKAppEventsLoggingResultNotification = @"com.facebook.sdk:FBSDKAppEventsLoggingResultNotification";
 
@@ -213,13 +220,14 @@ static NSString *g_overrideAppID = nil;
 
 @property (nonatomic, copy) NSString *pushNotificationsDeviceTokenString;
 
+@property (nonatomic, strong) dispatch_source_t flushTimer;
+@property (nonatomic, strong) dispatch_source_t attributionIDRecheckTimer;
+
 @end
 
 @implementation FBSDKAppEvents
 {
   BOOL _explicitEventsLoggedYet;
-  NSTimer *_flushTimer;
-  NSTimer *_attributionIDRecheckTimer;
   FBSDKServerConfiguration *_serverConfiguration;
   FBSDKAppEventsState *_appEventsState;
   NSString *_userID;
@@ -239,18 +247,18 @@ static NSString *g_overrideAppID = nil;
   self = [super init];
   if (self) {
     _flushBehavior = FBSDKAppEventsFlushBehaviorAuto;
-    _flushTimer = [NSTimer timerWithTimeInterval:FLUSH_PERIOD_IN_SECONDS
-                                          target:self
-                                        selector:@selector(flushTimerFired:)
-                                        userInfo:nil
-                                         repeats:YES];
-    _attributionIDRecheckTimer = [NSTimer timerWithTimeInterval:APP_SUPPORTS_ATTRIBUTION_ID_RECHECK_PERIOD
-                                                         target:self
-                                                       selector:@selector(appSettingsFetchStateResetTimerFired:)
-                                                       userInfo:nil
-                                                        repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:_flushTimer forMode:NSDefaultRunLoopMode];
-    [[NSRunLoop mainRunLoop] addTimer:_attributionIDRecheckTimer forMode:NSDefaultRunLoopMode];
+
+    typeof(self) __weak weakSelf = self;
+    self.flushTimer = [FBSDKUtility startGCDTimerWithInterval:FLUSH_PERIOD_IN_SECONDS
+                                                        block:^{
+                                                          [weakSelf flushTimerFired:nil];
+                                                        }];
+
+    self.attributionIDRecheckTimer = [FBSDKUtility startGCDTimerWithInterval:APP_SUPPORTS_ATTRIBUTION_ID_RECHECK_PERIOD
+                                                                       block:^{
+                                                                         [weakSelf appSettingsFetchStateResetTimerFired:nil];
+                                                                       }];
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(applicationMovingFromActiveStateOrTerminating)
@@ -279,10 +287,8 @@ static NSString *g_overrideAppID = nil;
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-  // technically these timers retain self so there's a cycle but
-  // we're a singleton anyway.
-  [_flushTimer invalidate];
-  [_attributionIDRecheckTimer invalidate];
+  [FBSDKUtility stopGCDTimer:self.flushTimer];
+  [FBSDKUtility stopGCDTimer:self.attributionIDRecheckTimer];
 }
 
 #pragma mark - Public Methods
@@ -328,7 +334,7 @@ static NSString *g_overrideAppID = nil;
   [[FBSDKAppEvents singleton] instanceLogEvent:eventName
                                     valueToSum:valueToSum
                                     parameters:parameters
-                            isImplicitlyLogged:NO
+                            isImplicitlyLogged:(BOOL)parameters[FBSDKAppEventParameterImplicitlyLogged]
                                    accessToken:accessToken];
 }
 
@@ -685,7 +691,6 @@ static NSString *g_overrideAppID = nil;
   if (isImplicitlyLogged) {
     eventDictionary[FBSDKAppEventParameterImplicitlyLogged] = @"1";
   }
-  [FBSDKInternalUtility dictionary:eventDictionary setObject:_userID forKey:@"_app_user_id"];
 
   NSString *currentViewControllerName;
   if ([NSThread isMainThread]) {
@@ -783,8 +788,8 @@ static NSString *g_overrideAppID = nil;
   [FBSDKAppEventsUtility ensureOnMainThread:NSStringFromSelector(_cmd) className:NSStringFromClass([self class])];
 
   [self fetchServerConfiguration:^(void) {
-    NSString *JSONString = [appEventsState JSONStringForEvents:_serverConfiguration.implicitLoggingEnabled];
-    NSData *encodedEvents = [JSONString dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *receipt_data = [appEventsState extractReceiptData];
+    NSString *encodedEvents = [appEventsState JSONStringForEvents:_serverConfiguration.implicitLoggingEnabled];
     if (!encodedEvents) {
       [FBSDKLogger singleShotLogEntry:FBSDKLoggingBehaviorAppEvents
                              logEntry:@"FBSDKAppEvents: Flushing skipped - no events after removing implicitly logged ones.\n"];
@@ -794,7 +799,12 @@ static NSString *g_overrideAppID = nil;
                                            activityParametersDictionaryForEvent:@"CUSTOM_APP_EVENTS"
                                            implicitEventsOnly:appEventsState.areAllEventsImplicit
                                            shouldAccessAdvertisingID:_serverConfiguration.advertisingIDEnabled];
-    postParameters[@"custom_events_file"] = encodedEvents;
+    NSInteger length = [receipt_data length];
+    if (length > 0) {
+      postParameters[@"receipt_data"] = receipt_data;
+    }
+
+    postParameters[@"custom_events"] = encodedEvents;
     if (appEventsState.numSkipped > 0) {
       postParameters[@"num_skipped_events"] = [NSString stringWithFormat:@"%lu", (unsigned long)appEventsState.numSkipped];
     }

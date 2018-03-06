@@ -15,23 +15,23 @@ struct Appearance {
         UIApplication.shared.statusBarStyle = .lightContent
         
         // Navigation Bar
-        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)!, NSForegroundColorAttributeName: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)!, NSAttributedStringKey.foregroundColor: UIColor.white]
         UINavigationBar.appearance().barTintColor = UIColor.darkGreen
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().isTranslucent = false
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "AvenirNextCondensed-Regular", size: 18)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "AvenirNextCondensed-Regular", size: 18)!, NSAttributedStringKey.foregroundColor: UIColor.white], for: .normal)
         
         // Tab Bar
         UITabBar.appearance().barTintColor = UIColor.darkGreen
         // UITabBar.appearance().tintColor = UIColor.clear
         UITabBar.appearance().isTranslucent = false
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.defaultBlue], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.defaultBlue], for: .selected)
         
         // Segmented Control
         UISegmentedControl.appearance().tintColor = UIColor.darkGreen
-        UISegmentedControl.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.darkGreen], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.darkGreen], for: .normal)
     }
 }
 

@@ -137,25 +137,25 @@ extension SignUpWithEmailViewController: UITextFieldDelegate {
         return true
     }
     
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         if !keyboardOnScreen {
             view.frame.origin.y -= keyboardHeight(notification) - 80
             // logoImageView.isHidden = true
         }
     }
     
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         if keyboardOnScreen {
             view.frame.origin.y = 0
             // logoImageView.isHidden = false
         }
     }
     
-    func keyboardDidShow(_ notification: Notification) {
+    @objc func keyboardDidShow(_ notification: Notification) {
         keyboardOnScreen = true
     }
     
-    func keyboardDidHide(_ notification: Notification) {
+    @objc func keyboardDidHide(_ notification: Notification) {
         keyboardOnScreen = false
     }
     

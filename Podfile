@@ -15,14 +15,14 @@ target 'Map_Geofencing' do
   
   pod 'GoogleSignIn'
   
-  pod 'FacebookCore', '~> 0.2.0'
-  pod 'FacebookLogin', '~> 0.2.0'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
 
-  pod 'FBSDKLoginKit', '~> 4.25.0'
-  pod 'FBSDKCoreKit', '~> 4.25.0'
-  pod 'FBSDKShareKit', '~> 4.25.0'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
 
-  pod 'Contentful', '~> 0.9.3'
+  pod 'Contentful'
 
   target 'Map_GeofencingTests' do
     inherit! :search_paths

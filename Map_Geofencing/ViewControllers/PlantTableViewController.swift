@@ -63,11 +63,17 @@ class PlantTableViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Plants"
         definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
         
         // Setup the Scope Bar
         searchController.searchBar.scopeButtonTitles = ["All", "Tree", "Shrub", "Other"]
         searchController.searchBar.delegate = self
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            // Fallback on earlier versions
+            navigationItem.titleView = searchController.searchBar
+        }
         
         tableView.dataSource = self
         
