@@ -9,8 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-import UserNotifications
-import UserNotificationsUI
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
@@ -20,28 +18,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var photoStore: PhotoStore!
     var locationManager: CLLocationManager!
     var fetchedPlants = [Plant]()
-    var userCurrentLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapView.showsUserLocation = true
-        
         // Get photoStore from TabBarController
         let tabBar = self.tabBarController as! TabBarController
         self.photoStore = tabBar.photoStore
-        self.locationManager = CLLocationManager()
-        self.locationManager.requestWhenInUseAuthorization()
         
-        performUIUpdatesOnMain() {
-            self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        }
-        
+        // Location Manager Setup
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+
         let sfbgLocation = CLLocation(latitude: 37.767527, longitude: -122.469890)
-        self.centerMapOnLocation(location: sfbgLocation)
+        centerMapOnLocation(location: sfbgLocation)
         
-        self.photoStore.fetchAllPlants() { (plantsResult) in
+        // Fetch plants
+        photoStore.fetchAllPlants() { (plantsResult) in
             
             switch plantsResult {
                 
@@ -62,11 +56,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         let storyboard = UIStoryboard (name: "Main", bundle: nil)
@@ -84,7 +73,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Fetch all saved pins with annotation
     func fetchAllPlantMarkers() {
-  
+        
         mapView.delegate = self
         
         self.showActivityIndicator(view: self.view)
@@ -143,8 +132,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.mapView.addAnnotations(self.annotations)
         }
     }
-    
-
 
     @IBAction func segmentedControlAction(sender: UISegmentedControl!) {
         switch (sender.selectedSegmentIndex) {

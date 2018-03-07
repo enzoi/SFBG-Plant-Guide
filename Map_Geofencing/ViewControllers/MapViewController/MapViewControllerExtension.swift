@@ -22,8 +22,8 @@ extension MapViewController: CLLocationManagerDelegate, UNUserNotificationCenter
         var view: MKAnnotationView
         
         if annotation is MKUserLocation {
-            view = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
-            return view
+            // return nil to let the MapView handle the default annotation view (blue dot)
+            return nil
         }
         
         // annotation is PinAnnotation
@@ -80,14 +80,14 @@ extension MapViewController: CLLocationManagerDelegate, UNUserNotificationCenter
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
-        print("location manager didChangeAuth called")
-        mapView.showsUserLocation = status == .authorizedWhenInUse
-        
         switch status {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .authorizedWhenInUse:
             manager.startUpdatingLocation()
+            
+            mapView.showsUserLocation = status == .authorizedWhenInUse
+            mapView.userTrackingMode = .follow
             
             // Requesting Authorization for User Interactions only when location service granted
             let center = UNUserNotificationCenter.current()
@@ -129,6 +129,7 @@ extension MapViewController: CLLocationManagerDelegate, UNUserNotificationCenter
     }
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let userLocation = locations.last
         let _ = CLLocationCoordinate2D(latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude)
         
@@ -145,7 +146,7 @@ extension MapViewController: CLLocationManagerDelegate, UNUserNotificationCenter
     
     func centerMapOnLocation(location: CLLocation) {
         
-        let coordinateRegion = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.01, 0.01))
+        let coordinateRegion = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.05, 0.05))
         self.mapView.setRegion(coordinateRegion, animated: true)
     }
     

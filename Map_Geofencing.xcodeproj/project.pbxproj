@@ -270,15 +270,11 @@
 			isa = PBXGroup;
 			children = (
 				CF74290B1FEC7135004E26AE /* TabBarController.swift */,
-				CF4FB24F1FD1215D00CC885E /* MapViewController.swift */,
-				CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */,
-				CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */,
-				CFDC058C200C9C6C0024CFE6 /* WebViewController.swift */,
-				CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */,
-				CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */,
-				CF7429081FEB45FE004E26AE /* SignInViewController.swift */,
-				CFB11DE21FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift */,
-				CFB11DE01FF76588001FBEE6 /* SignInWithEmailViewController.swift */,
+				CFD10991204F9B6A00C14FC4 /* MapViewController */,
+				CFD10995204F9BD600C14FC4 /* PlantTableViewController */,
+				CFD10992204F9B8700C14FC4 /* DetailViewController */,
+				CFD10994204F9BBE00C14FC4 /* FavoriteViewController */,
+				CFD10993204F9B9F00C14FC4 /* Profile, Login */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -290,6 +286,52 @@
 				CFDC058E200DDA1D0024CFE6 /* Assets.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		CFD10991204F9B6A00C14FC4 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF4FB24F1FD1215D00CC885E /* MapViewController.swift */,
+				CF745543201A5C1100FEB1F6 /* MapViewControllerExtension.swift */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		CFD10992204F9B8700C14FC4 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */,
+				CFDC058C200C9C6C0024CFE6 /* WebViewController.swift */,
+			);
+			name = DetailViewController;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		CFD10993204F9B9F00C14FC4 /* Profile, Login */ = {
+			isa = PBXGroup;
+			children = (
+				CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */,
+				CF7429081FEB45FE004E26AE /* SignInViewController.swift */,
+				CFB11DE21FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift */,
+				CFB11DE01FF76588001FBEE6 /* SignInWithEmailViewController.swift */,
+			);
+			path = "Profile, Login";
+			sourceTree = "<group>";
+		};
+		CFD10994204F9BBE00C14FC4 /* FavoriteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */,
+			);
+			path = FavoriteViewController;
+			sourceTree = "<group>";
+		};
+		CFD10995204F9BD600C14FC4 /* PlantTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */,
+			);
+			path = PlantTableViewController;
 			sourceTree = "<group>";
 		};
 		CFD3C24B1FD7BAA80084637B /* ModelControllers */ = {
@@ -362,7 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				CFDC058A200C74520024CFE6 /* Appearance.swift */,
-				CF745543201A5C1100FEB1F6 /* MapViewControllerExtension.swift */,
 				CF631B991FFEC96600A0E6AA /* Utilities.swift */,
 			);
 			name = Extensions;
