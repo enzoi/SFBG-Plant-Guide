@@ -89,7 +89,7 @@
 		CF4FB23D1FCE9EF000CC885E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CF4FB2411FCFB48D00CC885E /* seed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed.json; sourceTree = "<group>"; };
 		CF4FB24F1FD1215D00CC885E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTableViewCell.swift; path = ViewControllers/FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		CF631B991FFEC96600A0E6AA /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CF631B9B200047DE00A0E6AA /* SFBG 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 8.xcdatamodel"; sourceTree = "<group>"; };
 		CF7429081FEB45FE004E26AE /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		CF8A07111FEF680E005F9C19 /* Plant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Plant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CF97BEDD1FCDD67500E9931C /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = style.json; path = ../style.json; sourceTree = "<group>"; };
 		CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantTableViewController.swift; sourceTree = "<group>"; };
-		CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantTableViewCell.swift; path = ViewControllers/PlantTableViewCell.swift; sourceTree = "<group>"; };
+		CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
 		CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CFB11DE01FF76588001FBEE6 /* SignInWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithEmailViewController.swift; sourceTree = "<group>"; };
 		CFB11DE21FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWithEmailViewController.swift; sourceTree = "<group>"; };
@@ -224,7 +224,6 @@
 				CF4D1C282026AE0C000512E9 /* Constants.swift */,
 				CF4FB2411FCFB48D00CC885E /* seed.json */,
 				CFD3C26E1FDD0B120084637B /* Storyboards */,
-				CFD3C26B1FDD09F90084637B /* Views */,
 				CFD3C2771FDE3A5E0084637B /* PlantViewModel */,
 				CF76A18F1FA92B4400893C65 /* ViewControllers */,
 				CFDC0589200C74230024CFE6 /* Extensions */,
@@ -302,6 +301,7 @@
 			children = (
 				CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */,
 				CFDC058C200C9C6C0024CFE6 /* WebViewController.swift */,
+				CFD3C2881FDF36180084637B /* Detail Table View Cells */,
 			);
 			name = DetailViewController;
 			path = ../..;
@@ -322,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				CF4FB23B1FCE9E9A00CC885E /* FavoriteViewController.swift */,
+				CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */,
 			);
 			path = FavoriteViewController;
 			sourceTree = "<group>";
@@ -330,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */,
+				CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */,
 			);
 			path = PlantTableViewController;
 			sourceTree = "<group>";
@@ -342,24 +344,6 @@
 				CF4D1C2A2026AE4F000512E9 /* Contentful.swift */,
 			);
 			name = ModelControllers;
-			sourceTree = "<group>";
-		};
-		CFD3C26A1FDD09A90084637B /* Favorite Table View Cell */ = {
-			isa = PBXGroup;
-			children = (
-				CF4FB2531FD2816B00CC885E /* FavoriteTableViewCell.swift */,
-			);
-			name = "Favorite Table View Cell";
-			sourceTree = "<group>";
-		};
-		CFD3C26B1FDD09F90084637B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				CFD3C2891FDF36450084637B /* Plant Table View Cell */,
-				CFD3C2881FDF36180084637B /* Detail Table View Cells */,
-				CFD3C26A1FDD09A90084637B /* Favorite Table View Cell */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		CFD3C26E1FDD0B120084637B /* Storyboards */ = {
@@ -390,14 +374,7 @@
 				CFD3C2741FDD1B970084637B /* PlantPropertiesTableViewCell.xib */,
 			);
 			name = "Detail Table View Cells";
-			sourceTree = "<group>";
-		};
-		CFD3C2891FDF36450084637B /* Plant Table View Cell */ = {
-			isa = PBXGroup;
-			children = (
-				CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */,
-			);
-			name = "Plant Table View Cell";
+			path = Map_Geofencing;
 			sourceTree = "<group>";
 		};
 		CFDC0589200C74230024CFE6 /* Extensions */ = {
