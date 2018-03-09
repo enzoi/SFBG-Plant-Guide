@@ -293,7 +293,7 @@ extension PlantTableViewController {
         
         if let photo = photos.first {
             
-            photoStore.fetchImage(for: photo, completion: { (result) in
+            photoStore.fetchFromPhoto(for: photo, completion: { (result) in
                 
                 if case let .success(image) = result {
 

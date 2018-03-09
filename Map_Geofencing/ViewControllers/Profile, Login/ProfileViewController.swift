@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController {
                 
                 let task = session.dataTask(with: request) { (data, response, error) -> Void in
                     
-                    let result = self.photoStore.processImageRequest(data: data, error: error)
+                    let result = self.photoStore.flickrClient.processImageRequest(data: data, error: error)
 
                     if case let .success(image) = result {
                         

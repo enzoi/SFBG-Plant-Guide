@@ -6,6 +6,7 @@
 //  Copyright © 2018 YTK. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class WebViewController: UIViewController {
@@ -20,8 +21,8 @@ class WebViewController: UIViewController {
         self.title = "More Info"
         self.tabBarController?.tabBar.isHidden = true
         
-        let request = URLRequest(url: url!)
-        
+        guard let url = url else { return }
+        let request = URLRequest(url: url)
         webView.loadRequest(request)
     }
     

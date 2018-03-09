@@ -11,10 +11,6 @@ import CoreData
 import Contentful
 import Interstellar
 
-enum ImageResult {
-    case success(UIImage)
-    case failure(Error)
-}
 
 enum PhotoError: Error {
     case imageCreationError
@@ -34,11 +30,13 @@ enum PlantsResult {
     case failure(Error)
 }
 
+
 let SPACE_ID = "whpdepxpcivz"
 let ACCESS_TOKEN = "8526f63558bb91e2943478125ec315f19a8a3d9ff01aa315749be1d67f4b64f1"
 
 class PhotoStore {
     
+    let flickrClient = FlickrClient() // 
     private let imageStore = ImageStore()
     private let contentful = Contentful(client: Client(spaceId: SPACE_ID, accessToken: ACCESS_TOKEN))
     
@@ -67,29 +65,10 @@ class PhotoStore {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
     }()
-    
-    
-    // MARK: Downloading Image
-    
-    func processImageRequest(data: Data?, error: Error?) -> ImageResult {
-        
-        guard
-            let imageData = data,
-            let image = UIImage(data: imageData) else {
-                
-                // Couldn't create an image
-                if data == nil {
-                    return .failure(error!)
-                } else {
-                    return .failure(PhotoError.imageCreationError)
-                }
-        }
-        
-        return .success(image)
-    }
+   
     
     // photoURL for photo instance --> download image using web service and return UIImage
-    func fetchImage(for photo: Photo, completion: @escaping (ImageResult) -> Void) {
+    func fetchFromPhoto(for photo: Photo, completion: @escaping (ImageResult) -> Void) {
         
         guard let photoKey = photo.photoID else {
             preconditionFailure("Photo expected to have a photoID.")
@@ -111,11 +90,32 @@ class PhotoStore {
         
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
             
-            let result = self.processImageRequest(data: data, error: error)
+            let result = self.flickrClient.processImageRequest(data: data, error: error)
             
             // After get the imageData, store the image in core data
             if case let .success(image) = result {
                 self.imageStore.setImage(image, forKey: photoKey)
+            }
+            
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+        }
+        task.resume()
+    }
+    
+    // photoURL for photo instance --> download image using web service and return UIImage
+    func fetchFromURL(for imageURL: URL, completion: @escaping (ImageResult) -> Void) {
+        
+        let request = URLRequest(url: imageURL)
+        
+        let task = session.dataTask(with: request) { (data, response, error) -> Void in
+            
+            let result = self.flickrClient.processImageRequest(data: data, error: error)
+            
+            // After get the imageData, store the image in core data
+            if case let .success(image) = result {
+                // self.imageStore.setImage(image, forKey: photoKey)
             }
             
             OperationQueue.main.addOperation {
@@ -218,6 +218,92 @@ class PhotoStore {
             }
         }
 
+    }
+    
+    // Flickr Parameter
+    var methodParameters: [String: Any] =  [
+        Constants.FlickrParameterKeys.APIKey: Constants.FlickrParameterValues.APIKey,
+        Constants.FlickrParameterKeys.SafeSearch: Constants.FlickrParameterValues.UseSafeSearch,
+        Constants.FlickrParameterKeys.Extras: Constants.FlickrParameterValues.MediumURL,
+        Constants.FlickrParameterKeys.Format: Constants.FlickrParameterValues.ResponseFormat,
+        Constants.FlickrParameterKeys.NoJSONCallback: Constants.FlickrParameterValues.DisableJSONCallback,
+        Constants.FlickrParameterKeys.Radius: Constants.FlickrParameterValues.Radius,
+        Constants.FlickrParameterKeys.PerPage: Constants.FlickrParameterValues.PerPage,
+        Constants.FlickrParameterKeys.Page: 1
+    ]
+    
+    // Get URL for Flickr API
+    func flickrURLFromParameters(_ parameters: [String:Any]) -> URL {
+        
+        var components = URLComponents()
+        components.scheme = Constants.Flickr.APIScheme
+        components.host = Constants.Flickr.APIHost
+        components.path = Constants.Flickr.APIPath
+        components.queryItems = [URLQueryItem]()
+        
+        let queryMethod = URLQueryItem(name: Constants.FlickrParameterKeys.Method, value: Constants.FlickrParameterValues.SearchMethod)
+        components.queryItems!.append(queryMethod)
+        
+        for (key, value) in parameters {
+            let queryItem = URLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
+        
+        return components.url!
+    }
+    
+    // Get Image URLs from Flickr
+    func fetchFlickrPhotos(fromParameters url: URL, completion: @escaping (ImagesResult) -> Void) {
+        
+        // create session and request
+        let session = URLSession.shared
+        let request = URLRequest(url: url)
+        
+        // create network request
+        let task = session.dataTask(with: request) { (data, response, error) in
+            
+            // if an error occurs, print it and re-enable the UI
+            func displayError(_ error: String) {
+                print(error)
+                performUIUpdatesOnMain {
+                    
+                }
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                displayError("There was an error with your request: \(String(describing: error))")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                displayError("No data was returned by the request!")
+                return
+            }
+            
+            DispatchQueue.main.sync {
+                
+                let result = self.flickrClient.getFlickrPhotos(fromJSON: data)
+                
+                switch result {
+                case let .success(photos):
+                    completion(.success(photos))
+                case .failure(_):
+                    completion(result)
+                }
+            }
+        }
+        
+        // start the task!
+        task.resume()
+        
     }
     
 }

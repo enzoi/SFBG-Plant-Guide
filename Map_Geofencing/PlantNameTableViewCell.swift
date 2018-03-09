@@ -8,18 +8,23 @@
 
 import UIKit
 
+protocol HandleButtonPressedDelegate: class { // Define Protocol
+    func buttonPressed(buttonName: String)
+}
+
 class PlantNameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var scientificNameLabel: UILabel!
     @IBOutlet weak var commonNameLabel: UILabel!
     
+    weak var delegate: HandleButtonPressedDelegate?
+    var plant: Plant!
     var item: PlantViewModelNamesItem? {
         didSet {
-            guard let item = item else {
-                return
-            }
-            scientificNameLabel?.text = item.scientificName
-            commonNameLabel?.text = item.commonName
+            guard let item = item else { return }
+            plant = item.plant
+            scientificNameLabel?.text = item.plant.scientificName
+            commonNameLabel?.text = item.plant.commonName
         }
     }
     
@@ -67,26 +72,21 @@ class PlantNameTableViewCell: UITableViewCell {
     }
 
     @objc func playButtonTapped(sender: UIButton) {
-        print("play button tapped")
+        let name = "audio"
+        print(name)
+        delegate?.buttonPressed(buttonName: name)
     }
     
     @objc func flickrButtonTapped(sender: UIButton) {
-        print("flickr button tapped")
+        let name = "flickr"
+        print(name)
+        delegate?.buttonPressed(buttonName: name)
     }
     
     @objc func wikiButtonTapped(sender: UIButton) {
-        print("button tapped")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let webVC = storyboard.instantiateViewController(withIdentifier :"webViewController") as! WebViewController
-        let baseUrlString = "https://en.wikipedia.org/wiki/"
-        
-        guard let plantNameArray = self.commonNameLabel.text?.lowercased().components(separatedBy: " ") else { return }
-        let searchURL = plantNameArray.joined(separator: "_")
-        
-        webVC.url = URL(string: baseUrlString + searchURL)
-        
-        let presentingVC = self.parentViewController as! DetailViewController
-        presentingVC.navigationController?.pushViewController(webVC, animated: true)
+        let name = "wiki"
+        print(name)
+        delegate?.buttonPressed(buttonName: name)
     }
     
 }

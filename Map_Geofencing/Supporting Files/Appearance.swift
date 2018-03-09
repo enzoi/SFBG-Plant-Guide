@@ -20,7 +20,7 @@ struct Appearance {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().isTranslucent = false
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "AvenirNextCondensed-Regular", size: 18)!, NSAttributedStringKey.foregroundColor: UIColor.white], for: .normal)
-        
+
         // Tab Bar
         UITabBar.appearance().barTintColor = UIColor.darkGreen
         // UITabBar.appearance().tintColor = UIColor.clear
@@ -33,6 +33,17 @@ struct Appearance {
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.darkGreen], for: .normal)
     }
+}
+
+extension UINavigationItem{
+    
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+    }
+    
 }
 
 extension UIView {

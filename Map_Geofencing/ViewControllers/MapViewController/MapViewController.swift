@@ -111,7 +111,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             if let photo = photos.first {
                 
-                self.photoStore.fetchImage(for: photo, completion: { (result) in
+                self.photoStore.fetchFromPhoto(for: photo, completion: { (result) in
                     
                     switch result {
                     

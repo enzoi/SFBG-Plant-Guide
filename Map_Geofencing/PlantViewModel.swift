@@ -29,10 +29,8 @@ class PlantViewModel: NSObject {
     
     init(plant: Plant) {
         
-        if let scientificName = plant.scientificName, let commonName = plant.commonName {
-            let namesItem = PlantViewModelNamesItem(scientificName: scientificName, commonName: commonName)
-            items.append(namesItem)
-        }
+        let namesItem = PlantViewModelNamesItem(plant:plant)
+        items.append(namesItem)
         
         if let plantType = plant.plantType,
             let climateZones = plant.climateZones,
@@ -81,7 +79,7 @@ extension PlantViewModel: UITableViewDataSource {
         case .properties:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PlantPropertiesTableViewCell.identifier, for: indexPath) as? PlantPropertiesTableViewCell {
                 cell.item = item as? PlantViewModelPropertiesItem
-
+                
                 return cell
             }
         }
@@ -167,12 +165,10 @@ class PlantViewModelNamesItem: PlantViewModelItem {
     
     var isCollapsed = false
     
-    var scientificName: String
-    var commonName: String
+    var plant: Plant
     
-    init(scientificName: String, commonName: String) {
-        self.scientificName = scientificName
-        self.commonName = commonName
+    init(plant: Plant) {
+        self.plant = plant
     }
 }
 

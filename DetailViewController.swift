@@ -56,7 +56,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             
             dispatchGroup.enter()
             
-            photoStore.fetchImage(for: photo, completion: { (result) in
+            photoStore.fetchFromPhoto(for: photo, completion: { (result) in
                 
                 if case let .success(image) = result {
                     
@@ -147,3 +147,26 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
 }
+
+extension DetailViewController: HandleButtonPressedDelegate {
+    
+    func buttonPressed(buttonName: String) {
+
+        switch buttonName {
+            
+        case "audio":
+            print("audio button pressed")
+        case "flickr":
+            print("flickr button pressed")
+            // TODOs:
+            // 1. set delegate in the cell
+            // 2. need to send plant object over to PhotoAlbumViewController
+        case "wiki":
+            print("wiki button pressed")
+        default:
+            print("default")
+        }
+        
+    }
+}
+

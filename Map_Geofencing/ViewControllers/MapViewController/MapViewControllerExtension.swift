@@ -54,7 +54,7 @@ extension MapViewController: CLLocationManagerDelegate, UNUserNotificationCenter
                 plantImageView.layer.cornerRadius = 22.5
                 plantImageView.layer.masksToBounds = true
                 
-                photoStore.fetchImage(for: photo, completion: { (result) in
+                photoStore.fetchFromPhoto(for: photo, completion: { (result) in
                     
                     if case let .success(image) = result {
                         
