@@ -12,7 +12,6 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
 
     let headerId = "headerId"
     let cellId = "cellId"
-    var header: PhotoViewHeaderCell?
     
     var photoStore: PhotoStore!
     var plant: Plant!
@@ -25,7 +24,7 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
         
         self.title = plant.scientificName
         
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = .lightGray
         collectionView?.register(PhotoViewHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView?.register(PhotoViewCell.self, forCellWithReuseIdentifier: cellId)
         
@@ -36,17 +35,14 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
             switch imagesResult {
             case let .success(urls):
                 self.imageURLs = urls
+                print(self.imageURLs, self.imageURLs.count)
+                
             case .failure(_):
                 self.imageURLs.removeAll()
             }
             self.collectionView?.reloadSections(IndexSet(integer: 0))
         })
     }
-    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        flowLayoutSetup()
-//    }
     
     // Helper: Get an URL using given coordinate
     
@@ -100,14 +96,32 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
         return CGSize(width: width, height: width)
     }
     
+    var header: PhotoViewHeaderCell?
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
+
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
             as! PhotoViewHeaderCell
         
-        // self.header = header
-        // header.photoImageView.image = selectedImage
+        self.header = header
+        
+        // Get selected image using URL
+        if let selectedImageURL = selectedImageURL {
 
+            photoStore.fetchFromURL(for: selectedImageURL, completion: { (result) -> Void in
+                guard case let .success(image) = result else { return }
+                header.photoImageView.image = image
+            })
+        
+        } else {
+            
+            if let selectedImageURL = imageURLs.first {
+                photoStore.fetchFromURL(for: selectedImageURL, completion: { (result) -> Void in
+                    guard case let .success(image) = result else { return }
+                    header.photoImageView.image = image
+                })
+            }
+        }
         return header
     }
     
@@ -135,9 +149,7 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PhotoViewCell
-        
         return cell
     }
     
@@ -145,9 +157,8 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         
-        let imageURL = imageURLs[indexPath.row]
+        let imageURL = imageURLs[indexPath.item]
         
-        // Download the image data, which could take some time
         photoStore.fetchFromURL(for: imageURL, completion: { (result) -> Void in
             
             guard let imageIndex = self.imageURLs.index(of: imageURL),
@@ -155,15 +166,15 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
                     return
             }
             
+            self.photoStore.imageStore.setImage(image, forKey: imageURL.absoluteString)
+            
             let imageIndexPath = IndexPath(item: imageIndex, section: 0)
             
             // When the request finishes, only update the cell if it's still visible
-            if let cell = self.collectionView?.cellForItem(at: imageIndexPath)
-                as? PhotoViewCell {
+            if let cell = self.collectionView?.cellForItem(at: imageIndexPath) as? PhotoViewCell {
                 cell.update(with: image)
             }
         })
     }
-
 }
 

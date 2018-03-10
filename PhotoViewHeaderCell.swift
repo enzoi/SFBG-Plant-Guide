@@ -14,9 +14,11 @@ class PhotoViewHeaderCell: UICollectionViewCell {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.backgroundColor = .white
+        iv.backgroundColor = .lightGray
         return iv
     }()
+    
+    var spinner = UIActivityIndicatorView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,5 +31,25 @@ class PhotoViewHeaderCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//
+//        update(with: nil)
+//    }
+//
+//    func update(with image: UIImage?) {
+//        
+//        if let imageToDisplay = image {
+//            spinner.stopAnimating()
+//            DispatchQueue.main.async {
+//                self.photoImageView.image = imageToDisplay
+//            }
+//        } else {
+//            spinner.startAnimating()
+//            photoImageView.image = nil
+//        }
+//        
+//    }
     
 }

@@ -37,7 +37,7 @@ let ACCESS_TOKEN = "8526f63558bb91e2943478125ec315f19a8a3d9ff01aa315749be1d67f4b
 class PhotoStore {
     
     let flickrClient = FlickrClient() // 
-    private let imageStore = ImageStore()
+    let imageStore = ImageStore()
     private let contentful = Contentful(client: Client(spaceId: SPACE_ID, accessToken: ACCESS_TOKEN))
     
     private let modelName: String
@@ -106,16 +106,22 @@ class PhotoStore {
     
     // photoURL for photo instance --> download image using web service and return UIImage
     func fetchFromURL(for imageURL: URL, completion: @escaping (ImageResult) -> Void) {
+
+        if let image = imageStore.image(forKey: imageURL.absoluteString) {
+            OperationQueue.main.addOperation {
+                completion(.success(image))
+            }
+        }
         
         let request = URLRequest(url: imageURL)
-        
+
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
             
             let result = self.flickrClient.processImageRequest(data: data, error: error)
             
             // After get the imageData, store the image in core data
             if case let .success(image) = result {
-                // self.imageStore.setImage(image, forKey: photoKey)
+                self.imageStore.setImage(image, forKey: imageURL.absoluteString)
             }
             
             OperationQueue.main.addOperation {

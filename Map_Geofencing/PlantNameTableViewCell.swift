@@ -72,21 +72,30 @@ class PlantNameTableViewCell: UITableViewCell {
     }
 
     @objc func playButtonTapped(sender: UIButton) {
-        let name = "audio"
-        print(name)
-        delegate?.buttonPressed(buttonName: name)
+        // TODO: add play functionality
     }
     
     @objc func flickrButtonTapped(sender: UIButton) {
-        let name = "flickr"
-        print(name)
-        delegate?.buttonPressed(buttonName: name)
+        let photoAlbumVC = PhotoAlbumViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let presentingVC = self.parentViewController as! DetailViewController
+        photoAlbumVC.photoStore = presentingVC.photoStore
+        photoAlbumVC.plant = presentingVC.plant
+        presentingVC.navigationController?.pushViewController(photoAlbumVC, animated: true)
     }
     
     @objc func wikiButtonTapped(sender: UIButton) {
-        let name = "wiki"
-        print(name)
-        delegate?.buttonPressed(buttonName: name)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let webVC = storyboard.instantiateViewController(withIdentifier :"webViewController") as! WebViewController
+        let baseUrlString = "https://en.wikipedia.org/wiki/"
+        
+        guard let plantNameArray = self.commonNameLabel.text?.lowercased().components(separatedBy: " ") else { return }
+        let searchURL = plantNameArray.joined(separator: "_")
+        
+        webVC.url = URL(string: baseUrlString + searchURL)
+        
+        let presentingVC = self.parentViewController as! DetailViewController
+        print(presentingVC.photoStore)
+        presentingVC.navigationController?.pushViewController(webVC, animated: true)
     }
     
 }
