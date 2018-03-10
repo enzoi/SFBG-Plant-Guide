@@ -30,14 +30,13 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
         collectionView?.register(PhotoViewHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView?.register(PhotoViewCell.self, forCellWithReuseIdentifier: cellId)
         
-        let url = getURL(plantName: plantName)
+        let url = photoStore.getURL(plantName: plantName)
         
         photoStore.fetchFlickrPhotos(fromParameters: url, completion: { (imagesResult) in
             
             switch imagesResult {
             case let .success(urls):
                 self.imageURLs = urls
-                print(self.imageURLs, self.imageURLs.count)
                 
             case .failure(_):
                 self.imageURLs.removeAll()
@@ -45,38 +44,7 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
             self.collectionView?.reloadSections(IndexSet(integer: 0))
         })
     }
-    
-    // Helper: Get an URL using given coordinate
-    
-    private func getURL(plantName: String) -> URL {
-        // Get the coordinate to create URL
-        photoStore.methodParameters[Constants.FlickrParameterKeys.Text] = plantName
-        
-        let url = photoStore.flickrURLFromParameters((photoStore.methodParameters))
-        
-        return url
-    }
-    
-    // MARK: Flickr URL Parameters
-    
-    func flickrURLFromParameters(_ parameters: [String:Any]) -> URL {
-        
-        var components = URLComponents()
-        components.scheme = Constants.Flickr.APIScheme
-        components.host = Constants.Flickr.APIHost
-        components.path = Constants.Flickr.APIPath
-        components.queryItems = [URLQueryItem]()
-        
-        let queryMethod = URLQueryItem(name: Constants.FlickrParameterKeys.Method, value: Constants.FlickrParameterValues.SearchMethod)
-        components.queryItems!.append(queryMethod)
-        
-        for (key, value) in parameters {
-            let queryItem = URLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
-        }
-        
-        return components.url!
-    }
+
     
     // MARK: - UICollectionView
     

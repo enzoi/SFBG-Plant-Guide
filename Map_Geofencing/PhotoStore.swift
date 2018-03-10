@@ -211,7 +211,6 @@ class PhotoStore {
                     }
                     
                     fetchedPlants.append(plant)
-                    print("fetched plants: ", fetchedPlants)
                 }
                 
                 performUIUpdatesOnMain() {
@@ -237,6 +236,17 @@ class PhotoStore {
         Constants.FlickrParameterKeys.PerPage: Constants.FlickrParameterValues.PerPage,
         Constants.FlickrParameterKeys.Page: 1
     ]
+    
+    // Helper: Get an URL using given coordinate
+    
+    func getURL(plantName: String) -> URL {
+        // Get the coordinate to create URL
+        self.methodParameters[Constants.FlickrParameterKeys.Text] = plantName
+        
+        let url = self.flickrURLFromParameters((self.methodParameters))
+        
+        return url
+    }
     
     // Get URL for Flickr API
     func flickrURLFromParameters(_ parameters: [String:Any]) -> URL {

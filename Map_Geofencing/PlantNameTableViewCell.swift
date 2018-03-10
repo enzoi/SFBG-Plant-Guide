@@ -94,7 +94,6 @@ class PlantNameTableViewCell: UITableViewCell {
         webVC.url = URL(string: baseUrlString + searchURL)
         
         let presentingVC = self.parentViewController as! DetailViewController
-        print(presentingVC.photoStore)
         presentingVC.navigationController?.pushViewController(webVC, animated: true)
     }
     
