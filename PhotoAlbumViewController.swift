@@ -22,13 +22,15 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = plant.scientificName
+        guard let plantName = plant.scientificName else { return }
+        
+        self.title = plantName
         
         collectionView?.backgroundColor = .lightGray
         collectionView?.register(PhotoViewHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView?.register(PhotoViewCell.self, forCellWithReuseIdentifier: cellId)
         
-        let url = getURL(lat: plant.latitude, lon: plant.longitude)
+        let url = getURL(plantName: plantName)
         
         photoStore.fetchFlickrPhotos(fromParameters: url, completion: { (imagesResult) in
             
@@ -46,10 +48,9 @@ class PhotoAlbumViewController: UICollectionViewController, UICollectionViewDele
     
     // Helper: Get an URL using given coordinate
     
-    private func getURL(lat: Double, lon: Double) -> URL {
+    private func getURL(plantName: String) -> URL {
         // Get the coordinate to create URL
-        photoStore.methodParameters[Constants.FlickrParameterKeys.Latitude] = self.plant.latitude
-        photoStore.methodParameters[Constants.FlickrParameterKeys.Longitude] = self.plant.longitude
+        photoStore.methodParameters[Constants.FlickrParameterKeys.Text] = plantName
         
         let url = photoStore.flickrURLFromParameters((photoStore.methodParameters))
         
