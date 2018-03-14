@@ -45,6 +45,7 @@
 		CFD109EC20514BA500C14FC4 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD109EB20514BA500C14FC4 /* FlickrClient.swift */; };
 		CFD109EF205152D600C14FC4 /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD109EE205152D500C14FC4 /* PhotoViewCell.swift */; };
 		CFD109F12051BEEF00C14FC4 /* PhotoViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD109F02051BEEE00C14FC4 /* PhotoViewHeaderCell.swift */; };
+		CFD10A3920589EDE00C14FC4 /* AudioPlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD10A3820589EDE00C14FC4 /* AudioPlayController.swift */; };
 		CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */; };
 		CFD3C2711FDD0C7C0084637B /* PlantNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C26F1FDD0C7C0084637B /* PlantNameTableViewCell.swift */; };
 		CFD3C2721FDD0C7C0084637B /* PlantNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD3C2701FDD0C7C0084637B /* PlantNameTableViewCell.xib */; };
@@ -129,6 +130,7 @@
 		CFD109EB20514BA500C14FC4 /* FlickrClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
 		CFD109EE205152D500C14FC4 /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 		CFD109F02051BEEE00C14FC4 /* PhotoViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewHeaderCell.swift; sourceTree = "<group>"; };
+		CFD10A3820589EDE00C14FC4 /* AudioPlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayController.swift; sourceTree = "<group>"; };
 		CFD3C24C1FD7BAE20084637B /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		CFD3C24E1FD7BCF00084637B /* SFBG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 2.xcdatamodel"; sourceTree = "<group>"; };
 		CFD3C2501FD8C68B0084637B /* SFBG 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				CF97BEE91FCDFFB100E9931C /* DetailViewController.swift */,
 				CFD3C2881FDF36180084637B /* Detail Table View Cells */,
+				CFD10A3820589EDE00C14FC4 /* AudioPlayController.swift */,
 				CFDC058C200C9C6C0024CFE6 /* WebViewController.swift */,
 				CFD109E720513BA000C14FC4 /* PhotoAlbumViewController.swift */,
 				CFD109F02051BEEE00C14FC4 /* PhotoViewHeaderCell.swift */,
@@ -786,6 +789,7 @@
 				CFE592AB1FDF4C9D00F0BBE2 /* Photo+CoreDataProperties.swift in Sources */,
 				CF7429091FEB45FE004E26AE /* SignInViewController.swift in Sources */,
 				CF4FB23A1FCE545E00CC885E /* SFBG.xcdatamodeld in Sources */,
+				CFD10A3920589EDE00C14FC4 /* AudioPlayController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

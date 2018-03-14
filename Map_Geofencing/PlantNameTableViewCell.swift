@@ -73,6 +73,11 @@ class PlantNameTableViewCell: UITableViewCell {
 
     @objc func playButtonTapped(sender: UIButton) {
         // TODO: add play functionality
+        let audioVC = AudioPlayController()
+        audioVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        let presentingVC = self.parentViewController as! DetailViewController
+        presentingVC.tabBarController?.tabBar.isHidden = true
+        presentingVC.navigationController?.present(audioVC, animated: true, completion: nil)
     }
     
     @objc func flickrButtonTapped(sender: UIButton) {
