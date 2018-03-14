@@ -183,6 +183,7 @@ class PhotoStore {
                     
                     let scientificName = jsonDictionary["scientificName"] as! String
                     let commonNames = jsonDictionary["commonName"] as! String
+                    let plantDescription = jsonDictionary["plantDescription"] as? String
                     let plantType = jsonDictionary["plantType"] as! String
                     let climateZones = jsonDictionary["climateZones"] as! String
                     let sunExposure = jsonDictionary["sunExposure"] as! String
@@ -196,6 +197,7 @@ class PhotoStore {
                     
                     plant.scientificName = scientificName
                     plant.commonName = commonNames
+                    plant.plantDescription = plantDescription
                     plant.latitude = latitude
                     plant.longitude = longitude
                     plant.plantType = plantType

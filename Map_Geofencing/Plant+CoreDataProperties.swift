@@ -2,7 +2,7 @@
 //  Plant+CoreDataProperties.swift
 //  
 //
-//  Created by Yeontae Kim on 12/23/17.
+//  Created by Yeontae Kim on 3/14/18.
 //
 //
 
@@ -27,6 +27,7 @@ extension Plant {
     @NSManaged public var sunExposure: String?
     @NSManaged public var thumbnailPhoto: NSData?
     @NSManaged public var waterNeeds: String?
+    @NSManaged public var plantDescription: String?
     @NSManaged public var photo: NSSet?
     @NSManaged public var users: NSSet?
 

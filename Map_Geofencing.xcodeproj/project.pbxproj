@@ -12,6 +12,8 @@
 		B29631AB9BDD8D884673B131 /* Pods_Map_GeofencingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4386CD60F05D9B535BF5F0D7 /* Pods_Map_GeofencingTests.framework */; };
 		CF369D261FE0A8B10064E251 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF369D251FE0A8B10064E251 /* HeaderView.swift */; };
 		CF369D2A1FE0A9630064E251 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF369D291FE0A9630064E251 /* HeaderView.xib */; };
+		CF41E9512059C85200BEA9AE /* Plant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF41E94F2059C85200BEA9AE /* Plant+CoreDataClass.swift */; };
+		CF41E9522059C85200BEA9AE /* Plant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF41E9502059C85200BEA9AE /* Plant+CoreDataProperties.swift */; };
 		CF4D1C292026AE0C000512E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D1C282026AE0C000512E9 /* Constants.swift */; };
 		CF4D1C2B2026AE4F000512E9 /* Contentful.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D1C2A2026AE4F000512E9 /* Contentful.swift */; };
 		CF4FB23A1FCE545E00CC885E /* SFBG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */; };
@@ -29,8 +31,6 @@
 		CF76A1761FA9216000893C65 /* Map_GeofencingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1751FA9216000893C65 /* Map_GeofencingTests.swift */; };
 		CF76A1811FA9216000893C65 /* Map_GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76A1801FA9216000893C65 /* Map_GeofencingUITests.swift */; };
 		CF76A1921FA92B7F00893C65 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */; };
-		CF8A07121FEF680E005F9C19 /* Plant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A07101FEF680E005F9C19 /* Plant+CoreDataClass.swift */; };
-		CF8A07131FEF680E005F9C19 /* Plant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A07111FEF680E005F9C19 /* Plant+CoreDataProperties.swift */; };
 		CF97BEDE1FCDD67500E9931C /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = CF97BEDD1FCDD67500E9931C /* style.json */; };
 		CF97BEE21FCDEA7300E9931C /* PlantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */; };
 		CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */; };
@@ -87,6 +87,8 @@
 		7F5EFED71ADC3F3A4290E80C /* Pods-Map_GeofencingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingTests/Pods-Map_GeofencingTests.release.xcconfig"; sourceTree = "<group>"; };
 		CF369D251FE0A8B10064E251 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		CF369D291FE0A9630064E251 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		CF41E94F2059C85200BEA9AE /* Plant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Plant+CoreDataClass.swift"; path = "/Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/Plant+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		CF41E9502059C85200BEA9AE /* Plant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Plant+CoreDataProperties.swift"; path = "/Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/Plant+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		CF4D1C282026AE0C000512E9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CF4D1C2A2026AE4F000512E9 /* Contentful.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contentful.swift; sourceTree = "<group>"; };
 		CF4FB2391FCE545E00CC885E /* SFBG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SFBG.xcdatamodel; sourceTree = "<group>"; };
@@ -114,8 +116,6 @@
 		CF76A1911FA92B7F00893C65 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CF8A070E1FEE3588005F9C19 /* SFBG 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 6.xcdatamodel"; sourceTree = "<group>"; };
 		CF8A070F1FEF67BA005F9C19 /* SFBG 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SFBG 7.xcdatamodel"; sourceTree = "<group>"; };
-		CF8A07101FEF680E005F9C19 /* Plant+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Plant+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CF8A07111FEF680E005F9C19 /* Plant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Plant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CF97BEDD1FCDD67500E9931C /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = style.json; path = ../style.json; sourceTree = "<group>"; };
 		CF97BEE11FCDEA7300E9931C /* PlantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantTableViewController.swift; sourceTree = "<group>"; };
 		CF97BEE31FCDEEA000E9931C /* PlantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,8 +198,8 @@
 				CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */,
 				CFE592A41FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift */,
 				CFE592A51FDF4C9D00F0BBE2 /* Photo+CoreDataProperties.swift */,
-				CF8A07101FEF680E005F9C19 /* Plant+CoreDataClass.swift */,
-				CF8A07111FEF680E005F9C19 /* Plant+CoreDataProperties.swift */,
+				CF41E94F2059C85200BEA9AE /* Plant+CoreDataClass.swift */,
+				CF41E9502059C85200BEA9AE /* Plant+CoreDataProperties.swift */,
 				CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */,
 			);
 			name = Model;
@@ -756,11 +756,11 @@
 				CFE592AA1FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift in Sources */,
 				CF631B9A1FFEC96600A0E6AA /* Utilities.swift in Sources */,
 				CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */,
-				CF8A07131FEF680E005F9C19 /* Plant+CoreDataProperties.swift in Sources */,
 				CFD3C2791FDE3A7A0084637B /* PlantViewModel.swift in Sources */,
 				CFB11DE31FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift in Sources */,
 				CFD3C2711FDD0C7C0084637B /* PlantNameTableViewCell.swift in Sources */,
 				CF97BEEA1FCDFFB100E9931C /* DetailViewController.swift in Sources */,
+				CF41E9512059C85200BEA9AE /* Plant+CoreDataClass.swift in Sources */,
 				CF369D261FE0A8B10064E251 /* HeaderView.swift in Sources */,
 				CF4D1C292026AE0C000512E9 /* Constants.swift in Sources */,
 				CFD3C2751FDD1B970084637B /* PlantPropertiesTableViewCell.swift in Sources */,
@@ -769,9 +769,9 @@
 				CFDC058B200C74520024CFE6 /* Appearance.swift in Sources */,
 				CF4D1C2B2026AE4F000512E9 /* Contentful.swift in Sources */,
 				CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */,
-				CF8A07121FEF680E005F9C19 /* Plant+CoreDataClass.swift in Sources */,
 				CF97BEE21FCDEA7300E9931C /* PlantTableViewController.swift in Sources */,
 				CFD109F12051BEEF00C14FC4 /* PhotoViewHeaderCell.swift in Sources */,
+				CF41E9522059C85200BEA9AE /* Plant+CoreDataProperties.swift in Sources */,
 				CFB11DE11FF76588001FBEE6 /* SignInWithEmailViewController.swift in Sources */,
 				CFCDF1C21FE392B100C15C43 /* ImageStore.swift in Sources */,
 				CFB4EE0B1FF62BC3003DD45A /* GCDBlackBox.swift in Sources */,

@@ -76,6 +76,7 @@ class PlantNameTableViewCell: UITableViewCell {
         let audioVC = AudioPlayController()
         audioVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         let presentingVC = self.parentViewController as! DetailViewController
+        audioVC.plant = presentingVC.plant
         presentingVC.tabBarController?.tabBar.isHidden = true
         presentingVC.navigationController?.present(audioVC, animated: true, completion: nil)
     }
