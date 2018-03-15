@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/Plant+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/Plant+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:Map_Geofencing.xcodeproj">
    </FileRef>
    <FileRef

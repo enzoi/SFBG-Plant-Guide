@@ -56,6 +56,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addBottomSheetView()
+    }
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         let storyboard = UIStoryboard (name: "Main", bundle: nil)
@@ -142,6 +147,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         default:
             mapView.mapType = .satellite
         }
+    }
+    
+    func addBottomSheetView() {
+        let bottomSheetVC = BottomSheetController()
+        
+        self.addChildViewController(bottomSheetVC)
+        self.view.addSubview(bottomSheetVC.view)
+        bottomSheetVC.didMove(toParentViewController: self)
+        
+        let height = view.frame.height
+        let width  = view.frame.width
+        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
     }
 
 }
