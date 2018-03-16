@@ -23,10 +23,10 @@ struct Appearance {
 
         // Tab Bar
         UITabBar.appearance().barTintColor = UIColor.darkGreen
-        // UITabBar.appearance().tintColor = UIColor.clear
+        UITabBar.appearance().tintColor = UIColor.lightGreen
         UITabBar.appearance().isTranslucent = false
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.defaultBlue], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGreen], for: .selected)
         
         // Segmented Control
         UISegmentedControl.appearance().tintColor = UIColor.lightGray
