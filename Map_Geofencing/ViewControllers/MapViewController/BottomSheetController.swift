@@ -25,16 +25,13 @@ class BottomSheetController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     
-    let fullView: CGFloat = -35 // match top of search bar to bottom of nav bar
+    let fullView: CGFloat = -50 // match top of search bar to bottom of nav bar
     var partialView: CGFloat {
-        return UIScreen.main.bounds.height - 140 // header view + search bar + first cell height
+        return UIScreen.main.bounds.height - 160 // header view + search bar + first cell height
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        headerView.subviews.first!.layer.cornerRadius = 2.5
-        headerView.subviews.first!.layer.masksToBounds = true
         
         // Sort plant array by distance from user location
         for plant in nearbyPlants {
@@ -154,6 +151,8 @@ extension BottomSheetController {
         let plant: Plant
         plant = nearbyPlants[indexPath.row]
         
+        cell.distance.layer.cornerRadius = 3
+        cell.distance.layer.masksToBounds = true
         cell.distance.text = plant.distance
         cell.scientificName.text = plant.scientificName
     }
@@ -168,10 +167,10 @@ extension BottomSheetController {
         
         if (distanceInMiles <= 10) {
             // under 10 mile - 1.7 miles
-            return String(format: "%.1f", distanceInMiles) + "miles"
+            return String(format: "%.1f", distanceInMiles) + "mi"
         } else {
             // out of 10 mile - 12 miles
-            return String(format: "%.0f", distanceInMiles) + "miles"
+            return String(format: "%.0f", distanceInMiles) + "mi"
         }
     }
 }

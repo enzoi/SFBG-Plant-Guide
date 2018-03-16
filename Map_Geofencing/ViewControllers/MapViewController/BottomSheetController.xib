@@ -6,9 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNextCondensed.ttc">
+            <string>AvenirNextCondensed-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomSheetController" customModule="Map_Geofencing" customModuleProvider="target">
             <connections>
@@ -26,26 +32,46 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYh-dQ-6II" userLabel="HeaderView">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehY-0v-3Fb">
-                                    <rect key="frame" x="163" y="10" width="50" height="5"/>
-                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <rect key="frame" x="170" y="10" width="35" height="5"/>
+                                    <color key="backgroundColor" red="0.1176470588" green="0.26274509800000001" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="5" id="k9n-1d-EVn"/>
-                                        <constraint firstAttribute="width" constant="50" id="sYY-sa-xAS"/>
+                                        <constraint firstAttribute="width" constant="35" id="sYY-sa-xAS"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <real key="value" value="2.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearby Plants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcN-ef-uUE">
+                                    <rect key="frame" x="16" y="19.5" width="95.5" height="23.5"/>
+                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="17"/>
+                                    <color key="textColor" red="0.1176470588" green="0.26274509800000001" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.73725490196078436" green="0.92156862745098034" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="FnT-GP-GPS"/>
+                                <constraint firstItem="UcN-ef-uUE" firstAttribute="leading" secondItem="jYh-dQ-6II" secondAttribute="leading" constant="16" id="0gh-BN-QhP"/>
                                 <constraint firstItem="ehY-0v-3Fb" firstAttribute="top" secondItem="jYh-dQ-6II" secondAttribute="top" constant="10" id="Gdb-2W-Wa8"/>
+                                <constraint firstItem="UcN-ef-uUE" firstAttribute="bottom" secondItem="jYh-dQ-6II" secondAttribute="bottomMargin" constant="1" id="eVg-Sk-mWy"/>
+                                <constraint firstAttribute="height" constant="50" id="n8F-eU-jhO"/>
                                 <constraint firstItem="ehY-0v-3Fb" firstAttribute="centerX" secondItem="jYh-dQ-6II" secondAttribute="centerX" id="t74-UO-0LD"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dS-8Z-J4f">
+                            <rect key="frame" x="0.0" y="50" width="375" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MWc-aK-vjU">
-                            <rect key="frame" x="0.0" y="35" width="375" height="632"/>
+                            <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
