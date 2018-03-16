@@ -14,7 +14,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var annotations = [MKAnnotation]()
+    var annotations = [PinAnnotation]()
     var photoStore: PhotoStore!
     var locationManager: CLLocationManager!
     var fetchedPlants = [Plant]()
@@ -54,15 +54,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         } else {
             displayPins(plants: self.fetchedPlants)
         }
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
 
     }
     

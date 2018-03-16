@@ -13,7 +13,7 @@ import MapKit
 @objc(Plant)
 public class Plant: NSManagedObject {
 
-    func getPinAnnotationsFromPin(plant: Plant) -> MKAnnotation {
+    func getPinAnnotationsFromPin(plant: Plant) -> PinAnnotation {
         
         let pinAnnotation = PinAnnotation(plant: plant)
         

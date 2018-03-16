@@ -25,7 +25,7 @@ class BottomSheetController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     
-    let fullView: CGFloat = -50 // match top of search bar to bottom of nav bar
+    let fullView: CGFloat = 0 // match top of search bar to bottom of nav bar
     var partialView: CGFloat {
         return UIScreen.main.bounds.height - 160 // header view + search bar + first cell height
     }
@@ -101,9 +101,9 @@ class BottomSheetController: UIViewController {
         }
     }
     
-    
+
     func prepareBackgroundView() {
-        
+
         let blurEffect = UIBlurEffect.init(style: .dark)
         let visualEffect = UIVisualEffectView.init(effect: blurEffect)
         let bluredView = UIVisualEffectView.init(effect: blurEffect)
@@ -134,6 +134,10 @@ extension BottomSheetController: UITableViewDelegate, UITableViewDataSource {
         
         configure(cell: cell, for: indexPath)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
