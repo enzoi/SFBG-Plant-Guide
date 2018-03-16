@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomSheetController" customModule="Map_Geofencing" customModuleProvider="target">
             <connections>
                 <outlet property="headerView" destination="jYh-dQ-6II" id="v9v-xj-3gD"/>
-                <outlet property="searchBar" destination="EGO-sl-Fv8" id="ZUq-Le-7iz"/>
                 <outlet property="tableView" destination="MWc-aK-vjU" id="DKC-IQ-RHj"/>
                 <outlet property="view" destination="WFt-DX-43S" id="iI8-xL-hcl"/>
             </connections>
@@ -27,7 +26,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYh-dQ-6II" userLabel="HeaderView">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehY-0v-3Fb">
                                     <rect key="frame" x="163" y="10" width="50" height="5"/>
@@ -37,26 +36,17 @@
                                         <constraint firstAttribute="width" constant="50" id="sYY-sa-xAS"/>
                                     </constraints>
                                 </view>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EGO-sl-Fv8">
-                                    <rect key="frame" x="0.0" y="30" width="375" height="56"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                             </subviews>
                             <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="ehY-0v-3Fb" firstAttribute="centerX" secondItem="EGO-sl-Fv8" secondAttribute="centerX" id="FLw-56-Ask"/>
+                                <constraint firstAttribute="height" constant="35" id="FnT-GP-GPS"/>
                                 <constraint firstItem="ehY-0v-3Fb" firstAttribute="top" secondItem="jYh-dQ-6II" secondAttribute="top" constant="10" id="Gdb-2W-Wa8"/>
-                                <constraint firstItem="EGO-sl-Fv8" firstAttribute="leading" secondItem="jYh-dQ-6II" secondAttribute="leading" id="PdJ-E7-zG1"/>
-                                <constraint firstItem="EGO-sl-Fv8" firstAttribute="top" secondItem="ehY-0v-3Fb" secondAttribute="bottom" constant="15" id="gct-MY-AkN"/>
                                 <constraint firstItem="ehY-0v-3Fb" firstAttribute="centerX" secondItem="jYh-dQ-6II" secondAttribute="centerX" id="t74-UO-0LD"/>
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MWc-aK-vjU">
-                            <rect key="frame" x="0.0" y="86" width="375" height="581"/>
+                            <rect key="frame" x="0.0" y="35" width="375" height="632"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="581" id="eAp-7F-TU3"/>
-                            </constraints>
                         </tableView>
                     </subviews>
                     <constraints>

@@ -13,7 +13,7 @@ import MapKit
 import FirebaseAuth
 
 
-class PlantTableViewController: UIViewController {
+class PlantTableViewController: UIViewController, CLLocationManagerDelegate {
 
     // MARK: - Properties
     let searchController = UISearchController(searchResultsController: nil)
@@ -53,9 +53,9 @@ class PlantTableViewController: UIViewController {
         super.viewDidLoad()
 
         let tabBar = self.tabBarController as! TabBarController
-        self.photoStore = tabBar.photoStore
-        self.locationManager = tabBar.locationManager
-        self.locationManager?.delegate = self as? CLLocationManagerDelegate
+        photoStore = tabBar.photoStore
+        locationManager = tabBar.locationManager
+        locationManager?.delegate = self
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self

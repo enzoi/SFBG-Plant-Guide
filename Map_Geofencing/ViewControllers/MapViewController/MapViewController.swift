@@ -54,11 +54,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         } else {
             displayPins(plants: self.fetchedPlants)
         }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        addBottomSheetView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -91,7 +96,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
                 self.fetchedPlants = plants
                 self.hideActivityIndicator(view: self.view)
-      
+                self.addBottomSheetView()
+                
                 if self.fetchedPlants.count > 0 {
                     performUIUpdatesOnMain() {
                         self.displayPins(plants: self.fetchedPlants)
@@ -150,7 +156,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func addBottomSheetView() {
+        
         let bottomSheetVC = BottomSheetController()
+        bottomSheetVC.photoStore = photoStore
+        bottomSheetVC.locationManager = locationManager
+        bottomSheetVC.nearbyPlants = self.fetchedPlants
         
         self.addChildViewController(bottomSheetVC)
         self.view.addSubview(bottomSheetVC.view)
@@ -159,6 +169,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let height = view.frame.height
         let width  = view.frame.width
         bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+    }
+    
+    func removeChildController() {
+        guard let child = childViewControllers.first else { return }
+        child.willMove(toParentViewController: nil)
+        child.view.removeFromSuperview()
+        child.removeFromParentViewController()
     }
 
 }

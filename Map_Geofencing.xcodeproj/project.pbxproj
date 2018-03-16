@@ -11,13 +11,13 @@
 		A6893DBF9F5B0A909DB4DEE8 /* Pods_Map_GeofencingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1E9AB2DDFEFA690E49873C7 /* Pods_Map_GeofencingUITests.framework */; };
 		B29631AB9BDD8D884673B131 /* Pods_Map_GeofencingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4386CD60F05D9B535BF5F0D7 /* Pods_Map_GeofencingTests.framework */; };
 		CF0C7D6D205B1F6D00FF8EBE /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7D6C205B1F6D00FF8EBE /* BottomSheetController.swift */; };
-		CF0C7D78205B227400FF8EBE /* Plant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7D76205B227300FF8EBE /* Plant+CoreDataClass.swift */; };
-		CF0C7D79205B227400FF8EBE /* Plant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7D77205B227300FF8EBE /* Plant+CoreDataProperties.swift */; };
 		CF369D261FE0A8B10064E251 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF369D251FE0A8B10064E251 /* HeaderView.swift */; };
 		CF369D2A1FE0A9630064E251 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF369D291FE0A9630064E251 /* HeaderView.xib */; };
 		CF4A9377205B25D3003E9706 /* BottomSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A9375205B25D3003E9706 /* BottomSheetCell.swift */; };
 		CF4A9378205B25D3003E9706 /* BottomSheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF4A9376205B25D3003E9706 /* BottomSheetCell.xib */; };
 		CF4A937A205B2A59003E9706 /* BottomSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF4A9379205B2A59003E9706 /* BottomSheetController.xib */; };
+		CF4A937D205BA3A3003E9706 /* Plant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A937B205BA3A3003E9706 /* Plant+CoreDataClass.swift */; };
+		CF4A937E205BA3A3003E9706 /* Plant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A937C205BA3A3003E9706 /* Plant+CoreDataProperties.swift */; };
 		CF4D1C292026AE0C000512E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D1C282026AE0C000512E9 /* Constants.swift */; };
 		CF4D1C2B2026AE4F000512E9 /* Contentful.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D1C2A2026AE4F000512E9 /* Contentful.swift */; };
 		CF4FB23A1FCE545E00CC885E /* SFBG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */; };
@@ -90,13 +90,13 @@
 		7B9B792CAE62441320E0098E /* Pods-Map_GeofencingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingTests/Pods-Map_GeofencingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F5EFED71ADC3F3A4290E80C /* Pods-Map_GeofencingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map_GeofencingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Map_GeofencingTests/Pods-Map_GeofencingTests.release.xcconfig"; sourceTree = "<group>"; };
 		CF0C7D6C205B1F6D00FF8EBE /* BottomSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
-		CF0C7D76205B227300FF8EBE /* Plant+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Plant+CoreDataClass.swift"; path = "../../../../../.Trash/Plant+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CF0C7D77205B227300FF8EBE /* Plant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Plant+CoreDataProperties.swift"; path = "../../../../../.Trash/Plant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CF369D251FE0A8B10064E251 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		CF369D291FE0A9630064E251 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		CF4A9375205B25D3003E9706 /* BottomSheetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetCell.swift; sourceTree = "<group>"; };
 		CF4A9376205B25D3003E9706 /* BottomSheetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetCell.xib; sourceTree = "<group>"; };
 		CF4A9379205B2A59003E9706 /* BottomSheetController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetController.xib; sourceTree = "<group>"; };
+		CF4A937B205BA3A3003E9706 /* Plant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Plant+CoreDataClass.swift"; path = "/Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/Plant+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		CF4A937C205BA3A3003E9706 /* Plant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Plant+CoreDataProperties.swift"; path = "/Users/yeontaekim/ytk/Mobile/Swift/Map_Geofencing/Map_Geofencing/Plant+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		CF4D1C282026AE0C000512E9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CF4D1C2A2026AE4F000512E9 /* Contentful.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contentful.swift; sourceTree = "<group>"; };
 		CF4FB2391FCE545E00CC885E /* SFBG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SFBG.xcdatamodel; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 				CFE592A31FDF4C9D00F0BBE2 /* User+CoreDataProperties.swift */,
 				CFE592A41FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift */,
 				CFE592A51FDF4C9D00F0BBE2 /* Photo+CoreDataProperties.swift */,
-				CF0C7D76205B227300FF8EBE /* Plant+CoreDataClass.swift */,
-				CF0C7D77205B227300FF8EBE /* Plant+CoreDataProperties.swift */,
+				CF4A937B205BA3A3003E9706 /* Plant+CoreDataClass.swift */,
+				CF4A937C205BA3A3003E9706 /* Plant+CoreDataProperties.swift */,
 				CF4FB2381FCE545E00CC885E /* SFBG.xcdatamodeld */,
 			);
 			name = Model;
@@ -309,11 +309,11 @@
 			isa = PBXGroup;
 			children = (
 				CF4FB24F1FD1215D00CC885E /* MapViewController.swift */,
+				CF745543201A5C1100FEB1F6 /* MapViewControllerExtension.swift */,
 				CF0C7D6C205B1F6D00FF8EBE /* BottomSheetController.swift */,
 				CF4A9379205B2A59003E9706 /* BottomSheetController.xib */,
 				CF4A9375205B25D3003E9706 /* BottomSheetCell.swift */,
 				CF4A9376205B25D3003E9706 /* BottomSheetCell.xib */,
-				CF745543201A5C1100FEB1F6 /* MapViewControllerExtension.swift */,
 			);
 			path = MapViewController;
 			sourceTree = "<group>";
@@ -770,6 +770,7 @@
 				CFE592AA1FDF4C9D00F0BBE2 /* Photo+CoreDataClass.swift in Sources */,
 				CF631B9A1FFEC96600A0E6AA /* Utilities.swift in Sources */,
 				CF97BEE41FCDEEA000E9931C /* PlantTableViewCell.swift in Sources */,
+				CF4A937E205BA3A3003E9706 /* Plant+CoreDataProperties.swift in Sources */,
 				CFD3C2791FDE3A7A0084637B /* PlantViewModel.swift in Sources */,
 				CFB11DE31FF76D2B001FBEE6 /* SignUpWithEmailViewController.swift in Sources */,
 				CFD3C2711FDD0C7C0084637B /* PlantNameTableViewCell.swift in Sources */,
@@ -777,7 +778,6 @@
 				CF4A9377205B25D3003E9706 /* BottomSheetCell.swift in Sources */,
 				CF369D261FE0A8B10064E251 /* HeaderView.swift in Sources */,
 				CF4D1C292026AE0C000512E9 /* Constants.swift in Sources */,
-				CF0C7D78205B227400FF8EBE /* Plant+CoreDataClass.swift in Sources */,
 				CFD3C2751FDD1B970084637B /* PlantPropertiesTableViewCell.swift in Sources */,
 				CFD109E820513BA000C14FC4 /* PhotoAlbumViewController.swift in Sources */,
 				CF74290C1FEC7135004E26AE /* TabBarController.swift in Sources */,
@@ -785,6 +785,7 @@
 				CF0C7D6D205B1F6D00FF8EBE /* BottomSheetController.swift in Sources */,
 				CF4D1C2B2026AE4F000512E9 /* Contentful.swift in Sources */,
 				CFD3C24D1FD7BAE20084637B /* PhotoStore.swift in Sources */,
+				CF4A937D205BA3A3003E9706 /* Plant+CoreDataClass.swift in Sources */,
 				CF97BEE21FCDEA7300E9931C /* PlantTableViewController.swift in Sources */,
 				CFD109F12051BEEF00C14FC4 /* PhotoViewHeaderCell.swift in Sources */,
 				CFB11DE11FF76588001FBEE6 /* SignInWithEmailViewController.swift in Sources */,
@@ -801,7 +802,6 @@
 				CFD109EF205152D600C14FC4 /* PhotoViewCell.swift in Sources */,
 				CFD109EC20514BA500C14FC4 /* FlickrClient.swift in Sources */,
 				CF4FB2501FD1215D00CC885E /* MapViewController.swift in Sources */,
-				CF0C7D79205B227400FF8EBE /* Plant+CoreDataProperties.swift in Sources */,
 				CFE592AB1FDF4C9D00F0BBE2 /* Photo+CoreDataProperties.swift in Sources */,
 				CF7429091FEB45FE004E26AE /* SignInViewController.swift in Sources */,
 				CF4FB23A1FCE545E00CC885E /* SFBG.xcdatamodeld in Sources */,

@@ -7,30 +7,47 @@
 //
 
 import UIKit
+import CoreData
+import CoreLocation
+import MapKit
+import FirebaseAuth
 
 class BottomSheetController: UIViewController {
     
     let cellId = "cellId"
+    var nearbyPlants : [Plant]!
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    var photoStore: PhotoStore!
+    var locationManager: CLLocationManager?
+    var currentUserLocation: CLLocation?
+    
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
+
     
-    lazy var fullView: CGFloat = UIApplication.shared.statusBarFrame.size.height +
-        (self.navigationController?.navigationBar.frame.height ?? 0.0)
-    
+    let fullView: CGFloat = -35 // match top of search bar to bottom of nav bar
     var partialView: CGFloat {
-        return UIScreen.main.bounds.height - 150
+        return UIScreen.main.bounds.height - 140 // header view + search bar + first cell height
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        headerView.subviews.first!.layer.cornerRadius = 2.5
+        headerView.subviews.first!.layer.masksToBounds = true
+        
+        // Sort plant array by distance from user location
+        for plant in nearbyPlants {
+            plant.distance = getDistance(plant: plant)
+        }
+        
+        nearbyPlants = nearbyPlants.sorted(by: { $0.distance! < $1.distance! })
+        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "BottomSheetCell", bundle: nil), forCellReuseIdentifier: cellId)
         
-        searchBar.isUserInteractionEnabled = false
+        tableView.register(UINib(nibName: "BottomSheetCell", bundle: nil), forCellReuseIdentifier: cellId)
+        tableView.reloadData()
         
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(BottomSheetController.panGesture))
         gesture.delegate = self
@@ -39,7 +56,9 @@ class BottomSheetController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         prepareBackgroundView()
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,7 +68,7 @@ class BottomSheetController: UIViewController {
         UIView.animate(withDuration: 0.6, animations: { [weak self] in
             let frame = self?.view.frame
             let yComponent = self?.partialView
-            self?.view.frame = CGRect(x: 0, y: yComponent!, width: frame!.width, height: frame!.height - 100)
+            self?.view.frame = CGRect(x: 0, y: yComponent!, width: frame!.width, height: frame!.height)
         })
     }
     
@@ -59,6 +78,7 @@ class BottomSheetController: UIViewController {
         let velocity = recognizer.velocity(in: self.view)
         
         let y = self.view.frame.minY
+
         if (y + translation.y >= fullView) && (y + translation.y <= partialView) {
             self.view.frame = CGRect(x: 0, y: y + translation.y, width: view.frame.width, height: view.frame.height)
             recognizer.setTranslation(CGPoint.zero, in: self.view)
@@ -87,8 +107,6 @@ class BottomSheetController: UIViewController {
     
     func prepareBackgroundView() {
         
-        print("prepareBackgroundView called")
-        
         let blurEffect = UIBlurEffect.init(style: .dark)
         let visualEffect = UIVisualEffectView.init(effect: blurEffect)
         let bluredView = UIVisualEffectView.init(effect: blurEffect)
@@ -105,25 +123,58 @@ class BottomSheetController: UIViewController {
 
 extension BottomSheetController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        
+        return nearbyPlants.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 40
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! BottomSheetCell
         
+        configure(cell: cell, for: indexPath)
         return cell
     }
 }
 
+
+// MARK: - Configure TableView Cell
+
+extension BottomSheetController {
+    
+    func configure(cell: UITableViewCell, for indexPath: IndexPath) {
+        
+        guard let cell = cell as? BottomSheetCell else {
+            return
+        }
+        
+        let plant: Plant
+        plant = nearbyPlants[indexPath.row]
+        
+        cell.distance.text = plant.distance
+        cell.scientificName.text = plant.scientificName
+    }
+    
+    private func getDistance(plant: Plant) -> String {
+        
+        guard let userLocation = self.locationManager?.location else { return "N/A" }
+        let plantLocation = CLLocation(latitude: plant.latitude, longitude: plant.longitude)
+        
+        let distanceInMeters = userLocation.distance(from: plantLocation) // result is in meters
+        let distanceInMiles = distanceInMeters / 1609
+        
+        if (distanceInMiles <= 10) {
+            // under 10 mile - 1.7 miles
+            return String(format: "%.1f", distanceInMiles) + "miles"
+        } else {
+            // out of 10 mile - 12 miles
+            return String(format: "%.0f", distanceInMiles) + "miles"
+        }
+    }
+}
 
 // Mark: - Gesture Recognizer Delegate
 
@@ -144,3 +195,4 @@ extension BottomSheetController: UIGestureRecognizerDelegate {
     }
     
 }
+
