@@ -61,7 +61,6 @@ class PlantTableViewController: UIViewController, CLLocationManagerDelegate {
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Plants"
 
         definesPresentationContext = true
         
@@ -70,20 +69,29 @@ class PlantTableViewController: UIViewController, CLLocationManagerDelegate {
         searchController.searchBar.delegate = self
         
         if #available(iOS 11.0, *) {
-
-            // Selected text
-            let titleTextAttributesSelected = [NSAttributedStringKey.foregroundColor: UIColor.green]
-            UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributesSelected, for: .selected)
             
-            // Normal text
-            let titleTextAttributesNormal = [NSAttributedStringKey.foregroundColor: UIColor.black]
-            UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributesNormal, for: .normal)
+            if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+
+                if let backgroundview = textfield.subviews.first {
+                    
+                    // Background color
+                    backgroundview.backgroundColor = UIColor.white
+                    
+                    // Rounded corner
+                    backgroundview.layer.cornerRadius = 10;
+                    backgroundview.clipsToBounds = true;
+                }
+            }
+            
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.darkGray]
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Plants", attributes: [NSAttributedStringKey.foregroundColor: UIColor.darkGray])
             
             searchController.searchBar.searchBarStyle = UISearchBarStyle.default
-            let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
-            textFieldInsideSearchBar?.backgroundColor = .white
+
             navigationItem.searchController = searchController
 
+
+            
         } else {
             // Fallback on earlier versions
             navigationItem.titleView = searchController.searchBar

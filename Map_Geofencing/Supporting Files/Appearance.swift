@@ -29,9 +29,9 @@ struct Appearance {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.defaultBlue], for: .selected)
         
         // Segmented Control
-        UISegmentedControl.appearance().tintColor = UIColor.darkGreen
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.darkGreen], for: .normal)
+        UISegmentedControl.appearance().tintColor = UIColor.lightGray
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.darkGreen], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray], for: .normal)
     }
 }
 
@@ -130,3 +130,4 @@ extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
+
